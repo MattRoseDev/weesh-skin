@@ -1,5 +1,11 @@
+/* Weesh */
+@font-face {
+    font-family: Weesh;
+    src: url(fonts/Weesh/Weesh.ttf);
+}
 /* Pacifico */
 @font-face {
     font-family: Pacifico;
     src: url(fonts/Pacifico/Pacifico-Regular.ttf);
 }
+
