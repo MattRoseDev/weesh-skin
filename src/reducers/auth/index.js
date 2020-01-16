@@ -3,7 +3,8 @@ export const authReducer = (state, action) => {
         case 'LOGIN': 
             return {
                 ...state,
-                token: action.token
+                token: action.token,
+                username: action.username
             }
         default:
             return state
