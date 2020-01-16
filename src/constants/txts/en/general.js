@@ -1,3 +1,4 @@
 export default {
-    logo: 'W'
+    logo: 'Weesh',
+    or: 'OR'
 }
