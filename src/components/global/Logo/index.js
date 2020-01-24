@@ -5,11 +5,11 @@ import CONSTANTS from 'Root/constants'
 
 const Logo = styled(Link)`
     text-decoration: none;
-    color: ${CONSTANTS.themes.colors.black};
+    color: ${CONSTANTS.themes.light.colors.black};
     display: inline-flex;
     font-family: Pacifico;
-    margin: 0;
-    font-size: ${({ fontSize }) => fontSize ? fontSize : 1.5}rem;
+    margin: ${({ margin }) => margin ? `${margin}rem` : 0};
+    font-size: ${({ fontSize }) => fontSize || 1.5}rem;
 `
 
 const Element = (props) => {
