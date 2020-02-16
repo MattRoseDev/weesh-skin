@@ -21,12 +21,10 @@ const StyledLabel = styled.div`
     color: ${CONSTANTS.themes.light.colors.gray};
 `
 
-const Element = (props) => {
+export default (props) => {
     return <StyledOR {...props} >
         <StyledLine />
-        <StyledLabel>{CONSTANTS.txts.en.general.or}</StyledLabel>
+        <StyledLabel>{CONSTANTS.txts.en.g.or}</StyledLabel>
         <StyledLine />
     </StyledOR>
 }
-
-export default Element
