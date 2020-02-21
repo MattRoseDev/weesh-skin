@@ -1,0 +1,307 @@
+import gql from 'graphql-tag'
+
+const add = gql`
+    mutation addWeeshForUser($content: String!, $status: Int){
+        addWeeshForUser(content: $content,status: $status) {
+            id
+            user {
+                id
+                username
+                firstName
+                lastName
+            }
+            content 
+            status
+            updatedAt
+        }
+    }
+`
+
+const getHomeWeeshes = gql`
+    query getHomeWeeshesForUser($limit: Int, $page: Int){
+        getHomeWeeshesForUser(limit: $limit, page: $page) {
+            weeshes {
+                id
+                link
+                user {
+                    id
+                    username
+                    firstName
+                    lastName
+                    unknown {
+                        fullname
+                        avatar
+                    }
+                }
+                content 
+                status
+                like {
+                    weeshLikes {
+                        user {
+                            id
+                            username
+                        }
+                    }
+                    paginate {
+                        totalDocs
+                    }
+                }
+                isLiked {
+                    user {
+                        id
+                        username
+                    }
+                }
+                comment {
+                    weeshComments {
+                        user {
+                            id
+                            username
+                            firstName
+                            lastName
+                            unknown {
+                                fullname
+                                avatar
+                            }
+                        }
+                        content
+                        children {
+                            weeshComments {
+                                user {
+                                    id
+                                    username
+                                    firstName
+                                    lastName
+                                    unknown {
+                                        fullname
+                                        avatar
+                                    }
+                                }
+                                content
+                                updatedAt
+                            }
+                            paginate {
+                                totalDocs
+                            }
+                        }
+                        updatedAt
+                    }
+                    paginate {
+                        totalDocs
+                    }
+                }
+                updatedAt
+            }
+            paginate {
+                totalDocs
+            }
+        }
+    }
+`
+
+const getShowcase = gql`
+    query getTheBestWeeshesForUser($limit: Int, $page: Int){
+        getTheBestWeeshesForUser(limit: $limit, page: $page) {
+            weeshes {
+                id
+                link
+                user {
+                    id
+                    username
+                    firstName
+                    lastName
+                    unknown {
+                        fullname
+                        avatar
+                    }
+                }
+                content 
+                status
+                like {
+                    weeshLikes {
+                        user {
+                            id
+                            username
+                        }
+                    }
+                    paginate {
+                        totalDocs
+                    }
+                }
+                comment {
+                    weeshComments {
+                        user {
+                            id
+                            username
+                            firstName
+                            lastName
+                            unknown {
+                                fullname
+                                avatar
+                            }
+                        }
+                        content
+                        children {
+                            weeshComments {
+                                user {
+                                    id
+                                    username
+                                    firstName
+                                    lastName
+                                    unknown {
+                                        fullname
+                                        avatar
+                                    }
+                                }
+                                content
+                                updatedAt
+                            }
+                            paginate {
+                                totalDocs
+                            }
+                        }
+                        updatedAt
+                    }
+                    paginate {
+                        totalDocs
+                    }
+                }
+                updatedAt
+            }
+            paginate {
+                totalDocs
+            }
+        }
+    }
+`
+
+const getWeeshes = gql`
+    query getWeeshesForUser($userId: ID!, $limit: Int, $page: Int){
+        getWeeshesForUser(userId: $userId, limit: $limit, page: $page) {
+            weeshes {
+                id
+                link
+                user {
+                    id
+                    username
+                    firstName
+                    lastName
+                    unknown {
+                        fullname
+                        avatar
+                    }
+                }
+                content 
+                status
+                like {
+                    weeshLikes {
+                        user {
+                            id
+                            username
+                        }
+                    }
+                    paginate {
+                        totalDocs
+                    }
+                }
+                isLiked {
+                    user {
+                        id
+                        username
+                    }
+                }
+                updatedAt
+            }
+            paginate {
+                totalDocs
+            }
+        }
+    }
+`
+
+const getWeeshByLink = gql`
+    query getWeeshByLinkForUser($link: String!){
+        getWeeshByLinkForUser(link: $link) {
+            id
+            link
+            user {
+                id
+                username
+                firstName
+                lastName
+                unknown {
+                    fullname
+                    avatar
+                }
+            }
+            content 
+            status
+            like {
+                weeshLikes {
+                    user {
+                        id
+                        username
+                    }
+                }
+                paginate {
+                    totalDocs
+                }
+            }
+            isLiked {
+                user {
+                    id
+                    username
+                }
+            }
+            comment {
+                weeshComments {
+                    user {
+                        id
+                        username
+                        firstName
+                        lastName
+                        unknown {
+                            fullname
+                            avatar
+                        }
+                    }
+                    content
+                    children {
+                        weeshComments {
+                            user {
+                                id
+                                username
+                                firstName
+                                lastName
+                                unknown {
+                                    fullname
+                                    avatar
+                                }
+                            }
+                            content
+                            updatedAt
+                        }
+                        paginate {
+                            totalDocs
+                        }
+                    }
+                    updatedAt
+                }
+                paginate {
+                    totalDocs
+                }
+            }
+            updatedAt
+        }
+    }
+`
+
+
+export default {
+    add,
+    getWeeshes,
+    getHomeWeeshes,
+    getShowcase,
+    getWeeshByLink,
+}
+
