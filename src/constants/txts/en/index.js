@@ -1,9 +1,9 @@
-import general from './general'
-import search from './search'
+import g from './g'
+import explore from './explore'
 import auth from './auth'
 
 export default {
-    general,
-    search,
+    g,
+    explore,
     auth,
 }
