@@ -9,6 +9,7 @@ const exploreAll = gql`
                     username
                     firstName
                     lastName
+                    avatarAddress
                     unknown {
                         fullname
                         avatar
