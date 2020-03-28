@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from 'Root/app'
 
 const Container = () => {
-    return <BrowserRouter>
+    return <BrowserRouter basename='/'>
         <App />
     </BrowserRouter>
 }
