@@ -7,6 +7,8 @@ const getUserByUsernameForUser = gql`
             username
             firstName
             lastName
+            avatarAddress
+            coverAddress
             bio
             private
             unknown {
@@ -17,10 +19,18 @@ const getUserByUsernameForUser = gql`
                 follower {
                     id
                     username
+                    unknown {
+                        avatar
+                        fullname
+                    }
                 }
                 following {
                     id
                     username
+                    unknown {
+                        avatar
+                        fullname
+                    }
                 }
                 status
             }
@@ -43,6 +53,7 @@ const getUserByUsernameForUser = gql`
                         username
                         firstName
                         lastName
+                        avatarAddress
                         unknown {
                             fullname
                             avatar
@@ -55,6 +66,11 @@ const getUserByUsernameForUser = gql`
                             user {
                                 id
                                 username
+                                avatarAddress
+                                unknown {
+                                    avatar
+                                    fullname
+                                }
                             }
                         }
                         paginate {
@@ -72,6 +88,11 @@ const getUserByUsernameForUser = gql`
                             user {
                                 id
                                 username
+                                avatarAddress
+                                unknown {
+                                    avatar
+                                    fullname
+                                }
                             }
                             content
                             updatedAt
@@ -90,7 +111,67 @@ const getUserByUsernameForUser = gql`
     }
 `
 
+const edit = gql`
+    mutation editUserForUser(
+        $firstName: String, 
+        $lastName: String, 
+        $bio: String,
+        $private: Boolean,
+        $unknown: Boolean
+    ) {
+        editUserForUser(user: {
+            firstName: $firstName, 
+            lastName: $lastName, 
+            bio: $bio,
+            private: $private,
+            unknown: {
+                avatar: $unknown,
+                fullname: $unknown
+            }
+        }) {
+            firstName
+            lastName
+            bio
+            private
+            unknown {
+                avatar
+                fullname
+            }
+        }
+    }
+`
+
+const editUsername = gql`
+    mutation editUsernameForUser($username: String!) {
+        editUsernameForUser(username: $username) {
+            user {
+                username
+                firstName
+                lastName
+                bio
+                private
+                unknown {
+                    avatar
+                    fullname
+                }
+            }
+            token
+        }
+    }
+`
+
+const addOnlineUserForUser = gql`
+    subscription addOnlineUserForUser {
+        addOnlineUserForUser {
+            username
+        }
+    }
+`
+
 export default {
-    getUserByUsernameForUser
+    getUserByUsernameForUser,
+    addOnlineUserForUser,
+    editUsername,
+    edit,
 }
 
