@@ -37,6 +37,7 @@ const getFollowers = gql`
                     username
                     firstName
                     lastName
+                    avatarAddress
                     unknown {
                         avatar
                         fullname
@@ -56,6 +57,7 @@ const getFollowing = gql`
                     username
                     firstName
                     lastName
+                    avatarAddress
                     unknown {
                         avatar
                         fullname
