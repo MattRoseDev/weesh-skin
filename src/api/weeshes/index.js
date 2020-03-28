@@ -9,10 +9,18 @@ const add = gql`
                 username
                 firstName
                 lastName
+                avatarAddress
             }
             content 
             status
             updatedAt
+        }
+    }
+`
+const deleteWeesh = gql`
+    mutation deleteWeeshForUser($weeshId: ID!){
+        deleteWeeshForUser(weeshId: $weeshId) {
+            id
         }
     }
 `
@@ -28,6 +36,7 @@ const getHomeWeeshes = gql`
                     username
                     firstName
                     lastName
+                    avatarAddress
                     unknown {
                         fullname
                         avatar
@@ -59,6 +68,7 @@ const getHomeWeeshes = gql`
                             username
                             firstName
                             lastName
+                            avatarAddress
                             unknown {
                                 fullname
                                 avatar
@@ -72,6 +82,7 @@ const getHomeWeeshes = gql`
                                     username
                                     firstName
                                     lastName
+                                    avatarAddress
                                     unknown {
                                         fullname
                                         avatar
@@ -110,6 +121,7 @@ const getShowcase = gql`
                     username
                     firstName
                     lastName
+                    avatarAddress
                     unknown {
                         fullname
                         avatar
@@ -135,6 +147,7 @@ const getShowcase = gql`
                             username
                             firstName
                             lastName
+                            avatarAddress
                             unknown {
                                 fullname
                                 avatar
@@ -148,6 +161,7 @@ const getShowcase = gql`
                                     username
                                     firstName
                                     lastName
+                                    avatarAddress
                                     unknown {
                                         fullname
                                         avatar
@@ -186,6 +200,7 @@ const getWeeshes = gql`
                     username
                     firstName
                     lastName
+                    avatarAddress
                     unknown {
                         fullname
                         avatar
@@ -229,6 +244,7 @@ const getWeeshByLink = gql`
                 username
                 firstName
                 lastName
+                avatarAddress
                 unknown {
                     fullname
                     avatar
@@ -260,6 +276,7 @@ const getWeeshByLink = gql`
                         username
                         firstName
                         lastName
+                        avatarAddress
                         unknown {
                             fullname
                             avatar
@@ -273,6 +290,7 @@ const getWeeshByLink = gql`
                                 username
                                 firstName
                                 lastName
+                                avatarAddress
                                 unknown {
                                     fullname
                                     avatar
@@ -299,6 +317,7 @@ const getWeeshByLink = gql`
 
 export default {
     add,
+    deleteWeesh,
     getWeeshes,
     getHomeWeeshes,
     getShowcase,
