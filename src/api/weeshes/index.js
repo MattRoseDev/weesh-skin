@@ -271,6 +271,7 @@ const getWeeshByLink = gql`
             }
             comment {
                 weeshComments {
+                    id
                     user {
                         id
                         username

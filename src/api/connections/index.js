@@ -28,6 +28,34 @@ const unfollow = gql`
     }
 `
 
+const accept = gql`
+    mutation acceptUserConnectionForUser($userId: ID!){
+        acceptUserConnectionForUser(userId: $userId) {
+            follower {
+                id
+            }
+            following {
+                id
+            }
+            status
+        }
+    }
+`
+
+const reject = gql`
+    mutation rejectUserConnectionForUser($userId: ID!){
+        rejectUserConnectionForUser(userId: $userId) {
+            follower {
+                id
+            }
+            following {
+                id
+            }
+            status
+        }
+    }
+`
+
 const getFollowers = gql`
     query getFollowersUserConnectionByUsernameForUser($username: String!){
         getFollowersUserConnectionByUsernameForUser(username: $username) {
@@ -68,10 +96,33 @@ const getFollowing = gql`
     }
 `
 
+const getRequests = gql`
+    query getRequestsUsersConnectionByIdForUser{
+        getRequestsUsersConnectionByIdForUser {
+            userConnections {
+                follower {
+                    id
+                    username
+                    firstName
+                    lastName
+                    avatarAddress
+                    unknown {
+                        avatar
+                        fullname
+                    }
+                }
+            }
+        }
+    }
+`
+
 export default {
     follow,
     unfollow,
+    accept,
+    reject,
     getFollowers,
     getFollowing,
+    getRequests,
 }
 
