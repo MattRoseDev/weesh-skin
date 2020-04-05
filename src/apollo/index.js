@@ -20,8 +20,11 @@ const uploadLink = new createUploadLink({
 const wsLink = new WebSocketLink({
     uri: `${config.WS_URL}`,
     options: {
-        reconnect: true
-    }
+        reconnect: true,
+        connectionParams: () => ({
+            token: storage.get({ key: 'token' })
+        }),
+    },
 })
 
 const httpLink = new HttpLink({
@@ -33,7 +36,7 @@ const httpLink = new HttpLink({
 
 const authLink = setContext((_, { headers }) => {
     const token = storage.get({ key: 'token' })
-
+    
     return {
         headers: {
             ...headers,
