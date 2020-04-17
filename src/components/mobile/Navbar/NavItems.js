@@ -1,25 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
 
 const NavItems = styled.div`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.justifyContentAround};
+    ${C.styles.flex.alignItemsCenter};
     /* margin: 1rem; */
-    padding: .125rem;
+    padding: 0 .125rem;
     /* border-radius: 2rem 2rem 0 0; */
-    box-shadow: 1px 1px 3px 1px ${CONSTANTS.themes.light.colors.lightGray};
-    background: ${CONSTANTS.themes.light.colors.white};
-    .active {
-        transform: scale(1.25);
-    }
+    box-shadow: 1px 1px 3px 1px ${({theme}) => theme.colors.light};
+    background: ${({theme}) => theme.colors.background};
 `
 
-const Element = (props) => {
+export default (props) => {
     return <NavItems>
         {props.children}
     </NavItems>
 }
-
-export default Element
