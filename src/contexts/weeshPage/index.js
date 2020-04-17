@@ -4,10 +4,8 @@ import { weeshPageReducer } from 'Root/reducers/weeshPage'
 export const WeeshPageContext = React.createContext()
 
 const initialWeeshPage = {
-    content: '',
-    status: null,
-    characterCount: 0,
-    totalCount: 280,
+    reply: null,
+    textarea: null
 }
 
 const WeeshPageProvider = (props) => {
