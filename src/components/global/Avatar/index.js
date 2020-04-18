@@ -2,29 +2,35 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 import avatar from 'Root/public/img/avatar.jpg'
-import CONSTANTS from 'Root/constants'
+import unknownAvatar from 'Root/public/img/unknownAvatar.png'
+import C from 'Root/constants'
+import config from 'Root/config'
 
 const StyledLink = styled(Link)`
     color: unset;
     text-decoration: none;
 `
 
-const StyledContainer = styled.div``
+const StyledContainer = styled.span`
+    ${C.styles.flex.inlineFlexRow};
+    ${C.styles.flex.alignItemsCenter};
+`
 
-const StyledAvatar = styled.div`
-    background-color: ${CONSTANTS.themes.light.colors.white};
-    background-image: url(${({ src }) => src || avatar });
+const StyledAvatar = styled.span`
+    background-color: ${({theme}) => theme.colors.white};
+    background-image: url(${({ user }) => user ? user.unknown.avatar ? unknownAvatar : user.avatarAddress ? `${config.UPLOAD_URL}${user.avatarAddress}` : avatar : avatar});
     width: ${({ size }) => size || 2 }rem;
     height: ${({ size }) => size || 2 }rem;
     border-width: ${({ borderWidth }) => borderWidth || 1 }px;
     border-style: solid;
-    border-color: ${({ borderColor }) => borderColor ? CONSTANTS.themes.light.colors[borderColor] : CONSTANTS.themes.light.colors.lightGray };
+    border-color: ${({ theme, borderColor }) => borderColor ? theme.colors[borderColor] : theme.colors.lightGray };
     border-radius: 50%;
     background-position: center;
     background-size: cover;
-    display: block;
-    ${({ boxShadow }) => boxShadow && css`
-        box-shadow: 1px 1px 3px 1px ${CONSTANTS.themes.light.colors[boxShadow]};
+    ${C.styles.flex.inlineFlexRow};
+    ${C.styles.flex.alignItemsCenter};
+    ${({ theme, boxShadow }) => boxShadow && css`
+        box-shadow: 1px 1px 3px 1px ${theme.colors[boxShadow]};
     `}
 `
 
@@ -32,19 +38,17 @@ const StyledImg = styled.img`
     display: none;
 `
 
-const Element = (props) => {
+export default (props) => {
     return <>
         {props.to ? <StyledLink to={props.to}>
             <StyledAvatar {...props} />
-            <StyledImg src={props.src} />
+            <StyledImg src={(props.user && props.user.unknown && props.user.unknown.avatar) ? unknownAvatar : undefined} />
         </StyledLink>
         :
         <StyledContainer to={props.to}>
             <StyledAvatar {...props} />
-            <StyledImg src={props.src} />
+            <StyledImg src={(props.user && props.user.unknown && props.user.unknown.avatar) ? unknownAvatar : undefined} />
         </StyledContainer>
         }
     </>
 }
-
-export default Element
