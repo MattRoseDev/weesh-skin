@@ -1,25 +1,23 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
 
 const Button = styled(Link)`
     text-decoration: none;
+    font-weight: 900;
     font-size: 1rem;
-    padding: .5rem 2rem;
-    border-radius: .5rem;
+    padding: .65rem 2rem;
+    border-radius: 3rem;
     ${({ fill }) => fill ? css`
-        background: ${CONSTANTS.themes.light.colors.white};
-        color: ${CONSTANTS.themes.light.colors.dark};
+        background: unset;
+        color: ${({ theme }) => theme.colors.blue};
     ` : css`
-        color: ${ CONSTANTS.themes.light.colors.white};
-        background: ${ CONSTANTS.themes.light.colors.dark};
+        color: ${({ theme }) => theme.colors.background};
+        background: ${({ theme }) => theme.colors.blue};
     `};
-    
 `
 
-const Element = (props) => {
+export default (props) => {
     return <Button {...props}>{props.children}</Button>
 }
-
-export default Element
