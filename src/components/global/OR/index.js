@@ -1,30 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
 
 const StyledOR = styled.div`
-    display: flex;
-    align-items: center;
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.alignItemsCenter};
     width: ${({ width }) => width ? `${width}%` : 'unset' };
     margin: ${({ margin }) => margin ? `${margin}rem` : 'auto' } 0;
 `
 
 const StyledLine = styled.div`
     height: 1px;
-    background: ${CONSTANTS.themes.light.colors.light};
+    background: ${({theme}) => theme.colors.light};
     flex-grow: 1;
 `
 
 const StyledLabel = styled.div`
     margin: 0 1rem;
     font-size: .75rem;
-    color: ${CONSTANTS.themes.light.colors.gray};
+    color: ${({theme}) => theme.colors.gray};
 `
 
 export default (props) => {
     return <StyledOR {...props} >
         <StyledLine />
-        <StyledLabel>{CONSTANTS.txts.en.g.or}</StyledLabel>
+        <StyledLabel>{C.txts.en.g.or}</StyledLabel>
         <StyledLine />
     </StyledOR>
 }
