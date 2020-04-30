@@ -3,7 +3,12 @@ import { Route, Redirect } from 'react-router-dom'
 import { AuthContext } from 'Root/contexts/auth'
 
 const PrivateRoute = (props) => {
-    const { auth } = React.useContext(AuthContext)
+    const { auth, dispatch } = React.useContext(AuthContext)
+    if(!auth.token) {
+        dispatch({
+            type: 'LOGOUT'
+        })
+    }
     return auth.token ? <Route {...props} /> : <Redirect to='/login'/>
 }
 
