@@ -28,7 +28,7 @@ const StyledNumber = styled.span`
     font-weight: bolder;
 `
 
-const StyledTitle = styled.span`
+const StyledHoverTitle = styled.span`
     color: ${({theme}) => theme.colors.dark};
     font-size: .9rem;
     margin: 0 0 0 .25rem;
@@ -37,12 +37,18 @@ const StyledTitle = styled.span`
     }
 `
 
+const StyledTitle = styled.span`
+    color: ${({theme}) => theme.colors.dark};
+    font-size: .9rem;
+    margin: 0 0 0 .25rem;
+`
+
 export default (props) => {
     return <StyledContainer {...props}>
         {props.to ? <StyledLink to={props.to}>
             <StyledCountItem>
                 <StyledNumber>{props.number}</StyledNumber>
-                <StyledTitle>{props.title}</StyledTitle>
+                <StyledHoverTitle>{props.title}</StyledHoverTitle>
             </StyledCountItem>
         </StyledLink> : <StyledCountItem>
             <StyledNumber>{props.number}</StyledNumber>
