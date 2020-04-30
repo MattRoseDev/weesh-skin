@@ -5,6 +5,16 @@ export const editProfileReducer = (state, action) => {
                 ...state,
                 ...action.data
             }
+        case 'ENABLE_DONE_BUTTON': 
+            return {
+                ...state,
+                doneButton: true
+            }
+        case 'DISABLE_DONE_BUTTON': 
+            return {
+                ...state,
+                doneButton: false
+            }
         default:
             return state
     }
