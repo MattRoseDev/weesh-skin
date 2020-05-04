@@ -5,6 +5,12 @@ export const weeshReducer = (state, action) => {
                 ...state,
                 ...action.data
             }
+        case 'EMPTY_SUGGESTION_TAGS': 
+            return {
+                ...state,
+                suggestionTags: [],
+                allowShowSuggestions: false
+            }
         default:
             return state
     }
