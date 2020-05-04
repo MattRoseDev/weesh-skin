@@ -1,0 +1,18 @@
+export default {
+    background: '#232323',
+    foreground: '#ffffff',
+    black: '#232323',
+    white: '#ffffff',
+    light: 'rgba(0,0,0,0.5)',
+    // blue: '#0069ff',
+    // blue: '#0095f6',
+    blue: '#22a7f0',
+    // blue: '#3498db',
+    red: '#ff4757',
+    gray: '#9c9c9c',
+    green: '#1db954',
+    lightGray: '#9c9c9c',
+    dark: '#9c9c9c',
+    shadow: 'rgba(0,0,0,0.3)',
+    boldShadow: 'rgba(0,0,0,0.3)',
+}
