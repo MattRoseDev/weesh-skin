@@ -1,57 +1,45 @@
 import React from 'react'
-import styled from 'styled-components'
-import CONSTANTS from 'Root/constants'
+import styled, { css } from 'styled-components'
+import C from 'Root/constants'
 import Avatar from 'Root/components/global/Avatar'
+import Link from 'Root/components/global/Link'
+
 
 const StyledHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding: .5rem;
+    ${({ isChild }) => !isChild && css`
+        padding: .75rem 0 0 .75rem;
+    `};
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.justifyContentBetween};
 `
 
 const StyledNameContainer = styled.div`
-    display: flex;
-    flex-direction: column;
+    ${C.styles.flex.flexColumn};
     margin: 0 0 0 .5rem;
 `
 
-const StyledFullName = styled.h4`
-    display: flex;
-    font-weight: bold;
-    color: ${CONSTANTS.themes.light.colors.black};
-    margin: 0 0 .25rem;
-`
-
 const StyledUsername = styled.small`
-    display: flex;
-    color: ${CONSTANTS.themes.light.colors.dark};
+    font-size: .75rem;
+    ${C.styles.flex.flexRow};
+    color: ${({theme}) => theme.colors.dark};
 `
 
 const StyledTimestamp = styled.small`
     font-size: .75rem;
-    color: ${CONSTANTS.themes.light.colors.dark};
-    margin: 0 .5rem 0 0;
+    color: ${({theme}) => theme.colors.dark};
+    margin: 0 .25rem 0 0;
 `
 
 const StyledLeftSide = styled.div`
-    display: flex;
+    ${C.styles.flex.flexRow};
 `
 
 const StyledRightSide = styled.div``
 
-const Element = (props) => {
-    return <StyledHeader>
-        <StyledLeftSide>
-            <Avatar />
-            <StyledNameContainer>
-                <StyledFullName>{props.fullname}</StyledFullName>
-                <StyledUsername>@{props.username}</StyledUsername>
-            </StyledNameContainer>
-        </StyledLeftSide>
-        <StyledRightSide>
-            <StyledTimestamp>2 days ago</StyledTimestamp>
-        </StyledRightSide>
+export default (props) => {
+    return <StyledHeader {...props}>
+        <Link to={`/${props.user.username}`}>
+            <Avatar size={1.75} user={props.user} />
+        </Link>
     </StyledHeader>
 }
-
-export default Element
