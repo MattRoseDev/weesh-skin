@@ -1,20 +1,23 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Header from './Header'
 import Main from './Main'
-import CONSTANTS from 'Root/constants'
-
+import C from 'Root/constants'
 
 const StyledComment = styled.div`
+    ${C.styles.flex.flexRow};
     border: none;
-    border-top: 1px dashed ${CONSTANTS.themes.light.colors.lightGray};
+    &:not(:first-child) {
+        ${({ isChild }) => !isChild && css`
+        border-top: 1px dashed ${({theme}) => theme.colors.lightGray};
+        `};
+    }
 `
 
-const Element = (props) => {
-    return <StyledComment>
+export default (props) => {
+    const isChild = props.isChild || false
+    return <StyledComment id={props.id} isChild={isChild}>
         <Header {...props}/>
         <Main {...props}/>
     </StyledComment>
 }
-
-export default Element
