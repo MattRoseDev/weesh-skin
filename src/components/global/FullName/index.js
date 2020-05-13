@@ -1,14 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { AuthContext } from 'Root/contexts/auth'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
 
 const StyledFullName = styled.h4`
-    display: inline-flex;
+    ${C.styles.flex.inlineFlex};
     font-weight: bold;
     font-size: ${({fontSize}) => fontSize ? `${fontSize}rem` : '1rem'};
-    color: ${CONSTANTS.themes.light.colors.black};
+    color: ${({theme}) => theme.colors.foreground};
     margin: 0 0 .1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `
 
 export default (props) => {
@@ -16,11 +19,10 @@ export default (props) => {
     return <>
         {props.user.unknown.fullname && auth.id != props.user.id ?
             <StyledFullName {...props}>
-                {CONSTANTS.txts.en.g.unknownPerson}
+                {C.txts.en.g.unknownPerson}
             </StyledFullName> :
             <StyledFullName {...props}>
                 {props.user.firstName} {props.user.lastName}
-            </StyledFullName>
-        }
+            </StyledFullName>}
     </>
 }
