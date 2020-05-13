@@ -1,26 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
 
 const StyledInput = styled.input`
     outline: none;
     border: none;
-    background: transparent;
     font-size: .75rem;
-    color: ${CONSTANTS.themes.light.colors.black};
+    color: ${({theme}) => theme.colors.foreground};
+    background: transparent;
     padding: 0 0 0 .2rem;
     width: 100%;
     ::placeholder {
-        color: ${CONSTANTS.themes.light.colors.gray};
+        color: ${({ theme }) => theme.colors.gray};
     }
 `
 
-const Element = (props) => {
+export default (props) => {
     return <StyledInput 
+        id={props.id}
         placeholder={props.placeholder} 
         type={props.type} 
         onChange={props.onChange}
+        onInput={props.onInput}
+        defaultValue={props.value || ''}
+        autoCorrect='off'
     />
 }
-
-export default Element
