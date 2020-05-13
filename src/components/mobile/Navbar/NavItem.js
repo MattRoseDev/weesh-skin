@@ -6,6 +6,7 @@ import { AuthContext } from 'Root/contexts/auth'
 import { NotificationsContext } from 'Root/contexts/notifications'
 import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
+import Avatar from 'Root/components/global/Avatar'
 
 const NavItem = styled(NavLink)`
     ${C.styles.flex.flexRowCenter};
@@ -46,25 +47,25 @@ export default (props) => {
     const history = useHistory()
 
     const path = props.path == '/profile' ? `/${auth.username}` : props.path
-    return <>
+    return auth.id ? <>
         {props.path == history.location.pathname || 
             history.location.pathname == `/${auth.username}` && props.path == '/profile' ? 
         <NavItem exact={props.exact || false} to={path}>
             <StyledIcon>
-                <Icon color='foreground'
+                {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color='foreground'
                     strokeWidth={props.fillStrokeWidth || 2}
                     icon={props.content}
-                    size={props.size || 26} />
+                    size={props.size || 26} />}
             </StyledIcon>
         </NavItem> : 
         <NavItem exact={props.exact || false} to={path}>
             <StyledIcon>
                 {(lastNotification && !lastNotification.read && props.path == '/notifications') && <StyledBadge></StyledBadge>}
-                <Icon color='dark'
+                {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color='dark'
                     strokeWidth={props.strokeWidth || 2}
                     icon={props.content}
-                    size={props.fillSize || 26} />
+                    size={props.fillSize || 26} />}
             </StyledIcon>
         </NavItem>}
-    </>
+    </> : ''
 }
