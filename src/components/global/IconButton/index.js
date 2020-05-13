@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import Icon from 'Root/components/global/Icon'
+import C from 'Root/constants'
 
 const StyledButton = styled.button`
-    display: flex;
-    align-items: center;
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.alignItemsCenter};
     padding: 0;
     border: none;
     background: unset;
+    cursor: pointer;
 `
 
-const Element = (props) => {
+export default (props) => {
     return <StyledButton>
         <Icon {...props} />
     </StyledButton>
 }
-
-export default Element
