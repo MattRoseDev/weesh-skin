@@ -1,14 +1,17 @@
 import React from 'react'
 import * as Feather from 'react-feather'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
+import { AuthContext } from 'Root/contexts/auth'
 
-const Icon = (props) => {
+
+export default (props) => {
+    const { auth, dispatch } = React.useContext(AuthContext)
     const Icon = Feather[props.icon || 'User']
+
     return <Icon 
         {...props}
         size={props.size || 20} 
-        color={CONSTANTS.themes.light.colors[props.color || 'dark']} 
+        color={C.themes[auth.theme || 'light'].colors[props.color || 'dark']} 
+        fill={C.themes[auth.theme || 'light'].colors[props.fill] || 'none'} 
     />
 }
-
-export default Icon
