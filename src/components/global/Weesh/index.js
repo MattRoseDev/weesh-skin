@@ -3,23 +3,21 @@ import styled from 'styled-components'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
 
 const StyledWeesh = styled.div`
-    display: flex;
-    flex-direction: column;
-    ${CONSTANTS.styles.boxShadow.primary.normal}
-    /* border-bottom: 1px solid ${CONSTANTS.themes.light.colors.light}; */
-    border-radius: .5rem;
+    ${C.styles.flex.flexColumn};
+    width: 100%;
+    ${C.styles.boxShadow.primary.normal};
+    /* border-bottom: 1px solid ${({theme}) => theme.colors.light}; */
+    border-radius: .75rem;
     margin: 0 0 .5rem;
 `
 
-const Element = (props) => {
+export default (props) => {
     return <StyledWeesh>
         <Header {...props} />
         <Main {...props} />
         <Footer {...props} />
     </StyledWeesh>
 }
-
-export default Element
