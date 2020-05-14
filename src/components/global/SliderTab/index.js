@@ -1,27 +1,26 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import CONSTANTS from 'Root/constants'
+import Icon from 'Root/components/global/Icon'
+import C from 'Root/constants'
 import uuid from 'uuid'
 
 const StyledContainer = styled.div`
-    background: ${CONSTANTS.themes.light.colors.light};
-    border-radius: .85rem;
-    width: 75%;
-    margin: 0 auto 1rem;
-    padding: .25rem;
+    border-radius: 5rem;
+    width: 100%;
+    /* margin: 0 auto 1rem; */
 `
 
 const StyledFrame = styled.ul`
     position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: .5rem 0;
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.justifyContentAround};
+    ${C.styles.flex.alignItemsCenter};
+    padding: .3rem 0;
 `
 
 const StyledTab = styled.li`
-    display: flex;
-    justify-content: center;
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.justifyContentCenter};
     width: 100%;
     font-size: .85rem;
     z-index: 2;
@@ -29,7 +28,7 @@ const StyledTab = styled.li`
 
 const StyledSlider = styled.span`
     position: absolute;
-    background: ${CONSTANTS.themes.light.colors.white};
+    background: ${({theme}) => theme.colors.blue};
     ${({ tabs }) => tabs && css`
         width: ${Math.round(100 / tabs)}%;
     `};
@@ -37,8 +36,8 @@ const StyledSlider = styled.span`
     left: 0;
     height: 100%;
     z-index: 1;
-    border-radius: .75rem;
-    ${CONSTANTS.styles.boxShadow.primary.normal};
+    border-radius: 5rem;
+    ${C.styles.boxShadow.primary.normal};
 `
 
 const StyledInput = styled.input`
@@ -46,36 +45,49 @@ const StyledInput = styled.input`
 `
 
 const StyledLabel = styled.label`
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.center};
+    width: 100%;
     &.active {
-        color: ${CONSTANTS.themes.light.colors.black};
+        color: ${({ theme }) => theme.colors.background};
         font-weight: bold;
     }
-    color: ${CONSTANTS.themes.light.colors.black};
+    color: ${({theme}) => theme.colors.foreground};
     transition: all .25s ease;
+    cursor: pointer;
+`
 
+const StyledTitle = styled.span`
+    padding: 0 0 0 .1rem;
 `
 
 export default (props) => {
     const refSlider = React.useRef()
-    const [data, setData] = React.useState(props.tabs)
+    const [state, setState] = React.useState(props.tabs)
     
     const handleChange = (e) => {
-        let newData = data.map((item, key) => {
+        let newState = state.map((item, key) => {
             if(item.id == e.target.id) {
                 refSlider.current.style.left = `${Math.round(key * (100 / props.tabs.length))}%`
+                props.setStatus({ status: item.status })
                 item.value = true
             } else {
                 item.value = false
             }
             return item
         })
-        setData(newData)
+        setState(newState)
     }
 
     return <StyledContainer>
         <StyledFrame>
-            {data.map(item => <StyledTab key={item.id}>
-                <StyledLabel className={item.value && 'active'} htmlFor={item.id}>{item.title}</StyledLabel>
+            {state.map(item => <StyledTab key={item.id}>
+                <StyledLabel className={item.value && 'active'} htmlFor={item.id}>
+                    <Icon icon={item.icon} size='14' color={item.value ? 'background' : 'foreground'} />
+                    <StyledTitle>
+                        {item.title}
+                    </StyledTitle>
+                </StyledLabel>
                 <StyledInput id={item.id} checked={item.value} onChange={(e) => handleChange(e)} type='checkbox' />
             </StyledTab>)}
             <StyledSlider ref={refSlider} tabs={props.tabs.length} />
