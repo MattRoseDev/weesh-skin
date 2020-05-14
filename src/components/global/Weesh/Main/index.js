@@ -2,26 +2,47 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { AuthContext } from 'Root/contexts/auth'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
+import uuid from 'uuid'
+import useHistory from 'Root/hooks/useHistory'
+import Convertors from 'Root/components/global/Convertors'
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.div`
     text-decoration: none;
-    color: ${CONSTANTS.themes.light.colors.black};
+    color: ${({ theme }) => theme.colors.foreground};
+    cursor: default;
 `
 
 const StyledMain = styled.p`
     font-size: .85rem;
     line-height: 1.125rem;
     padding: .75rem 1.25rem .5rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 `
 
-const Element = (props) => {
-    const { auth } = React.useContext(AuthContext)
-    return <StyledLink to={`${auth.username}/w/1`}>
-        <StyledMain>
-            {props.text}
-        </StyledMain>
-    </StyledLink>
-}
+const StyledTag = styled(Link)`
+    color: ${({ theme }) => theme.colors.blue};
+    ${C.styles.flex.inlineFlexRow};
+    text-decoration: none;
+`
+export default (props) => {
+    const [content, setContent] = React.useState(null)
+    const history = useHistory()
+    React.useEffect(() => {
+        if (!content) {
+            setContent(Convertors.Weesh({
+                content: props.content
+            }))
+        }
+    })
 
-export default Element
+    const handleClick = (e) => {
+        e.target == e.currentTarget && history.push(`/w/${props.link}`)
+    }
+
+    return props.content && <StyledMain onClick={(e) => handleClick(e)}>
+        {content}
+    </StyledMain>
+}
