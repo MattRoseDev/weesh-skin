@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 const exploreAll = gql`
-    query exploreAllForUser($expression: String!){
-        exploreAllForUser(expression: $expression) {
+    query exploreAllForUser($expression: String!, $limit: Int, $page: Int){
+        exploreAllForUser(expression: $expression, limit: $limit, page: $page) {
             user {
                 users {
                     id
@@ -14,6 +14,17 @@ const exploreAll = gql`
                         fullname
                         avatar
                     }
+                }
+                paginate {
+                    totalDocs
+                }
+            }
+            tag {
+                tags {
+                    id
+                    title
+                    counter
+                    updatedAt
                 }
                 paginate {
                     totalDocs
