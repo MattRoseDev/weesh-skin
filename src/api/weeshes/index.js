@@ -17,6 +17,7 @@ const add = gql`
         }
     }
 `
+
 const deleteWeesh = gql`
     mutation deleteWeeshForUser($weeshId: ID!){
         deleteWeeshForUser(weeshId: $weeshId) {
@@ -56,6 +57,12 @@ const getHomeWeeshes = gql`
                     }
                 }
                 isLiked {
+                    user {
+                        id
+                        username
+                    }
+                }
+                isBookmarked {
                     user {
                         id
                         username
@@ -101,6 +108,7 @@ const getHomeWeeshes = gql`
                         totalDocs
                     }
                 }
+                commentsCounter
                 updatedAt
             }
             paginate {
@@ -140,46 +148,7 @@ const getShowcase = gql`
                         totalDocs
                     }
                 }
-                comment {
-                    weeshComments {
-                        user {
-                            id
-                            username
-                            firstName
-                            lastName
-                            avatarAddress
-                            unknown {
-                                fullname
-                                avatar
-                            }
-                        }
-                        content
-                        children {
-                            weeshComments {
-                                user {
-                                    id
-                                    username
-                                    firstName
-                                    lastName
-                                    avatarAddress
-                                    unknown {
-                                        fullname
-                                        avatar
-                                    }
-                                }
-                                content
-                                updatedAt
-                            }
-                            paginate {
-                                totalDocs
-                            }
-                        }
-                        updatedAt
-                    }
-                    paginate {
-                        totalDocs
-                    }
-                }
+                commentsCounter
                 updatedAt
             }
             paginate {
@@ -206,6 +175,7 @@ const getWeeshes = gql`
                         avatar
                     }
                 }
+                commentsCounter
                 content 
                 status
                 like {
@@ -220,6 +190,12 @@ const getWeeshes = gql`
                     }
                 }
                 isLiked {
+                    user {
+                        id
+                        username
+                    }
+                }
+                isBookmarked {
                     user {
                         id
                         username
@@ -269,6 +245,12 @@ const getWeeshByLink = gql`
                     username
                 }
             }
+            isBookmarked {
+                user {
+                    id
+                    username
+                }
+            }
             comment {
                 weeshComments {
                     id
@@ -310,7 +292,8 @@ const getWeeshByLink = gql`
                     totalDocs
                 }
             }
-            updatedAt
+            # commentsCounter
+            # updatedAt
         }
     }
 `
