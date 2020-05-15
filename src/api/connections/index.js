@@ -71,6 +71,31 @@ const getFollowers = gql`
                         fullname
                     }
                 }
+                connection {
+                    follower {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            avatar
+                            fullname
+                        }
+                    }
+                    following {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            avatar
+                            fullname
+                        }
+                    }
+                    status
+                }
             }
         }
     }
@@ -90,6 +115,31 @@ const getFollowing = gql`
                         avatar
                         fullname
                     }
+                }
+                connection {
+                    follower {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            avatar
+                            fullname
+                        }
+                    }
+                    following {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            avatar
+                            fullname
+                        }
+                    }
+                    status
                 }
             }
         }
