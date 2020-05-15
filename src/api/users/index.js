@@ -7,6 +7,7 @@ const getUserByUsernameForUser = gql`
             username
             firstName
             lastName
+            email
             avatarAddress
             coverAddress
             bio
@@ -83,6 +84,12 @@ const getUserByUsernameForUser = gql`
                             username
                         }
                     }
+                    isBookmarked {
+                        user {
+                            id
+                            username
+                        }
+                    }
                     comment {
                         weeshComments {
                             user {
@@ -101,6 +108,7 @@ const getUserByUsernameForUser = gql`
                             totalDocs
                         }
                     }
+                    commentsCounter
                     updatedAt
                 }
                 paginate {
@@ -113,6 +121,8 @@ const getUserByUsernameForUser = gql`
 
 const edit = gql`
     mutation editUserForUser(
+        $username: String, 
+        $email: String, 
         $firstName: String, 
         $lastName: String, 
         $bio: String,
@@ -120,6 +130,8 @@ const edit = gql`
         $unknown: Boolean
     ) {
         editUserForUser(user: {
+            username: $username, 
+            email: $email, 
             firstName: $firstName, 
             lastName: $lastName, 
             bio: $bio,
@@ -129,14 +141,19 @@ const edit = gql`
                 fullname: $unknown
             }
         }) {
-            firstName
-            lastName
-            bio
-            private
-            unknown {
-                avatar
-                fullname
+            user {
+                username
+                email
+                firstName
+                lastName
+                bio
+                private
+                unknown {
+                    avatar
+                    fullname
+                }
             }
+            token
         }
     }
 `
@@ -160,6 +177,54 @@ const editUsername = gql`
     }
 `
 
+const changePassword = gql`
+    mutation changePasswordForUser($oldPassword: String!, $newPassword: String!) {
+        changePasswordForUser(oldPassword: $oldPassword, newPassword: $newPassword,) {
+            username
+            firstName
+            lastName
+            bio
+            private
+            unknown {
+                avatar
+                fullname
+            }
+        }
+    }
+`
+
+const checkUsername = gql`
+    query checkUsernameForUser($username: String!) {
+        checkUsernameForUser(username: $username) {
+            username
+            firstName
+            lastName
+            bio
+            private
+            unknown {
+                avatar
+                fullname
+            }
+        }
+    }
+`
+
+const checkEmail = gql`
+    query checkEmailForUser($email: String!) {
+        checkEmailForUser(email: $email) {
+            username
+            firstName
+            lastName
+            bio
+            private
+            unknown {
+                avatar
+                fullname
+            }
+        }
+    }
+`
+
 const addOnlineUserForUser = gql`
     subscription addOnlineUserForUser {
         addOnlineUserForUser {
@@ -171,6 +236,9 @@ const addOnlineUserForUser = gql`
 export default {
     getUserByUsernameForUser,
     addOnlineUserForUser,
+    checkUsername,
+    changePassword,
+    checkEmail,
     editUsername,
     edit,
 }
