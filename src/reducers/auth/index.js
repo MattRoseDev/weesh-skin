@@ -3,8 +3,18 @@ export const authReducer = (state, action) => {
         case 'LOGIN': 
             return {
                 ...state,
-                token: action.token,
-                username: action.username
+                ...action.data
+            }
+        case 'LOGOUT': 
+            return {
+                ...state,
+                token: false,
+            }
+        case 'TOGGLE_THEME': 
+            let theme = state.theme == 'light' ? 'dark' : 'light'
+            return {
+                ...state,
+                theme
             }
         default:
             return state

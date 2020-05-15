@@ -7,6 +7,11 @@ const login = gql`
                 id
                 username
                 private
+                avatarAddress
+                unknown {
+                    fullname
+                    avatar
+                }
             }
             token
         }
@@ -25,9 +30,28 @@ const join = gql`
         }
     }
 `
+const getUserProfile = gql`
+    query getUserProfileForUse {
+        getUserProfileForUser {
+            id
+            firstName
+            lastName
+            bio
+            username
+            email
+            private
+            avatarAddress
+            unknown {
+                fullname
+                avatar
+            }
+        }
+    }
+`
 
 export default {
     login,
-    join
+    join,
+    getUserProfile
 }
 

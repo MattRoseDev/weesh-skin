@@ -3,39 +3,36 @@ import styled from 'styled-components'
 import Logo from 'Root/components/global/Logo'
 import Input from 'Root/components/global/Input'
 import Button from 'Root/components/global/Button'
+import ErrorMessage from 'Root/components/global/ErrorMessage'
 import OR from 'Root/components/global/OR'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
 import { AuthContext } from 'Root/contexts/auth'
 import useHistory from 'Root/hooks/useHistory'
 import { Link } from 'react-router-dom'
 import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 
-const StyledLogin = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+const StyledLogin = styled.form`
+    ${C.styles.flex.flexColumnCenter};
     height: 100vh;
-    background: ${CONSTANTS.themes.light.colors.white};
+    background: ${({theme}) => theme.colors.background};
 `
 
 const StyledForgotPasswordLink = styled(Link)`
-    display: flex;
-    justify-content: flex-end;
-    color: ${CONSTANTS.themes.light.colors.blue};
-    font-weight: 300;
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.justifyContentEnd};
+    color: ${({theme}) => theme.colors.blue};
+    font-size: .85rem;
     margin: .75rem 0 1rem;
     width: 75%;
     text-decoration: none;
 `
 
 const StyledJoinLink = styled(Link)`
-    display: inline-flex;
-    justify-content: center;
-    border: 1px solid ${CONSTANTS.themes.light.colors.blue};
-    color: ${CONSTANTS.themes.light.colors.blue};
-    font-weight: 300;
+    ${C.styles.flex.inlineFlexRow};
+    ${C.styles.flex.justifyContentCenter};
+    border: 1px solid ${({theme}) => theme.colors.blue};
+    color: ${({theme}) => theme.colors.blue};
     margin: 0;
     text-decoration: none;
     border-radius: .5rem;
@@ -47,37 +44,48 @@ const initVariables = {
     password: ''
 }
 
-const Element = () => {
+export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState(initVariables)
     const history = useHistory()
-    const [loadLogin, { data, called }] = useLazyQuery(api.auth.login, {
-        variables,
-    })
+    const [loadLogin, { data, called, loading, error }] = useLazyQuery(api.auth.login)
 
     React.useEffect(() => {
+        if(error) {
+            console.log(error.graphQLErrors[0].message)
+        }
         if(called && data) {
             const { token, user } = data.login
+            console.log(data)
             dispatch({ 
                 type: 'LOGIN',
-                token,
-                username: user.username 
+                data: {
+                    token,
+                    ...user
+                }
             })
-            history.push('/explore')
+            setTimeout(() => history.push('/'), 100)
         }
-    },[data])
-    
+    }, [data, error])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        loadLogin({
+            variables
+        })
+    }
     // auth.token && history.push('/')
-    return <StyledLogin>
+    return <StyledLogin onSubmit={e => handleSubmit(e)}>
         <Logo fontSize={4} margin={1.5} />
-        <Input onChange={(e) => {
+        {error && <ErrorMessage width='75%' message={error.graphQLErrors[0].message} />}
+        <Input margin='.5rem 0 0' onChange={(e) => {
             let username = e.target.value
             setVariables(prevState => ({
                 ...prevState,
                 username
             }))
         }} width={75} icon='AtSign' placeholder='Username or Email'/>
-        <Input onChange={(e) => {
+        <Input margin='.5rem 0 0' onChange={(e) => {
             let password = e.target.value
             setVariables(prevState => ({
                 ...prevState,
@@ -85,12 +93,10 @@ const Element = () => {
             }))
         }} width={75} icon='Lock' placeholder='Password' type='password'/>
         <StyledForgotPasswordLink to='forgotpassword'>
-            {CONSTANTS.txts.en.auth.forgotPasswordLink}
+            {C.txts.en.auth.forgotPasswordLink}
         </StyledForgotPasswordLink>
-        <Button disabled={false} margin={'.5rem 0 0'} padding={'.75rem'} onClick={loadLogin} width={75}>{CONSTANTS.txts.en.auth.loginButton}</Button>
+        <Button color='background' background='blue' fontWeight='bold' isLoading={loading || undefined} margin='.5rem 0 0' padding='.85rem' fontSize='.85rem' width='75%'>{C.txts.en.auth.loginButton}</Button>
         <OR width={75} margin={1.5}/>
-        <StyledJoinLink to='join'>{CONSTANTS.txts.en.auth.joinLink}</StyledJoinLink>
+        <StyledJoinLink to='join'>{C.txts.en.auth.joinLink}</StyledJoinLink>
     </StyledLogin>
 }
-
-export default Element
