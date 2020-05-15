@@ -179,7 +179,7 @@ const editUsername = gql`
 
 const changePassword = gql`
     mutation changePasswordForUser($oldPassword: String!, $newPassword: String!) {
-        changePasswordForUser(oldPassword: $oldPassword, newPassword: $newPassword,) {
+        changePasswordForUser(oldPassword: $oldPassword, newPassword: $newPassword) {
             username
             firstName
             lastName
