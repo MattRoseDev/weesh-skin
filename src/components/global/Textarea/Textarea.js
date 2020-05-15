@@ -19,10 +19,12 @@ const StyledTextarea = styled.textarea`
 
 export default (props) => {
     return <StyledTextarea 
+        id={props.id}
         placeholder={props.placeholder} 
         type={props.type} 
         onKeyUp={props.onChange}
         onInput={props.onInput}
         defaultValue={props.value || ''}
+        rows={props.rows || undefined}
     />
 }
