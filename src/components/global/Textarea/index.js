@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 import Textarea from './Textarea'
 import Icon from 'Root/components/global/Icon'
+import uuid from 'uuid'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -31,10 +32,11 @@ const StyledLabel = styled.label`
 `
 
 export default (props) => {
+    const id = uuid()
     return <StyledContainer {...props}>
         <StyledFrame {...props}>
-            {props.label && <StyledLabel>{props.label}</StyledLabel>}
-            <Textarea {...props}/>
+            {props.label && <StyledLabel htmlFor={id}>{props.label}</StyledLabel>}
+            <Textarea {...props} id={id}/>
         </StyledFrame>
     </StyledContainer>
 }
