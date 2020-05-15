@@ -33,6 +33,23 @@ const add = gql`
                 template
                 type
             }
+            weesh {
+                id
+                link
+                user {
+                    id
+                    username
+                    firstName
+                    lastName
+                    avatarAddress
+                    unknown {
+                        fullname
+                        avatar
+                    }
+                }
+                content 
+                status
+            }
             updatedAt
             createdAt
         }
@@ -72,6 +89,93 @@ const getNotifications = gql`
                 notificationType {
                     template
                     type
+                }
+                weesh {
+                    id
+                    link
+                    user {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            fullname
+                            avatar
+                        }
+                    }
+                    content 
+                    status
+                }
+                comment {
+                    user {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            fullname
+                            avatar
+                        }
+                    }
+                    content
+                    children {
+                        weeshComments {
+                            user {
+                                id
+                                username
+                                firstName
+                                lastName
+                                avatarAddress
+                                unknown {
+                                    fullname
+                                    avatar
+                                }
+                            }
+                            content
+                            updatedAt
+                        }
+                        paginate {
+                            totalDocs
+                        }
+                    }
+                    updatedAt
+                }
+                comment {
+                    user {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            fullname
+                            avatar
+                        }
+                    }
+                    content
+                    children {
+                        weeshComments {
+                            user {
+                                id
+                                username
+                                firstName
+                                lastName
+                                avatarAddress
+                                unknown {
+                                    fullname
+                                    avatar
+                                }
+                            }
+                            content
+                            updatedAt
+                        }
+                        paginate {
+                            totalDocs
+                        }
+                    }
+                    updatedAt
                 }
                 updatedAt
                 createdAt
