@@ -11,7 +11,7 @@ export default {
     red: '#ff4757',
     gray: '#9c9c9c',
     green: '#1db954',
-    lightGray: '#9c9c9c',
+    lightGray: '#d3d3d3',
     dark: '#9c9c9c',
     shadow: 'rgba(0,0,0,0.3)',
     boldShadow: 'rgba(0,0,0,0.3)',
