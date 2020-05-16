@@ -4,7 +4,7 @@ import Border from 'Root/components/global/Border'
 import C from 'Root/constants'
 import styled from 'styled-components'
 import Header from './Header'
-import Content from 'Root/app/client/global/About/Content'
+import Content from './Content'
 import Second from 'Root/app/client/desktop/Second/General'
 
 const StyledContainer = styled.div`
