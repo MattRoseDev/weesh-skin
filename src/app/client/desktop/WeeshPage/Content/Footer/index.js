@@ -7,7 +7,6 @@ import uuid from 'uuid'
 import { Link } from 'react-router-dom'
 import useHistory from 'Root/hooks/useHistory'
 import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 
@@ -25,7 +24,7 @@ const StyledFooter = styled.div`
 
 const StyledComments = styled(Link)`
     text-decoration: none;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     padding: 0 1rem 1rem;
     font-size: .85rem;
 `
@@ -61,29 +60,29 @@ const StyledNumber = styled.span`
 `
 
 export default (props) => {
+    console.log('props')
     const { auth } = React.useContext(AuthContext)
-    const { snackbar, dispatch: snackbarDispatch } = React.useContext(SnackBarContext)
     const [isLiked, setIsLiked] = React.useState(props.isLiked)
     const [isBookmarked, setIsBookmarked] = React.useState(props.isBookmarked)
     const history = useHistory()
 
-    const [likeWeesh, likeWeeshResult] = useMutation(api.weeshLikes.like,{
+    const [likeWeesh, likeWeeshResult] = useMutation(api.weeshLikes.like, {
         variables: {
             weeshId: `${props.id}`
         }
     })
-    const [dislikeWeesh, dislikeWeeshResult] = useMutation(api.weeshLikes.dislike,{
+    const [dislikeWeesh, dislikeWeeshResult] = useMutation(api.weeshLikes.dislike, {
         variables: {
             weeshId: `${props.id}`
         }
     })
 
-    const [addToBookmark, addToBookmarkResult] = useMutation(api.weeshBookmarks.add,{
+    const [addToBookmark, addToBookmarkResult] = useMutation(api.weeshBookmarks.add, {
         variables: {
             weeshId: `${props.id}`
         }
     })
-    const [removeFromBookmark, removeFromBookmarkResult] = useMutation(api.weeshBookmarks.remove,{
+    const [removeFromBookmark, removeFromBookmarkResult] = useMutation(api.weeshBookmarks.remove, {
         variables: {
             weeshId: `${props.id}`
         }
@@ -102,18 +101,6 @@ export default (props) => {
                     removeFromBookmark()
                 } else {
                     addToBookmark()
-                    snackbarDispatch({
-                        type: 'SET_DATA',
-                        data: {
-                            icon: 'Bookmark',
-                            message: 'Added to your Bookmarks.',
-                            background: 'foreground',
-                            visible: true
-                        }
-                    })
-                    setTimeout(() => {
-                        snackbarDispatch({ type: 'HIDE' })
-                    }, 2 * 1000)
                 }
                 setIsBookmarked(isBookmarked ? false : true)
             },
@@ -134,7 +121,7 @@ export default (props) => {
                 if (!auth.token) {
                     return history.push('/login')
                 }
-                if(isLiked) {
+                if (isLiked) {
                     dislikeWeesh()
                 } else {
                     likeWeesh()
@@ -172,8 +159,5 @@ export default (props) => {
                 </StyledNumberContainer>))}
             </StyledNumbers>
         </StyledFooter>
-        {props.comment && props.commentsCounter > 0 && <StyledComments to={`/w/${props.link}`}>
-            View all {props.commentsCounter} comments
-        </StyledComments>}
     </StyledFooterContainer>
 }
