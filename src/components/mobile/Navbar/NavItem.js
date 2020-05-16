@@ -40,6 +40,12 @@ const StyledBadge = styled.span`
     color: ${({theme}) => theme.colors.background};
 `
 
+const StyledAvatarBorder = styled.span`
+    ${C.styles.flex.inlineFlexRow};
+    border-radius: 50%;
+    border: 2px solid ${({ theme }) => theme.colors.foreground};
+`
+
 export default (props) => {
     const { auth } = React.useContext(AuthContext)
     const { notifications } = React.useContext(NotificationsContext)
@@ -52,16 +58,18 @@ export default (props) => {
             history.location.pathname == `/${auth.username}` && props.path == '/profile' ? 
         <NavItem exact={props.exact || false} to={path}>
             <StyledIcon>
-                {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color='foreground'
-                    strokeWidth={props.fillStrokeWidth || 2}
-                    icon={props.content}
-                    size={props.size || 26} />}
+                {props.path == '/profile' ? <StyledAvatarBorder>
+                    <Avatar user={auth} size={1.25} />
+                </StyledAvatarBorder> : <Icon color='foreground'
+                strokeWidth={props.fillStrokeWidth || 2}
+                icon={props.content}
+                size={props.size || 26} />}
             </StyledIcon>
         </NavItem> : 
         <NavItem exact={props.exact || false} to={path}>
             <StyledIcon>
                 {(lastNotification && !lastNotification.read && props.path == '/notifications') && <StyledBadge></StyledBadge>}
-                {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color='dark'
+                {props.path == '/profile' ? <Avatar user={auth} size={1.35} /> : <Icon color='dark'
                     strokeWidth={props.strokeWidth || 2}
                     icon={props.content}
                     size={props.fillSize || 26} />}
