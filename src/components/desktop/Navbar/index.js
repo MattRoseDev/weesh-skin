@@ -35,21 +35,7 @@ const StyledGray = styled.span`
 
 export default () => {
     const { auth } = React.useContext(AuthContext)
-
-    const buttons = [
-        {
-            title: 'about',
-            link: '/about'
-        },
-        {
-            title: 'support',
-            link: '/support'
-        },
-        {
-            title: 'blog',
-            link: '/blog'
-        },
-    ]
+    
     return <NavStyled>
         {auth.token ? <NavItems>
             {routes.map(item => 
@@ -62,19 +48,5 @@ export default () => {
                     {item.content}
                 </NavItem>)}
         </NavItems>}
-        {auth.username && <StyledButtons>
-            {buttons.map((button, key) => <ButtonLink {...button} i={key} key={uuid()} />)}
-        </StyledButtons>}
     </NavStyled>
-}
-
-const ButtonLink = (props) => {
-    return <>
-        <StyledGray>
-            {props.i > 0 && '•'}
-        </StyledGray>
-        <StyledButton {...props} to={props.link}>
-            {` ${props.title}`}
-        </StyledButton>
-    </>
 }
