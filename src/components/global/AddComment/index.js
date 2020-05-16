@@ -15,12 +15,7 @@ const StyledContainer = styled.div`
     padding: .5rem;
     position: sticky;
     top: ${window.innerWidth > 768 ? '54px' : '44px'};
-    border-top: 1px dashed ${({theme}) => theme.colors.lightGray};
-    ${({hasComment}) => hasComment ? css`
-        border-bottom: 1px dashed ${({theme}) => theme.colors.lightGray};
-    `: css`
-        border-radius: 0 0 .5rem .5rem;
-    `}
+    border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
     background: ${({theme}) => theme.colors.background};
 `
 
@@ -29,7 +24,7 @@ const StyledForm = styled.form`
     ${C.styles.flex.stretch};
     margin: 0 0 0 .5rem;
     padding: .5rem .75rem;
-    border: 1px solid ${({theme}) => theme.colors.lightGray};
+    border: 1px solid ${({theme}) => theme.colors.light};
     background: ${({theme}) => theme.colors.background};
     border-radius: .85rem;
 `
@@ -140,7 +135,7 @@ export default (props) => {
         
     }, [data])
 
-    return <StyledContainer hasComment={props.comment && props.comment.weeshComments.length > 0}>
+    return auth.id != undefined && <StyledContainer hasComment={props.comment && props.comment.weeshComments.length > 0}>
         <Avatar user={auth}/>
         <StyledFormContainer>
             {weeshPage.reply && <StyledReplyContainer>
