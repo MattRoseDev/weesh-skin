@@ -1,28 +1,18 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import CONSTANTS from 'Root/constants'
+import C from 'Root/constants'
 import Icon from 'Root/components/global/Icon'
+import { Link } from 'react-router-dom'
 
-const StyledTag = styled.span`
-    display: inline-flex;
-    align-items: center;
-    color: ${CONSTANTS.themes.light.colors.blue};
-    border: 1px solid ${CONSTANTS.themes.light.colors.blue};
-    padding: 2px .4rem 2px .25rem;
-    ${({margin}) => margin ? css`
-        margin: ${margin};
-    ` : css`
-        margin: 0 .5rem 0 0;
-    `};
-    border-radius: 50rem;
-    font-size: .9rem;
+const StyledTag = styled(Link)`
+    color: ${({ theme }) => theme.colors.blue};
+    ${C.styles.flex.inlineFlexRow};
+    text-decoration: none;
+    font-size: inherit;
 `
 
-const Tag = (props) => {
-    return <StyledTag {...props}>
-        <Icon icon={'Hash'} color={CONSTANTS.themes.light.colors.blue} size={14} />
+export default (props) => {
+    return <StyledTag to={props.to}>
         {props.children}
     </StyledTag>
 }
-
-export default Tag
