@@ -16,6 +16,10 @@ export default {
         privateAccount: 'Private Account',
         darkMode: 'Dark Mode',
     },
+    linksLabel: {
+        about: 'about',
+        support: 'Support',
+    },
     usernameMessages: {
         lengthError: 'Username must be more than 4 characters.',
         available: 'Username is available.',
