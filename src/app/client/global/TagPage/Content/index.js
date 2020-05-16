@@ -84,9 +84,7 @@ export default (props) => {
     }, [data, error])
     
     return <StyledContainer>
-        {loading ? <StyledLoadingContainer>
-            <Loading size={28} strokeWidth={1.25} color='gray' />
-        </StyledLoadingContainer> : called && tag && <>
+        {loading ? <Loading size={28} padding='3rem 0 0' strokeWidth={1.25} color='gray' /> : called && tag && <>
             {/* <Header {...props} /> */}
             <Main {...props} />
         </>}

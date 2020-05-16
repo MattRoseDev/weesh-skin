@@ -11,7 +11,7 @@ import Loader from 'Root/components/global/Loader'
 import C from 'Root/constants'
 
 const StyledMain = styled.div`
-    padding: .5rem;
+    padding: .5rem .5rem 3.125rem;
 `
 const StyledLoader = styled.div`
     ${C.styles.flex.flexRowCenter};
