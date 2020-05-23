@@ -28,6 +28,7 @@ const StyledTitle = styled.div`
 const StyledMessage = styled.div`
     text-align: center;
     color: ${({theme}) => theme.colors.gray};
+    font-size: .85rem;
 `
 
 export default (props) => {
