@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header'
-import Content from './Content'
+import Content from 'Root/app/client/global/Home/Main/Content'
 import helpers from 'Root/helpers'
 import styled from 'styled-components'
 

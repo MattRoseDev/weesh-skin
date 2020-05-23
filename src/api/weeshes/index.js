@@ -113,6 +113,7 @@ const getHomeWeeshes = gql`
             }
             paginate {
                 totalDocs
+                nextPage
             }
         }
     }
