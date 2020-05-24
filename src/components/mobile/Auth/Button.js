@@ -8,7 +8,7 @@ const Button = styled(Link)`
     font-weight: 900;
     font-size: 1rem;
     padding: .65rem 2rem;
-    border-radius: 3rem;
+    border-radius: .75rem;
     ${({ fill }) => fill ? css`
         background: unset;
         color: ${({ theme }) => theme.colors.blue};
