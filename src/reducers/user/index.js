@@ -16,6 +16,16 @@ export const userReducer = (state, action) => {
                     weeshes
                 }
             }
+        case 'ADD_WEESHES': 
+            return {
+                ...state,
+                weesh: {
+                    weeshes:[
+                        ...state.weesh.weeshes,
+                        ...action.data,
+                    ]
+                }
+            }
         default:
             return state
     }

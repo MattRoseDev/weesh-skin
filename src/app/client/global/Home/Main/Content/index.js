@@ -24,21 +24,16 @@ const StyledLoadingContainer = styled.div`
 `
 
 export default () => {
-    const limit = 10
     const { auth, dispatch } = React.useContext(AuthContext)
     const [state, setState] = React.useState(null)
     const [nextPage, setNextPage] = React.useState(1)
 
     const { data, called, error, loading, fetchMore } = useQuery(api.weeshes.getHomeWeeshes, {
-        variables: {
-            limit,
-        },
         fetchPolicy: 'no-cache',
     })
 
     const fetchMoreWeeshes = async ({page}) => await fetchMore({
         variables: {
-            limit,
             page
         },
         updateQuery: (prev, { fetchMoreResult, ...rest }) => {

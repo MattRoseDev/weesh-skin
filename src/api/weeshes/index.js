@@ -206,6 +206,7 @@ const getWeeshes = gql`
             }
             paginate {
                 totalDocs
+                nextPage
             }
         }
     }
