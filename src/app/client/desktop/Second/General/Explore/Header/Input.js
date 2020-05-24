@@ -28,7 +28,7 @@ const StyledInput = styled.input`
 `
 
 const initVariables = {
-    expression: ''
+    expression: '',
 }
 
 export default () => {
@@ -62,7 +62,8 @@ export default () => {
             }
         })
         setVariables({
-            expression: e.target.value
+            expression: e.target.value,
+            limit: 5,
         })
         if (e.target.value.length > 0) {
             exploreAll()
