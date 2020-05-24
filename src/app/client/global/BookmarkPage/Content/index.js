@@ -13,6 +13,8 @@ import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import styled from 'styled-components'
 import authError from 'Root/errors/auth'
+import { Helmet } from 'react-helmet'
+import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
@@ -35,7 +37,6 @@ export default (props) => {
     const { bookmark, dispatch: bookmarkDispatch } = React.useContext(BookmarkContext)
     const history = useHistory()
 
-    console.log('hello')
     if(auth.username != undefined) {
         auth.username != match.params.username && history.push('/')
     }
@@ -63,6 +64,9 @@ export default (props) => {
     }, [data, error])
     
     return auth.username ? <StyledContainer>
+        <Helmet>
+            <title>{helpers.titleTag({ type: 'Bookmarks' })}</title>
+        </Helmet>
         {loading ? <StyledLoadingContainer>
             <Loading size={28} strokeWidth={1.25} color='gray' />
         </StyledLoadingContainer> : called && bookmark && <>

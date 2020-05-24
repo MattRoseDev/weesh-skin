@@ -13,6 +13,8 @@ import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import styled from 'styled-components'
 import authError from 'Root/errors/auth'
+import helpers from 'Root/helpers'
+import { Helmet } from 'react-helmet'
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
@@ -48,7 +50,6 @@ export default (props) => {
     React.useEffect(() => {
         if (getWeeshesResponse.data) {
             const response = getWeeshesResponse.data.getWeeshesForUser.weeshes
-            console.log(response)
             userDispatch({
                 type: 'ADD_WEESHES',
                 data: response
@@ -66,7 +67,6 @@ export default (props) => {
     React.useEffect(() => {
         if (called && data) {
             const response = data.getUserByUsernameForUser
-            console.log(response)
             userDispatch({
                 type: 'ADD_USER_DATA',
                 data: response
@@ -74,8 +74,16 @@ export default (props) => {
             setNextPage(data.getUserByUsernameForUser.weesh.paginate.nextPage)
         }
     }, [data])
-    console.log(user && user.id)
+    
     return <StyledContainer>
+        {user && <Helmet>
+            <title>{helpers.titleTag({
+                type: 'UserProfile',
+                data: {
+                    user
+                }
+            })}</title>
+        </Helmet>}
         {loading ? <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' /> : called && user && <>
             <Header {...props} />
             {

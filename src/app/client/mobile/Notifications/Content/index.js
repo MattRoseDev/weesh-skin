@@ -2,7 +2,6 @@ import React from 'react'
 import Notification from 'Root/components/global/Notification'
 import Link from 'Root/components/global/Link'
 import BannerMessage from 'Root/components/global/BannerMessage'
-import helpers from 'Root/helpers'
 import uuid from 'uuid'
 import styled from 'styled-components'
 import { NotificationsContext } from 'Root/contexts/notifications'
@@ -10,6 +9,8 @@ import { AuthContext } from 'Root/contexts/auth'
 import { useLazyQuery, useMutation, useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import C from 'Root/constants'
+import { Helmet } from 'react-helmet'
+import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
@@ -70,6 +71,9 @@ export default () => {
     ])
 
     return <StyledContainer>
+        <Helmet>
+            <title>{helpers.titleTag()}</title>
+        </Helmet>
         {loadRequestsResponse.data && loadRequestsResponse.data.getRequestsUsersConnectionByIdForUser.userConnections.length > 0 && <Link to={`/${auth.username}/requests`}>
             <StyledRequestContainer>
                 Follow Requests

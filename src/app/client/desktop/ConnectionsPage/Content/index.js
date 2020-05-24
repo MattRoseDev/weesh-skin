@@ -9,6 +9,8 @@ import C from 'Root/constants'
 import { useQuery } from '@apollo/react-hooks'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
+import { Helmet } from 'react-helmet'
+import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     padding: .25rem 0;
@@ -76,6 +78,9 @@ export default (props) => {
     ]
 
     return <StyledContainer>
+        <Helmet>
+            <title>{helpers.titleTag()}</title>
+        </Helmet>
         {loading ? <StyledLoaderContainer>
             <Loader size={20} strokeWidth={1.25} color='gray' />
         </StyledLoaderContainer> : state && <List index={switchStatus(status).index} users={state}/>}
