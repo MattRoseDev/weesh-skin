@@ -11,6 +11,8 @@ import useHistory from 'Root/hooks/useHistory'
 import { Link } from 'react-router-dom'
 import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
+import { Helmet } from 'react-helmet'
+import helpers from 'Root/helpers'
 
 const StyledLogin = styled.form`
     ${C.styles.flex.flexColumnCenter};
@@ -76,6 +78,9 @@ export default () => {
     }
     // auth.token && history.push('/')
     return <StyledLogin onSubmit={e => handleSubmit(e)}>
+        <Helmet>
+            <title>{helpers.titleTag({ type: 'Login' })}</title>
+        </Helmet>
         <Logo fontSize={4} margin={1.5} />
         {error && <ErrorMessage width='75%' message={error.graphQLErrors[0].message} />}
         <Input margin='.5rem 0 0' onChange={(e) => {

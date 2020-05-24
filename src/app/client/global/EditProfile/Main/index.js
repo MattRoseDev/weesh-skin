@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import uuid from 'uuid'
-import helpers from 'Root/helpers'
 import { useQuery, useLazyQuery } from '@apollo/react-hooks'
 import { AuthContext } from 'Root/contexts/auth'
 import { UserContext } from 'Root/contexts/user'
@@ -18,6 +17,8 @@ import { useMutation } from '@apollo/react-hooks'
 import UsernameInput from './UsernameInput'
 import EmailInput from './EmailInput'
 import PasswordInput from './PasswordInput'
+import { Helmet } from 'react-helmet'
+import helpers from 'Root/helpers'
 
 const StyledMain = styled.div`
      ${C.styles.flex.flexColumn};
@@ -154,6 +155,9 @@ export default (props) => {
     
     
     return editProfile ? <StyledMain>
+        <Helmet>
+            <title>{helpers.titleTag({ type: 'EditProfile' })}</title>
+        </Helmet>
         <StyledLogoutContainer>
             <Button padding='.5rem .75rem' radius='50rem' fontWeight='bold' background='foreground' color='background' to='/logout'>{C.txts.en.editProfile.header.logout}</Button>
         </StyledLogoutContainer>

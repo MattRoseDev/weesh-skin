@@ -12,6 +12,8 @@ import useHistory from 'Root/hooks/useHistory'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import WelcomePicture from 'Root/public/img/login/2803208.png'
+import { Helmet } from 'react-helmet'
+import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumnCenter};
@@ -59,7 +61,6 @@ export default () => {
     
     const [join, { data, error, loading }] = useMutation(api.auth.join)
 
-    console.log(data)
     React.useEffect(() => {
         if(error) {
             console.log(error)
@@ -88,6 +89,9 @@ export default () => {
     
     auth.token && history.push('/')
     return <StyledContainer>
+        <Helmet>
+            <title>{helpers.titleTag({ type: 'Join' })}</title>
+        </Helmet>
         <StyledBox>
             <StyledImg height='400' src={WelcomePicture} />
             <StyledJoin onSubmit={e => handleSubmit(e)}>

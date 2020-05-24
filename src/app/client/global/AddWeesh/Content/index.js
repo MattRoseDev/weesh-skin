@@ -8,8 +8,10 @@ import Footer from './Footer'
 import SliderTab from 'Root/components/global/SliderTab'
 import Loading from 'Root/components/global/Loading'
 import uuid from 'uuid'
-import helpers from 'Root/helpers'
 import C from 'Root/constants'
+import { Helmet } from 'react-helmet'
+import helpers from 'Root/helpers'
+
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -114,6 +116,9 @@ export default (props) => {
     })
 
     return  auth.username ? <StyledContainer>
+        <Helmet>
+            <title>{helpers.titleTag({ type: 'AddWeesh' })}</title>
+        </Helmet>
         <StyledFrame>
             <StyledSliderTabContainer>
                 <StyledSliderTabTitle>

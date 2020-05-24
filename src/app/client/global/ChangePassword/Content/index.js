@@ -14,7 +14,8 @@ import api from 'Root/api'
 import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import Button from 'Root/components/global/Button'
-
+import { Helmet } from 'react-helmet'
+import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     min-height: ${window.innerHeight - 55}px;
@@ -92,6 +93,9 @@ export default (props) => {
     }, [changePasswordResponse])
 
     return <StyledContainer>
+        <Helmet>
+            <title>{helpers.titleTag({ type: 'EditProfile' })}</title>
+        </Helmet>
         {(changePasswordResponse && changePasswordResponse.error) && <ErrorMessage margin='.75rem 0 0' width='100%' message={changePasswordResponse.error.graphQLErrors[0].message} />}
         <StyledForm onSubmit={e => handleSubmit(e)}>
             <Input label={'Old Password'} type='password' padding='.65rem' value={state.oldPassword} onChange={(e) => handleChange({ key: 'oldPassword', e })} width={100} margin='1rem 0 0' />

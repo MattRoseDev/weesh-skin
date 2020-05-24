@@ -8,6 +8,7 @@ import Loading from 'Root/components/global/Loading'
 import BannerMessage from 'Root/components/global/BannerMessage'
 import helpers from 'Root/helpers'
 import C from 'Root/constants'
+import { Helmet } from 'react-helmet'
 
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
@@ -40,6 +41,9 @@ const StyledBannerMessageContainer = styled.div`
 export default () => {
     const { explore } = React.useContext(ExploreContext)
     return <StyledMain>
+        <Helmet>
+            <title>{helpers.titleTag()}</title>
+        </Helmet>
         {explore.loading ? <StyledLoading>
             <Loading size={20} strokeWidth={1.25} color='gray' />
         </StyledLoading> : explore.results ? (explore.results.length > 0 ? <List users={explore.results} /> : <StyledNotFound>
