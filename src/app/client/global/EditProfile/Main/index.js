@@ -12,6 +12,7 @@ import Link from 'Root/components/global/Link'
 import Toggle from 'Root/components/global/Toggle'
 import Textarea from 'Root/components/global/Textarea'
 import Button from 'Root/components/global/Button'
+import About from 'Root/components/global/About'
 import C from 'Root/constants'
 import { useMutation } from '@apollo/react-hooks'
 import UsernameInput from './UsernameInput'
@@ -141,11 +142,11 @@ export default (props) => {
     ]
 
     const links = [
-        {
-            title: C.txts.en.editProfile.linksLabel.about,
-            icon: 'Info',
-            link: '/about'
-        },
+        // {
+        //     title: C.txts.en.editProfile.linksLabel.about,
+        //     icon: 'Info',
+        //     link: '/about'
+        // },
         {
             title: C.txts.en.editProfile.linksLabel.support,
             icon: 'Headphones',
@@ -191,5 +192,6 @@ export default (props) => {
                 </StyledToggleTitleContainer>
             </StyledLinkContainer>)}
         </StyledToggles>
+        <About/>
     </StyledMain> : <></>
 }

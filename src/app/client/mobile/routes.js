@@ -2,7 +2,6 @@ import Home from './Home'
 import Login from './Auth/Login'
 import Join from './Auth/Join'
 import Logout from 'Root/components/global/Logout'
-import About from './About'
 import Explore from './Explore'
 import Notifications from './Notifications'
 import UserProfile from './UserProfile'
@@ -34,10 +33,6 @@ const routes = [
     {
         path: '/logout',
         component: Logout,
-    },
-    {
-        path: '/about',
-        component: About,
     },
     {
         private: true,
