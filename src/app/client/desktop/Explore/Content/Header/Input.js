@@ -65,12 +65,14 @@ export default (props) => {
             }
         })
         setVariables({
-            expression: e.target.value
+            expression: e.target.value,
+            limit: 100
         })
         if (e.target.value.length > 0) {
             fetchMore({
                 variables: {
-                    expression: e.target.value
+                    expression: e.target.value,
+                    limit: 100
                 },
                 updateQuery: (prev, { fetchMoreResult, ...rest }) => {
                     return fetchMoreResult
