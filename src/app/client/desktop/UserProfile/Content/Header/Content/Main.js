@@ -18,26 +18,27 @@ const StyledButtonContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsStretch};
-    padding: .75rem 0 0;
+    padding: .5rem 0 0;
 `
 
 const StyledUsername = styled.span`
     margin: 0;
     font-size: .85rem;
     font-weight: normal;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledBio = styled.h2`
     margin: .5rem 0 0;
     font-size: .85rem;
     font-weight: normal;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const initVariables = {
     followers: 0,
     following: 0,
+    weeshes: 0,
 }
 
 
@@ -50,11 +51,12 @@ export default (props) => {
         user && setNumbers({
             followers: user.followers.paginate.totalDocs,
             following: user.following.paginate.totalDocs,
+            weeshes: user.weesh.paginate.totalDocs,
         })
     }, [user])
 
-    return  <StyledContainer>
-        <FullName user={user} fontSize={1.25}/>
+    return <StyledContainer>
+        <FullName user={user} fontSize={1.25} />
         <StyledUsername>
             {user.username && `@${user.username}`}
         </StyledUsername>
@@ -70,6 +72,9 @@ export default (props) => {
                 title='Following'
                 to={(auth.username == user.username || !user.private || user.connection.status == 2) && numbers.following > 0 ? `/${user.username}/following` : undefined}
                 number={numbers.following} />
+            <CounterForProfile
+                title='Weeshes'
+                number={numbers.weeshes} />
         </StyledButtonContainer>
     </StyledContainer>
 }

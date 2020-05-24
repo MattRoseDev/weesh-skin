@@ -38,6 +38,7 @@ const StyledBio = styled.h2`
 const initVariables = {
     followers: 0,
     following: 0,
+    weeshes: 0,
 }
 
 
@@ -50,6 +51,7 @@ export default (props) => {
         user && setNumbers({
             followers: user.followers.paginate.totalDocs,
             following: user.following.paginate.totalDocs,
+            weeshes: user.weesh.paginate.totalDocs,
         })
     }, [user])
 
@@ -70,6 +72,9 @@ export default (props) => {
                 title='Following'
                 to={(auth.username == user.username || !user.private || user.connection.status == 2) && numbers.following > 0 ? `/${user.username}/following` : undefined}
                 number={numbers.following} />
+            <CounterForProfile
+                title='Weeshes'
+                number={numbers.weeshes} />
         </StyledButtonContainer>
     </StyledContainer>
 }
