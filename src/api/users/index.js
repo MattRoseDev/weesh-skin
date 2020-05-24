@@ -113,6 +113,7 @@ const getUserByUsernameForUser = gql`
                 }
                 paginate {
                     totalDocs
+                    nextPage
                 }
             }
         }

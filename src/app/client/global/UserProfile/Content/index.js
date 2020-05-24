@@ -20,17 +20,9 @@ const StyledContainer = styled.div`
     min-height: ${window.innerHeight - 55}px;
 `
 
-const StyledLoadingContainer = styled.div`
-    ${C.styles.flex.flexColumn};
-    ${C.styles.flex.justifyContentStart};
-    padding: 3rem;
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.foreground};
-    min-height: ${window.innerHeight - 55}px;
-`
-
 export default (props) => {
     const { match } = props
+    const [nextPage, setNextPage] = React.useState(1)
     const { auth, dispatch } = React.useContext(AuthContext)
     const { user, dispatch: userDispatch } = React.useContext(UserContext)
     const history = useHistory()
@@ -42,34 +34,36 @@ export default (props) => {
         fetchPolicy: 'no-cache',
     })
 
+    const [getWeeshes, getWeeshesResponse] = useLazyQuery(api.weeshes.getWeeshes,{
+        fetchPolicy: 'no-cache',
+    })
+
+    const handlePaginate = () => getWeeshes({
+        variables: {
+            userId: `${user.id}`,
+            page: nextPage
+        }
+    })
 
     React.useEffect(() => {
-        if(!data) {
-            // fetchMore({
-            //     variables: {
-            //         username: `${match.params.username}`
-            //     },
-            //     updateQuery: (prev, { fetchMoreResult, ...rest }) => {
-            //         return fetchMoreResult
-            //     }, 
-            // })
+        if (getWeeshesResponse.data) {
+            const response = getWeeshesResponse.data.getWeeshesForUser.weeshes
+            console.log(response)
+            userDispatch({
+                type: 'ADD_WEESHES',
+                data: response
+            })
+            setNextPage(getWeeshesResponse.data.getWeeshesForUser.paginate.nextPage)
         }
-        // if(!data) {
-        //     fetchMore({
-        //         variables: {
-        //             username: `${match.params.username}`
-        //         },
-        //         updateQuery: (prev, { fetchMoreResult, ...rest }) => {
-        //             return fetchMoreResult
-        //         },
-        //     })
-        // }   
-        
-        if(error) {
-            // authError({ error }) && dispatch({ type: 'LOGOUT' })
-            console.log(error)
-        }
+    }, [getWeeshesResponse])
 
+    React.useEffect(() => {
+        if (error) {
+            authError({ error }) && dispatch({ type: 'LOGOUT' })
+        }
+    },[error])
+
+    React.useEffect(() => {
         if (called && data) {
             const response = data.getUserByUsernameForUser
             console.log(response)
@@ -77,16 +71,15 @@ export default (props) => {
                 type: 'ADD_USER_DATA',
                 data: response
             })
+            setNextPage(data.getUserByUsernameForUser.weesh.paginate.nextPage)
         }
-    }, [data, error])
-    
+    }, [data])
+    console.log(user && user.id)
     return <StyledContainer>
-        {loading ? <StyledLoadingContainer>
-            <Loading size={28} strokeWidth={1.25} color='gray' />
-        </StyledLoadingContainer> : called && user && <>
+        {loading ? <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' /> : called && user && <>
             <Header {...props} />
             {
-                user.private && user.connection.status < 2 ? <BannerMessage icon='Lock' title={C.txts.en.g.privateAccount} height={50} /> : user.weesh.weeshes.length > 0 ? <Main {...props} /> : <BannerMessage icon='PenTool' title={C.txts.en.g.noWeeshesYet} height={50} />
+                user.private && user.connection.status < 2 && auth.id !== user.id ? <BannerMessage icon='Lock' title={C.txts.en.g.privateAccount} height={50} /> : user.weesh.weeshes.length > 0 ? <Main {...props} nextPage={nextPage} handlePaginate={handlePaginate} /> : <BannerMessage icon='PenTool' title={C.txts.en.g.noWeeshesYet} height={50} />
             }
         </>}
         {!loading && error && !user && <BannerMessage padding='3rem 0 0' icon='User' title={C.txts.en.g.userNotFound} />}
