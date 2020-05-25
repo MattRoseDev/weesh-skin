@@ -40,8 +40,8 @@ const StyledIcon = styled.span`
 `
 
 const StyledTextArea = styled.textarea`
-    height: 0;
-    width: 0;
+    /* height: 0;
+    width: 0; */
     resize: none;
     border: none;
     background: transparent;
@@ -99,6 +99,7 @@ export default (props) => {
                 textarea.current.select()
                 document.execCommand('copy')
                 textarea.current.disabled = true
+                window.getSelection().removeAllRanges()
                 toggleDrawerDialog(false)
                 snackbarDispatch({
                     type: 'SET_DATA',

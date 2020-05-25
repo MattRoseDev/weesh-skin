@@ -60,7 +60,6 @@ const StyledNumber = styled.span`
 `
 
 export default (props) => {
-    console.log('props')
     const { auth } = React.useContext(AuthContext)
     const [isLiked, setIsLiked] = React.useState(props.isLiked)
     const [isBookmarked, setIsBookmarked] = React.useState(props.isBookmarked)
