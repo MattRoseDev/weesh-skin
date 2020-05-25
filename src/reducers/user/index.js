@@ -20,6 +20,7 @@ export const userReducer = (state, action) => {
             return {
                 ...state,
                 weesh: {
+                    ...state.weesh,
                     weeshes:[
                         ...state.weesh.weeshes,
                         ...action.data,
