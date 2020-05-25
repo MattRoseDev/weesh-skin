@@ -62,7 +62,6 @@ const StyledNumber = styled.span`
 `
 
 export default (props) => {
-    console.log('props')
     const { auth } = React.useContext(AuthContext)
     const { snackbar, dispatch: snackbarDispatch } = React.useContext(SnackBarContext)
     const [isLiked, setIsLiked] = React.useState(props.isLiked)
