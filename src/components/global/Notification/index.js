@@ -66,24 +66,26 @@ export default (props) => {
 
     template = template.map(element => switchElements({element, props}))
 
-    return <Link to={props.url}>
-        <StyledContainer>
-            <StyledContentContainer>
-                <Link to={`/${props.recipient.username}`}>
-                    <Avatar size={2.5} user={props.recipient} />
-                </Link>
+    return <StyledContainer>
+        <StyledContentContainer>
+            <Link to={`/${props.recipient.username}`}>
+                <Avatar size={2.5} user={props.recipient} />
+            </Link>
+            <Link to={props.url}>
                 <StyledMain>
                     <StyledDescription>
                         {template}
                         <StyledTime>{helpers.dateFormat(moment(props.createdAt).fromNow(true))}</StyledTime>
                     </StyledDescription>
                 </StyledMain>
-            </StyledContentContainer>
+            </Link>
+        </StyledContentContainer>
+        <Link to={props.url}>
             <StyledIcon>
                 {switchIcon(props.notificationType.type)}
             </StyledIcon>
-        </StyledContainer>
-    </Link>
+        </Link>
+    </StyledContainer>
 }
 
 const switchIcon = (type) => {
