@@ -109,7 +109,7 @@ const switchElements = ({element, props}) => {
             case '$$username$$': return <StyledUsername key={uuid()}>
                 <FullName fontSize={.85} user={props.recipient} />
             </StyledUsername>
-            case '$$weesh$$': return <StyledGray key={uuid()}>{props.weesh && `${props.weesh.content.substr(0, 50)}${props.weesh.content.length > 50 ? '...' : ''}`}</StyledGray>
+            case '$$weesh$$': return <StyledGray key={uuid()}>{props.weesh && `${props.weesh.content.substr(0, 50)}${props.weesh.content.length > 50 ? '... ' : ' '}`}</StyledGray>
             case '$$comment$$': return <StyledContent key={uuid()}>{props.comment && `${props.comment.content} `}</StyledContent>
             default: return <StyledContent key={uuid()}>{element}</StyledContent>
         }
