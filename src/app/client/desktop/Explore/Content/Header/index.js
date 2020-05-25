@@ -13,7 +13,7 @@ const Header = styled.header`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsCenter};
-    padding: 1rem 1rem 0;
+    padding: 1rem .5rem 0;
     position: sticky;
     top: 0;
     z-index: 10;
