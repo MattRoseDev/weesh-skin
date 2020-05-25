@@ -14,6 +14,9 @@ const Header = styled.header`
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsCenter};
     padding: 1rem 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 `   
 
 export default (props) => {
