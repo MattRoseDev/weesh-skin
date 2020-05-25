@@ -12,6 +12,7 @@ import useHistory from 'Root/hooks/useHistory'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import { AuthContext } from 'Root/contexts/auth'
+import { SnackBarContext } from 'Root/contexts/snackbar'
 
 const StyledHeader = styled.div`
     padding: .75rem .75rem 0;
@@ -67,6 +68,7 @@ const initialDialog = {
 
 export default (props) => {
     const { auth } = React.useContext(AuthContext)
+    const { snackbar, dispatch: snackbarDispatch } = React.useContext(SnackBarContext)
     const [drawerDialog, setDrawerDialog] = React.useState(initialDrawerDialog)
     const [dialog, setDialog] = React.useState(initialDialog)
     const [deleteWeesh, { data, error, loading }] = useMutation(api.weeshes.deleteWeesh,{
@@ -98,6 +100,18 @@ export default (props) => {
                 document.execCommand('copy')
                 textarea.current.disabled = true
                 toggleDrawerDialog(false)
+                snackbarDispatch({
+                    type: 'SET_DATA',
+                    data: {
+                        icon: 'Copy',
+                        message: 'URL copied to clipboard.  ',
+                        background: 'foreground',
+                        visible: true
+                    }
+                })
+                setTimeout(() => {
+                    snackbarDispatch({ type: 'HIDE' })
+                }, 2 * 1000)
             },
             fontWeight: 'bold',
             border: auth.id == props.user.id ? 'dashed' : false,
@@ -131,6 +145,18 @@ export default (props) => {
             console.log(error)
         }
         if (data) {
+            snackbarDispatch({
+                type: 'SET_DATA',
+                data: {
+                    icon: 'Trash2',
+                    message: 'Your weesh deleted successfully.',
+                    background: 'foreground',
+                    visible: true
+                }
+            })
+            setTimeout(() => {
+                snackbarDispatch({ type: 'HIDE' })
+            }, 2 * 1000)
             history.push(`/${auth.username}`)
         }
     }, [data])

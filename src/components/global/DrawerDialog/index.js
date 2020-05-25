@@ -62,6 +62,7 @@ const StyledButton = styled.button`
         font-weight: ${fontWeight};
     `};
     margin: 0;
+    cursor: pointer;
 `
 
 export default (props) => {
