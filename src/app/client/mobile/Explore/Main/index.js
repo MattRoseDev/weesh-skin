@@ -4,8 +4,9 @@ import { ExploreContext } from 'Root/contexts/explore'
 import uuid from 'uuid'
 import List from 'Root/components/mobile/List'
 import Icon from 'Root/components/global/Icon'
+import SuggestionWeeshes from 'Root/components/global/SuggestionWeeshes'
 import Loading from 'Root/components/global/Loading'
-import BannerMessage from 'Root/components/global/BannerMessage'
+import Cards from './Cards'
 import helpers from 'Root/helpers'
 import C from 'Root/constants'
 import { Helmet } from 'react-helmet'
@@ -40,19 +41,24 @@ const StyledBannerMessageContainer = styled.div`
 
 export default () => {
     const { explore } = React.useContext(ExploreContext)
+
     return <StyledMain>
         <Helmet>
             <title>{helpers.titleTag()}</title>
         </Helmet>
-        {explore.loading ? <StyledLoading>
+        {explore.loading && <StyledLoading>
             <Loading size={20} strokeWidth={1.25} color='gray' />
-        </StyledLoading> : explore.results ? (explore.results.length > 0 ? <List users={explore.results} /> : <StyledNotFound>
-            <Icon icon='Info'/>
+        </StyledLoading>}
+        {!explore.loading && explore.expression.length > 0 && explore.results && explore.results.length > 0 && <List users={explore.results} />}
+        {!explore.loading && explore.expression.length > 0 && explore.results && explore.results.length < 1 && <StyledNotFound>
+            <Icon icon='Info' />
             <StyledNotFoundMessage>
                 {C.txts.en.g.noResultsFound}
             </StyledNotFoundMessage>
-            </StyledNotFound>) : explore.expression.length < 1 && <StyledBannerMessageContainer>
-                <BannerMessage icon='Search' title='Search' />
-            </StyledBannerMessageContainer>}
+        </StyledNotFound>}
+        {!explore.loading && explore.expression.length < 1 && <>
+            <Cards />
+            <SuggestionWeeshes />
+        </>}
     </StyledMain>
 }

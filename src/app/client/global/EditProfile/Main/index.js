@@ -55,7 +55,7 @@ const StyledLinkContainer = styled(Link)`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsCenter};
-    padding: .75rem 1rem;
+    padding: 1rem;
     &:not(:last-child) {
         border-bottom: 1px dashed ${({theme}) => theme.colors.light};
     }
