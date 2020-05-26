@@ -40,8 +40,8 @@ const StyledIcon = styled.span`
 `
 
 const StyledTextArea = styled.textarea`
-    /* height: 0;
-    width: 0; */
+    height: 0;
+    width: 0;
     resize: none;
     border: none;
     background: transparent;
