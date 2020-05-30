@@ -8,6 +8,7 @@ export const AuthContext = React.createContext()
 const initialAuth = {
     token: storage.get({ key: 'token' }) || false,
     theme: storage.get({ key: 'theme' }) || 'light',
+    color: storage.get({ key: 'color' }) || 'blue',
 }
 
 const AuthProvider = (props) => {
@@ -15,6 +16,7 @@ const AuthProvider = (props) => {
     React.useEffect(() => {
         storage.set({ key: 'token', value: auth.token })
         storage.set({ key: 'theme', value: auth.theme })
+        storage.set({ key: 'color', value: auth.color })
     },[auth])
     return <AuthContext.Provider value={{auth, dispatch}}>
         {props.children}

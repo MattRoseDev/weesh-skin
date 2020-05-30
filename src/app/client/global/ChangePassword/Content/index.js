@@ -102,7 +102,7 @@ export default (props) => {
             <Input label={'New Password'} type='password' padding='.65rem' value={state.newPassword} onChange={(e) => handleChange({ key: 'newPassword', e })} width={100} margin='1rem 0 0' />
             <Input label={'Confirm Password'} type='password' padding='.65rem' value={state.confirmPassword} onChange={(e) => handleChange({ key: 'confirmPassword', e })} width={100} margin='1rem 0 0' />
             <StyledButtonContainer>
-                {state.newPassword.length > 0 && state.newPassword == state.confirmPassword ? <Button padding='.65rem 1.5rem' background='blue' color='white' radius='5rem' margin='.75rem 0 0' fontWeight='bold' isLoading={changePasswordResponse.loading || undefined}>Submit</Button> : <Button cursor='not-allowed' padding='.65rem 1.5rem' background='lightGray' color='gray' radius='5rem' margin='.75rem 0 0' fontWeight='bold'>Submit</Button>}
+                {state.newPassword.length > 0 && state.newPassword == state.confirmPassword ? <Button padding='.65rem 1.5rem' background='primary' color='white' radius='5rem' margin='.75rem 0 0' fontWeight='bold' isLoading={changePasswordResponse.loading || undefined}>Submit</Button> : <Button cursor='not-allowed' padding='.65rem 1.5rem' background='lightGray' color='gray' radius='5rem' margin='.75rem 0 0' fontWeight='bold'>Submit</Button>}
             </StyledButtonContainer>
         </StyledForm>
     </StyledContainer>

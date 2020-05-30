@@ -21,10 +21,12 @@ const StyledContainer = styled.div`
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.alignItemsStart};
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 0 .5rem .5rem .5rem;
 `
 
 const StyledDescription = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
     font-size: .85rem;
 `
 
@@ -47,6 +49,7 @@ const StyledContentContainer = styled.div`
 
 const StyledContent = styled.span`
     padding: 0 .125rem 0 0;
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledIcon = styled.span`

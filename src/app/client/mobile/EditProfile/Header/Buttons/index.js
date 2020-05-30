@@ -30,10 +30,11 @@ const StyledHeader = styled.header`
 
 const StyledTitle = styled.span`
     font-weight: bold;
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledLink = styled.span`
-    color: ${({ theme }) => theme.colors.blue};
+    color: ${({ theme }) => theme.colors.primary};
     padding: .75rem 0;
 `
 
@@ -69,8 +70,24 @@ export default () => {
         if (editProfile.email != auth.email) {
             variables['email'] = editProfile.email
         }
+        if (editProfile.color != auth.color) {
+            variables['color'] = auth.color
+        }
+        if (editProfile.theme != auth.theme) {
+            variables['theme'] = auth.theme
+        }
 
         Object.values(variables).length ? editUser({ variables }) : history.replace(`/${auth.username}`)
+    }
+
+    const handleCancel = () => {
+        if (editProfile.color != auth.color) {
+            authDispatch({ type: 'EDIT_COLOR', data: editProfile.color })
+        }
+        if (editProfile.theme != auth.theme) {
+            authDispatch({ type: 'EDIT_THEME', data: editProfile.theme })
+        }
+        history.replace(`/${auth.username}`)
     }
 
     React.useEffect(() => {
@@ -94,9 +111,9 @@ export default () => {
         {
             auth.id != undefined && editProfile ?
                 <StyledHeader>
-                    <Button color='blue' padding='1rem .5rem' fontWeight='bold' fontSize='1rem' to={`/${auth.username}`}>{C.txts.en.editProfile.header.cancelButton}</Button>
+                    <Button color='primary' padding='1rem .5rem' fontWeight='bold' fontSize='1rem' clickEvent={handleCancel}>{C.txts.en.editProfile.header.cancelButton}</Button>
                     <StyledTitle>{C.txts.en.editProfile.header.title}</StyledTitle>
-                    {editProfile && editProfile.doneButton ? <Button clickEvent={handleEditUser} color='blue' padding='1rem .5rem' fontWeight='bold' fontSize='1rem'>{C.txts.en.editProfile.header.doneButton}</Button> : <Button disabled color='gray' padding='1rem .5rem' fontWeight='bold' fontSize='1rem'>{C.txts.en.editProfile.header.doneButton}</Button>}
+                    {editProfile && editProfile.doneButton ? <Button clickEvent={handleEditUser} color='primary' padding='1rem .5rem' fontWeight='bold' fontSize='1rem'>{C.txts.en.editProfile.header.doneButton}</Button> : <Button disabled color='gray' padding='1rem .5rem' fontWeight='bold' fontSize='1rem'>{C.txts.en.editProfile.header.doneButton}</Button>}
                 </StyledHeader> :
                 <></>
         }

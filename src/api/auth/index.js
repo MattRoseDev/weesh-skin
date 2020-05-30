@@ -6,6 +6,8 @@ const login = gql`
             user {
                 id
                 username
+                color
+                theme
                 private
                 avatarAddress
                 unknown {
@@ -24,6 +26,8 @@ const join = gql`
             user {
                 id
                 username
+                color
+                theme
                 private
             }
             token
@@ -36,6 +40,8 @@ const getUserProfile = gql`
             id
             firstName
             lastName
+            color
+            theme
             bio
             username
             email

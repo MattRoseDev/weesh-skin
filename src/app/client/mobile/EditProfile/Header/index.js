@@ -7,11 +7,8 @@ import Icon from 'Root/components/global/Icon'
 import CropImage from 'Root/components/global/CropImage'
 import { UserContext } from 'Root/contexts/user'
 import { EditProfileContext } from 'Root/contexts/editProfile'
-import Buttons from './Buttons'
 
-const StyledHeader = styled.div`
-    position: relative;
-`
+const StyledHeader = styled.div``
 
 const StyledAvatarFrame = styled.div`
     position: absolute;
@@ -32,7 +29,6 @@ export default (props) => {
     const [cropImage, setCropImage] = React.useState(initialCropImage)
 
 return editProfile && <StyledHeader>
-        <Buttons {...props} />
         <CropImage setCropImage={setCropImage} {...cropImage} />
         <StyledImagesFrame>
             <EditableImage onClick={() => setCropImage((prevState) => ({
@@ -52,7 +48,7 @@ return editProfile && <StyledHeader>
                 width: 640,
                 height: 640,
             }))}>
-                    <Avatar user={editProfile} size={4} borderColor='background' borderWidth={2} />
+                    <Avatar user={editProfile} size={4} borderColor='background' borderWidth={4} />
                 </EditableImage>
             </StyledAvatarFrame>
         </StyledImagesFrame>

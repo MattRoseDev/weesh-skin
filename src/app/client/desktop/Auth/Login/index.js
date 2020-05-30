@@ -60,7 +60,7 @@ const StyledForgotPasswordLinkContainer = styled.div`
 
 const StyledForgotPasswordLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
-    color: ${({theme}) => theme.colors.blue};
+    color: ${({theme}) => theme.colors.primary};
     font-size: .85rem;
     text-decoration: none;
 `
@@ -68,8 +68,8 @@ const StyledForgotPasswordLink = styled(Link)`
 const StyledJoinLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.justifyContentCenter};
-    /* border: 1px solid ${({theme}) => theme.colors.blue}; */
-    color: ${({theme}) => theme.colors.blue};
+    /* border: 1px solid ${({theme}) => theme.colors.primary}; */
+    color: ${({theme}) => theme.colors.primary};
     margin: 0;
     text-decoration: none;
     border-radius: .5rem;
@@ -117,7 +117,7 @@ export default () => {
         <StyledBox>
             <StyledImg height='400' src={WelcomePicture} />
             <StyledLogin onSubmit={e => handleSubmit(e)}>
-                <Logo fontSize={4.5} margin={1.5} />
+                <Logo fontSize={4.5} margin='1.5rem' />
                 {/* <StyledIcon>
                     <Icon icon='User' color='dark' size={100} strokeWidth={1} />
                 </StyledIcon> */}
@@ -141,7 +141,7 @@ export default () => {
                         {C.txts.en.auth.forgotPasswordLink}
                     </StyledForgotPasswordLink>
                 </StyledForgotPasswordLinkContainer>
-                <Button color='background' background='blue' fontWeight='bold' isLoading={loading || undefined} margin='.5rem 0 0' radius='.75rem' padding='.85rem' fontSize='.85rem' width='75%'>{C.txts.en.auth.loginButton}</Button>
+                <Button color='background' background='primary' fontWeight='bold' isLoading={loading || undefined} margin='.5rem 0 0' radius='.75rem' padding='.85rem' fontSize='.85rem' width='75%'>{C.txts.en.auth.loginButton}</Button>
                 <OR width={75} margin={1.5} />
                 <StyledJoinLink to='join'>{C.txts.en.auth.joinLink}</StyledJoinLink>
             </StyledLogin>

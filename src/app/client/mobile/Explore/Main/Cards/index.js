@@ -29,7 +29,7 @@ const StyledItem = styled(Link)`
 `
 
 const StyledItemTitle = styled.div`
-    color: ${({theme}) => theme.colors.blue};
+    color: ${({theme}) => theme.colors.primary};
     font-weight: bold;
 `
 

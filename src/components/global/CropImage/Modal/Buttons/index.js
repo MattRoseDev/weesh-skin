@@ -22,8 +22,8 @@ export default (props) => {
             <Icon color='red' icon='X'/>
             {C.txts.en.cropImage.discardButton}
         </Button>
-        <Button color='blue' onClick={props.uploadFunc} margin='.5rem .5rem .5rem'>
-            <Icon color='blue' icon='ArrowUp' />
+        <Button color='primary' onClick={props.uploadFunc} margin='.5rem .5rem .5rem'>
+            <Icon color='primary' icon='ArrowUp' />
             {C.txts.en.cropImage.uploadButton}
         </Button>
     </StyledContainer>

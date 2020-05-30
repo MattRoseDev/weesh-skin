@@ -12,10 +12,11 @@ import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import styled from 'styled-components'
 import { EditProfileContext } from 'Root/contexts/editProfile'
-
+import Buttons from './Header/Buttons'
 
 const StyledContainer = styled.div`
-    min-height: ${window.innerHeight - 44}px;
+    /* min-height: ${window.innerHeight - 44}px; */
+    position: relative;
 `
 
 const StyledLoadingContainer = styled.div`
@@ -61,6 +62,7 @@ export default (props) => {
 
     return <StyledContainer>
         {editProfile && auth.id != undefined ? <>
+            <Buttons {...props} />
             <Header {...props} />
             <Main {...props} />
         </> : loading && <StyledLoadingContainer>

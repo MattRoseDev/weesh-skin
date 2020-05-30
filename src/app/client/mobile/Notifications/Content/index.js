@@ -22,12 +22,13 @@ const StyledRequestContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsCenter};
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 1rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.light};
 `
 
 const StyledBadge = styled.div`
-    background: ${({theme}) => theme.colors.blue};
+    background: ${({theme}) => theme.colors.primary};
     border-radius: 50%;
     width: .75rem;
     height: .75rem;

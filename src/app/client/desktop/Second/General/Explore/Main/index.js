@@ -30,6 +30,7 @@ const StyledNotFound = styled.div`
 
 const StyledNotFoundMessage = styled.span`
     margin: 0 0 0 .25rem;
+    color: inherit;
 `
 
 const StyledBannerMessageContainer = styled.div`

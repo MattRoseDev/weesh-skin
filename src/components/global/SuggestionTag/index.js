@@ -20,8 +20,8 @@ const StyledTags = styled.div`
 
 const StyledTag = styled.span`
     display: inline;
-    color: ${({theme}) => theme.colors.blue};
-    border: 1px solid ${({ theme }) => theme.colors.blue};
+    color: ${({theme}) => theme.colors.primary};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
     border-radius: 50rem;
     padding: .25rem .5rem;
     font-weight: bold;

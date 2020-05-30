@@ -33,6 +33,7 @@ const StyledNumbers = styled.div`
 `
 
 const StyledNumber = styled.span`
+    color: inherit;
     ${C.styles.flex.inlineFlexRow};
 `
 
@@ -67,7 +68,7 @@ export default () => {
             /
             <StyledNumber>{weesh.totalCount}</StyledNumber>
         </StyledNumbers>
-        <Button color='background' background='blue' boxShadow='light' clickEvent={handleAddWeesh} isLoading={loading || undefined} padding='.5rem 1rem' radius='50rem'>
+        <Button color='background' background='primary' boxShadow='light' clickEvent={handleAddWeesh} isLoading={loading || undefined} padding='.5rem 1rem' radius='50rem'>
             <StyledButtonTitle>
                 Weesh
             </StyledButtonTitle>

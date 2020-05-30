@@ -18,12 +18,13 @@ import { useMutation } from '@apollo/react-hooks'
 import UsernameInput from './UsernameInput'
 import EmailInput from './EmailInput'
 import PasswordInput from './PasswordInput'
+import Themes from './Themes'
 import { Helmet } from 'react-helmet'
 import helpers from 'Root/helpers'
 
 const StyledMain = styled.div`
-     ${C.styles.flex.flexColumn};
-     ${C.styles.flex.justifyContentCenter};
+    ${C.styles.flex.flexColumn};
+    ${C.styles.flex.justifyContentCenter};
     padding: .5rem;
 `
 
@@ -64,6 +65,7 @@ const StyledLinkContainer = styled(Link)`
 const StyledToggleTitle = styled.span`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
+    color: ${({ theme }) => theme.colors.foreground};
     font-size: .85rem;
     margin: 0 0 0 .5rem;
     font-weight: bold;
@@ -133,12 +135,6 @@ export default (props) => {
             checked: editProfile.private,
             onInput: (e) => handleChange({ key: 'private', e })
         },
-        {
-            title: C.txts.en.editProfile.togglesLabel.darkMode,
-            icon: 'Moon',
-            checked: auth.theme == 'dark',
-            onInput: (e) => authDispatch({ type: 'TOGGLE_THEME' })
-        },
     ]
 
     const links = [
@@ -181,6 +177,7 @@ export default (props) => {
             </StyledToggleContainer>
             )}
         </StyledToggles>
+        <Themes />
         <PasswordInput />
         <StyledToggles>
             {links.map(item => <StyledLinkContainer to={`${item.link}`} key={uuid()}>

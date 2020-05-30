@@ -21,7 +21,7 @@ export default (props) => {
     return <StyledContainer>
         <Icon onClick={handleBack}
             size={props.size || 24}
-            color={C.themes[auth.theme || 'light'].colors[props.color || 'dark']}
+            color='foreground'
             fill={C.themes[auth.theme || 'light'].colors[props.fill] || 'none'}
             icon={props.icon || 'ChevronLeft'}
         />
