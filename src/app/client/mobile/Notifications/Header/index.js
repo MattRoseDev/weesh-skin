@@ -5,7 +5,9 @@ import BackButton from 'Root/components/global/BackButton'
 import Icon from 'Root/components/global/Icon'
 import Header from 'Root/app/client/mobile/Template/Header'
 
-const StyledTitle = styled.strong``
+const StyledTitle = styled.strong`
+    color: ${({ theme }) => theme.colors.foreground};
+`
 
 export default () => {
     return <Header>

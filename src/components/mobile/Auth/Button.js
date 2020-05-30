@@ -11,10 +11,10 @@ const Button = styled(Link)`
     border-radius: .75rem;
     ${({ fill }) => fill ? css`
         background: unset;
-        color: ${({ theme }) => theme.colors.blue};
+        color: ${({ theme }) => theme.colors.primary};
     ` : css`
         color: ${({ theme }) => theme.colors.background};
-        background: ${({ theme }) => theme.colors.blue};
+        background: ${({ theme }) => theme.colors.primary};
     `};
 `
 

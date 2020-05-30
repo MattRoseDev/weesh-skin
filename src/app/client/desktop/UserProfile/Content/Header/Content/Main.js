@@ -28,7 +28,7 @@ const StyledUsername = styled.span`
     color: ${({ theme }) => theme.colors.dark};
 `
 
-const StyledBio = styled.h2`
+const StyledBio = styled.pre`
     margin: .5rem 0 0;
     font-size: .85rem;
     font-weight: normal;

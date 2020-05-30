@@ -23,8 +23,8 @@ const StyledLogin = styled.form`
 const StyledJoinLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.justifyContentCenter};
-    border: 1px solid ${({theme}) => theme.colors.blue};
-    color: ${({theme}) => theme.colors.blue};
+    border: 1px solid ${({theme}) => theme.colors.primary};
+    color: ${({theme}) => theme.colors.primary};
     margin: 0;
     text-decoration: none;
     border-radius: .5rem;
@@ -97,7 +97,7 @@ export default () => {
                 password
             }))
         }} width={75} icon='Lock' placeholder='Password' type='password' />
-        <Button color='background' background='blue' fontWeight='bold' isLoading={loading || undefined} width='75%' margin='.75rem 0 0' padding='.85rem' radius='.75rem' fontSize='.85rem' >{C.txts.en.auth.joinButton}</Button>
+        <Button color='background' background='primary' fontWeight='bold' isLoading={loading || undefined} width='75%' margin='.75rem 0 0' padding='.85rem' radius='.75rem' fontSize='.85rem' >{C.txts.en.auth.joinButton}</Button>
         <OR width={75} margin={1.5}/>
         <StyledJoinLink to='login'>{C.txts.en.auth.loginLink}</StyledJoinLink>
     </StyledLogin>

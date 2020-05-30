@@ -20,10 +20,11 @@ const StyledMain = styled.p`
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap;
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledTag = styled(Link)`
-    color: ${({ theme }) => theme.colors.blue};
+    color: ${({ theme }) => theme.colors.primary};
     ${C.styles.flex.inlineFlexRow};
     text-decoration: none;
 `

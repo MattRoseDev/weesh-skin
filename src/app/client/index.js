@@ -70,13 +70,16 @@ const Client = (props) => {
         }
     }, [data, loadResult.data, getProfileUserResult.data])
 
-    return <ThemeProvider theme={C.themes[auth.theme || 'light']}>
-        {React.useMemo(() => 
+    return <ThemeProvider theme={{
+                colors: {
+                    ...C.themes[auth.theme || 'light'].colors,
+                    ...C.themes[auth.theme || 'light'].colors[`${auth.color}Pack`]
+                }
+            }}>
             <>
                 <GlobalStyles />
                 {windowWidth > 768 ? <Desktop /> : <Mobile />}
             </>
-        , [windowWidth])}
     </ThemeProvider>
 }
 

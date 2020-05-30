@@ -16,6 +16,16 @@ export const authReducer = (state, action) => {
                 ...state,
                 theme
             }
+        case 'EDIT_THEME': 
+            return {
+                ...state,
+                theme: action.data
+            }
+        case 'EDIT_COLOR': 
+            return {
+                ...state,
+                color: action.data
+            }
         default:
             return state
     }

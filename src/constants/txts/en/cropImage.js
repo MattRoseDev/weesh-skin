@@ -1,5 +1,5 @@
 export default {
-discardButton: 'Discard',
+    discardButton: 'Discard',
     uploadButton: 'Upload',
     chooseFile: 'Choose File',
 }

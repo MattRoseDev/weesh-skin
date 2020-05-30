@@ -31,5 +31,9 @@ export default {
         available: 'Email is available.',
         alreadyTaken: 'Email is already taken.',
         checking: 'Checking email...'
+    },
+    theme: {
+        background: 'Background',
+        color: 'Color',
     }
 }

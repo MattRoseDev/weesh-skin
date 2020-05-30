@@ -103,7 +103,7 @@ export default (props) => {
             </StyledRequestContent>
         </Link>
         <StyledButton>
-            <Button isLoading={acceptResponse.loading || undefined} clickEvent={handleAccept} background='blue' color='background' padding='.25rem .5rem' radius='50rem' fontWeight='bold'>Confirm</Button>
+            <Button isLoading={acceptResponse.loading || undefined} clickEvent={handleAccept} background='primary' color='background' padding='.25rem .5rem' radius='50rem' fontWeight='bold'>Confirm</Button>
             <StyledIcon onClick={handleReject}>
                 <Icon icon='X' />
             </StyledIcon>

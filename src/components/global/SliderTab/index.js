@@ -28,7 +28,7 @@ const StyledTab = styled.li`
 
 const StyledSlider = styled.span`
     position: absolute;
-    background: ${({theme}) => theme.colors.blue};
+    background: ${({theme}) => theme.colors.primary};
     ${({ tabs }) => tabs && css`
         width: ${Math.round(100 / tabs)}%;
     `};
@@ -37,6 +37,7 @@ const StyledSlider = styled.span`
     height: 100%;
     z-index: 1;
     border-radius: 5rem;
+    color: inherit;
     ${C.styles.boxShadow.primary.normal};
 `
 
@@ -59,6 +60,7 @@ const StyledLabel = styled.label`
 
 const StyledTitle = styled.span`
     padding: 0 0 0 .1rem;
+    color: inherit;
 `
 
 export default (props) => {
@@ -84,7 +86,7 @@ export default (props) => {
             {state.map(item => <StyledTab key={item.id}>
                 <StyledLabel className={item.value && 'active'} htmlFor={item.id}>
                     <Icon icon={item.icon} size='14' color={item.value ? 'background' : 'foreground'} />
-                    <StyledTitle>
+                    <StyledTitle className={item.value && 'active'}>
                         {item.title}
                     </StyledTitle>
                 </StyledLabel>

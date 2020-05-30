@@ -43,7 +43,7 @@ const StyledOutput = styled.div`
 `
 
 const StyledTag = styled.span`
-    color: ${({ theme }) => theme.colors.blue};
+    color: ${({ theme }) => theme.colors.primary};
     ${C.styles.flex.inlineFlexRow};
 `
 

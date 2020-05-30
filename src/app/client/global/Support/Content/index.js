@@ -100,7 +100,7 @@ export default (props) => {
             <Input label='Subject' padding='.65rem' value={state.subject} onChange={(e) => handleChange({ key: 'subject', e })} width={100} margin='1rem 0 0' />
             <Textarea label='Description' padding='.65rem' value={state.description} onChange={(e) => handleChange({ key: 'description', e })} width={100} rows='10' margin='1rem 0 0' />
             <StyledButtonContainer>
-                {state.description.length > 0 ? <Button padding='.65rem 1.5rem' background='blue' color='white' radius='5rem' margin='.75rem 0 0' fontWeight='bold' isLoading={addMessageResponse.loading || undefined}>Submit</Button> : <Button cursor='not-allowed' padding='.65rem 1.5rem' background='lightGray' color='gray' radius='5rem' margin='.75rem 0 0' fontWeight='bold'>Submit</Button>}
+                {state.description.length > 0 ? <Button padding='.65rem 1.5rem' background='primary' color='white' radius='5rem' margin='.75rem 0 0' fontWeight='bold' isLoading={addMessageResponse.loading || undefined}>Submit</Button> : <Button cursor='not-allowed' padding='.65rem 1.5rem' background='lightGray' color='gray' radius='5rem' margin='.75rem 0 0' fontWeight='bold'>Submit</Button>}
             </StyledButtonContainer>
         </StyledForm>
     </StyledContainer>

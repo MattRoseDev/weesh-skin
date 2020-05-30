@@ -19,6 +19,7 @@ const StyledText = styled.p`
     white-space: pre-wrap;
     font-size: 1.125rem;
     line-height: 1.5rem;
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledDateContainer = styled.div`

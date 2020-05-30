@@ -41,7 +41,7 @@ const StyledBox = styled.div`
 const StyledLoginLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.justifyContentCenter};
-    color: ${({theme}) => theme.colors.blue};
+    color: ${({theme}) => theme.colors.primary};
     margin: 0;
     text-decoration: none;
     border-radius: .5rem;
@@ -95,7 +95,7 @@ export default () => {
         <StyledBox>
             <StyledImg height='400' src={WelcomePicture} />
             <StyledJoin onSubmit={e => handleSubmit(e)}>
-                <Logo fontSize={5} margin={1.5} />
+                <Logo fontSize={5} margin='1.5rem'/>
                 {error && <ErrorMessage width='75%' message={error.graphQLErrors[0].message} />}
                 <Input margin='.5rem 0 0' onChange={(e) => {
                     let firstName = e.target.value
@@ -118,7 +118,7 @@ export default () => {
                         password
                     }))
                 }} width={75} icon='Lock' placeholder='Password' type='password' />
-                <Button color='background' radius='.5rem' background='blue' isLoading={loading || undefined} fontWeight='bold' width='75%' margin='1.5rem 0 0' radius='.75rem' padding='.85rem' fontSize='.85rem'>{C.txts.en.auth.joinButton}</Button>
+                <Button color='background' radius='.5rem' background='primary' isLoading={loading || undefined} fontWeight='bold' width='75%' margin='1.5rem 0 0' radius='.75rem' padding='.85rem' fontSize='.85rem'>{C.txts.en.auth.joinButton}</Button>
                 <OR width={75} margin={1.5} />
                 <StyledLoginLink to='login'>{C.txts.en.auth.loginLink}</StyledLoginLink>
             </StyledJoin>

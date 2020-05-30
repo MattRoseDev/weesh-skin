@@ -53,7 +53,7 @@ const StyledButton = styled.button`
         color: ${({ theme }) => theme.colors.gray};
     ` : css`
         cursor: pointer;
-        color: ${({ theme }) => theme.colors.blue};
+        color: ${({ theme }) => theme.colors.primary};
     `};
     padding: 0 0 0 .5rem;
     font-size: .75rem;

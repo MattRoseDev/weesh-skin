@@ -16,6 +16,7 @@ const StyledContainer = styled(Link)`
 const StyledTitle = styled.div`
     margin: 0 0 0 .5rem;
     font-size: .85rem;
+    color: ${({ theme }) => theme.colors.foreground};
     font-weight: bold;
 `
 

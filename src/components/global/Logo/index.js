@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 import C from 'Root/constants'
 
 const Logo = styled(Link)`
-    color: ${({ theme }) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.primary};
     text-decoration: none;
     ${C.styles.flex.inlineFlexRow};
     font-family: Autumn_in_November;
-    margin: ${({ margin }) => margin ? `${margin}rem` : 0};
+    margin: ${({ margin }) => margin || 'unset'};
     font-size: ${({ fontSize }) => fontSize || 1.5}rem;
     ${({ padding }) => padding ? css`
         padding: ${padding};

@@ -37,6 +37,7 @@ const StyledButtonContainer = styled.span`
 const StyledNumbers = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
+    color: ${({ theme }) => theme.colors.dark};
     margin: 0 .75rem 0 0;
 `
 
@@ -56,6 +57,7 @@ const StyledButtons = styled.div`
 const StyledNumber = styled.span`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
+    color: ${({ theme }) => theme.colors.dark};
     font-size: .75rem;
     margin: 0 0 0 .1rem;
 `
@@ -172,7 +174,7 @@ export default (props) => {
                 </StyledNumberContainer>))}
             </StyledNumbers>
         </StyledFooter>
-        {props.comment && props.commentsCounter > 0 && <StyledComments to={`/w/${props.link}`}>
+        {props.commentsCounter > 0 && <StyledComments to={`/w/${props.link}`}>
             View all {props.commentsCounter} comments
         </StyledComments>}
     </StyledFooterContainer>

@@ -8,7 +8,7 @@ import C from 'Root/constants'
 
 const handleStatus = (props, auth, user) => {
     if(!auth.token) {
-        return <Button background='blue' radius='50rem' color='background' padding='.5rem 1.25rem' fontWeight='bold' to='/login'>Login</Button>
+        return <Button background='primary' radius='50rem' color='background' padding='.5rem 1.25rem' fontWeight='bold' to='/login'>Login</Button>
     }    
 
     if (props.match.params.username == auth.username) {

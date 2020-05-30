@@ -7,6 +7,8 @@ const getUserByUsernameForUser = gql`
             username
             firstName
             lastName
+            color
+            theme
             email
             avatarAddress
             coverAddress
@@ -126,6 +128,8 @@ const edit = gql`
         $email: String, 
         $firstName: String, 
         $lastName: String, 
+        $color: String, 
+        $theme: String, 
         $bio: String,
         $private: Boolean,
         $unknown: Boolean
@@ -135,6 +139,8 @@ const edit = gql`
             email: $email, 
             firstName: $firstName, 
             lastName: $lastName, 
+            color: $color, 
+            theme: $theme, 
             bio: $bio,
             private: $private,
             unknown: {
@@ -147,6 +153,8 @@ const edit = gql`
                 email
                 firstName
                 lastName
+                color
+                theme
                 bio
                 private
                 unknown {

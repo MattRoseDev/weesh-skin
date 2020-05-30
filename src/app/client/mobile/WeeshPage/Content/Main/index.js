@@ -25,7 +25,7 @@ const StyledDateContainer = styled.div`
 `
 
 const StyledTag = styled(Link)`
-    color: ${({ theme }) => theme.colors.blue};
+    color: ${({ theme }) => theme.colors.primary};
     ${C.styles.flex.inlineFlexRow};
     text-decoration: none;
 `
