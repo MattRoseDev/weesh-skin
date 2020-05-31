@@ -22,6 +22,7 @@ const StyledIcon = styled.span`
 
 const StyledTitle = styled.div`
     margin: 1.5rem 0;
+    color: ${({ theme }) => theme.colors.foreground};
     font-weight: bold;
 `
 

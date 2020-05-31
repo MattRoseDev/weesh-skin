@@ -17,6 +17,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledMain = styled.p`
+    color: ${({ theme }) => theme.colors.foreground};
     font-size: .85rem;
     /* ${({ isChild }) => isChild ? css`
         padding: 0 .75rem .25rem;

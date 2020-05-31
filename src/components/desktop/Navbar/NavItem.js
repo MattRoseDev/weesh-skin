@@ -8,24 +8,38 @@ import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
 
-const NavItem = styled(NavLink)`
+const NavItemContent = styled.div`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
+    color: ${({ theme, color }) => theme.colors[color || 'foreground']};
     list-style: none;
-    color: ${({theme}) => theme.colors.foreground};
-    background: ${({ theme, background }) => background ? theme.colors[background] : 'transparent'};
+    transition: all .2s ease;
+    /* background: ${({ theme, background }) => background ? theme.colors.lightPrimary : 'transparent'}; */
     border-radius: .75rem;
-    text-decoration: none;
-    width: 100%;
-    margin: .25rem 0 0;
+    /* width: 100%; */
     padding: .75rem 1rem .75rem .75rem;
     font-size: .9rem;
     font-weight: bold;
 `
 
+const NavItem = styled(NavLink)`
+    &:hover ${NavItemContent} {
+        color: ${({ theme, color }) => theme.colors.primary};
+        background: ${({ theme }) => theme.colors.lightPrimary};
+        transition: all .2s ease;
+    }
+    &:hover svg {
+        stroke: ${({ theme, color }) => theme.colors.primary};
+        transition: all .2s ease;
+    }
+    transition: all .2s ease;
+    text-decoration: none;
+    margin: .25rem 0 0;
+    width: 80%;
+`
+
 const NavTitle = styled.span`
-    color: ${({ theme, color }) => theme.colors[color || 'foreground']};
-    
+    color: inherit;    
 `
 
 const StyledIcon = styled.span`
@@ -62,24 +76,28 @@ export default (props) => {
     return auth.id ? <>
         {props.path == history.location.pathname || 
             history.location.pathname == `/${auth.username}` && props.path == '/profile' ? 
-        <NavItem background='foreground' exact={props.exact || false} to={path}>
-            <StyledIcon>
-                {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color='background'
-                    strokeWidth={props.fillStrokeWidth || 2}
-                    icon={props.content}
-                    size={props.size || 26} />}
-            </StyledIcon>
-            <NavTitle color='background'>{props.title}</NavTitle>
+            <NavItem color='primary' exact={props.exact || false} to={path}>
+                <NavItemContent background='foreground' color='primary'>
+                    <StyledIcon>
+                        {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color={`${auth.color}`}
+                            strokeWidth={props.fillStrokeWidth || 2}
+                            icon={props.content}
+                            size={props.size || 26} />}
+                    </StyledIcon>
+                    <NavTitle >{props.title}</NavTitle>
+                </NavItemContent>
         </NavItem> : 
-        <NavItem exact={props.exact || false} to={path}>
-            <StyledIcon>
-                {(lastNotification && !lastNotification.read && props.path == '/notifications') && <StyledBadge></StyledBadge>}
-                {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color='dark'
-                    strokeWidth={props.strokeWidth || 2}
-                    icon={props.content}
-                    size={props.fillSize || 26} />}
-            </StyledIcon>
-            <NavTitle color='dark'>{props.title}</NavTitle>
+        <NavItem color='foreground' exact={props.exact || false} to={path}>
+            <NavItemContent color='foreground'>
+                    <StyledIcon>
+                        {(lastNotification && !lastNotification.read && props.path == '/notifications') && <StyledBadge></StyledBadge>}
+                        {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color='foreground'
+                            strokeWidth={props.strokeWidth || 2}
+                            icon={props.content}
+                            size={props.fillSize || 26} />}
+                    </StyledIcon>
+                    <NavTitle >{props.title}</NavTitle>
+            </NavItemContent>
         </NavItem>}
     </> : ''
 }

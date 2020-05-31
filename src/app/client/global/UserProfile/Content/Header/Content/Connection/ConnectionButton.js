@@ -93,7 +93,7 @@ export default (props) => {
             }} fontWeight='bold' color='red'>{acceptButtonType}</DialogButton>
             <DialogButton fontWeight='bold' onClick={() => toggleDialog(false)}>{cancelButtonType}</DialogButton>
         </Dialog>
-        <Button background='foreground' color='background' fontWeight='bold' isLoading={loading || undefined} onClick={() => {
+        <Button color='primary' hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' fontWeight='bold' isLoading={loading || undefined} onClick={() => {
             if (props.type == 'FOLLOWING') toggleDialog(true)
             else handleConnection()
         }} padding='.5rem .75rem' radius='50rem'>

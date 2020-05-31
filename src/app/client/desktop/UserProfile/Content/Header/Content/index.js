@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Connection from 'Root/app/client/global/UserProfile/Content/Header/Content/Connection/index'
 import Icon from 'Root/components/global/Icon'
+import Button from 'Root/components/global/Button'
 import Main from './Main'
 import C from 'Root/constants'
 import { UserContext } from 'Root/contexts/user'
@@ -39,9 +40,9 @@ export default (props) => {
 
     return <StyledContent>
         <StyledButtonContainer>
-            {auth.id == user.id && <StyledBookmarkButton to={`/${auth.username}/bookmarks`}>
-                <Icon icon='Bookmark' color='background' />
-            </StyledBookmarkButton>}
+            {auth.id == user.id && <Button color='primary' hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' fontWeight='bold' padding='.4rem' margin='0 .5rem 0 0' radius='50%' to={`/${auth.username}/bookmarks`}>
+                <Icon icon='Bookmark' color={`${auth.color}`} />
+            </Button>}
             <Connection {...props} />
         </StyledButtonContainer>
         {user && <Main {...props} />}

@@ -15,6 +15,7 @@ const StyledContent = styled.div`
     overflow: hidden;
     ${C.styles.flex.flexColumnCenter};
     background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     border-radius: .75rem;
     ${({ width }) => width && css`
         width: ${width};
@@ -28,7 +29,7 @@ const StyledButton = styled.button`
     font-size: .875rem;
     vertical-align: middle;
     border: none;
-    border-top: 1px solid ${({ theme }) => theme.colors.lightGray};
+    border-top: 1px dashed ${({ theme }) => theme.colors.lightGray};
     color: ${({color, theme}) => theme.colors[color || 'foreground']};
     padding: .85rem;
     ${({ fontWeight }) => fontWeight && css`

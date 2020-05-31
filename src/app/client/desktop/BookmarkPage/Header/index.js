@@ -26,6 +26,7 @@ const StyledContainer = styled.div`
 `   
 
 const StyledBookmark = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
     width: 99%;
     font-weight: bold;
     word-break: break-word;

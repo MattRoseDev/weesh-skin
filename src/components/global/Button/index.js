@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
 `
 
 const StyledContainer = styled.div`
-    margin: ${({ margin }) => margin || 'unset'};
+    /* margin: ${({ margin }) => margin || 'unset'}; */
     width: ${({ width }) => width ? `${width}` : 'unset'};
     ${C.styles.flex.flexRow};
     position: relative;
@@ -23,7 +23,7 @@ const StyledContainer = styled.div`
 const StyledButton = styled.button`
     cursor: inherit;
     ${({ boxShadow }) => boxShadow && css`
-        box-shadow: 1px 1px 3px 1px ${({theme}) => theme.colors.light};
+        p: 1px 1px 3px 1px ${({theme}) => theme.colors.light};
     `};
     border: none;
     border-width: ${({ borderWidth }) => borderWidth || '0px'};
@@ -37,10 +37,20 @@ const StyledButton = styled.button`
     ${({ padding }) => padding && css`
         padding: ${padding};
     `};
+    ${({ margin }) => margin && css`
+        margin: ${margin};
+    `};
     ${({ color, theme }) => color && css`
-        color: ${theme.colors[color]}};
+        color: ${theme.colors[color]};
     `};
     background: ${({ background, theme }) => background ? theme.colors[background] : 'transparent'};
+    ${({ hoverBackground, theme }) => hoverBackground && css`
+        &:hover {
+            background: ${theme.colors[hoverBackground]};
+            transition: all .2s ease;
+        }
+    `};
+    transition: all .2s ease;
     outline: none;
 `
 
@@ -54,7 +64,7 @@ const StyledLoader = styled.div`
     margin: 0;
     ${C.styles.flex.flexRowCenter};
     ${({ theme, color }) => color && css`
-        color: ${theme.colors[color]}};
+        color: ${theme.colors[color]};
     `};
     background: ${({ theme, background }) => background ? theme.colors[background] : 'transparent'};
     border-radius: ${({ radius }) => radius || '.75rem'};

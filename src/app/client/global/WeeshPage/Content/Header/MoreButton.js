@@ -53,6 +53,7 @@ const StyledHeaderDialog = styled.div`
 `
 
 const StyledHeaderDialogMessage = styled.strong`
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 1rem 0;
 `
 

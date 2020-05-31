@@ -59,6 +59,7 @@ const StyledNumber = styled.span`
     ${C.styles.flex.alignItemsCenter};
     font-size: .75rem;
     margin: 0 0 0 .1rem;
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 export default (props) => {
