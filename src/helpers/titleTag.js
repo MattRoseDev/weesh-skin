@@ -1,7 +1,7 @@
 export default ({ data, type } = { data: null }) => {
     switch(type) {
         case 'UserProfile':
-            return `${ data.user.firstName } ${ data.user.lastName } (@${ data.user.username }) • Weesh`
+            return `${data.user.firstName || ''} ${data.user.lastName || ''} (@${data.user.username}) • Weesh`
         case 'WeeshPage':
             return `by @${data.weesh.user.username} • Weesh`
         case 'Tags':
