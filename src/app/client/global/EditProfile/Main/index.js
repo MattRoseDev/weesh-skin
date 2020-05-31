@@ -7,6 +7,7 @@ import { UserContext } from 'Root/contexts/user'
 import { EditProfileContext } from 'Root/contexts/editProfile'
 import api from 'Root/api'
 import Input from 'Root/components/global/Input'
+import Dialog from 'Root/components/global/Dialog'
 import Icon from 'Root/components/global/Icon'
 import Link from 'Root/components/global/Link'
 import Toggle from 'Root/components/global/Toggle'
@@ -156,7 +157,7 @@ export default (props) => {
             <title>{helpers.titleTag({ type: 'EditProfile' })}</title>
         </Helmet>
         <StyledLogoutContainer>
-            <Button padding='.5rem .75rem' radius='50rem' fontWeight='bold' background='foreground' color='background' to='/logout'>{C.txts.en.editProfile.header.logout}</Button>
+            <Button padding='.5rem .75rem' radius='50rem' fontWeight='bold' color='primary' hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' to='/logout'>{C.txts.en.editProfile.header.logout}</Button>
         </StyledLogoutContainer>
         <StyledInputGroup>
             <Input label={C.txts.en.editProfile.inputsLabel.firstName} padding='.65rem' value={editProfile.firstName} onInput={(e) => handleChange({ key: 'firstName', e })} margin='0 .5rem 0 0' width={100} placeholder={C.txts.en.editProfile.inputsLabel.firstName} />

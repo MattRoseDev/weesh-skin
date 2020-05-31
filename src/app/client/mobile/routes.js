@@ -65,13 +65,13 @@ const routes = [
         component: Support,
     },
     {
-        private: true,
+        // private: true,
         exact: true,
         path: '/:username',
         component: UserProfile,
     },
     {
-        private: true,
+        // private: true,
         exact: true,
         path: '/t/:tagTitle',
         component: TagPage,
@@ -101,7 +101,7 @@ const routes = [
         component: RequestsPage,
     },
     {
-        private: true,
+        // private: true,
         exact: true,
         path: '/w/:link',
         component: WeeshPage,

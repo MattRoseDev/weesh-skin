@@ -11,7 +11,7 @@ export const authReducer = (state, action) => {
                 token: false,
             }
         case 'TOGGLE_THEME': 
-            let theme = state.theme == 'light' ? 'dark' : 'light'
+            let theme = state.theme == 'light' ? 'night' : 'light'
             return {
                 ...state,
                 theme

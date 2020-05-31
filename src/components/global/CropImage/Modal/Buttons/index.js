@@ -3,6 +3,7 @@ import Button from './Button'
 import styled from 'styled-components'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
+import { AuthContext } from 'Root/contexts/auth'
 
 const StyledContainer = styled.div`
     width: ${({ widthButtons }) => widthButtons || '100%'};
@@ -14,6 +15,8 @@ const StyledContainer = styled.div`
 `
 
 export default (props) => {
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
+
     return <StyledContainer {...props}>
         <Button color='red' onClick={() => props.setCropImage((prevState) => ({
             ...prevState,
@@ -23,7 +26,7 @@ export default (props) => {
             {C.txts.en.cropImage.discardButton}
         </Button>
         <Button color='primary' onClick={props.uploadFunc} margin='.5rem .5rem .5rem'>
-            <Icon color='primary' icon='ArrowUp' />
+            <Icon color={`${auth.color}`} icon='ArrowUp' />
             {C.txts.en.cropImage.uploadButton}
         </Button>
     </StyledContainer>

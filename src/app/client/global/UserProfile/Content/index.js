@@ -74,8 +74,8 @@ export default (props) => {
             setNextPage(data.getUserByUsernameForUser.weesh.paginate.nextPage)
         }
     }, [data])
-    console.log(user && user.id)
-    return <StyledContainer>
+
+return <StyledContainer>
         {loading ? <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' /> : called && user && <>
             <Header {...props} />
             {

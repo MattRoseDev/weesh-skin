@@ -12,7 +12,8 @@ const StyledHeader = styled.div`
     width: 100%;
 `
 
-const StyledTag = styled.div`
+const StyledTitle = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
     width: 95%;
     font-weight: bold;
     word-break: break-word;
@@ -26,9 +27,9 @@ export default (props) => {
     return <Header>
         <BackButton />
         <StyledHeader>
-            <StyledTag>
+            <StyledTitle>
                 Bookmarks
-            </StyledTag>
+            </StyledTitle>
         </StyledHeader>
         <Icon size={24} color='background' icon='ChevronLeft' />
     </Header>

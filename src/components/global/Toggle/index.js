@@ -10,7 +10,7 @@ const StyledContainer = styled.label`
 `
 
 const StyledSwitch = styled.span`
-    border: 1px solid ${({ theme }) => theme.colors.light};
+    border: 1px solid ${({ theme }) => theme.colors.gray};
     background-color: ${({theme}) => theme.colors.background};
     border-radius: 50rem;
     position: absolute;
@@ -29,7 +29,7 @@ const StyledSwitch = styled.span`
         width: 1.125rem;
         height: 1.125rem;
         background-color: ${({theme}) => theme.colors.background};
-        box-shadow: 0 0 2px 2px ${({ theme }) => theme.colors.light};
+        box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.gray};
         transition: all .25s ease;
     }
 `
@@ -38,8 +38,8 @@ const StyledInput = styled.input`
     display: none;
     
     &:checked + ${StyledSwitch} {
-        border: 1px solid ${({theme}) => theme.colors.foreground};
-        background-color: ${({theme}) => theme.colors.foreground};
+        border: 1px solid ${({ theme }) => theme.colors.primary};
+        background-color: ${({theme}) => theme.colors.primary};
         &:before {
             box-shadow: unset;
             transform: translateX(20px);

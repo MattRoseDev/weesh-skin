@@ -47,11 +47,11 @@ export default (props) => {
     return <StyledContainer {...props}>
         {props.to ? <StyledLink to={props.to}>
             <StyledCountItem>
-                {props.number && <StyledNumber>{props.number}</StyledNumber>}
+                {props.number != null && <StyledNumber>{props.number}</StyledNumber>}
                 <StyledHoverTitle>{props.title}</StyledHoverTitle>
             </StyledCountItem>
         </StyledLink> : <StyledCountItem>
-            {props.number && <StyledNumber>{props.number}</StyledNumber>}
+            {props.number != null && <StyledNumber>{props.number}</StyledNumber>}
             <StyledTitle>{props.title}</StyledTitle>
         </StyledCountItem>}
     </StyledContainer>

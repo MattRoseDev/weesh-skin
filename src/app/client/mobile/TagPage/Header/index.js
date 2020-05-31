@@ -13,6 +13,7 @@ const StyledHeader = styled.div`
 `
 
 const StyledTag = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
     width: 95%;
     font-weight: bold;
     word-break: break-word;
