@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom'
 import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import WelcomePicture from 'Root/public/img/login/2803208.png'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
@@ -111,9 +111,7 @@ export default () => {
     
     auth.token && history.push('/')
     return <StyledContainer>
-        <Helmet>
-            <title>{helpers.titleTag({ type: 'Login' })}</title>
-        </Helmet>
+        <Meta type='login' />
         <StyledBox>
             <StyledImg height='400' src={WelcomePicture} />
             <StyledLogin onSubmit={e => handleSubmit(e)}>

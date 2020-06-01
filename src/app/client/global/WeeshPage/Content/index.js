@@ -13,8 +13,7 @@ import BannerMessage from 'Root/components/global/BannerMessage'
 import C from 'Root/constants'
 import api from 'Root/api'
 import { WeeshPageContext } from 'Root/contexts/weeshPage'
-import { Helmet } from 'react-helmet'
-import helpers from 'Root/helpers'
+import Meta from 'Root/meta'
 
 const StyledContainer = styled.div`
     /* padding: .5rem; */
@@ -68,14 +67,7 @@ export default (props) => {
     }, [data, error])
 
     return <StyledContainer>
-        {weeshPage.user && <Helmet>
-            <title>{helpers.titleTag({ 
-                type: 'WeeshPage',
-                data: {
-                    weesh: weeshPage
-                }
-            })}</title>
-        </Helmet>}
+        {weeshPage.user && <Meta type='WeeshPage' data={{weesh: weeshPage}}/>}
         {loading ? <StyledLoadingContainer>
             <Loading size={28} strokeWidth={1.25} color='gray' />
         </StyledLoadingContainer> : called && state && <StyledWeesh>

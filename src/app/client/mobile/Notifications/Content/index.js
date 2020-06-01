@@ -9,7 +9,7 @@ import { AuthContext } from 'Root/contexts/auth'
 import { useLazyQuery, useMutation, useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import C from 'Root/constants'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
@@ -72,9 +72,7 @@ export default () => {
     ])
 
     return <StyledContainer>
-        <Helmet>
-            <title>{helpers.titleTag()}</title>
-        </Helmet>
+        <Meta />
         {loadRequestsResponse.data && loadRequestsResponse.data.getRequestsUsersConnectionByIdForUser.userConnections.length > 0 && <Link to={`/${auth.username}/requests`}>
             <StyledRequestContainer>
                 Follow Requests

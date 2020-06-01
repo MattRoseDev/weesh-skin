@@ -9,7 +9,7 @@ import Loading from 'Root/components/global/Loading'
 import Cards from './Cards'
 import helpers from 'Root/helpers'
 import C from 'Root/constants'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
@@ -44,9 +44,7 @@ export default () => {
     const { explore } = React.useContext(ExploreContext)
 
     return <StyledMain>
-        <Helmet>
-            <title>{helpers.titleTag()}</title>
-        </Helmet>
+        <Meta />
         {explore.loading && <StyledLoading>
             <Loading size={20} strokeWidth={1.25} color='gray' />
         </StyledLoading>}

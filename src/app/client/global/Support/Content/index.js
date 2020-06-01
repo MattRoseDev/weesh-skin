@@ -15,7 +15,7 @@ import api from 'Root/api'
 import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import Button from 'Root/components/global/Button'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
@@ -92,9 +92,7 @@ export default (props) => {
     }, [addMessageResponse])
 
     return <StyledContainer>
-        <Helmet>
-            <title>{helpers.titleTag({ type: 'Support' })}</title>
-        </Helmet>
+        <Meta type='Support' />
         {(addMessageResponse && addMessageResponse.error) && <ErrorMessage margin='.75rem 0 0' width='100%' message={addMessageResponse.error.graphQLErrors[0].message} />}
         <StyledForm onSubmit={e => handleSubmit(e)}>
             <Input label='Subject' padding='.65rem' value={state.subject} onChange={(e) => handleChange({ key: 'subject', e })} width={100} margin='1rem 0 0' />
