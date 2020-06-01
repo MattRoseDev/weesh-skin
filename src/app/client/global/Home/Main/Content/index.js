@@ -10,7 +10,7 @@ import { AuthContext } from 'Root/contexts/auth'
 import api from 'Root/api'
 import C from 'Root/constants'
 import authError from 'Root/errors/auth'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
@@ -68,9 +68,7 @@ export default () => {
     }, [data])
 
     return <StyledContainer>
-        <Helmet>
-            <title>{helpers.titleTag()}</title>
-        </Helmet>
+        <Meta />
         {loading ? <StyledLoadingContainer>
             <Loading size={28} strokeWidth={1.25} color='gray' />
         </StyledLoadingContainer> : state && state.length > 0 && <InfiniteScroll onLoadMore={handlePaginate} hasNextPage={nextPage} padding='.5rem .5rem 3.125rem'>

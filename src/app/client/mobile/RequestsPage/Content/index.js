@@ -10,7 +10,7 @@ import { useQuery } from '@apollo/react-hooks'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import { AuthContext } from 'Root/contexts/auth'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div``
@@ -57,9 +57,7 @@ export default (props) => {
     }, [data, error])
 
     return <StyledContainer>
-        <Helmet>
-            <title>{helpers.titleTag()}</title>
-        </Helmet>
+        <Meta />
         {loading ? <StyledLoaderContainer>
             <Loader size={20} strokeWidth={1.25} color='gray' />
         </StyledLoaderContainer> : state && <List request={true} index={switchStatus(status).index} users={state}/>}

@@ -14,7 +14,7 @@ import api from 'Root/api'
 import styled from 'styled-components'
 import authError from 'Root/errors/auth'
 import helpers from 'Root/helpers'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
@@ -76,14 +76,7 @@ export default (props) => {
     }, [data])
     
     return <StyledContainer>
-        {user && <Helmet>
-            <title>{helpers.titleTag({
-                type: 'UserProfile',
-                data: {
-                    user
-                }
-            })}</title>
-        </Helmet>}
+        {user && <Meta type='UserProfile' data={{user}} />}
         {loading ? <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' /> : called && user && <>
             <Header {...props} />
             {

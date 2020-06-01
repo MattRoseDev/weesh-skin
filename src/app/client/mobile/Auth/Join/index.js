@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 import useHistory from 'Root/hooks/useHistory'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledLogin = styled.form`
@@ -71,9 +71,7 @@ export default () => {
     
     // auth.token && history.push('/')
     return <StyledLogin onSubmit={e => handleSubmit(e)}>
-        <Helmet>
-            <title>{helpers.titleTag({ type: 'Join' })}</title>
-        </Helmet>
+        <Meta type='Join' />
         <Logo fontSize={4}/>
         {error && <ErrorMessage width='75%' message={error.graphQLErrors[0].message} />}
         <Input margin='.5rem 0 0' onChange={(e) => {

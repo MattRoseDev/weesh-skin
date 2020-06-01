@@ -20,7 +20,7 @@ import UsernameInput from './UsernameInput'
 import EmailInput from './EmailInput'
 import PasswordInput from './PasswordInput'
 import Themes from './Themes'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledMain = styled.div`
@@ -153,9 +153,7 @@ export default (props) => {
     
     
     return editProfile ? <StyledMain>
-        <Helmet>
-            <title>{helpers.titleTag({ type: 'EditProfile' })}</title>
-        </Helmet>
+        <Meta type='EditProfile' />
         <StyledLogoutContainer>
             <Button padding='.5rem .75rem' radius='50rem' fontWeight='bold' color='primary' hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' to='/logout'>{C.txts.en.editProfile.header.logout}</Button>
         </StyledLogoutContainer>

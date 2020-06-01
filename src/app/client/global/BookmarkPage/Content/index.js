@@ -13,7 +13,7 @@ import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import styled from 'styled-components'
 import authError from 'Root/errors/auth'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
@@ -64,9 +64,7 @@ export default (props) => {
     }, [data, error])
     
     return auth.username ? <StyledContainer>
-        <Helmet>
-            <title>{helpers.titleTag({ type: 'Bookmarks' })}</title>
-        </Helmet>
+        <Meta type='Bookmarks' />
         {loading ? <StyledLoadingContainer>
             <Loading size={28} strokeWidth={1.25} color='gray' />
         </StyledLoadingContainer> : called && bookmark && <>

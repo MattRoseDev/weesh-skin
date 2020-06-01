@@ -12,7 +12,7 @@ import useHistory from 'Root/hooks/useHistory'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import WelcomePicture from 'Root/public/img/login/2803208.png'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
@@ -89,9 +89,7 @@ export default () => {
     
     auth.token && history.push('/')
     return <StyledContainer>
-        <Helmet>
-            <title>{helpers.titleTag({ type: 'Join' })}</title>
-        </Helmet>
+        <Meta type='Join' />
         <StyledBox>
             <StyledImg height='400' src={WelcomePicture} />
             <StyledJoin onSubmit={e => handleSubmit(e)}>

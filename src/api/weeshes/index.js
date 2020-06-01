@@ -149,6 +149,58 @@ const getShowcase = gql`
                         totalDocs
                     }
                 }
+                isLiked {
+                    user {
+                        id
+                        username
+                    }
+                }
+                isBookmarked {
+                    user {
+                        id
+                        username
+                    }
+                }
+                comment {
+                    weeshComments {
+                        user {
+                            id
+                            username
+                            firstName
+                            lastName
+                            avatarAddress
+                            unknown {
+                                fullname
+                                avatar
+                            }
+                        }
+                        content
+                        children {
+                            weeshComments {
+                                user {
+                                    id
+                                    username
+                                    firstName
+                                    lastName
+                                    avatarAddress
+                                    unknown {
+                                        fullname
+                                        avatar
+                                    }
+                                }
+                                content
+                                updatedAt
+                            }
+                            paginate {
+                                totalDocs
+                            }
+                        }
+                        updatedAt
+                    }
+                    paginate {
+                        totalDocs
+                    }
+                }
                 commentsCounter
                 updatedAt
             }

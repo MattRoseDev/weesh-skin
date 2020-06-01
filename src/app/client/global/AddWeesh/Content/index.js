@@ -9,7 +9,7 @@ import SliderTab from 'Root/components/global/SliderTab'
 import Loading from 'Root/components/global/Loading'
 import uuid from 'uuid'
 import C from 'Root/constants'
-import { Helmet } from 'react-helmet'
+import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 
@@ -116,9 +116,7 @@ export default (props) => {
     })
 
     return  auth.username ? <StyledContainer>
-        <Helmet>
-            <title>{helpers.titleTag({ type: 'AddWeesh' })}</title>
-        </Helmet>
+        <Meta type='AddWeesh' />
         <StyledFrame>
             <StyledSliderTabContainer>
                 <StyledSliderTabTitle>
