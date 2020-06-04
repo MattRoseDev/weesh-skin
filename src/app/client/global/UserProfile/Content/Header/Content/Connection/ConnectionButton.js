@@ -28,6 +28,7 @@ const initialDialog = {
 
 export default (props) => {
     const { user, dispatch: userDispatch } = React.useContext(UserContext)
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState({userId: user.id})
     const [dialog, setDialog] = React.useState(initialDialog)
     const history = useHistory()
@@ -93,7 +94,7 @@ export default (props) => {
             }} fontWeight='bold' color='red'>{acceptButtonType}</DialogButton>
             <DialogButton fontWeight='bold' onClick={() => toggleDialog(false)}>{cancelButtonType}</DialogButton>
         </Dialog>
-        <Button color='primary' hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' fontWeight='bold' isLoading={loading || undefined} onClick={() => {
+        <Button color={auth.color} hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' fontWeight='bold' isLoading={loading || undefined} onClick={() => {
             if (props.type == 'FOLLOWING') toggleDialog(true)
             else handleConnection()
         }} padding='.5rem .75rem' radius='50rem'>
