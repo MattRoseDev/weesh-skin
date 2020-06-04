@@ -52,21 +52,23 @@ const StyledButton = styled.button`
     `};
     transition: all .2s ease;
     outline: none;
+    overflow: hidden;
 `
 
 const StyledLoader = styled.div`
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
+    left: ${({ borderWidth }) => borderWidth ? `${borderWidth}` : 0};
+    right: ${({ borderWidth }) => borderWidth ? `${borderWidth}` : 0};
+    bottom: ${({ borderWidth }) => borderWidth ? `${borderWidth}` : 0};
+    top: ${({ borderWidth }) => borderWidth ? `${borderWidth}` : 0};
     padding: 0;
     margin: 0;
     ${C.styles.flex.flexRowCenter};
     ${({ theme, color }) => color && css`
         color: ${theme.colors[color]};
     `};
-    background: ${({ theme, background }) => background ? theme.colors[background] : 'transparent'};
+    background: ${({ theme, background }) => background ? 
+        theme.colors[background] : theme.colors.background};
     border-radius: ${({ radius }) => radius || '.75rem'};
 `
 
