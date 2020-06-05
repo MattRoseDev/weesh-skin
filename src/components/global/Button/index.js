@@ -26,8 +26,8 @@ const StyledButton = styled.button`
         p: 1px 1px 3px 1px ${({theme}) => theme.colors.light};
     `};
     border: none;
-    border-width: ${({ borderWidth }) => borderWidth || '0px'};
-    border-color: ${({ theme, borderColor }) => theme.colors[borderColor] || 'transparent'};
+    border-width: ${({ borderwidth }) => borderwidth || '0px'};
+    border-color: ${({ theme, bordercolor }) => theme.colors[bordercolor] || 'transparent'};
     border-style: ${({ borderStyle }) => borderStyle || 'solid'};
     ${C.styles.flex.flexRowCenter};
     font-weight: ${({ fontWeight }) => fontWeight || 'normal'};
@@ -44,9 +44,9 @@ const StyledButton = styled.button`
         color: ${theme.colors[color]};
     `};
     background: ${({ background, theme }) => background ? theme.colors[background] : 'transparent'};
-    ${({ hoverBackground, theme }) => hoverBackground && css`
+    ${({ hoverbackground, theme }) => hoverbackground && css`
         &:hover {
-            background: ${theme.colors[hoverBackground]};
+            background: ${theme.colors[hoverbackground]};
             transition: all .2s ease;
         }
     `};
@@ -57,10 +57,10 @@ const StyledButton = styled.button`
 
 const StyledLoader = styled.div`
     position: absolute;
-    left: ${({ borderWidth }) => borderWidth ? `${borderWidth}` : 0};
-    right: ${({ borderWidth }) => borderWidth ? `${borderWidth}` : 0};
-    bottom: ${({ borderWidth }) => borderWidth ? `${borderWidth}` : 0};
-    top: ${({ borderWidth }) => borderWidth ? `${borderWidth}` : 0};
+    left: ${({ borderwidth }) => borderwidth ? `${borderwidth}` : 0};
+    right: ${({ borderwidth }) => borderwidth ? `${borderwidth}` : 0};
+    bottom: ${({ borderwidth }) => borderwidth ? `${borderwidth}` : 0};
+    top: ${({ borderwidth }) => borderwidth ? `${borderwidth}` : 0};
     padding: 0;
     margin: 0;
     ${C.styles.flex.flexRowCenter};

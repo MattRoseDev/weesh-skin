@@ -92,7 +92,7 @@ const StyledLoader = styled.div`
 export default (props) => {
     const { editProfile, dispatch: editProfileDispatch } = React.useContext(EditProfileContext)
     const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
-
+   
     const handleChange = ({key, e}) => {
         let variables
         switch (key) {
@@ -155,7 +155,7 @@ export default (props) => {
     return editProfile ? <StyledMain>
         <Meta type='EditProfile' />
         <StyledLogoutContainer>
-            <Button padding='.5rem .75rem' radius='50rem' fontWeight='bold' color='primary' hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' to='/logout'>{C.txts.en.editProfile.header.logout}</Button>
+            <Button padding='.5rem .75rem' radius='50rem' fontWeight='bold' color='primary' hoverbackground='lightPrimary' bordercolor='primary' borderwidth='1px' to='/logout'>{C.txts.en.editProfile.header.logout}</Button>
         </StyledLogoutContainer>
         <StyledInputGroup>
             <Input label={C.txts.en.editProfile.inputsLabel.firstName} padding='.65rem' value={editProfile.firstName} onInput={(e) => handleChange({ key: 'firstName', e })} margin='0 .5rem 0 0' width={100} placeholder={C.txts.en.editProfile.inputsLabel.firstName} />

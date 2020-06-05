@@ -8,11 +8,11 @@ import C from 'Root/constants'
 
 const handleStatus = (props, auth, user) => {
     if(!auth.token) {
-        return <Button color='primary' hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' radius='50rem' padding='.5rem 1.25rem' fontWeight='bold' to='/login'>Login</Button>
+        return <Button color='primary' hoverbackground='lightPrimary' bordercolor='primary' borderwidth='1px' radius='50rem' padding='.5rem 1.25rem' fontWeight='bold' to='/login'>Login</Button>
     }
 
     if (props.match.params.username == auth.username) {
-        return <Button radius='50rem' color='primary' hoverBackground='lightPrimary' borderColor='primary' borderWidth='1px' padding='.5rem 1.25rem' fontWeight='bold' to='settings/profile'>Settings</Button>
+        return <Button radius='50rem' color='primary' hoverbackground='lightPrimary' bordercolor='primary' borderwidth='1px' padding='.5rem 1.25rem' fontWeight='bold' to='settings/profile'>Settings</Button>
     }   
 
     if (user.connection) {
