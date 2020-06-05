@@ -17,10 +17,13 @@ const StyledHeaderDialog = styled.div`
 `   
 
 const StyledHeaderDialogMessage = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 1rem 0 0;
 `
 
-const StyledUsername = styled.strong``
+const StyledUsername = styled.strong`
+    color: inherit;
+`
 
 const initialDialog = {
     visible: false
