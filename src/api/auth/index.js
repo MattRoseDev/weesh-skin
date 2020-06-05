@@ -5,9 +5,13 @@ const login = gql`
         login(username: $username,password: $password) {
             user {
                 id
-                username
+                firstName
+                lastName
                 color
                 theme
+                bio
+                username
+                email
                 private
                 avatarAddress
                 unknown {

@@ -48,7 +48,7 @@ return editProfile && <StyledHeader>
                 width: 640,
                 height: 640,
             }))}>
-                    <Avatar user={editProfile} size={4} borderColor='background' borderWidth={4} />
+                    <Avatar user={editProfile} size={4} bordercolor='background' borderwidth={4} />
                 </EditableImage>
             </StyledAvatarFrame>
         </StyledImagesFrame>

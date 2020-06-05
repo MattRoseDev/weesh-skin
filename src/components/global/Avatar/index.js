@@ -21,9 +21,9 @@ const StyledAvatar = styled.span`
     background-image: url(${({ user }) => user ? user.unknown.avatar ? unknownAvatar : user.avatarAddress ? `${config.UPLOAD_URL}${user.avatarAddress}` : avatar : avatar});
     width: ${({ size }) => size || 2 }rem;
     height: ${({ size }) => size || 2 }rem;
-    border-width: ${({ borderWidth }) => borderWidth || 1 }px;
+    border-width: ${({ borderwidth }) => borderwidth || 1 }px;
     border-style: solid;
-    border-color: ${({ theme, borderColor }) => borderColor ? theme.colors[borderColor] : theme.colors.lightGray };
+    border-color: ${({ theme, bordercolor }) => bordercolor ? theme.colors[bordercolor] : theme.colors.lightGray };
     border-radius: 50%;
     background-position: center;
     background-size: cover;

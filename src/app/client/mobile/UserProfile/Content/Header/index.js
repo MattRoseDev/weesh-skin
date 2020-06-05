@@ -25,7 +25,7 @@ export default (props) => {
         <StyledImagesFrame>
             <Cover height={`${window.innerWidth / 3}px`} user={user} />
             <StyledAvatarFrame>
-                <Avatar user={user} size={4} borderColor='background' borderWidth={2} />
+                <Avatar user={user} size={4} bordercolor='background' borderwidth={2} />
             </StyledAvatarFrame>
         </StyledImagesFrame>
         <Content {...props} />

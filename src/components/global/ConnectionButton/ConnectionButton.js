@@ -96,7 +96,7 @@ export default (props) => {
             <Button background='background' color='gray' isLoading={loading || undefined} onClick={() => {
             if (type == 'FOLLOWING') toggleDialog(true)
             else handleConnection()
-            }} padding='.4rem .75rem' radius='50rem' width='6rem' borderColor='light' borderWidth='1px' loaderSize={16}>
+            }} padding='.4rem .75rem' radius='50rem' width='6rem' bordercolor='light' borderwidth='1px' loaderSize={16}>
             {C.txts.en.connections.buttonStatus[type]}
             </Button> : <Button background='primary' color='background' fontWeight='bold' isLoading={loading || undefined} onClick={() => {
             if (type == 'FOLLOWING') toggleDialog(true)

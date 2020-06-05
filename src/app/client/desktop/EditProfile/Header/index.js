@@ -44,7 +44,7 @@ export default () => {
     const { editProfile } = React.useContext(EditProfileContext)
     const [editUser, { data, error, loading }] = useMutation(api.users.edit)
     const history = useHistory()
-
+    
     const handleEditUser = () => {
         let variables = {}
 
@@ -77,7 +77,9 @@ export default () => {
         if (editProfile.theme != auth.theme) {
             variables['theme'] = auth.theme
         }
-
+        console.log(auth)
+        console.log(editProfile)
+        console.log(variables)
         Object.values(variables).length ? editUser({ variables }) : history.replace(`/${auth.username}`)
     }
 
