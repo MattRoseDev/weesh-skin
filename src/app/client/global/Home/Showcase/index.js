@@ -64,9 +64,7 @@ const StyledIconTitle = styled.span`
 export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
     const [state, setState] = React.useState(null)
-    const { data, called, error, loading } = useQuery(api.weeshes.getShowcase,{
-        fetchPolicy: 'no-cache',
-    })
+    const { data, called, error, loading } = useQuery(api.weeshes.getShowcase)
 
     const handleTheme = () => dispatch({ type: 'TOGGLE_THEME' })
 
