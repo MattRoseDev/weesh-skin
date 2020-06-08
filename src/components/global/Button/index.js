@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
 `
 
 const StyledContainer = styled.div`
-    /* margin: ${({ margin }) => margin || 'unset'}; */
+    margin: ${({ margin }) => margin || 'unset'};
     width: ${({ width }) => width ? `${width}` : 'unset'};
     ${C.styles.flex.flexRow};
     position: relative;
@@ -36,9 +36,6 @@ const StyledButton = styled.button`
     width: 100%;
     ${({ padding }) => padding && css`
         padding: ${padding};
-    `};
-    ${({ margin }) => margin && css`
-        margin: ${margin};
     `};
     ${({ color, theme }) => color && css`
         color: ${theme.colors[color]};
