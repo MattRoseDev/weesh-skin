@@ -9,6 +9,7 @@ const StyledLink = styled(Link)`
     ${C.styles.flex.flexRow};
     text-decoration: none;
     cursor: ${({ cursor }) => cursor || 'pointer'};
+    margin: ${({ margin }) => margin || 'unset'};
 `
 
 const StyledContainer = styled.div`
