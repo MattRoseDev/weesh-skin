@@ -29,10 +29,19 @@ const join = gql`
         join(email: $email, password: $password, firstName: $firstName) {
             user {
                 id
-                username
+                firstName
+                lastName
                 color
                 theme
+                bio
+                username
+                email
                 private
+                avatarAddress
+                unknown {
+                    fullname
+                    avatar
+                }
             }
             token
         }
