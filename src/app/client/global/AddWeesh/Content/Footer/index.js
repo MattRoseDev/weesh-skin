@@ -15,6 +15,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledButtonTitle = styled.span`
+    color: ${({theme}) => theme.colors.background};
     margin: 0 .5rem 0 0;
     font-weight: bold;
 `
