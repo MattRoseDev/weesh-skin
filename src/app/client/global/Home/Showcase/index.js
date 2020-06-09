@@ -34,7 +34,7 @@ const StyledQuote = styled.p`
 const StyledShowcase = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.justifyContentCenter};
-    width: 38rem;
+    width: ${() => innerWidth > 768 ? '38rem' : '100%'};
 `
 
 const StyledThemeButton = styled.header`

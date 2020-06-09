@@ -7,7 +7,7 @@ import { AuthContext } from 'Root/contexts/auth'
 export default (props) => {
     const { auth, dispatch } = React.useContext(AuthContext)
     const Icon = Feather[props.icon || 'User']
-    props.icon == 'Loader' && console.log(props)
+
     return <Icon 
         {...props}
         size={props.size || 20} 

@@ -100,7 +100,7 @@ export default (props) => {
         <Button color={auth.color} hoverbackground='lightPrimary' bordercolor='primary' borderwidth='1px' fontWeight='bold' isLoading={loading || undefined} onClick={() => {
             if (props.type == 'FOLLOWING') toggleDialog(true)
             else handleConnection()
-        }} padding='.5rem .75rem' radius='50rem'>
+        }} padding='.5rem .75rem' radius='50rem' width='6rem'>
             {props.children}
         </Button>
     </>
