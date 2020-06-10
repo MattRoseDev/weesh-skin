@@ -2,6 +2,7 @@ import React from 'react'
 import { MetaTags } from 'react-meta-tags'
 import Title from './Title'
 import Description from './Description'
+import Keywords from './Keywords'
 import Image from './Image'
 import Robots from './Robots'
 import logo from 'Root/public/favicon.png'
@@ -11,6 +12,7 @@ return <MetaTags>
         {/* General */}
         <title>{Title({...props})}</title>
         <meta name='description' content={Description({...props})} />
+        <meta name='keywords' content={Keywords({...props})} />
         <meta name='robots' content={Robots({...props})} />
         <link rel='icon' href={logo} />
         {/* Open Graph data */}
