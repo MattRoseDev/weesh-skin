@@ -49,12 +49,13 @@ export default (props) => {
 
     React.useEffect(() => {
         if (getWeeshesResponse.data) {
+            console.log(getWeeshesResponse.data.getWeeshesForUser)
             const response = getWeeshesResponse.data.getWeeshesForUser.weeshes
             userDispatch({
                 type: 'ADD_WEESHES',
                 data: response
             })
-            setNextPage(getWeeshesResponse.data.getWeeshesForUser.paginate.nextPage)
+            setNextPage(getWeeshesResponse.data.getWeeshesForUser.paginate.nextPage || null)
         }
     }, [getWeeshesResponse])
 
@@ -71,7 +72,7 @@ export default (props) => {
                 type: 'ADD_USER_DATA',
                 data: response
             })
-            setNextPage(data.getUserByUsernameForUser.weesh.paginate.nextPage)
+            setNextPage(data.getUserByUsernameForUser.weesh.paginate.nextPage || null)
         }
     }, [data])
     
