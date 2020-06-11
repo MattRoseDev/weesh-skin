@@ -65,16 +65,16 @@ export default (props) => {
         <StyledHeaderTitle>
             TRENDING
         </StyledHeaderTitle>
-        {state && <Item {...state[0]} fontSize='2rem' />}
+        {state && <Item data={state[0]} fontSize='2rem' />}
         <StyledTagsContainer>
-            {state && state.map((tag, key) => key > 0 ? <Item {...tag} key={uuid()}/> : '')}
+            {state && state.map((tag, key) => key > 0 ? <Item data={tag} key={uuid()}/> : '')}
         </StyledTagsContainer>
     </StyledContainer>
 }
 
 const Item = (props) => {
-    return <StyledItem {...props} to={`/t/${props.title}`}>
-        {props.title && <StyledItemTitle>#{props.title}</StyledItemTitle>}
-        {props.weeshCounter && <StyledWeeshCounter fontSize={props.fontSize ? '1rem' : '.75rem'}>{props.weeshCounter} weeshes</StyledWeeshCounter>}
+    return <StyledItem {...props} to={`/t/${props.data.title}`}>
+        {props.data.title && <StyledItemTitle>#{props.data.title}</StyledItemTitle>}
+        {props.data.weeshCounter && <StyledWeeshCounter fontSize={props.data.fontSize ? '1rem' : '.75rem'}>{props.data.weeshCounter} weeshes</StyledWeeshCounter>}
     </StyledItem>
 }
