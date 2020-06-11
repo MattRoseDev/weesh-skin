@@ -3,6 +3,7 @@ import Sidebar from './Sidebar'
 import Main from './Main'
 import Footer from './Footer'
 import SnackBar from 'Root/components/desktop/SnackBar'
+import Alert from 'Root/components/desktop/Alert'
 import Container from 'Root/components/desktop/Container'
 import styled from 'styled-components'
 import C from 'Root/constants'
@@ -25,6 +26,7 @@ export default (props) => {
 
     return <Container width='80rem' margin='0 auto'>
         <StyledContainer>
+            <Alert/>
             <SnackBar />
             {limitedRoutes.includes(history.location.pathname) && !auth.token ? '' : <Sidebar />}
             <Main>
