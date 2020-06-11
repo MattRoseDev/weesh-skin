@@ -4,7 +4,7 @@ import Client from './client'
 import { ApolloProvider } from '@apollo/react-hooks'
 import apollo from 'Root/apollo'
 import AuthProvider from 'Root/contexts/auth'
-import ExploreProvider from 'Root/contexts/explore'
+import AlertProvider from 'Root/contexts/alert'
 import SnackBarProvider from 'Root/contexts/snackbar'
 import NotificationProvider from 'Root/contexts/notifications'
 import uuid from 'uuid'
@@ -22,9 +22,11 @@ export default () => {
         <AuthProvider>
             <NotificationProvider>
                 <SnackBarProvider>
-                    <ApolloProvider client={apollo}>
-                        {routes.map(route => <Route key={uuid()} {...route} />)}
-                    </ApolloProvider>
+                    <AlertProvider>
+                        <ApolloProvider client={apollo}>
+                            {routes.map(route => <Route key={uuid()} {...route} />)}
+                        </ApolloProvider>
+                    </AlertProvider>
                 </SnackBarProvider>
             </NotificationProvider>
         </AuthProvider>
