@@ -51,7 +51,7 @@ export default (props) => {
         user && setNumbers({
             followers: user.followers.paginate.totalDocs,
             following: user.following.paginate.totalDocs,
-            weeshes: user.weesh.paginate.totalDocs,
+            weeshes: user.weesh.paginate ? user.weesh.paginate.totalDocs : 0,
         })
     }, [user])
 

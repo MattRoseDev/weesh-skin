@@ -3,7 +3,7 @@ import Header from './Header'
 import UserNotFound from 'Root/components/global/NotFound/User'
 import Loading from 'Root/components/global/Loading'
 import Container from 'Root/components/desktop/Container'
-import Main from './Main'
+import Main from 'Root/app/client/global/UserProfile/Content/Main'
 import C from 'Root/constants'
 import BannerMessage from 'Root/components/global/BannerMessage'
 import { useQuery, useLazyQuery } from '@apollo/react-hooks'
@@ -54,7 +54,7 @@ export default (props) => {
                 type: 'ADD_WEESHES',
                 data: response
             })
-            setNextPage(getWeeshesResponse.data.getWeeshesForUser.paginate.nextPage)
+            getWeeshesResponse.data.getWeeshesForUser.paginate && setNextPage(getWeeshesResponse.data.getWeeshesForUser.paginate.nextPage)
         }
     }, [getWeeshesResponse])
 
@@ -71,7 +71,7 @@ export default (props) => {
                 type: 'ADD_USER_DATA',
                 data: response
             })
-            setNextPage(data.getUserByUsernameForUser.weesh.paginate.nextPage)
+            data.getUserByUsernameForUser.weesh.paginate && setNextPage(data.getUserByUsernameForUser.weesh.paginate.nextPage)
         }
     }, [data])
     
@@ -80,7 +80,7 @@ export default (props) => {
         {loading ? <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' /> : called && user && <>
             <Header {...props} />
             {
-                user.private && user.connection.status < 2 && auth.id !== user.id ? <BannerMessage icon='Lock' title={C.txts.en.g.privateAccount} height={50} /> : user.weesh.weeshes.length > 0 ? <Main {...props} nextPage={nextPage} handlePaginate={handlePaginate} /> : <BannerMessage icon='PenTool' title={C.txts.en.g.noWeeshesYet} height={50} />
+                user.private && user.connection.status < 2 && auth.id !== user.id ? <BannerMessage icon='Lock' padding='3rem 0 0' title={C.txts.en.g.privateAccount} height={50} /> : user.weesh.weeshes.length > 0 ? <Main {...props} nextPage={nextPage} handlePaginate={handlePaginate} /> : <BannerMessage icon='PenTool' padding='3rem 0 0' title={C.txts.en.g.noWeeshesYet} height={50} />
             }
         </>}
         {!loading && error && !user && <BannerMessage padding='3rem 0 0' icon='User' title={C.txts.en.g.userNotFound} />}
