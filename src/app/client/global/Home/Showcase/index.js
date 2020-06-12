@@ -11,6 +11,7 @@ import { AuthContext } from 'Root/contexts/auth'
 import api from 'Root/api'
 import helpers from 'Root/helpers'
 import C from 'Root/constants'
+import Meta from 'Root/meta'
 
 const StyledContainer = styled.div`
     background: ${({theme}) => theme.colors.background};
@@ -80,6 +81,7 @@ export default () => {
     }, [data, error])
     
     return <StyledContainer>
+        <Meta />
         <StyledThemeButton>
             <StyledIconContainer onClick={handleTheme}>
                 <Icon size={20} color='background' icon={`${auth.theme == 'light' ? 'Moon' : 'Sun'}`} />
