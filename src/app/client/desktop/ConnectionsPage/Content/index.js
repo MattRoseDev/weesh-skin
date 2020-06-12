@@ -57,7 +57,6 @@ export default (props) => {
 
         if (called && data) {
             const result = data[switchStatus(status).data].userConnections
-            console.log(result)
             setState(result)
         }
     }, [data, error])

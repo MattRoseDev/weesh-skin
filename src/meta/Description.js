@@ -15,7 +15,7 @@ export default ({ data, type } = { data: null }) => {
         case 'Bookmarks':
             return `Bookmarks • Weesh`
         case 'Showcase':
-            return `Weesh • Showcase`
+            return `Weesh`
         case 'Login':
             return `Login • Weesh`
         case 'Join':

@@ -59,7 +59,6 @@ export default () => {
             dispatch({ type: 'ADD_WEESH', data:{
                 content: ''
             }})
-            console.log(res)
         }
     }, [data])
 

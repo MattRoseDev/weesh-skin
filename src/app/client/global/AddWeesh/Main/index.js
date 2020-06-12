@@ -83,7 +83,6 @@ export default (props) => {
         let weeshContent = frontInput.current.value.substr(0, frontInput.current.selectionStart + spacePosition)
         
         let tags = weeshContent.split(C.regexes.weesh)
-        console.log(`'${weeshContent}'`,tags)
         if (tags && tags.length > 2 && tags[tags.length - 1] == '' && tags[tags.length - 2].startsWith('#')) {
             getSuggestion({
                 variables: {
@@ -96,7 +95,6 @@ export default (props) => {
                 }
             })
         } else {
-            console.log('no')
             dispatch({
                 type: 'EMPTY_SUGGESTION_TAGS'
             })

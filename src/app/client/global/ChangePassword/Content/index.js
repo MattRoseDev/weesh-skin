@@ -72,10 +72,6 @@ export default (props) => {
 
     React.useEffect(() => {
         if(changePasswordResponse.data) {
-            console.log(changePasswordResponse.data)
-        }
-
-        if(changePasswordResponse.data) {
             history.goBack()
             snackbarDispatch({
                 type: 'SET_DATA',

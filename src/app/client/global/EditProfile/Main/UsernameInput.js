@@ -22,9 +22,7 @@ export default (props) => {
     })
 
     const handleChange = ({ key, e }) => {
-        console.log(auth.username, e.target.value )
         if (e.target.value.length > 4) {
-            console.log(auth.username !== e.target.value)
             if (auth.username !== e.target.value) {
                 checkUsername({
                     variables: {

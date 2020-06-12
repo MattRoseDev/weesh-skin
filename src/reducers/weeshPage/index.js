@@ -13,7 +13,6 @@ export const weeshPageReducer = (state, action) => {
             }
         case 'ADD_COMMENT': 
             if(state.reply) {
-                console.log('reply')
                 weeshComments = state.comment.weeshComments
                 weeshComments = weeshComments.map(weeshComment => {
                     if (weeshComment.id == state.reply.parentId) {
@@ -22,7 +21,6 @@ export const weeshPageReducer = (state, action) => {
                     return weeshComment
                 })
             } else {
-                console.log('comment')
                 weeshComments = state.comment.weeshComments
                 weeshComments.push(action.data)
             }
