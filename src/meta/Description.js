@@ -7,19 +7,19 @@ export default ({ data, type } = { data: null }) => {
         case 'Tags':
             return `#${data.tag} • Weesh`
         case 'EditProfile':
-            return `Edit Profile • Weesh`
-        case 'AddWeesh':
-            return `Add • Weesh`
-        case 'Support':
-            return `Support • Weesh`
-        case 'Bookmarks':
-            return `Bookmarks • Weesh`
-        case 'Showcase':
             return `Weesh`
+        case 'AddWeesh':
+            return `Weesh`
+        case 'Support':
+            return `Weesh`
+        case 'Bookmarks':
+            return `Weesh`
+        case 'Showcase':
+            return `What Do You Want?!`
         case 'Login':
-            return `Login • Weesh`
+            return `Log In to Weesh`
         case 'Join':
-            return `Join • Weesh`
+            return `Join Us`
         default:
             return 'Weesh'
     }
