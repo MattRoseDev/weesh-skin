@@ -44,7 +44,6 @@ export default (props) => {
         if (error) {
             console.log(error)
         }
-        console.log({ error, data, called, loading, fetchMore })
         if (called && data && !loading) {
             const result = data.exploreAllForUser
             dispatch({

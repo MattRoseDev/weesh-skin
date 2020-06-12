@@ -44,36 +44,12 @@ export default (props) => {
     })
 
     React.useEffect(() => {
-        console.log({ data, called, error, loading })
-        if(!data) {
-            // fetchMore({
-            //     variables: {
-            //         username: `${match.params.username}`
-            //     },
-            //     updateQuery: (prev, { fetchMoreResult, ...rest }) => {
-            //         return fetchMoreResult
-            //     }, 
-            // })
-        }
-        // if(!data) {
-        //     fetchMore({
-        //         variables: {
-        //             username: `${match.params.username}`
-        //         },
-        //         updateQuery: (prev, { fetchMoreResult, ...rest }) => {
-        //             return fetchMoreResult
-        //         },
-        //     })
-        // }   
-        
         if(error) {
             authError({ error }) && dispatch({ type: 'LOGOUT' })
-            console.log(error)
         }
 
         if (called && data) {
             const result = data.getWeeshesByTagForUser
-            console.log(result)
             tagDispatch({
                 type: 'ADD_TAG_DATA',
                 data: result

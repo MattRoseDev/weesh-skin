@@ -47,7 +47,6 @@ export default (props) => {
 
 
     React.useEffect(() => {
-        console.log({ data, called, error, loading })
         
         if(error) {
             authError({ error }) && dispatch({ type: 'LOGOUT' })

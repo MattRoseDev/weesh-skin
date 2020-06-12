@@ -9,13 +9,12 @@ import WeeshForShowcase from 'Root/components/global/WeeshForShowcase'
 import { useQuery } from '@apollo/react-hooks'
 import { AuthContext } from 'Root/contexts/auth'
 import api from 'Root/api'
-import helpers from 'Root/helpers'
 import C from 'Root/constants'
 import Meta from 'Root/meta'
 
 const StyledContainer = styled.div`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
     padding:  0 .5rem .5rem;
 `
@@ -26,7 +25,7 @@ const StyledHeader = styled.div`
 `
 
 const StyledQuote = styled.p`
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: ${({ theme }) => theme.colors.foreground};
     font-weight: lighter;
     padding: 1rem 0 2rem;
@@ -53,13 +52,14 @@ const StyledIconContainer = styled.button`
     padding: 0 .5rem;
     border-radius: 50rem;
     height: 2rem;
+    cursor: pointer;
 `
 
 const StyledIconTitle = styled.span`
     color: ${({ theme }) => theme.colors.background};
     padding: .25rem;
     font-size: .85rem;
-`   
+`
 
 export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
@@ -78,9 +78,9 @@ export default () => {
             setState(result)
         }
     }, [data, error])
-    
+
     return <StyledContainer>
-        <Meta />
+        <Meta type='Showcase' />
         <StyledThemeButton>
             <StyledIconContainer onClick={handleTheme}>
                 <Icon size={20} color='background' icon={`${auth.theme == 'light' ? 'Moon' : 'Sun'}`} />
@@ -93,8 +93,8 @@ export default () => {
             <Auth />
         </StyledHeader>
         <StyledShowcase>
-            {loading ? <Loading size={28} strokeWidth={1.25} color='gray' /> : state && state.weeshes && 
-                state.weeshes.map((weesh, key) => 
+            {loading ? <Loading size={28} strokeWidth={1.25} color='gray' /> : state && state.weeshes &&
+                state.weeshes.map((weesh, key) =>
                     <WeeshForShowcase {...weesh} key={uuid()} lastItem={key >= data.getTheBestWeeshesForUser.weeshes.length - 1} />
                 )}
         </StyledShowcase>

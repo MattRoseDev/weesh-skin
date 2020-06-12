@@ -77,7 +77,7 @@ export default (props) => {
             visible
         }))
     }
-    console.log(props)
+
     return <>
         <Dialog width='18rem' {...dialog} toggleDialogFunction={(visible) => toggleDialog(visible)}>
             <StyledHeaderDialog>

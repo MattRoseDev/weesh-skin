@@ -24,7 +24,6 @@ export default () => {
     React.useEffect(() => {
         if (called && data) {
             const response = data.getTheBestWeeshesForUser
-            console.log(response)
             setState(response)
         }
     },[data])

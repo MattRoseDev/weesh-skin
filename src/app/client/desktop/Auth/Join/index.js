@@ -83,7 +83,6 @@ export default () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('hello')
         handleJoin()
     }
     

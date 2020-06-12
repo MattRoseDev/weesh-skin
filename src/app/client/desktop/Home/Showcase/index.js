@@ -14,8 +14,8 @@ import C from 'Root/constants'
 import Meta from 'Root/meta'
 
 const StyledContainer = styled.div`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
     padding:  0 .5rem .5rem;
 `
@@ -60,7 +60,7 @@ const StyledIconTitle = styled.span`
     color: ${({ theme }) => theme.colors.background};
     padding: .25rem;
     font-size: .85rem;
-`   
+`
 
 export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
@@ -79,9 +79,9 @@ export default () => {
             setState(result)
         }
     }, [data, error])
-    
+
     return <StyledContainer>
-        <Meta />
+        <Meta type='Showcase' />
         <StyledThemeButton>
             <StyledIconContainer onClick={handleTheme}>
                 <Icon size={20} color='background' icon={`${auth.theme == 'light' ? 'Moon' : 'Sun'}`} />
@@ -94,8 +94,8 @@ export default () => {
             <Auth />
         </StyledHeader>
         <StyledShowcase>
-            {loading ? <Loading size={28} strokeWidth={1.25} color='gray' /> : state && state.weeshes && 
-                state.weeshes.map((weesh, key) => 
+            {loading ? <Loading size={28} strokeWidth={1.25} color='gray' /> : state && state.weeshes &&
+                state.weeshes.map((weesh, key) =>
                     <WeeshForShowcase {...weesh} key={uuid()} lastItem={key >= data.getTheBestWeeshesForUser.weeshes.length - 1} />
                 )}
         </StyledShowcase>

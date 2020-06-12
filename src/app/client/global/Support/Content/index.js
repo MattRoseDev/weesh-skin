@@ -71,10 +71,6 @@ export default (props) => {
 
     React.useEffect(() => {
         if(addMessageResponse.data) {
-            console.log(addMessageResponse.data)
-        }
-
-        if(addMessageResponse.data) {
             history.goBack()
             snackbarDispatch({
                 type: 'SET_DATA',
