@@ -95,9 +95,9 @@ export default () => {
                 password
             }))
         }} width={75} icon='Lock' placeholder='Password' type='password'/>
-        <StyledForgotPasswordLink to='forgotpassword'>
+        {/* <StyledForgotPasswordLink to='forgotpassword'>
             {C.txts.en.auth.forgotPasswordLink}
-        </StyledForgotPasswordLink>
+        </StyledForgotPasswordLink> */}
         <Button color='background' background='primary' fontWeight='bold' isLoading={loading || undefined} margin='.5rem 0 0' padding='.85rem' fontSize='.85rem' width='75%'>{C.txts.en.auth.loginButton}</Button>
         <OR width={75} margin={1.5}/>
         <StyledJoinLink to='join'>{C.txts.en.auth.joinLink}</StyledJoinLink>
