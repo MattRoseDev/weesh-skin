@@ -31,9 +31,3 @@
     font-weight: normal;
     src: url(fonts/Inter/Inter-Regular.ttf);
 }
-
-/* Pacifico */
-@font-face {
-    font-family: Pacifico;
-    src: url(fonts/Pacifico/Pacifico-Regular.ttf);
-}
