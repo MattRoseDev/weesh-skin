@@ -33,6 +33,8 @@ const StyledBio = styled.pre`
     font-size: .85rem;
     font-weight: normal;
     color: ${({theme}) => theme.colors.foreground};
+    word-break: break-word;
+    white-space: pre-wrap;
 `
 
 const initVariables = {
