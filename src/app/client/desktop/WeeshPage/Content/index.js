@@ -77,7 +77,7 @@ return <StyledContainer>
                 <Comments {...state} />
             </StyledWeesh> 
         }
-        {!loading && error && !state && <BannerMessage padding='3rem 0 0' icon='Frown' 
+        {!loading && error && !state && <BannerMessage padding='3rem 0 5rem' icon='Frown' 
         title={C.txts.en.g.weeshNotFound} />}
     </StyledContainer>
 }
