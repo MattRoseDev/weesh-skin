@@ -56,10 +56,16 @@ module.exports = {
         extensions: ['.js', '.jsx'],
     },
     devServer: {
-        inline: true,
-        port: 3000,
+        // contentBase: '.',
+        historyApiFallback: true,
+        noInfo: true,
+        host: '0.0.0.0',
+        disableHostCheck: true,
         hot: true,
-        historyApiFallback: true
+        open: true,
+        inline: true,
+        compress: true,
+        port: 3000,
     },
     plugins: [
         new HtmlWebPackPlugin({
@@ -69,5 +75,5 @@ module.exports = {
         }),
         new CompressionPlugin()
     ],
-    performance: { hints: false }
+    // performance: { hints: false }
 }

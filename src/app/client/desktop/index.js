@@ -11,6 +11,7 @@ export default () => {
 
     return <Template>
         <Switch>
+            
             {routes.map(route => (route.private) ? <PrivateRoute key={uuid()} {...route} /> : <Route key={uuid()} {...route} />)}
         </Switch>
     </Template>
