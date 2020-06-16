@@ -25,6 +25,8 @@ const StyledMain = styled.p`
         padding: .25rem .75rem .25rem;
     /* `}; */
     line-height: 1.125rem;
+    white-space: pre-wrap;
+    word-break: break-word;
 `
 
 const StyledUsername = styled.strong`
