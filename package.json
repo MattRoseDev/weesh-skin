@@ -8,8 +8,7 @@
     "scripts": {
         "start": "webpack-dev-server --mode development --open --hot --watch",
         "dev": "webpack-dev-server --mode development --open --hot --watch",
-        "build": "webpack -p --mode production",
-        "sitemap": "babel-node sitemap-generator.js"
+        "build": "webpack -p --mode production"
     },
     "dependencies": {
         "@apollo/react-hooks": "^3.1.3",
