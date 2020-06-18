@@ -58,8 +58,6 @@ module.exports = {
     devServer: {
         // contentBase: '.',
         historyApiFallback: true,
-        noInfo: true,
-        host: '0.0.0.0',
         disableHostCheck: true,
         hot: true,
         open: true,

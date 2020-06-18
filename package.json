@@ -6,7 +6,7 @@
     "author": "Mohammad Mahdi <favecode@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "start": "webpack-dev-server --mode development --open --hot --watch",
+        "start": "webpack-dev-server --mode development --open --hot --watch --host 0.0.0.0",
         "dev": "webpack-dev-server --mode development --open --hot --watch",
         "build": "webpack -p --mode production"
     },
