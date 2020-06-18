@@ -1,12 +1,17 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import Comment from 'Root/components/global/Comment'
+import Dialog, { DialogButton } from 'Root/components/global/Dialog'
 import uuid from 'uuid'
 import { WeeshPageContext } from 'Root/contexts/weeshPage'
+import { AuthContext } from 'Root/contexts/auth'
 import moment from 'moment'
 import helpers from 'Root/helpers'
 import C from 'Root/constants'
+import { useMutation } from '@apollo/react-hooks'
+import api from 'Root/api'
 import Link from 'Root/components/global/Link'
+import Icon from 'Root/components/global/Icon'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -38,16 +43,25 @@ const StyledUsername = styled.strong`
 const StyledChild = styled.div``
 
 const StyledFooter = styled.div`
+    display: flex;
+    align-items: center;
     padding: 0 .5rem .75rem .75rem;
 `
 
-const StyledReply = styled.button`
-    color: ${({theme}) => theme.colors.gray};
+const StyledButton = styled.button`
+    display: flex;
+    align-items: center;
+    color: ${({theme, color}) => theme.colors[color]};
     background: none;
     border: none;
     font-weight: bold;
     font-size: .75rem;
+    margin: 0 0 0 .25rem;
     cursor: pointer;
+`
+
+const StyledButtonIcon = styled.span`
+    padding: 0 .2rem 0 0;
 `
 
 const StyledDate = styled.span`
@@ -55,9 +69,30 @@ const StyledDate = styled.span`
     font-size: .75rem;
 `
 
+const StyledHeaderDialog = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
+    ${C.styles.flex.flexColumnCenter};
+`
+
+const StyledHeaderDialogMessage = styled.strong`
+    color: ${({ theme }) => theme.colors.foreground};
+    padding: 1rem 0;
+`
+
+const initialDialog = {
+    visible: false
+}
+
 export default (props) => {
+    const [dialog, setDialog] = React.useState(initialDialog)
+    const { auth } = React.useContext(AuthContext)
     const { weeshPage, dispatch: weeshPageDispatch } = React.useContext(WeeshPageContext)
-    
+    const [removeWeeshComment, { data, error, loading, called }] = useMutation(api.weeshComments.remove,{
+        variables: {
+            commentId: `${props.id}`
+        }
+    })
+
     const handleReply = () => {
         weeshPageDispatch({
             type: 'SET_REPLY',
@@ -65,7 +100,43 @@ export default (props) => {
         })
         weeshPage.textarea.current.focus()
     }
+
+    const handleRemove = () => {
+        toggleDialog(true)
+    }
+
+    React.useEffect(() => {
+        if(data) {
+            weeshPageDispatch({
+                type: 'REMOVE_COMMENT',
+                data: {
+                    id: `${props.id}`
+                }
+            })
+        }
+    },[data])
+
+    const toggleDialog = (visible) => {
+        setDialog(prevState => ({
+            ...prevState,
+            visible
+        }))
+    }
+
+
     return <StyledContainer {...props}>
+        <Dialog width='18rem' {...dialog} toggleDialogFunction={(visible) => toggleDialog(visible)}>
+            <StyledHeaderDialog>
+                <StyledHeaderDialogMessage>
+                    Delete your Comment?
+                </StyledHeaderDialogMessage>
+            </StyledHeaderDialog>
+            <DialogButton onClick={() => {
+                removeWeeshComment()
+                toggleDialog(false)
+            }} fontWeight='bold' color='red'>Delete</DialogButton>
+            <DialogButton fontWeight='bold' onClick={() => toggleDialog(false)}>Cancel</DialogButton>
+        </Dialog>
         <StyledMain>
             <Link to={`/${props.user.username}`}>
                 <StyledUsername {...props}>
@@ -76,9 +147,20 @@ export default (props) => {
         </StyledMain>
         <StyledFooter>
             <StyledDate>
-                {helpers.dateFormat(moment(props.updatedAt).fromNow(true))}
+                {helpers.dateFormat(moment(props.createdAt).fromNow(true))}
             </StyledDate>
-            {!props.isChild && <StyledReply onClick={handleReply}>Reply</StyledReply>}
+            {!props.isChild && <StyledButton onClick={handleReply} color='gray'>
+                <StyledButtonIcon>
+                    <Icon icon='CornerUpRight' size={14} />
+                </StyledButtonIcon>
+                {C.txts.en.weeshPage.comment.reply}    
+            </StyledButton>}
+            {props.user.id == auth.id && <StyledButton onClick={handleRemove} color='red'>
+                <StyledButtonIcon>
+                    <Icon icon='Trash2' size={14} color='red'/>
+                </StyledButtonIcon>
+                {C.txts.en.weeshPage.comment.remove}    
+            </StyledButton>}
         </StyledFooter>
         <StyledChild>
             {props.children && props.children.weeshComments.length > 0 && props.children.weeshComments.map(comment => (<Comment isChild={true} key={uuid()} {...comment} />))}

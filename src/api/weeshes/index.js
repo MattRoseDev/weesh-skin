@@ -341,6 +341,7 @@ const getWeeshByLink = gql`
                         }
                     }
                     updatedAt
+                    createdAt
                 }
                 paginate {
                     totalDocs

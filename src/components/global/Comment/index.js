@@ -9,15 +9,16 @@ const StyledComment = styled.div`
     border: none;
     &:not(:first-child) {
         ${({ isChild }) => !isChild && css`
-        border-top: 1px dashed ${({theme}) => theme.colors.lightGray};
+            border-top: 1px dashed ${({theme}) => theme.colors.lightGray};
         `};
     }
 `
 
 export default (props) => {
     const isChild = props.isChild || false
+    const id = props.id
     return <StyledComment id={props.id} isChild={isChild}>
         <Header {...props}/>
-        <Main {...props}/>
+        <Main {...props} />
     </StyledComment>
 }
