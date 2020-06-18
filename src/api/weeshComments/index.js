@@ -41,7 +41,16 @@ const add = gql`
     }
 `
 
+const remove = gql`
+    mutation removeWeeshCommentForUser($commentId: ID!){
+        removeWeeshCommentForUser(commentId: $commentId) {
+            id
+        }
+    }
+`
+
 export default {
     add,
+    remove,
 }
 

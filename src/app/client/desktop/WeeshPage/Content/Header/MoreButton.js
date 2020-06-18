@@ -48,10 +48,12 @@ const StyledTextArea = styled.textarea`
 `
 
 const StyledHeaderDialog = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
 `
 
 const StyledHeaderDialogMessage = styled.strong`
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 1rem 0;
 `
 

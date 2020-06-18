@@ -33,6 +33,21 @@ export const weeshPageReducer = (state, action) => {
                 },
                 reply: null
             }
+        case 'REMOVE_COMMENT': 
+            weeshComments = state.comment.weeshComments
+            weeshComments = weeshComments.filter(weeshComment => {
+                if (weeshComment.id != action.data.id) {
+                    return weeshComment
+                }
+                
+            })
+            return {
+                ...state,
+                comment: {
+                    ...state.comment,
+                    weeshComments
+                },
+            }
         case 'SET_REPLY': 
             let reply = {
                 parentId: action.data.id,

@@ -5,6 +5,7 @@ import addWeesh from './addWeesh'
 import connections from './connections'
 import editProfile from './editProfile'
 import cropImage from './cropImage'
+import weeshPage from './weeshPage'
 
 export default {
     g,
@@ -14,4 +15,5 @@ export default {
     connections,
     editProfile,
     cropImage,
+    weeshPage,
 }
