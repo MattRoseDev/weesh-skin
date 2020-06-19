@@ -50,17 +50,19 @@ const StyledFooter = styled.div`
 
 const StyledButton = styled.button`
     display: flex;
-    align-items: center;
     color: ${({theme, color}) => theme.colors[color]};
     background: none;
     border: none;
     font-weight: bold;
     font-size: .75rem;
-    margin: 0 0 0 .25rem;
+    margin: 0 0 0 .75rem;
+    padding: 0;
     cursor: pointer;
 `
 
 const StyledButtonIcon = styled.span`
+    display: flex;
+    align-items: center;
     padding: 0 .2rem 0 0;
 `
 
