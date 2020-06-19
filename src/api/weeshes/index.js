@@ -348,7 +348,7 @@ const getWeeshByLink = gql`
                     totalDocs
                 }
             }
-            # commentsCounter
+            commentsCounter
             # updatedAt
         }
     }

@@ -152,7 +152,7 @@ export default (props) => {
             icon: 'Heart',
         },
         {
-            number: props.commentsCounter,
+            number: props.comment && props.commentsCounter,
             icon: 'MessageCircle',
         },
     ]

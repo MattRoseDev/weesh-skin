@@ -68,7 +68,7 @@ export default () => {
     }, [data])
 
     return <StyledContainer>
-        <Meta />
+        <Meta type='Home' />
         {loading ? <StyledLoadingContainer>
             <Loading size={28} strokeWidth={1.25} color='gray' />
         </StyledLoadingContainer> : state && state.length > 0 && <InfiniteScroll onLoadMore={handlePaginate} hasNextPage={nextPage} padding='.5rem .5rem 3.125rem'>

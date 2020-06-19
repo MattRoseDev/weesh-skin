@@ -134,7 +134,14 @@ export default (props) => {
                 </StyledHeaderDialogMessage>
             </StyledHeaderDialog>
             <DialogButton onClick={() => {
-                removeWeeshComment()
+                // removeWeeshComment()
+                console.log(weeshPage)
+                weeshPageDispatch({
+                    type: 'REMOVE_COMMENT',
+                    data: {
+                        id: `${props.id}`
+                    }
+                })
                 toggleDialog(false)
             }} fontWeight='bold' color='red'>Delete</DialogButton>
             <DialogButton fontWeight='bold' onClick={() => toggleDialog(false)}>Cancel</DialogButton>
