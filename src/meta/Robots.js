@@ -13,6 +13,6 @@ export default ({ data, type } = { data: null }) => {
         case 'Join':
             return 'index, follow'
         default:
-            return 'none'
+            return 'noindex, nofollow'
     }
 }

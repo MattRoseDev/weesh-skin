@@ -7,7 +7,8 @@ export const authReducer = (state, action) => {
             }
         case 'LOGOUT': 
             return {
-                ...state,
+                theme: state.theme,
+                color: state.color,
                 token: false,
             }
         case 'TOGGLE_THEME': 
