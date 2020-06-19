@@ -322,6 +322,7 @@ const getWeeshByLink = gql`
                     content
                     children {
                         weeshComments {
+                            id
                             user {
                                 id
                                 username
