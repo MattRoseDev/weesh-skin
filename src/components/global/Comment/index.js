@@ -17,8 +17,9 @@ const StyledComment = styled.div`
 export default (props) => {
     const isChild = props.isChild || false
     const id = props.id
-    return <StyledComment id={props.id} isChild={isChild}>
+    const commentRef = React.useRef()
+    return <StyledComment id={props.id} ref={commentRef} isChild={isChild}>
         <Header {...props}/>
-        <Main {...props} />
+        <Main {...props} commentRef={commentRef} />
     </StyledComment>
 }

@@ -109,12 +109,7 @@ export default (props) => {
 
     React.useEffect(() => {
         if(data) {
-            weeshPageDispatch({
-                type: 'REMOVE_COMMENT',
-                data: {
-                    id: `${props.id}`
-                }
-            })
+            props.commentRef.current.remove()
         }
     },[data])
 
@@ -125,7 +120,6 @@ export default (props) => {
         }))
     }
 
-
     return <StyledContainer {...props}>
         <Dialog width='18rem' {...dialog} toggleDialogFunction={(visible) => toggleDialog(visible)}>
             <StyledHeaderDialog>
@@ -134,14 +128,7 @@ export default (props) => {
                 </StyledHeaderDialogMessage>
             </StyledHeaderDialog>
             <DialogButton onClick={() => {
-                // removeWeeshComment()
-                console.log(weeshPage)
-                weeshPageDispatch({
-                    type: 'REMOVE_COMMENT',
-                    data: {
-                        id: `${props.id}`
-                    }
-                })
+                removeWeeshComment()
                 toggleDialog(false)
             }} fontWeight='bold' color='red'>Delete</DialogButton>
             <DialogButton fontWeight='bold' onClick={() => toggleDialog(false)}>Cancel</DialogButton>
