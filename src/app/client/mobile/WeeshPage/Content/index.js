@@ -16,7 +16,7 @@ import api from 'Root/api'
 import { WeeshPageContext } from 'Root/contexts/weeshPage'
 
 const StyledContainer = styled.div`
-    /* padding: .5rem; */
+    padding: 0 0 5.5rem;
 `
 
 const StyledWeesh = styled.div`
