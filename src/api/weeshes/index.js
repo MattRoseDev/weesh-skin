@@ -335,6 +335,7 @@ const getWeeshByLink = gql`
                             }
                             content
                             updatedAt
+                            createdAt
                         }
                         paginate {
                             totalDocs
