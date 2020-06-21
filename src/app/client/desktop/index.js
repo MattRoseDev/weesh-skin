@@ -8,10 +8,9 @@ import { AuthContext } from 'Root/contexts/auth'
 
 export default () => {
     const { auth } = React.useContext(AuthContext)
-
+    
     return <Template>
         <Switch>
-            
             {routes.map(route => (route.private) ? <PrivateRoute key={uuid()} {...route} /> : <Route key={uuid()} {...route} />)}
         </Switch>
     </Template>

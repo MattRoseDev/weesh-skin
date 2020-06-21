@@ -60,6 +60,18 @@ const StyledButton = styled.button`
     cursor: pointer;
 `
 
+const StyledLink = styled(Link)`
+    display: flex;
+    color: ${({theme, color}) => theme.colors[color]};
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: .75rem;
+    margin: 0 0 0 .75rem;
+    padding: 0;
+    cursor: pointer;
+`
+
 const StyledButtonIcon = styled.span`
     display: flex;
     align-items: center;
@@ -145,12 +157,17 @@ export default (props) => {
             <StyledDate>
                 {helpers.dateFormat(moment(props.createdAt).fromNow(true))}
             </StyledDate>
-            {!props.isChild && <StyledButton onClick={handleReply} color='gray'>
+            {auth.token ? !props.isChild && <StyledButton onClick={handleReply} color='gray'>
                 <StyledButtonIcon>
                     <Icon icon='CornerUpRight' size={14} color='gray' />
                 </StyledButtonIcon>
                 {C.txts.en.weeshPage.comment.reply}    
-            </StyledButton>}
+            </StyledButton> : <StyledLink to='/login' color='gray'>
+                <StyledButtonIcon>
+                    <Icon icon='CornerUpRight' size={14} color='gray' />
+                </StyledButtonIcon>
+                {C.txts.en.weeshPage.comment.reply}
+                </StyledLink>}
             {props.user.id == auth.id && <StyledButton onClick={handleRemove} color='red'>
                 <StyledButtonIcon>
                     <Icon icon='Trash2' size={14} color='red'/>
