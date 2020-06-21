@@ -30,41 +30,37 @@ export default (props) => {
     const { match } = props
     const { auth, dispatch } = React.useContext(AuthContext)
     const { editProfile, dispatch: editProfileDispatch } = React.useContext(EditProfileContext)
+    const [isEditProfile, setIsEditProfile] = React.useState(false)
     const history = useHistory()
 
     !auth.token && history.push('/')
 
-    const { data, called, error, loading } = useQuery(api.users.getUserByUsernameForUser, {
-        variables: {
-            username: `${auth.username}`
-        },
-        fetchPolicy: 'no-cache',
-    })
+    // const { data, called, error, loading } = useQuery(api.users.getUserByUsernameForUser, {
+    //     variables: {
+    //         username: `${auth.username}`
+    //     },
+    //     fetchPolicy: 'no-cache',
+    // })
 
     React.useEffect(() => {
-        if (error) {
-            console.log(error)
-        }
-
-        if (called && data && !editProfile) {
-            const result = data.getUserByUsernameForUser
+        if(!isEditProfile) {
             editProfileDispatch({
                 type: 'EDIT_PROFILE',
                 data: {
-                    ...result,
+                    ...auth,
                     doneButton: true
                 }
             })
+            setIsEditProfile(true)
         }
-    }, [data, error])
+    }, [isEditProfile])
 
     return <StyledContainer>
-        {editProfile && auth.id != undefined ? <>
-            <Header {...props} />
-            <Main {...props} />
-        </> : loading && <StyledLoadingContainer>
-            <Loading size={28} padding='3rem 0 0' strokeWidth={1.25} color='gray' />
-        </StyledLoadingContainer>}
-        {error && !editProfile && loading && <BannerMessage icon='User' title={C.txts.en.g.userNotFound} />}
+        {editProfile && auth.id != undefined && <>
+            <>
+                <Header {...props} />
+                <Main {...props} />
+            </>
+        </>}
     </StyledContainer>
 }

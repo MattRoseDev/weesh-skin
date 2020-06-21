@@ -18,6 +18,7 @@ import Meta from 'Root/meta'
 const StyledContainer = styled.div`
     /* padding: .5rem; */
     min-height: ${window.innerHeight - 55}px;
+    margin: 0 0 3.5rem;
 `
 
 const StyledWeesh = styled.div`

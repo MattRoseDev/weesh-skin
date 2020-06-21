@@ -12,11 +12,13 @@ import C from 'Root/constants'
 import uuid from 'uuid'
 
 const StyledHeaderDialog = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
     padding: 2rem 0 1rem;
 `
 
 const StyledHeaderDialogMessage = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
     text-align: center;
     padding: 1rem 0 0;
 `
