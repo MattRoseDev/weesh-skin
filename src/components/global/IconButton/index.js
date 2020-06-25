@@ -13,7 +13,7 @@ const StyledButton = styled.button`
 `
 
 export default (props) => {
-    return <StyledButton {...props}>
+    return <StyledButton padding={props.padding}>
         <Icon {...props} />
     </StyledButton>
 }
