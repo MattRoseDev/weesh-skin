@@ -50,6 +50,8 @@ const StyledContentContainer = styled.div`
 const StyledContent = styled.span`
     padding: 0 .125rem 0 0;
     color: ${({ theme }) => theme.colors.foreground};
+    white-space: pre-wrap;
+    word-break: break-word;
 `
 
 const StyledIcon = styled.span`
@@ -62,6 +64,8 @@ const StyledIcon = styled.span`
 
 const StyledGray = styled.span`
     color: ${({ theme }) => theme.colors.gray};
+    white-space: pre-wrap;
+    word-break: break-word;
 `
 
 export default (props) => {
