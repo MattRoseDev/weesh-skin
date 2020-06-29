@@ -6,7 +6,7 @@ import uuid from 'uuid'
 import styled from 'styled-components'
 import { NotificationsContext } from 'Root/contexts/notifications'
 import { AuthContext } from 'Root/contexts/auth'
-import { useLazyQuery, useMutation, useQuery } from '@apollo/react-hooks'
+import { useMutation, useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import C from 'Root/constants'
 import Meta from 'Root/meta'
@@ -36,50 +36,40 @@ const StyledBadge = styled.div`
 
 export default () => {
     const { auth } = React.useContext(AuthContext)
-    const { notifications, dispatch } = React.useContext(NotificationsContext)
-    const loadRequestsResponse = useQuery(api.connections.getRequests,{
-        fetchPolicy: 'no-cache',
-    })
-    const [loadNotifications, loadNotificationsResponse] = useLazyQuery(api.notifications.getNotifications,{
-        fetchPolicy: 'no-cache',
-    })
-    const [readNotifications, readNotificationsResponse] = useMutation(api.notifications.read,{
+    const { notifications, dispatch: notificationDispatch } = React.useContext(NotificationsContext)
+
+    const requestsResponse = useQuery(api.connections.getRequests, {
         fetchPolicy: 'no-cache',
     })
 
-    React.useEffect(() =>{
-        if (!loadNotificationsResponse.data && !loadNotificationsResponse.called && !notifications.isEmpty && !Object.values(notifications.store).length) {
-            loadNotifications()
-        } 
+    const [readRequest, readResponse] = useMutation(api.notifications.read)
 
-        if (!notifications.isEmpty && Object.values(notifications.store).length > 0 && !Object.values(notifications.store)[0].read ) {
-            readNotifications()
-            dispatch({
+    React.useEffect(() => {
+        if (!notifications.isEmpty && Object.values(notifications.store).length > 0 && !Object.values(notifications.store)[0].read) {
+            readRequest()
+            notificationDispatch({
                 type: 'READ_ALL',
             })
         }
-        
-        if(loadNotificationsResponse.data) {
-            dispatch({
-                type: 'PUSH_NOTIFICATION',
-                data: loadNotificationsResponse.data.getNotificationsUserForUser.notifications
+    }, [notifications])
+
+    React.useEffect(() => {
+        if (readResponse.data) {
+            notificationDispatch({
+                type: 'READ_ALL',
             })
         }
-    },[
-        loadRequestsResponse.data,
-        loadNotificationsResponse.data, 
-        readNotificationsResponse.data,
-    ])
+    }, [readResponse.data])
 
     return <StyledContainer>
         <Meta />
-        {loadRequestsResponse.data && loadRequestsResponse.data.getRequestsUsersConnectionByIdForUser.userConnections.length > 0 && <Link to={`/${auth.username}/requests`}>
+        {requestsResponse.data && requestsResponse.data.getRequestsUsersConnectionByIdForUser.userConnections.length > 0 && <Link to={`/${auth.username}/requests`}>
             <StyledRequestContainer>
                 Follow Requests
-                {loadRequestsResponse.data && loadRequestsResponse.data.getRequestsUsersConnectionByIdForUser.userConnections.length > 0 && <StyledBadge/>}
+                {requestsResponse.data && requestsResponse.data.getRequestsUsersConnectionByIdForUser.userConnections.length > 0 && <StyledBadge />}
             </StyledRequestContainer>
         </Link>}
         {(Object.values(notifications.store).length > 0) && Object.values(notifications.store).map(notification => (<Notification key={uuid()} {...notification} />))}
-        {/* {<BannerMessage padding='3rem 0' icon='Bell' title={C.txts.en.g.noNotifications} />} */}
+        {notifications.isEmpty && <BannerMessage padding='3rem 0' icon='Bell' title={C.txts.en.g.noNotifications} />}
     </StyledContainer>
 }

@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import C from 'Root/constants'
 import { AuthContext } from 'Root/contexts/auth'
-import { NotificationsContext } from 'Root/contexts/notifications'
 import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
+import NotificationBadge from 'Root/components/global/NotificationBadge'
 
 const NavItemContent = styled.div`
     ${C.styles.flex.inlineFlexRow};
@@ -50,26 +50,9 @@ const StyledIcon = styled.span`
     margin: 0 .5rem 0 0;
 `
 
-const StyledBadge = styled.span`
-    position: absolute;
-    ${C.styles.flex.inlineFlexRow};
-    ${C.styles.flex.justifyContentCenter};
-    ${C.styles.flex.alignItemsCenter};
-    top: -.3rem;
-    right: -.1rem;
-    border-radius: 5rem;
-    border: 3px solid ${({theme}) => theme.colors.background};
-    min-height: .5rem; 
-    min-width: .5rem; 
-    font-size: .75rem;
-    background: ${({theme}) => theme.colors.red};
-    color: ${({theme}) => theme.colors.background};
-`
-
 export default (props) => {
     const { auth } = React.useContext(AuthContext)
-    const { notifications } = React.useContext(NotificationsContext)
-    const lastNotification = Object.values(notifications.store).length > 0 && Object.values(notifications.store)[0]
+    
     const history = useHistory()
 
     const path = props.path == '/profile' ? `/${auth.username}` : props.path
@@ -79,6 +62,7 @@ export default (props) => {
             <NavItem color='primary' exact={props.exact || false} to={path}>
                 <NavItemContent background='foreground' color='primary'>
                     <StyledIcon>
+                        {props.path == '/notifications' && <NotificationBadge />}
                         {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color={`${auth.color}`}
                             strokeWidth={props.fillStrokeWidth || 2}
                             icon={props.content}
@@ -90,7 +74,7 @@ export default (props) => {
         <NavItem color='foreground' exact={props.exact || false} to={path}>
             <NavItemContent color='foreground'>
                     <StyledIcon>
-                        {(lastNotification && !lastNotification.read && props.path == '/notifications') && <StyledBadge></StyledBadge>}
+                        {props.path == '/notifications' && <NotificationBadge />}
                         {props.path == '/profile' ? <Avatar user={auth} size={1.5} /> : <Icon color='foreground'
                             strokeWidth={props.strokeWidth || 2}
                             icon={props.content}

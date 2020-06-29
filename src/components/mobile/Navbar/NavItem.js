@@ -7,6 +7,7 @@ import { NotificationsContext } from 'Root/contexts/notifications'
 import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
+import NotificationBadge from 'Root/components/global/NotificationBadge'
 
 const NavItem = styled(NavLink)`
     ${C.styles.flex.flexRowCenter};
@@ -24,22 +25,6 @@ const StyledIcon = styled.span`
     ${C.styles.flex.alignItemsCenter};
 `
 
-const StyledBadge = styled.span`
-    position: absolute;
-    ${C.styles.flex.inlineFlexRow};
-    ${C.styles.flex.justifyContentCenter};
-    ${C.styles.flex.alignItemsCenter};
-    top: -.3rem;
-    right: -.1rem;
-    border-radius: 5rem;
-    border: 3px solid ${({theme}) => theme.colors.background};
-    min-height: .5rem; 
-    min-width: .5rem; 
-    font-size: .75rem;
-    background: ${({theme}) => theme.colors.red};
-    color: ${({theme}) => theme.colors.background};
-`
-
 const StyledAvatarBorder = styled.span`
     ${C.styles.flex.inlineFlexRow};
     border-radius: 50%;
@@ -48,8 +33,6 @@ const StyledAvatarBorder = styled.span`
 
 export default (props) => {
     const { auth } = React.useContext(AuthContext)
-    const { notifications } = React.useContext(NotificationsContext)
-    const lastNotification = Object.values(notifications.store).length > 0 && Object.values(notifications.store)[0]
     const history = useHistory()
 
     const path = props.path == '/profile' ? `/${auth.username}` : props.path
@@ -68,7 +51,7 @@ export default (props) => {
         </NavItem> : 
         <NavItem exact={props.exact || false} to={path}>
             <StyledIcon>
-                {(lastNotification && !lastNotification.read && props.path == '/notifications') && <StyledBadge></StyledBadge>}
+                {props.path == '/notifications' && <NotificationBadge />}
                 {props.path == '/profile' ? <Avatar user={auth} size={1.35} /> : <Icon color='dark'
                     strokeWidth={props.strokeWidth || 2}
                     icon={props.content}
