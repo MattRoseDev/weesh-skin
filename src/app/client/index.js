@@ -9,57 +9,55 @@ import { ThemeProvider } from 'styled-components'
 import api from 'Root/api'
 import C from 'Root/constants'
 import GlobalStyles from 'Root/constants/globalStyles'
+import Initialize from 'Root/components/global/Initialize'
 
 const Client = (props) => {
     const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
     const { snackbar, dispatch: snackbarDispatch } = React.useContext(SnackBarContext)
-    const { notifications, dispatch } = React.useContext(NotificationsContext)
+    // const { notifications, dispatch } = React.useContext(NotificationsContext)
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
 
     window.addEventListener('resize',() => {
         setWindowWidth(window.innerWidth)
     })
     
-    const { data, error } = useSubscription(api.notifications.add,{
-        variables: {
-            userId: `${auth.id}`
-        }
-    })
+    // const { data, error } = useSubscription(api.notifications.add,{
+    //     variables: {
+    //         userId: `${auth.id}`
+    //     }
+    // })
 
-    const [loadNotifications, loadResult] = useLazyQuery(api.notifications.getNotifications)
+    // const [loadNotifications, loadResult] = useLazyQuery(api.notifications.getNotifications)
     const [getProfileUser, getProfileUserResult] = useLazyQuery(api.auth.getUserProfile) 
 
     React.useEffect(() => {
         if (!auth.id) {
             getProfileUser()
         }  
-        if(error) {
-            console.log(error)
-        }
 
-        if (!loadResult.called && !notifications.isEmpty && !Object.values(notifications.store).length) {
-            loadNotifications()
-        }
+        // if (!loadResult.called && !notifications.isEmpty && !Object.values(notifications.store).length) {
+        //     loadNotifications()
+        // }
 
-        if (loadResult.called && loadResult.data) {
-            if (loadResult.data.getNotificationsUserForUser.notifications.length > 0) {
-                () => dispatch({
-                    type: 'PUSH_NOTIFICATION',
-                    data: loadResult.data.getNotificationsUserForUser.notifications,
-                })
-            } else {
-                dispatch({
-                    type: 'EMPTY',
-                })
-            }
-        }
+        // if (loadResult.called && loadResult.data) {
+        //     if (loadResult.data.getNotificationsUserForUser.notifications.length > 0) {
+        //         () => dispatch({
+        //             type: 'PUSH_NOTIFICATION',
+        //             data: loadResult.data.getNotificationsUserForUser.notifications,
+        //         })
+        //     } else {
+        //         dispatch({
+        //             type: 'EMPTY',
+        //         })
+        //     }
+        // }
 
-        if (data) {
-            dispatch({
-                type: 'UNSHIFT_NOTIFICATION',
-                data: data.addNotificationForUser
-            })
-        }
+        // if (data) {
+        //     dispatch({
+        //         type: 'UNSHIFT_NOTIFICATION',
+        //         data: data.addNotificationForUser
+        //     })
+        // }
 
         if (getProfileUserResult.data) {
             authDispatch({
@@ -68,7 +66,7 @@ const Client = (props) => {
             })
              
         }
-    }, [data, loadResult.data, getProfileUserResult.data])
+    }, [getProfileUserResult.data])
 
     return <ThemeProvider theme={{
                 colors: {
@@ -78,6 +76,7 @@ const Client = (props) => {
             }}>
             <>
                 <GlobalStyles />
+                <Initialize />
                 {windowWidth > 768 ? <Desktop /> : <Mobile />}
             </>
     </ThemeProvider>
