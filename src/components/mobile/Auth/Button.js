@@ -5,7 +5,7 @@ import C from 'Root/constants'
 
 const Button = styled(Link)`
     text-decoration: none;
-    font-weight: 900;
+    font-weight: bold;
     font-size: 1rem;
     padding: .65rem 2rem;
     border-radius: .75rem;
