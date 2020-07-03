@@ -3,31 +3,3 @@
     font-family: Autumn_in_November;
     src: url(fonts/Autumn_in_November/Autumn_in_November.ttf);
 }
-
-/* Inter */
-@font-face {
-    font-family: Inter;
-    font-weight: 100;
-    src: url(fonts/Inter/Inter-Thin-BETA.ttf);
-}
-
-/* Inter */
-@font-face {
-    font-family: Inter;
-    font-weight: bold;
-    src: url(fonts/Inter/Inter-SemiBold.ttf);
-}
-
-/* Inter */
-@font-face {
-    font-family: Inter;
-    font-weight: bolder;
-    src: url(fonts/Inter/Inter-Bold.ttf);
-}
-
-/* Inter */
-@font-face {
-    font-family: Inter;
-    font-weight: normal;
-    src: url(fonts/Inter/Inter-Regular.ttf);
-}

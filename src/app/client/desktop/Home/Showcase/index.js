@@ -80,6 +80,25 @@ export default () => {
         }
     }, [data, error])
 
+    const details = [
+        {
+            title: 'Wishes are written',
+            description: 'Post what you wish for.'
+        },
+        {
+            title: 'Others exprience',
+            description: 'Hear others thoughts.'
+        },
+        {
+            title: 'Safe and Secret',
+            description: 'We protect your weeshes.'
+        },
+        {
+            title: 'Give advice',
+            description: 'Comment what you think about other wishes.'
+        },
+    ]
+
     return <StyledContainer>
         <Meta type='Showcase' />
         <StyledThemeButton>
