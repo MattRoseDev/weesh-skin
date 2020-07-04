@@ -35,9 +35,9 @@ export default () => {
         <>
             {auth.token ? (
                 <StyledContainer>
-                    <BackButton icon="ArrowLeft" />
+                    <BackButton icon='ArrowLeft' />
                     <StyledTitle>Requests</StyledTitle>
-                    <Icon color="background" />
+                    <Icon color='background' />
                 </StyledContainer>
             ) : (
                 <></>

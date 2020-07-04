@@ -164,7 +164,7 @@ export default props => {
                             <StyledReplyDiscardIcon
                                 onClick={handleDiscardReply}
                             >
-                                <Icon icon="X" size="18" color="gray" />
+                                <Icon icon='X' size='18' color='gray' />
                             </StyledReplyDiscardIcon>
                         </StyledReplyContainer>
                     )}
@@ -173,8 +173,8 @@ export default props => {
                             maxRows={5}
                             ref={textarea}
                             value={state}
-                            autoCorrect="off"
-                            autoComplete="off"
+                            autoCorrect='off'
+                            autoComplete='off'
                             onChange={e => handleChange(e)}
                         />
                         <StyledButton

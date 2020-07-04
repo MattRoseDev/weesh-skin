@@ -62,8 +62,8 @@ export default props => {
             {props.path == history.location.pathname ||
             (history.location.pathname == `/${auth.username}` &&
                 props.path == '/profile') ? (
-                <NavItem color="primary" exact={props.exact || false} to={path}>
-                    <NavItemContent background="foreground" color="primary">
+                <NavItem color='primary' exact={props.exact || false} to={path}>
+                    <NavItemContent background='foreground' color='primary'>
                         <StyledIcon>
                             {props.path == '/notifications' && (
                                 <NotificationBadge />
@@ -84,11 +84,11 @@ export default props => {
                 </NavItem>
             ) : (
                 <NavItem
-                    color="foreground"
+                    color='foreground'
                     exact={props.exact || false}
                     to={path}
                 >
-                    <NavItemContent color="foreground">
+                    <NavItemContent color='foreground'>
                         <StyledIcon>
                             {props.path == '/notifications' && (
                                 <NotificationBadge />
@@ -97,7 +97,7 @@ export default props => {
                                 <Avatar user={auth} size={1.5} />
                             ) : (
                                 <Icon
-                                    color="foreground"
+                                    color='foreground'
                                     strokeWidth={props.strokeWidth || 2}
                                     icon={props.content}
                                     size={props.fillSize || 26}

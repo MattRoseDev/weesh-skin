@@ -27,8 +27,8 @@ export default () => {
     const {auth, dispatch} = React.useContext(AuthContext)
     return (
         <StyledContainer>
-            <BackButton icon="ArrowLeft" />
-            <Icon color="background" />
+            <BackButton icon='ArrowLeft' />
+            <Icon color='background' />
         </StyledContainer>
     )
 }

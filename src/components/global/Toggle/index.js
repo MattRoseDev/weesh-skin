@@ -51,7 +51,7 @@ export default props => {
     return (
         <StyledContainer>
             <StyledInput
-                type="checkbox"
+                type='checkbox'
                 defaultChecked={props.checked || undefined}
                 onChange={props.onChange}
                 onInput={props.onInput}

@@ -145,7 +145,7 @@ export default props => {
     return (
         <StyledContainer>
             <StyledInput
-                placeholder="I Weesh ..."
+                placeholder='I Weesh ...'
                 autoFocus={true}
                 ref={frontInput}
                 contentEditable={true}

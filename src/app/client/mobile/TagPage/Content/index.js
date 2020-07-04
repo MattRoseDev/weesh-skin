@@ -61,7 +61,7 @@ export default props => {
         <StyledContainer>
             {loading ? (
                 <StyledLoadingContainer>
-                    <Loading size={28} strokeWidth={1.25} color="gray" />
+                    <Loading size={28} strokeWidth={1.25} color='gray' />
                 </StyledLoadingContainer>
             ) : (
                 called &&
@@ -74,8 +74,8 @@ export default props => {
             )}
             {!loading && tag && !tag.weeshesTag && (
                 <BannerMessage
-                    padding="3rem 0"
-                    icon="Hash"
+                    padding='3rem 0'
+                    icon='Hash'
                     title={C.txts.en.g.noWeeshesYet}
                 />
             )}

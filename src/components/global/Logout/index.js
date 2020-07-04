@@ -11,5 +11,5 @@ export default () => {
     })
     dispatch({type: 'LOGOUT'})
 
-    return <Redirect to="/login" />
+    return <Redirect to='/login' />
 }

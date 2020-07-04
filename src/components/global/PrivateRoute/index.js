@@ -9,7 +9,7 @@ const PrivateRoute = props => {
             type: 'LOGOUT',
         })
     }
-    return auth.token ? <Route {...props} /> : <Redirect to="/login" />
+    return auth.token ? <Route {...props} /> : <Redirect to='/login' />
 }
 
 export default PrivateRoute

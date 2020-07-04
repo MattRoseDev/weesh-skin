@@ -79,7 +79,7 @@ export default () => {
 
     return (
         <StyledContainer>
-            <Search onClick={handleChange} color="gray" />
+            <Search onClick={handleChange} color='gray' />
             <StyledInput
                 placeholder={C.txts.en.explore.input}
                 onChange={e => handleChange(e)}

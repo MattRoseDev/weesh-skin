@@ -196,13 +196,13 @@ export default props => {
                         deleteWeesh()
                         toggleDialog(false)
                     }}
-                    fontWeight="bold"
-                    color="red"
+                    fontWeight='bold'
+                    color='red'
                 >
                     Delete
                 </DialogButton>
                 <DialogButton
-                    fontWeight="bold"
+                    fontWeight='bold'
                     onClick={() => toggleDialog(false)}
                 >
                     Cancel
@@ -211,8 +211,8 @@ export default props => {
             <StyledIcon>
                 <Icon
                     onClick={() => toggleDrawerDialog(true)}
-                    icon="MoreHorizontal"
-                    color="foreground"
+                    icon='MoreHorizontal'
+                    color='foreground'
                 />
             </StyledIcon>
         </StyledRightSide>

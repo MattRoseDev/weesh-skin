@@ -12,10 +12,10 @@ const Auth = styled.div`
 const Element = props => {
     return (
         <Auth {...props}>
-            <Button fill="true" to="/login">
+            <Button fill='true' to='/login'>
                 {C.txts.en.auth.loginButton}
             </Button>
-            <Button to="/join">{C.txts.en.auth.joinButton}</Button>
+            <Button to='/join'>{C.txts.en.auth.joinButton}</Button>
         </Auth>
     )
 }

@@ -30,7 +30,7 @@ export default props => {
             <StyledHeader>
                 <StyledTag>#{props.match.params.tagTitle}</StyledTag>
             </StyledHeader>
-            <Icon size={24} color="background" icon="ChevronLeft" />
+            <Icon size={24} color='background' icon='ChevronLeft' />
         </Header>
     )
 }

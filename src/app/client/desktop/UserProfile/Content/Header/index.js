@@ -24,12 +24,12 @@ export default props => {
     return (
         <StyledHeader>
             <StyledImagesFrame>
-                <Cover height="213px" user={user} />
+                <Cover height='213px' user={user} />
                 <StyledAvatarFrame>
                     <Avatar
                         user={user}
                         size={7}
-                        bordercolor="background"
+                        bordercolor='background'
                         borderwidth={4}
                     />
                 </StyledAvatarFrame>

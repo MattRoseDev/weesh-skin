@@ -49,7 +49,7 @@ export default props => {
                             </StyledAvatarBorder>
                         ) : (
                             <Icon
-                                color="foreground"
+                                color='foreground'
                                 strokeWidth={props.fillStrokeWidth || 2}
                                 icon={props.content}
                                 size={props.size || 26}
@@ -67,7 +67,7 @@ export default props => {
                             <Avatar user={auth} size={1.35} />
                         ) : (
                             <Icon
-                                color="dark"
+                                color='dark'
                                 strokeWidth={props.strokeWidth || 2}
                                 icon={props.content}
                                 size={props.fillSize || 26}

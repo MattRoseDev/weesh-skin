@@ -29,7 +29,7 @@ export default props => {
                     <Avatar
                         user={user}
                         size={4}
-                        bordercolor="background"
+                        bordercolor='background'
                         borderwidth={2}
                     />
                 </StyledAvatarFrame>

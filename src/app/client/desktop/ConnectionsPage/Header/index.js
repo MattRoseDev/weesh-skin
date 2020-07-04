@@ -38,9 +38,9 @@ export default props => {
         <>
             {auth.token ? (
                 <StyledContainer>
-                    <BackButton color="foreground" icon="ArrowLeft" />
+                    <BackButton color='foreground' icon='ArrowLeft' />
                     <StyledTitle>{status}</StyledTitle>
-                    <Icon color="background" />
+                    <Icon color='background' />
                 </StyledContainer>
             ) : (
                 <></>

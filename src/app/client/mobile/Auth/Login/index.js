@@ -81,16 +81,16 @@ export default () => {
     // auth.token && history.push('/')
     return (
         <StyledLogin onSubmit={e => handleSubmit(e)}>
-            <Meta type="Login" />
-            <Logo fontSize={4} margin="1.5rem" />
+            <Meta type='Login' />
+            <Logo fontSize={4} margin='1.5rem' />
             {error && (
                 <ErrorMessage
-                    width="75%"
+                    width='75%'
                     message={error.graphQLErrors[0].message}
                 />
             )}
             <Input
-                margin=".5rem 0 0"
+                margin='.5rem 0 0'
                 onChange={e => {
                     let username = e.target.value
                     setVariables(prevState => ({
@@ -99,11 +99,11 @@ export default () => {
                     }))
                 }}
                 width={75}
-                icon="AtSign"
-                placeholder="Username or Email"
+                icon='AtSign'
+                placeholder='Username or Email'
             />
             <Input
-                margin=".5rem 0 0"
+                margin='.5rem 0 0'
                 onChange={e => {
                     let password = e.target.value
                     setVariables(prevState => ({
@@ -112,27 +112,27 @@ export default () => {
                     }))
                 }}
                 width={75}
-                icon="Lock"
-                placeholder="Password"
-                type="password"
+                icon='Lock'
+                placeholder='Password'
+                type='password'
             />
             {/* <StyledForgotPasswordLink to='forgotpassword'>
             {C.txts.en.auth.forgotPasswordLink}
         </StyledForgotPasswordLink> */}
             <Button
-                color="background"
-                background="primary"
-                fontWeight="bold"
+                color='background'
+                background='primary'
+                fontWeight='bold'
                 isLoading={loading || undefined}
-                margin=".5rem 0 0"
-                padding=".85rem"
-                fontSize=".85rem"
-                width="75%"
+                margin='.5rem 0 0'
+                padding='.85rem'
+                fontSize='.85rem'
+                width='75%'
             >
                 {C.txts.en.auth.loginButton}
             </Button>
             <OR width={75} margin={1.5} />
-            <StyledJoinLink to="join">{C.txts.en.auth.joinLink}</StyledJoinLink>
+            <StyledJoinLink to='join'>{C.txts.en.auth.joinLink}</StyledJoinLink>
         </StyledLogin>
     )
 }

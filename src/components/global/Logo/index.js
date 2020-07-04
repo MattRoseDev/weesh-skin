@@ -41,7 +41,7 @@ const Logo = styled(Link)`
 
 export default props => {
     return (
-        <Logo to="/" {...props}>
+        <Logo to='/' {...props}>
             {C.txts.en.g.logo}
         </Logo>
     )

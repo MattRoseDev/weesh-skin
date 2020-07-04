@@ -43,17 +43,17 @@ export default props => {
             <StyledButtonContainer>
                 {auth.id == user.id && (
                     <Button
-                        color="primary"
-                        hoverbackground="lightPrimary"
-                        bordercolor="primary"
-                        borderwidth="1px"
-                        fontWeight="bold"
-                        padding=".4rem"
-                        margin="0 .5rem 0 0"
-                        radius="50%"
+                        color='primary'
+                        hoverbackground='lightPrimary'
+                        bordercolor='primary'
+                        borderwidth='1px'
+                        fontWeight='bold'
+                        padding='.4rem'
+                        margin='0 .5rem 0 0'
+                        radius='50%'
                         to={`/${auth.username}/bookmarks`}
                     >
-                        <Icon icon="Bookmark" color={`${auth.color}`} />
+                        <Icon icon='Bookmark' color={`${auth.color}`} />
                     </Button>
                 )}
                 <Connection {...props} />

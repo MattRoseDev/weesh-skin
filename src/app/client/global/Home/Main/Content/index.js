@@ -71,10 +71,10 @@ export default () => {
 
     return (
         <StyledContainer>
-            <Meta type="Home" />
+            <Meta type='Home' />
             {loading ? (
                 <StyledLoadingContainer>
-                    <Loading size={28} strokeWidth={1.25} color="gray" />
+                    <Loading size={28} strokeWidth={1.25} color='gray' />
                 </StyledLoadingContainer>
             ) : (
                 state &&
@@ -82,7 +82,7 @@ export default () => {
                     <InfiniteScroll
                         onLoadMore={handlePaginate}
                         hasNextPage={nextPage}
-                        padding=".5rem .5rem 3.125rem"
+                        padding='.5rem .5rem 3.125rem'
                     >
                         {state.map(weesh => (
                             <Weesh {...weesh} key={uuid()} />
@@ -93,8 +93,8 @@ export default () => {
             {!loading && state && !state.length && (
                 <StyledLoadingContainer>
                     <BannerMessage
-                        padding="0 1rem"
-                        icon="Users"
+                        padding='0 1rem'
+                        icon='Users'
                         title={C.txts.en.g.welcome}
                         message={C.txts.en.g.noFollowingYet}
                     />

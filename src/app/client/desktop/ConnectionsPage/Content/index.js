@@ -86,7 +86,7 @@ export default props => {
             <Meta />
             {loading ? (
                 <StyledLoaderContainer>
-                    <Loader size={20} strokeWidth={1.25} color="gray" />
+                    <Loader size={20} strokeWidth={1.25} color='gray' />
                 </StyledLoaderContainer>
             ) : (
                 state && (

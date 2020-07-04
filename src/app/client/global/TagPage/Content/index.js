@@ -62,13 +62,13 @@ export default props => {
 
     return (
         <StyledContainer>
-            <Meta type="Tags" data={{tag: match.params.tagTitle}} />
+            <Meta type='Tags' data={{tag: match.params.tagTitle}} />
             {loading ? (
                 <Loading
                     size={28}
-                    padding="3rem 0 0"
+                    padding='3rem 0 0'
                     strokeWidth={1.25}
-                    color="gray"
+                    color='gray'
                 />
             ) : (
                 called &&
@@ -81,8 +81,8 @@ export default props => {
             )}
             {!loading && tag && !tag.weeshesTag && (
                 <BannerMessage
-                    padding="3rem 0"
-                    icon="Hash"
+                    padding='3rem 0'
+                    icon='Hash'
                     title={C.txts.en.g.noWeeshesYet}
                 />
             )}

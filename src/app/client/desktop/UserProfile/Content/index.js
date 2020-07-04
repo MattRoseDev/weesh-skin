@@ -90,13 +90,13 @@ export default props => {
 
     return (
         <StyledContainer>
-            {user && <Meta type="UserProfile" data={{user}} />}
+            {user && <Meta type='UserProfile' data={{user}} />}
             {loading ? (
                 <Loading
-                    padding="3rem 0 0"
+                    padding='3rem 0 0'
                     size={28}
                     strokeWidth={1.25}
-                    color="gray"
+                    color='gray'
                 />
             ) : (
                 called &&
@@ -107,8 +107,8 @@ export default props => {
                         user.connection.status < 2 &&
                         auth.id !== user.id ? (
                             <BannerMessage
-                                icon="Lock"
-                                padding="3rem 0 5rem"
+                                icon='Lock'
+                                padding='3rem 0 5rem'
                                 title={C.txts.en.g.privateAccount}
                                 height={50}
                             />
@@ -120,8 +120,8 @@ export default props => {
                             />
                         ) : (
                             <BannerMessage
-                                icon="PenTool"
-                                padding="3rem 0 5rem"
+                                icon='PenTool'
+                                padding='3rem 0 5rem'
                                 title={C.txts.en.g.noWeeshesYet}
                                 height={50}
                             />
@@ -131,8 +131,8 @@ export default props => {
             )}
             {!loading && error && !user && (
                 <BannerMessage
-                    padding="3rem 0 5rem"
-                    icon="User"
+                    padding='3rem 0 5rem'
+                    icon='User'
                     title={C.txts.en.g.userNotFound}
                 />
             )}

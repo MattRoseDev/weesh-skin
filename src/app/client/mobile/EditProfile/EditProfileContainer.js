@@ -78,15 +78,15 @@ export default props => {
                     <StyledLoadingContainer>
                         <Loading
                             size={28}
-                            padding="3rem 0 0"
+                            padding='3rem 0 0'
                             strokeWidth={1.25}
-                            color="gray"
+                            color='gray'
                         />
                     </StyledLoadingContainer>
                 )
             )}
             {error && !editProfile && loading && (
-                <BannerMessage icon="User" title={C.txts.en.g.userNotFound} />
+                <BannerMessage icon='User' title={C.txts.en.g.userNotFound} />
             )}
         </StyledContainer>
     )

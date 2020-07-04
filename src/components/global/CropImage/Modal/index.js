@@ -143,7 +143,7 @@ export default props => {
         <StyledContainer>
             <input
                 hidden
-                type="file"
+                type='file'
                 ref={file}
                 onChange={e => handleLoadImage(e)}
             />
@@ -163,11 +163,11 @@ export default props => {
             </div>
             <Button
                 clickEvent={() => file.current.click()}
-                background="white"
-                color="black"
-                radius="50rem"
-                padding=".5rem 1rem"
-                margin="1rem 0 0"
+                background='white'
+                color='black'
+                radius='50rem'
+                padding='.5rem 1rem'
+                margin='1rem 0 0'
             >
                 {C.txts.en.cropImage.chooseFile}
             </Button>

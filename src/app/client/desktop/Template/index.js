@@ -25,7 +25,7 @@ export default props => {
     const limitedRoutes = ['/', '/join', '/login']
 
     return (
-        <Container width="80rem" margin="0 auto">
+        <Container width='80rem' margin='0 auto'>
             <StyledContainer>
                 <Alert />
                 <SnackBar />

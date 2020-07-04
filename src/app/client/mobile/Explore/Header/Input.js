@@ -90,7 +90,7 @@ export default props => {
 
     return (
         <StyledContainer>
-            <Search onClick={handleChange} color="gray" />
+            <Search onClick={handleChange} color='gray' />
             <StyledInput
                 defaultValue={variables.expression}
                 placeholder={C.txts.en.explore.input}

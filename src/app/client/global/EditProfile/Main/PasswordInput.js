@@ -22,8 +22,8 @@ const StyledTitle = styled.div`
 
 export default () => {
     return (
-        <StyledContainer to="/settings/changePassword">
-            <Icon icon="Key" color="foreground" />
+        <StyledContainer to='/settings/changePassword'>
+            <Icon icon='Key' color='foreground' />
             <StyledTitle>Change Password</StyledTitle>
         </StyledContainer>
     )

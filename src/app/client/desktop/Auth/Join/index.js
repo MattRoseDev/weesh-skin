@@ -88,19 +88,19 @@ export default () => {
     auth.token && history.push('/')
     return (
         <StyledContainer>
-            <Meta type="Join" />
+            <Meta type='Join' />
             <StyledBox>
-                <StyledImg height="400" src={WelcomePicture} />
+                <StyledImg height='400' src={WelcomePicture} />
                 <StyledJoin onSubmit={e => handleSubmit(e)}>
-                    <Logo fontSize={5} margin="1.5rem" />
+                    <Logo fontSize={5} margin='1.5rem' />
                     {error && (
                         <ErrorMessage
-                            width="75%"
+                            width='75%'
                             message={error.graphQLErrors[0].message}
                         />
                     )}
                     <Input
-                        margin=".5rem 0 0"
+                        margin='.5rem 0 0'
                         onChange={e => {
                             let firstName = e.target.value
                             setVariables(prevState => ({
@@ -109,11 +109,11 @@ export default () => {
                             }))
                         }}
                         width={75}
-                        icon="User"
-                        placeholder="Name"
+                        icon='User'
+                        placeholder='Name'
                     />
                     <Input
-                        margin=".5rem 0 0"
+                        margin='.5rem 0 0'
                         onChange={e => {
                             let email = e.target.value
                             setVariables(prevState => ({
@@ -122,11 +122,11 @@ export default () => {
                             }))
                         }}
                         width={75}
-                        icon="Mail"
-                        placeholder="Email"
+                        icon='Mail'
+                        placeholder='Email'
                     />
                     <Input
-                        margin=".5rem 0 0"
+                        margin='.5rem 0 0'
                         onChange={e => {
                             let password = e.target.value
                             setVariables(prevState => ({
@@ -135,26 +135,26 @@ export default () => {
                             }))
                         }}
                         width={75}
-                        icon="Lock"
-                        placeholder="Password"
-                        type="password"
+                        icon='Lock'
+                        placeholder='Password'
+                        type='password'
                     />
                     <Button
-                        color="background"
-                        radius=".5rem"
-                        background="primary"
+                        color='background'
+                        radius='.5rem'
+                        background='primary'
                         isLoading={loading || undefined}
-                        fontWeight="bold"
-                        width="75%"
-                        margin="1.5rem 0 0"
-                        radius=".75rem"
-                        padding=".85rem"
-                        fontSize=".85rem"
+                        fontWeight='bold'
+                        width='75%'
+                        margin='1.5rem 0 0'
+                        radius='.75rem'
+                        padding='.85rem'
+                        fontSize='.85rem'
                     >
                         {C.txts.en.auth.joinButton}
                     </Button>
                     <OR width={75} margin={1.5} />
-                    <StyledLoginLink to="login">
+                    <StyledLoginLink to='login'>
                         {C.txts.en.auth.loginLink}
                     </StyledLoginLink>
                 </StyledJoin>

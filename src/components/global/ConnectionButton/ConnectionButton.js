@@ -98,7 +98,7 @@ export default props => {
     return (
         <>
             <Dialog
-                width="18rem"
+                width='18rem'
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}
             >
@@ -113,13 +113,13 @@ export default props => {
                         handleConnection()
                         toggleDialog(false)
                     }}
-                    fontWeight="bold"
-                    color="red"
+                    fontWeight='bold'
+                    color='red'
                 >
                     {acceptButtonType}
                 </DialogButton>
                 <DialogButton
-                    fontWeight="bold"
+                    fontWeight='bold'
                     onClick={() => toggleDialog(false)}
                 >
                     {cancelButtonType}
@@ -128,40 +128,40 @@ export default props => {
             {user.id != auth.id &&
                 (type == 'FOLLOWING' ? (
                     <Button
-                        background="background"
-                        color="gray"
+                        background='background'
+                        color='gray'
                         isLoading={loading || undefined}
                         onClick={() => {
                             if (type == 'FOLLOWING') toggleDialog(true)
                             else handleConnection()
                         }}
-                        padding=".4rem .75rem"
-                        radius="50rem"
-                        width="6rem"
-                        bordercolor="light"
-                        borderwidth="1px"
+                        padding='.4rem .75rem'
+                        radius='50rem'
+                        width='6rem'
+                        bordercolor='light'
+                        borderwidth='1px'
                         loaderSize={16}
-                        margin="0 .5rem 0 0"
+                        margin='0 .5rem 0 0'
                     >
                         {C.txts.en.connections.buttonStatus[type]}
                     </Button>
                 ) : (
                     <Button
-                        color="primary"
-                        hoverbackground="lightPrimary"
-                        bordercolor="primary"
-                        borderwidth="1px"
-                        fontWeight="bold"
+                        color='primary'
+                        hoverbackground='lightPrimary'
+                        bordercolor='primary'
+                        borderwidth='1px'
+                        fontWeight='bold'
                         isLoading={loading || undefined}
                         onClick={() => {
                             if (type == 'FOLLOWING') toggleDialog(true)
                             else handleConnection()
                         }}
-                        padding=".4rem .75rem"
-                        radius="50rem"
-                        width="6rem"
+                        padding='.4rem .75rem'
+                        radius='50rem'
+                        width='6rem'
                         loaderSize={16}
-                        margin="0 .5rem 0 0"
+                        margin='0 .5rem 0 0'
                     >
                         {C.txts.en.connections.buttonStatus[type]}
                     </Button>

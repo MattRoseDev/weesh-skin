@@ -4,7 +4,7 @@ import App from 'Root/app'
 
 const Container = () => {
     return (
-        <BrowserRouter basename="/">
+        <BrowserRouter basename='/'>
             <App />
         </BrowserRouter>
     )

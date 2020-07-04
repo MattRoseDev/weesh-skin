@@ -9,12 +9,12 @@ const handleStatus = (props, auth, user) => {
     if (!auth.token) {
         return (
             <Button
-                background="primary"
-                radius="50rem"
-                color="background"
-                padding=".5rem 1.25rem"
-                fontWeight="bold"
-                to="/login"
+                background='primary'
+                radius='50rem'
+                color='background'
+                padding='.5rem 1.25rem'
+                fontWeight='bold'
+                to='/login'
             >
                 Follow
             </Button>
@@ -24,12 +24,12 @@ const handleStatus = (props, auth, user) => {
     if (props.match.params.username == auth.username) {
         return (
             <Button
-                background="foreground"
-                radius="50rem"
-                color="background"
-                padding=".5rem 1.25rem"
-                fontWeight="bold"
-                to="settings/profile"
+                background='foreground'
+                radius='50rem'
+                color='background'
+                padding='.5rem 1.25rem'
+                fontWeight='bold'
+                to='settings/profile'
             >
                 Settings
             </Button>
@@ -42,19 +42,19 @@ const handleStatus = (props, auth, user) => {
         switch (status) {
             case 0:
                 return (
-                    <ConnectionButton type="FOLLOW">
+                    <ConnectionButton type='FOLLOW'>
                         {C.txts.en.connections.buttonStatus.FOLLOW}
                     </ConnectionButton>
                 )
             case 1:
                 return (
-                    <ConnectionButton type="REQUEST">
+                    <ConnectionButton type='REQUEST'>
                         {C.txts.en.connections.buttonStatus.REQUEST}
                     </ConnectionButton>
                 )
             case 2:
                 return (
-                    <ConnectionButton type="FOLLOWING">
+                    <ConnectionButton type='FOLLOWING'>
                         {C.txts.en.connections.buttonStatus.FOLLOWING}
                     </ConnectionButton>
                 )

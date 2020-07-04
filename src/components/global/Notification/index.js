@@ -107,32 +107,32 @@ const switchIcon = type => {
     switch (type) {
         case 'like_weesh':
             return (
-                <Icon icon="Heart" size={20} strokeWidth={1.5} color="dark" />
+                <Icon icon='Heart' size={20} strokeWidth={1.5} color='dark' />
             )
         case 'comment_weesh':
             return (
                 <Icon
-                    icon="MessageCircle"
+                    icon='MessageCircle'
                     size={20}
                     strokeWidth={1.5}
-                    color="dark"
+                    color='dark'
                 />
             )
         case 'reply_comment':
             return (
                 <Icon
-                    icon="CornerUpRight"
+                    icon='CornerUpRight'
                     size={20}
                     strokeWidth={1.5}
-                    color="dark"
+                    color='dark'
                 />
             )
         case 'accept_follow_request':
             return (
-                <Icon icon="Check" size={20} strokeWidth={1.5} color="dark" />
+                <Icon icon='Check' size={20} strokeWidth={1.5} color='dark' />
             )
         case 'start_following':
-            return <Icon icon="Plus" size={20} strokeWidth={1.5} color="dark" />
+            return <Icon icon='Plus' size={20} strokeWidth={1.5} color='dark' />
     }
 }
 

@@ -72,16 +72,16 @@ export default () => {
                 <StyledNumber>{weesh.totalCount}</StyledNumber>
             </StyledNumbers>
             <Button
-                color="background"
-                background="primary"
-                boxShadow="light"
+                color='background'
+                background='primary'
+                boxShadow='light'
                 clickEvent={handleAddWeesh}
                 isLoading={loading || undefined}
-                padding=".5rem 1rem"
-                radius="50rem"
+                padding='.5rem 1rem'
+                radius='50rem'
             >
                 <StyledButtonTitle>Weesh</StyledButtonTitle>
-                <Icon icon="PenTool" color="background" />
+                <Icon icon='PenTool' color='background' />
             </Button>
         </StyledContainer>
     )

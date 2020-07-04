@@ -62,10 +62,10 @@ export default props => {
 
     return (
         <StyledTagContainer>
-            <Link width="100%" to={`/t/${tag.title}`}>
+            <Link width='100%' to={`/t/${tag.title}`}>
                 <StyledTagContent>
                     <StyledIcon>
-                        <Icon icon="Hash" color="foreground" />
+                        <Icon icon='Hash' color='foreground' />
                     </StyledIcon>
                     <StyledMain>
                         <StyledTitle>#{tag.title}</StyledTitle>

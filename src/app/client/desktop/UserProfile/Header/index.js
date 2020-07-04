@@ -33,9 +33,9 @@ export default () => {
         <StyledContainer>
             {user && (
                 <>
-                    <BackButton icon="ArrowLeft" />
+                    <BackButton icon='ArrowLeft' />
                     <FullName user={user} fontSize={1.125} />
-                    <Icon color="background" />
+                    <Icon color='background' />
                 </>
             )}
         </StyledContainer>

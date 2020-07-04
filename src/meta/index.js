@@ -12,28 +12,28 @@ export default props => {
         <MetaTags>
             {/* General */}
             <title>{Title({...props})}</title>
-            <meta name="description" content={Description({...props})} />
-            <meta name="keywords" content={Keywords({...props})} />
-            <meta name="robots" content={Robots({...props})} />
-            <link rel="icon" href={logo} />
+            <meta name='description' content={Description({...props})} />
+            <meta name='keywords' content={Keywords({...props})} />
+            <meta name='robots' content={Robots({...props})} />
+            <link rel='icon' href={logo} />
             {/* Open Graph data */}
-            <meta property="og:title" content={Title({...props})} />
-            <meta property="og:type" content="website" />
-            <meta property="og:description" content={Description({...props})} />
-            <meta property="og:image" content={Image({...props})} />
-            <meta property="og:url" content={window.location} />
-            <meta property="og:site_name" content="Weesh" />
+            <meta property='og:title' content={Title({...props})} />
+            <meta property='og:type' content='website' />
+            <meta property='og:description' content={Description({...props})} />
+            <meta property='og:image' content={Image({...props})} />
+            <meta property='og:url' content={window.location} />
+            <meta property='og:site_name' content='Weesh' />
             {/* Twitter */}
-            <meta name="twitter:title" content={Title({...props})} />
+            <meta name='twitter:title' content={Title({...props})} />
             <meta
-                name="twitter:description"
+                name='twitter:description'
                 content={Description({...props})}
             />
-            <meta name="twitter:image:src" content={Image({...props})} />
-            <meta name="twitter:card" content="summary" />
+            <meta name='twitter:image:src' content={Image({...props})} />
+            <meta name='twitter:card' content='summary' />
             <meta
-                name="google-site-verification"
-                content="uLM9_nZHgQhK1tWDulp_Sotibp71uF2xJVRe6vQB-V8"
+                name='google-site-verification'
+                content='uLM9_nZHgQhK1tWDulp_Sotibp71uF2xJVRe6vQB-V8'
             />
         </MetaTags>
     )

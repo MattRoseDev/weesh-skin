@@ -29,7 +29,7 @@ export default props => {
     return (
         <StyledContainer {...props}>
             <StyledIcon>
-                <Icon icon={props.icon || 'Camera'} color="white" size={26} />
+                <Icon icon={props.icon || 'Camera'} color='white' size={26} />
             </StyledIcon>
             {props.children}
         </StyledContainer>

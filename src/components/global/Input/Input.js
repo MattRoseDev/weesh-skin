@@ -24,7 +24,7 @@ export default props => {
             onChange={props.onChange}
             onInput={props.onInput}
             defaultValue={props.value || ''}
-            autoCorrect="off"
+            autoCorrect='off'
         />
     )
 }

@@ -44,9 +44,9 @@ export default props => {
         <StyledContainer>
             {tag && (
                 <>
-                    <BackButton icon="ArrowLeft" />
+                    <BackButton icon='ArrowLeft' />
                     <StyledTag>#{props.match.params.tagTitle}</StyledTag>
-                    <Icon color="background" />
+                    <Icon color='background' />
                 </>
             )}
         </StyledContainer>

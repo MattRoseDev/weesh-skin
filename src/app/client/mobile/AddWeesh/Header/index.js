@@ -12,7 +12,7 @@ export default () => {
         <Header>
             <BackButton />
             <Logo fontSize={1.375} />
-            <Icon size={24} color="background" icon="ChevronLeft" />
+            <Icon size={24} color='background' icon='ChevronLeft' />
         </Header>
     )
 }

@@ -67,10 +67,10 @@ export default props => {
 
     return auth.username ? (
         <StyledContainer>
-            <Meta type="Bookmarks" />
+            <Meta type='Bookmarks' />
             {loading ? (
                 <StyledLoadingContainer>
-                    <Loading size={28} strokeWidth={1.25} color="gray" />
+                    <Loading size={28} strokeWidth={1.25} color='gray' />
                 </StyledLoadingContainer>
             ) : (
                 called &&
@@ -83,8 +83,8 @@ export default props => {
             )}
             {!loading && bookmark && !bookmark.weeshesBookmark && (
                 <BannerMessage
-                    padding="3rem 0"
-                    icon="Hash"
+                    padding='3rem 0'
+                    icon='Hash'
                     title={C.txts.en.g.noWeeshesYet}
                 />
             )}

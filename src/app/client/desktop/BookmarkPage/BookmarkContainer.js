@@ -16,13 +16,13 @@ const StyledContainer = styled.div`
 export default props => {
     return (
         <StyledContainer>
-            <Border leftColor="light" rightColor="light">
-                <Container width="38rem">
+            <Border leftColor='light' rightColor='light'>
+                <Container width='38rem'>
                     <Header {...props} />
                     <Content {...props} />
                 </Container>
             </Border>
-            <Container width="24rem">
+            <Container width='24rem'>
                 <Second {...props} />
             </Container>
         </StyledContainer>

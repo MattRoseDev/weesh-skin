@@ -107,12 +107,12 @@ export default props => {
         <Input
             label={state.errorMessage || 'Username'}
             labelColor={state.errorMessageColor}
-            padding=".65rem"
+            padding='.65rem'
             value={editProfile.username}
             onChange={e => handleChange({key: 'username', e})}
             width={100}
-            margin=".5rem 0 0"
-            placeholder="Username"
+            margin='.5rem 0 0'
+            placeholder='Username'
         />
     )
 }

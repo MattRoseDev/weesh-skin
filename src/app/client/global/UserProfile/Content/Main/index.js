@@ -10,7 +10,7 @@ export default props => {
         <InfiniteScroll
             onLoadMore={props.handlePaginate}
             hasNextPage={props.nextPage}
-            padding=".5rem .5rem 3.125rem"
+            padding='.5rem .5rem 3.125rem'
         >
             {user.weesh &&
                 user.weesh.weeshes.map(weesh => (
