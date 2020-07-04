@@ -23,7 +23,7 @@ const StyledLogin = styled.form`
 const StyledJoinLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.justifyContentCenter};
-    border: 1px solid ${({theme}) => theme.colors.primary};
+    /* border: 1px solid ${({theme}) => theme.colors.primary}; */
     color: ${({theme}) => theme.colors.primary};
     margin: 0;
     text-decoration: none;
