@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const follow = gql`
-    mutation followUserConnectionForUser($userId: ID!){
+    mutation followUserConnectionForUser($userId: ID!) {
         followUserConnectionForUser(userId: $userId) {
             follower {
                 id
@@ -15,7 +15,7 @@ const follow = gql`
 `
 
 const unfollow = gql`
-    mutation unfollowUserConnectionForUser($userId: ID!){
+    mutation unfollowUserConnectionForUser($userId: ID!) {
         unfollowUserConnectionForUser(userId: $userId) {
             follower {
                 id
@@ -29,7 +29,7 @@ const unfollow = gql`
 `
 
 const accept = gql`
-    mutation acceptUserConnectionForUser($userId: ID!){
+    mutation acceptUserConnectionForUser($userId: ID!) {
         acceptUserConnectionForUser(userId: $userId) {
             follower {
                 id
@@ -43,7 +43,7 @@ const accept = gql`
 `
 
 const reject = gql`
-    mutation rejectUserConnectionForUser($userId: ID!){
+    mutation rejectUserConnectionForUser($userId: ID!) {
         rejectUserConnectionForUser(userId: $userId) {
             follower {
                 id
@@ -57,7 +57,7 @@ const reject = gql`
 `
 
 const getFollowers = gql`
-    query getFollowersUserConnectionByUsernameForUser($username: String!){
+    query getFollowersUserConnectionByUsernameForUser($username: String!) {
         getFollowersUserConnectionByUsernameForUser(username: $username) {
             userConnections {
                 follower {
@@ -102,7 +102,7 @@ const getFollowers = gql`
 `
 
 const getFollowing = gql`
-    query getFollowingUserConnectionByUsernameForUser($username: String!){
+    query getFollowingUserConnectionByUsernameForUser($username: String!) {
         getFollowingUserConnectionByUsernameForUser(username: $username) {
             userConnections {
                 following {
@@ -147,7 +147,7 @@ const getFollowing = gql`
 `
 
 const getRequests = gql`
-    query getRequestsUsersConnectionByIdForUser{
+    query getRequestsUsersConnectionByIdForUser {
         getRequestsUsersConnectionByIdForUser {
             userConnections {
                 follower {
@@ -175,4 +175,3 @@ export default {
     getFollowing,
     getRequests,
 }
-

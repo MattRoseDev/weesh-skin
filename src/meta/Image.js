@@ -1,6 +1,6 @@
 import config from 'Root/config'
 
-export default ({ data, type } = { data: null }) => {
+export default ({data, type} = {data: null}) => {
     switch (type) {
         case 'UserProfile':
             return `${config.UPLOAD_URL}${data.user.avatarAddress}`

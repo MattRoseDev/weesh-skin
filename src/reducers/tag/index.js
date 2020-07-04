@@ -1,9 +1,9 @@
 export const tagReducer = (state, action) => {
-    switch(action.type) {
-        case 'ADD_TAG_DATA': 
+    switch (action.type) {
+        case 'ADD_TAG_DATA':
             return {
                 ...state,
-                ...action.data
+                ...action.data,
             }
         default:
             return state

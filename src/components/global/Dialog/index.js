@@ -1,58 +1,66 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
+import styled, {css} from 'styled-components'
+import {Link} from 'react-router-dom'
 import C from 'Root/constants'
 
 const StyledContainer = styled.div`
-    ${({ visible }) => !visible ? css`
-        display: none;
-    `: C.styles.flex.flexRowCenter};
+    ${({visible}) =>
+        !visible
+            ? css`
+                  display: none;
+              `
+            : C.styles.flex.flexRowCenter};
     ${C.styles.position.positionFixedZiro};
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 100;
 `
 const StyledContent = styled.div`
     overflow: hidden;
     ${C.styles.flex.flexColumnCenter};
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.foreground};
-    border-radius: .75rem;
-    ${({ width }) => width && css`
-        width: ${width};
-    `};
+    background: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.colors.foreground};
+    border-radius: 0.75rem;
+    ${({width}) =>
+        width &&
+        css`
+            width: ${width};
+        `};
 `
 
 const StyledButton = styled.button`
     width: 100%;
     ${C.styles.flex.flexRowCenter};
     background: ${({theme}) => theme.colors.background};
-    font-size: .875rem;
+    font-size: 0.875rem;
     vertical-align: middle;
     border: none;
-    border-top: 1px dashed ${({ theme }) => theme.colors.lightGray};
+    border-top: 1px dashed ${({theme}) => theme.colors.lightGray};
     color: ${({color, theme}) => theme.colors[color || 'foreground']};
-    padding: .85rem;
-    ${({ fontWeight }) => fontWeight && css`
-        font-weight: ${fontWeight};
-    `};
+    padding: 0.85rem;
+    ${({fontWeight}) =>
+        fontWeight &&
+        css`
+            font-weight: ${fontWeight};
+        `};
     margin: 0;
     cursor: pointer;
 `
 
-export default (props) => {
-    return <StyledContainer {...props} onClick={(e) => {
-            if (e.target == e.currentTarget) {
-                props.toggleDialogFunction(false)
-            }
-        }}>
-        <StyledContent {...props}>
-            {props.children}
-        </StyledContent>
-    </StyledContainer>
+export default props => {
+    return (
+        <StyledContainer
+            {...props}
+            onClick={e => {
+                if (e.target == e.currentTarget) {
+                    props.toggleDialogFunction(false)
+                }
+            }}
+        >
+            <StyledContent {...props}>{props.children}</StyledContent>
+        </StyledContainer>
+    )
 }
 
-export const DialogButton = (props) => {
-    return <StyledButton {...props}>
-        {props.children}
-    </StyledButton>
+export const DialogButton = props => {
+    return <StyledButton {...props}>{props.children}</StyledButton>
 }

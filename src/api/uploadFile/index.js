@@ -11,4 +11,3 @@ const single = gql`
 export default {
     single,
 }
-

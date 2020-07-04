@@ -1,15 +1,15 @@
 export const weeshReducer = (state, action) => {
-    switch(action.type) {
-        case 'ADD_WEESH': 
+    switch (action.type) {
+        case 'ADD_WEESH':
             return {
                 ...state,
-                ...action.data
+                ...action.data,
             }
-        case 'EMPTY_SUGGESTION_TAGS': 
+        case 'EMPTY_SUGGESTION_TAGS':
             return {
                 ...state,
                 suggestionTags: [],
-                allowShowSuggestions: false
+                allowShowSuggestions: false,
             }
         default:
             return state

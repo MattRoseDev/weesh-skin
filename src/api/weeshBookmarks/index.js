@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const add = gql`
-    mutation addWeeshToBookmarkForUsers($weeshId: ID!){
+    mutation addWeeshToBookmarkForUsers($weeshId: ID!) {
         addWeeshToBookmarkForUsers(weeshId: $weeshId) {
             id
             user {
@@ -25,7 +25,7 @@ const add = gql`
                         avatar
                     }
                 }
-                content 
+                content
                 status
                 like {
                     weeshLikes {
@@ -51,7 +51,7 @@ const add = gql`
 `
 
 const remove = gql`
-    mutation removeWeeshFromBookmarkForUsers($weeshId: ID!){
+    mutation removeWeeshFromBookmarkForUsers($weeshId: ID!) {
         removeWeeshFromBookmarkForUsers(weeshId: $weeshId) {
             id
             user {
@@ -75,7 +75,7 @@ const remove = gql`
                         avatar
                     }
                 }
-                content 
+                content
                 status
                 like {
                     weeshLikes {
@@ -101,7 +101,7 @@ const remove = gql`
 `
 
 const getUserBookmarksWeeshes = gql`
-    query getUserBookmarksWeeshesForUser($limit: Int, $page: Int){
+    query getUserBookmarksWeeshesForUser($limit: Int, $page: Int) {
         getUserBookmarksWeeshesForUser(limit: $limit, page: $page) {
             weeshesBookmark {
                 weesh {
@@ -118,7 +118,7 @@ const getUserBookmarksWeeshes = gql`
                             avatar
                         }
                     }
-                    content 
+                    content
                     status
                     like {
                         weeshLikes {
@@ -182,4 +182,3 @@ export default {
     remove,
     getUserBookmarksWeeshes,
 }
-

@@ -1,9 +1,13 @@
-export default ({ data, type } = { data: null }) => {
+export default ({data, type} = {data: null}) => {
     switch (type) {
         case 'UserProfile':
-            return `${data.user.firstName || ''} ${data.user.lastName || ''} (@${data.user.username}) • Weesh`
+            return `${data.user.firstName || ''} ${
+                data.user.lastName || ''
+            } (@${data.user.username}) • Weesh`
         case 'WeeshPage':
-            return `${data.weesh.user.firstName || ''} ${data.weesh.user.lastName || ''} (@${data.weesh.user.username}) • Weesh`
+            return `${data.weesh.user.firstName || ''} ${
+                data.weesh.user.lastName || ''
+            } (@${data.weesh.user.username}) • Weesh`
         case 'Tags':
             return `#${data.tag} • Weesh`
         case 'EditProfile':

@@ -1,31 +1,81 @@
-import { css } from 'styled-components'
+import {css} from 'styled-components'
 
 const s = {
-    flex: css`display: flex;`,
-    inlineFlex: css`display: inline-flex;`,
-    row: css`flex-direction: row;`,
-    rowReverse: css`flex-direction: row-reverse;`,
-    column: css`flex-direction: column;`,
-    columnReverse: css`flex-direction: column-reverse;`,
-    flexWrap: css`flex-wrap: wrap;`,
-    justifyContentCenter: css`justify-content: center;`,
-    justifyContentStart: css`justify-content: flex-start;`,
-    justifyContentEnd: css`justify-content: flex-end;`,
-    justifyContentStretch: css`justify-content: stretch;`,
-    justifyContentBetween: css`justify-content: space-between;`,
-    justifyContentAround: css`justify-content: space-around;`,
-    alignItemsCenter: css`align-items: center;`,
-    alignItemsStart: css`align-items: flex-start;`,
-    alignItemsEnd: css`align-items: flex-end;`,
-    alignItemsStretch: css`align-items: stretch;`,
-    alignItemsBetween: css`align-items: space-between;`,
-    alignItemsAround: css`align-items: space-around;`,
-    alignSelfCenter: css`align-self: center;`,
-    alignSelfStart: css`align-self: flex-start;`,
-    alignSelfEnd: css`align-self: flex-end;`,
-    alignSelfStretch: css`align-self: stretch;`,
-    alignSelfBetween: css`align-self: space-between;`,
-    alignSelfAround: css`align-self: space-around;`,
+    flex: css`
+        display: flex;
+    `,
+    inlineFlex: css`
+        display: inline-flex;
+    `,
+    row: css`
+        flex-direction: row;
+    `,
+    rowReverse: css`
+        flex-direction: row-reverse;
+    `,
+    column: css`
+        flex-direction: column;
+    `,
+    columnReverse: css`
+        flex-direction: column-reverse;
+    `,
+    flexWrap: css`
+        flex-wrap: wrap;
+    `,
+    justifyContentCenter: css`
+        justify-content: center;
+    `,
+    justifyContentStart: css`
+        justify-content: flex-start;
+    `,
+    justifyContentEnd: css`
+        justify-content: flex-end;
+    `,
+    justifyContentStretch: css`
+        justify-content: stretch;
+    `,
+    justifyContentBetween: css`
+        justify-content: space-between;
+    `,
+    justifyContentAround: css`
+        justify-content: space-around;
+    `,
+    alignItemsCenter: css`
+        align-items: center;
+    `,
+    alignItemsStart: css`
+        align-items: flex-start;
+    `,
+    alignItemsEnd: css`
+        align-items: flex-end;
+    `,
+    alignItemsStretch: css`
+        align-items: stretch;
+    `,
+    alignItemsBetween: css`
+        align-items: space-between;
+    `,
+    alignItemsAround: css`
+        align-items: space-around;
+    `,
+    alignSelfCenter: css`
+        align-self: center;
+    `,
+    alignSelfStart: css`
+        align-self: flex-start;
+    `,
+    alignSelfEnd: css`
+        align-self: flex-end;
+    `,
+    alignSelfStretch: css`
+        align-self: stretch;
+    `,
+    alignSelfBetween: css`
+        align-self: space-between;
+    `,
+    alignSelfAround: css`
+        align-self: space-around;
+    `,
 }
 
 const flexRow = css`

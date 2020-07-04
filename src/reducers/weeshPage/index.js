@@ -1,18 +1,18 @@
 export const weeshPageReducer = (state, action) => {
     let weeshComments
-    switch(action.type) {
-        case 'SET_WEESH': 
+    switch (action.type) {
+        case 'SET_WEESH':
             return {
                 ...state,
-                ...action.data
+                ...action.data,
             }
-        case 'SET_TEXTAREA': 
+        case 'SET_TEXTAREA':
             return {
                 ...state,
-                ...action.data
+                ...action.data,
             }
-        case 'ADD_COMMENT': 
-            if(state.reply) {
+        case 'ADD_COMMENT':
+            if (state.reply) {
                 weeshComments = state.comment.weeshComments
                 weeshComments = weeshComments.map(weeshComment => {
                     if (weeshComment.id == state.reply.parentId) {
@@ -24,31 +24,30 @@ export const weeshPageReducer = (state, action) => {
                 weeshComments = state.comment.weeshComments
                 weeshComments.push(action.data)
             }
-            
+
             return {
                 ...state,
                 comment: {
                     ...state.comment,
-                    weeshComments
+                    weeshComments,
                 },
-                reply: null
+                reply: null,
             }
-        case 'REMOVE_COMMENT': 
+        case 'REMOVE_COMMENT':
             weeshComments = state.comment.weeshComments
             weeshComments = weeshComments.filter(weeshComment => {
                 if (weeshComment.id != action.data.id) {
                     return weeshComment
                 }
-                
             })
             return {
                 ...state,
                 comment: {
                     ...state.comment,
-                    weeshComments
+                    weeshComments,
                 },
             }
-        case 'SET_REPLY': 
+        case 'SET_REPLY':
             let reply = {
                 parentId: action.data.id,
                 id: action.data.user.id,
@@ -56,12 +55,12 @@ export const weeshPageReducer = (state, action) => {
             }
             return {
                 ...state,
-                reply
+                reply,
             }
-        case 'UNSET_REPLY': 
+        case 'UNSET_REPLY':
             return {
                 ...state,
-                reply: null
+                reply: null,
             }
         default:
             return state

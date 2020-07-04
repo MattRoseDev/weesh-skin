@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 const add = gql`
-    mutation addWeeshForUser($content: String!, $status: Int){
-        addWeeshForUser(content: $content,status: $status) {
+    mutation addWeeshForUser($content: String!, $status: Int) {
+        addWeeshForUser(content: $content, status: $status) {
             id
             user {
                 id
@@ -11,7 +11,7 @@ const add = gql`
                 lastName
                 avatarAddress
             }
-            content 
+            content
             status
             updatedAt
         }
@@ -19,7 +19,7 @@ const add = gql`
 `
 
 const deleteWeesh = gql`
-    mutation deleteWeeshForUser($weeshId: ID!){
+    mutation deleteWeeshForUser($weeshId: ID!) {
         deleteWeeshForUser(weeshId: $weeshId) {
             id
         }
@@ -27,7 +27,7 @@ const deleteWeesh = gql`
 `
 
 const getHomeWeeshes = gql`
-    query getHomeWeeshesForUser($limit: Int, $page: Int){
+    query getHomeWeeshesForUser($limit: Int, $page: Int) {
         getHomeWeeshesForUser(limit: $limit, page: $page) {
             weeshes {
                 id
@@ -43,7 +43,7 @@ const getHomeWeeshes = gql`
                         avatar
                     }
                 }
-                content 
+                content
                 status
                 like {
                     weeshLikes {
@@ -120,7 +120,7 @@ const getHomeWeeshes = gql`
 `
 
 const getShowcase = gql`
-    query getTheBestWeeshesForUser($limit: Int, $page: Int){
+    query getTheBestWeeshesForUser($limit: Int, $page: Int) {
         getTheBestWeeshesForUser(limit: $limit, page: $page) {
             weeshes {
                 id
@@ -136,7 +136,7 @@ const getShowcase = gql`
                         avatar
                     }
                 }
-                content 
+                content
                 status
                 like {
                     weeshLikes {
@@ -212,7 +212,7 @@ const getShowcase = gql`
 `
 
 const getWeeshes = gql`
-    query getWeeshesForUser($userId: ID!, $limit: Int, $page: Int){
+    query getWeeshesForUser($userId: ID!, $limit: Int, $page: Int) {
         getWeeshesForUser(userId: $userId, limit: $limit, page: $page) {
             weeshes {
                 id
@@ -229,7 +229,7 @@ const getWeeshes = gql`
                     }
                 }
                 commentsCounter
-                content 
+                content
                 status
                 like {
                     weeshLikes {
@@ -265,7 +265,7 @@ const getWeeshes = gql`
 `
 
 const getWeeshByLink = gql`
-    query getWeeshByLinkForUser($link: String!){
+    query getWeeshByLinkForUser($link: String!) {
         getWeeshByLinkForUser(link: $link) {
             id
             link
@@ -280,7 +280,7 @@ const getWeeshByLink = gql`
                     avatar
                 }
             }
-            content 
+            content
             status
             like {
                 weeshLikes {
@@ -355,7 +355,6 @@ const getWeeshByLink = gql`
     }
 `
 
-
 export default {
     add,
     deleteWeesh,
@@ -364,4 +363,3 @@ export default {
     getShowcase,
     getWeeshByLink,
 }
-

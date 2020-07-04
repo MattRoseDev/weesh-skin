@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Icon from 'Root/components/global/Icon'
 import Cover from 'Root/components/global/Cover'
 import Avatar from 'Root/components/global/Avatar'
-import { TagContext } from 'Root/contexts/tag'
+import {TagContext} from 'Root/contexts/tag'
 import C from 'Root/constants'
 
 const StyledHeader = styled.div`
@@ -18,10 +18,10 @@ const StyledTag = styled.div`
     word-break: break-word;
 `
 
-export default (props) => {
-    return <StyledHeader>
-        <StyledTag>
-            Bookmarks
-        </StyledTag>
-    </StyledHeader>
+export default props => {
+    return (
+        <StyledHeader>
+            <StyledTag>Bookmarks</StyledTag>
+        </StyledHeader>
+    )
 }

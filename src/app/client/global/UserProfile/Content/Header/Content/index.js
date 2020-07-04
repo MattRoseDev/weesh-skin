@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import Connection from 'Root/app/client/global/UserProfile/Content/Header/Content/Connection/index'
 import Main from './Main'
 import C from 'Root/constants'
-import { UserContext } from 'Root/contexts/user'
-import { useSubscription } from '@apollo/react-hooks'
+import {UserContext} from 'Root/contexts/user'
+import {useSubscription} from '@apollo/react-hooks'
 import api from 'Root/api'
 
 const StyledContent = styled.div`
@@ -16,16 +16,18 @@ const StyledContent = styled.div`
 `
 
 const StyledButtonContainer = styled.div`
-    padding: .75rem .75rem 1.5rem;
+    padding: 0.75rem 0.75rem 1.5rem;
 `
 
-export default (props) => {
-    const { user } = React.useContext(UserContext)
-    
-    return <StyledContent>
-        <StyledButtonContainer>
-            <Connection {...props} />
-        </StyledButtonContainer>
-        {user && <Main {...props} />}
-    </StyledContent>
-}   
+export default props => {
+    const {user} = React.useContext(UserContext)
+
+    return (
+        <StyledContent>
+            <StyledButtonContainer>
+                <Connection {...props} />
+            </StyledButtonContainer>
+            {user && <Main {...props} />}
+        </StyledContent>
+    )
+}

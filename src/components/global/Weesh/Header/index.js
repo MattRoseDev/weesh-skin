@@ -8,26 +8,26 @@ import Link from 'Root/components/global/Link'
 import helpers from 'Root/helpers'
 
 const StyledHeader = styled.div`
-    padding: .75rem .75rem 0;
+    padding: 0.75rem 0.75rem 0;
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
 `
 
 const StyledNameContainer = styled.div`
     ${C.styles.flex.flexColumn};
-    margin: 0 0 0 .5rem;
+    margin: 0 0 0 0.5rem;
 `
 
 const StyledUsername = styled.small`
-    font-size: .75rem;
+    font-size: 0.75rem;
     ${C.styles.flex.flexRow};
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${({theme}) => theme.colors.dark};
 `
 
 const StyledTimestamp = styled.small`
-    font-size: .75rem;
-    color: ${({ theme }) => theme.colors.dark};
-    margin: 0 .25rem 0 0;
+    font-size: 0.75rem;
+    color: ${({theme}) => theme.colors.dark};
+    margin: 0 0.25rem 0 0;
 `
 
 const StyledLeftSide = styled.div`
@@ -36,21 +36,35 @@ const StyledLeftSide = styled.div`
 
 const StyledRightSide = styled.div``
 
-export default (props) => {
-    return <StyledHeader>
-            {props.user && <StyledLeftSide>
-                <Avatar to={`/${props.user.username}`} {...props} />
-                {props.user && <StyledNameContainer>
-                    <Link to={`/${props.user.username}`}>
-                        <FullName {...props} fontSize={.85} />
-                    </Link>
-                    <Link to={`/${props.user.username}`}>
-                        <StyledUsername>@{props.user.username}</StyledUsername>
-                    </Link>
-                </StyledNameContainer>}
-            </StyledLeftSide>}
-            {props.updatedAt && <StyledRightSide>
-            <StyledTimestamp>{helpers.dateFormat(moment(props.updatedAt).fromNow(true))}</StyledTimestamp>
-            </StyledRightSide> }
-    </StyledHeader>
+export default props => {
+    return (
+        <StyledHeader>
+            {props.user && (
+                <StyledLeftSide>
+                    <Avatar to={`/${props.user.username}`} {...props} />
+                    {props.user && (
+                        <StyledNameContainer>
+                            <Link to={`/${props.user.username}`}>
+                                <FullName {...props} fontSize={0.85} />
+                            </Link>
+                            <Link to={`/${props.user.username}`}>
+                                <StyledUsername>
+                                    @{props.user.username}
+                                </StyledUsername>
+                            </Link>
+                        </StyledNameContainer>
+                    )}
+                </StyledLeftSide>
+            )}
+            {props.updatedAt && (
+                <StyledRightSide>
+                    <StyledTimestamp>
+                        {helpers.dateFormat(
+                            moment(props.updatedAt).fromNow(true),
+                        )}
+                    </StyledTimestamp>
+                </StyledRightSide>
+            )}
+        </StyledHeader>
+    )
 }

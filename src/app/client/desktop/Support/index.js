@@ -9,26 +9,28 @@ import Second from 'Root/app/client/desktop/Second/General'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.foreground};
+    background: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.colors.foreground};
 `
 
 const StyledSection = styled.div`
     ${C.styles.flex.flexColumn};
 `
 
-export default (props) => {
-    return <StyledContainer>
-        <Border leftColor='light' rightColor='light'>
-            <Container width='38rem'>
-                <StyledSection>
-                    <Header {...props} />
-                    <Content {...props} />
-                </StyledSection>
+export default props => {
+    return (
+        <StyledContainer>
+            <Border leftColor="light" rightColor="light">
+                <Container width="38rem">
+                    <StyledSection>
+                        <Header {...props} />
+                        <Content {...props} />
+                    </StyledSection>
+                </Container>
+            </Border>
+            <Container width="24rem">
+                <Second {...props} />
             </Container>
-        </Border>
-        <Container width='24rem'>
-            <Second {...props} />
-        </Container>
-    </StyledContainer>
+        </StyledContainer>
+    )
 }

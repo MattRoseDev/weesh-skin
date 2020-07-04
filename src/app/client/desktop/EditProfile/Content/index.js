@@ -6,13 +6,12 @@ import Main from 'Root/app/client/global/EditProfile/Main'
 import C from 'Root/constants'
 import BannerMessage from 'Root/components/global/BannerMessage'
 import Input from 'Root/components/global/Input'
-import { useQuery, useMutation } from '@apollo/react-hooks'
-import { AuthContext } from 'Root/contexts/auth'
+import {useQuery, useMutation} from '@apollo/react-hooks'
+import {AuthContext} from 'Root/contexts/auth'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import styled from 'styled-components'
-import { EditProfileContext } from 'Root/contexts/editProfile'
-
+import {EditProfileContext} from 'Root/contexts/editProfile'
 
 const StyledContainer = styled.div`
     /* min-height: ${window.innerHeight - 55}px; */
@@ -21,15 +20,17 @@ const StyledContainer = styled.div`
 const StyledLoadingContainer = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.justifyContentStart};
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.foreground};
+    background: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.colors.foreground};
     min-height: ${window.innerHeight - 55}px;
 `
 
-export default (props) => {
-    const { match } = props
-    const { auth, dispatch } = React.useContext(AuthContext)
-    const { editProfile, dispatch: editProfileDispatch } = React.useContext(EditProfileContext)
+export default props => {
+    const {match} = props
+    const {auth, dispatch} = React.useContext(AuthContext)
+    const {editProfile, dispatch: editProfileDispatch} = React.useContext(
+        EditProfileContext,
+    )
     const [isEditProfile, setIsEditProfile] = React.useState(false)
     const history = useHistory()
 
@@ -43,24 +44,28 @@ export default (props) => {
     // })
 
     React.useEffect(() => {
-        if(!isEditProfile) {
+        if (!isEditProfile) {
             editProfileDispatch({
                 type: 'EDIT_PROFILE',
                 data: {
                     ...auth,
-                    doneButton: true
-                }
+                    doneButton: true,
+                },
             })
             setIsEditProfile(true)
         }
     }, [isEditProfile])
 
-    return <StyledContainer>
-        {editProfile && auth.id != undefined && <>
-            <>
-                <Header {...props} />
-                <Main {...props} />
-            </>
-        </>}
-    </StyledContainer>
+    return (
+        <StyledContainer>
+            {editProfile && auth.id != undefined && (
+                <>
+                    <>
+                        <Header {...props} />
+                        <Main {...props} />
+                    </>
+                </>
+            )}
+        </StyledContainer>
+    )
 }

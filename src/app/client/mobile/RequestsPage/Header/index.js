@@ -6,13 +6,15 @@ import Icon from 'Root/components/global/Icon'
 import Header from 'Root/app/client/mobile/Template/Header'
 
 const StyledTitle = styled.strong`
-    color: ${({ theme }) => theme.colors.foreground};
+    color: ${({theme}) => theme.colors.foreground};
 `
 
 export default () => {
-    return <Header>
-        <BackButton/>
-        <StyledTitle>Requests</StyledTitle>
-        <Icon size={24} color='background' icon='ChevronLeft' />
-    </Header> 
+    return (
+        <Header>
+            <BackButton />
+            <StyledTitle>Requests</StyledTitle>
+            <Icon size={24} color="background" icon="ChevronLeft" />
+        </Header>
+    )
 }

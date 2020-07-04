@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import C from 'Root/constants'
-import { AuthContext } from 'Root/contexts/auth'
-import { NotificationsContext } from 'Root/contexts/notifications'
+import {AuthContext} from 'Root/contexts/auth'
+import {NotificationsContext} from 'Root/contexts/notifications'
 import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
@@ -14,7 +14,7 @@ const NavItem = styled(NavLink)`
     list-style: none;
     color: ${({theme}) => theme.colors.foreground};
     border-radius: 50rem;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     width: 100%;
 `
 
@@ -28,35 +28,56 @@ const StyledIcon = styled.span`
 const StyledAvatarBorder = styled.span`
     ${C.styles.flex.inlineFlexRow};
     border-radius: 50%;
-    border: 2px solid ${({ theme }) => theme.colors.foreground};
+    border: 2px solid ${({theme}) => theme.colors.foreground};
 `
 
-export default (props) => {
-    const { auth } = React.useContext(AuthContext)
+export default props => {
+    const {auth} = React.useContext(AuthContext)
     const history = useHistory()
 
     const path = props.path == '/profile' ? `/${auth.username}` : props.path
-    return auth.id ? <>
-        {props.path == history.location.pathname || 
-            history.location.pathname == `/${auth.username}` && props.path == '/profile' ? 
-        <NavItem exact={props.exact || false} to={path}>
-            <StyledIcon>
-                {props.path == '/profile' ? <StyledAvatarBorder>
-                    <Avatar user={auth} size={1.25} />
-                </StyledAvatarBorder> : <Icon color='foreground'
-                strokeWidth={props.fillStrokeWidth || 2}
-                icon={props.content}
-                size={props.size || 26} />}
-            </StyledIcon>
-        </NavItem> : 
-        <NavItem exact={props.exact || false} to={path}>
-            <StyledIcon>
-                {props.path == '/notifications' && <NotificationBadge />}
-                {props.path == '/profile' ? <Avatar user={auth} size={1.35} /> : <Icon color='dark'
-                    strokeWidth={props.strokeWidth || 2}
-                    icon={props.content}
-                    size={props.fillSize || 26} />}
-            </StyledIcon>
-        </NavItem>}
-    </> : ''
+    return auth.id ? (
+        <>
+            {props.path == history.location.pathname ||
+            (history.location.pathname == `/${auth.username}` &&
+                props.path == '/profile') ? (
+                <NavItem exact={props.exact || false} to={path}>
+                    <StyledIcon>
+                        {props.path == '/profile' ? (
+                            <StyledAvatarBorder>
+                                <Avatar user={auth} size={1.25} />
+                            </StyledAvatarBorder>
+                        ) : (
+                            <Icon
+                                color="foreground"
+                                strokeWidth={props.fillStrokeWidth || 2}
+                                icon={props.content}
+                                size={props.size || 26}
+                            />
+                        )}
+                    </StyledIcon>
+                </NavItem>
+            ) : (
+                <NavItem exact={props.exact || false} to={path}>
+                    <StyledIcon>
+                        {props.path == '/notifications' && (
+                            <NotificationBadge />
+                        )}
+                        {props.path == '/profile' ? (
+                            <Avatar user={auth} size={1.35} />
+                        ) : (
+                            <Icon
+                                color="dark"
+                                strokeWidth={props.strokeWidth || 2}
+                                icon={props.content}
+                                size={props.fillSize || 26}
+                            />
+                        )}
+                    </StyledIcon>
+                </NavItem>
+            )}
+        </>
+    ) : (
+        ''
+    )
 }

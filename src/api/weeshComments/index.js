@@ -1,8 +1,16 @@
 import gql from 'graphql-tag'
 
 const add = gql`
-    mutation addWeeshCommentForUser($weeshId: ID!, $content: String!, $parentId: ID){
-        addWeeshCommentForUser(weeshId: $weeshId, content: $content, parentId: $parentId) {
+    mutation addWeeshCommentForUser(
+        $weeshId: ID!
+        $content: String!
+        $parentId: ID
+    ) {
+        addWeeshCommentForUser(
+            weeshId: $weeshId
+            content: $content
+            parentId: $parentId
+        ) {
             id
             user {
                 id
@@ -42,7 +50,7 @@ const add = gql`
 `
 
 const remove = gql`
-    mutation removeWeeshCommentForUser($commentId: ID!){
+    mutation removeWeeshCommentForUser($commentId: ID!) {
         removeWeeshCommentForUser(commentId: $commentId) {
             id
         }
@@ -53,4 +61,3 @@ export default {
     add,
     remove,
 }
-

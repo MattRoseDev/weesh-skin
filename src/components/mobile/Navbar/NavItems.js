@@ -7,14 +7,12 @@ const NavItems = styled.div`
     ${C.styles.flex.justifyContentAround};
     ${C.styles.flex.alignItemsCenter};
     /* margin: 1rem; */
-    padding: 0 .125rem;
+    padding: 0 0.125rem;
     /* border-radius: 2rem 2rem 0 0; */
     box-shadow: 1px 1px 3px 1px ${({theme}) => theme.colors.light};
     background: ${({theme}) => theme.colors.background};
 `
 
-export default (props) => {
-    return <NavItems>
-        {props.children}
-    </NavItems>
+export default props => {
+    return <NavItems>{props.children}</NavItems>
 }

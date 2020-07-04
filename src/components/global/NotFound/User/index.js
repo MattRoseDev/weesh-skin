@@ -13,9 +13,11 @@ const StyledMessage = styled.div`
     margin: 1rem 0 0;
 `
 
-export default (props) => {
-    return <StyledContaner {...props} >
-        <Icon icon='User' size={60} strokeWidth={1.5} color='dark' />
-        <StyledMessage>User Not Found</StyledMessage>
-    </StyledContaner>
+export default props => {
+    return (
+        <StyledContaner {...props}>
+            <Icon icon="User" size={60} strokeWidth={1.5} color="dark" />
+            <StyledMessage>User Not Found</StyledMessage>
+        </StyledContaner>
+    )
 }

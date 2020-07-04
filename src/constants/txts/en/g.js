@@ -9,6 +9,6 @@ export default {
     weeshNotFound: 'Weesh Not Found!',
     userNotFound: 'User Not Found',
     noWeeshesYet: 'No Weeshes Yet.',
-    noFollowingYet: 'When you follow people, you\'ll see their weeshes here.',
+    noFollowingYet: "When you follow people, you'll see their weeshes here.",
     noNotifications: 'You have no notifications.',
 }

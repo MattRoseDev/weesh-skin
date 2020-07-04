@@ -7,28 +7,29 @@ import C from 'Root/constants'
 import Link from 'Root/components/global/Link'
 import Button from 'Root/components/global/Button'
 import Icon from 'Root/components/global/Icon'
-import { useMutation } from '@apollo/react-hooks'
+import {useMutation} from '@apollo/react-hooks'
 import api from 'Root/api'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyStart};
     ${C.styles.flex.alignItemsStretch};
-    padding: .75rem .5rem 0;
+    padding: 0.75rem 0.5rem 0;
 `
 
 const StyledRequestContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsStretch};
-    padding: .75rem .5rem;
-    border-bottom: ${({ borderBottom }) => borderBottom || '0px'} dashed ${({ theme }) => theme.colors.light};
+    padding: 0.75rem 0.5rem;
+    border-bottom: ${({borderBottom}) => borderBottom || '0px'} dashed
+        ${({theme}) => theme.colors.light};
 `
 
 const StyledRequestContent = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    padding: 0 .25rem;
+    padding: 0 0.25rem;
 `
 
 const StyledMain = styled.div`
@@ -38,47 +39,47 @@ const StyledMain = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin: 0 0 0 .5rem;
+    margin: 0 0 0 0.5rem;
     width: 50vw;
 `
 
 const StyledUsername = styled.span`
     margin: 0;
-    font-size: .85rem;
+    font-size: 0.85rem;
     font-weight: normal;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: ${({ theme }) => theme.colors.gray};
+    color: ${({theme}) => theme.colors.gray};
 `
 
 const StyledButton = styled.span`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
-    font-size: .85rem;
+    font-size: 0.85rem;
     font-weight: normal;
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${({theme}) => theme.colors.dark};
 `
 
 const StyledIcon = styled.span`
-    padding: 0 .25rem 0 .75rem;
+    padding: 0 0.25rem 0 0.75rem;
     cursor: pointer;
 `
 
-export default (props) => {
+export default props => {
     const user = props.index ? props[props.index] : props
     const requestContainer = React.useRef()
 
     const [accept, acceptResponse] = useMutation(api.connections.accept, {
         variables: {
-            userId: `${user.id}`
-        }
+            userId: `${user.id}`,
+        },
     })
 
     const [reject, rejectResponse] = useMutation(api.connections.reject, {
         variables: {
-            userId: `${user.id}`
-        }
+            userId: `${user.id}`,
+        },
     })
 
     const handleAccept = () => accept()
@@ -94,35 +95,52 @@ export default (props) => {
         }
     }, [acceptResponse, rejectResponse])
 
-    return props.request ? <StyledRequestContainer borderBottom='1px' ref={requestContainer}>
-        <Link to={`/${user.username}`}>
-            <StyledRequestContent>
-                <Avatar size={2.25} user={user} />
-                <StyledMain>
-                    <FullName user={user} fontSize={.85} />
-                    <StyledUsername>@{user.username}</StyledUsername>
-                </StyledMain>
-            </StyledRequestContent>
-        </Link>
-        <StyledButton>
-            <Button isLoading={acceptResponse.loading || undefined} fontWeight='bold' clickEvent={handleAccept} background='primary' color='background' radius='50rem' padding='.25rem .5rem'>Confirm</Button>
-            <StyledIcon onClick={handleReject}>
-                <Icon icon='X' />
-            </StyledIcon>
-        </StyledButton>
-    </StyledRequestContainer> : <StyledRequestContainer borderBottom={`${props.connection ? '1px' : undefined}`}>
-            <Link width='100%' to={`/${user.username}`}>
+    return props.request ? (
+        <StyledRequestContainer borderBottom="1px" ref={requestContainer}>
+            <Link to={`/${user.username}`}>
                 <StyledRequestContent>
                     <Avatar size={2.25} user={user} />
                     <StyledMain>
-                        <FullName user={user} fontSize={.85} />
+                        <FullName user={user} fontSize={0.85} />
                         <StyledUsername>@{user.username}</StyledUsername>
                     </StyledMain>
                 </StyledRequestContent>
             </Link>
-            {props.connection && <StyledButton>
-                <ConnectionButton {...props} user={user} />
-            </StyledButton>}
+            <StyledButton>
+                <Button
+                    isLoading={acceptResponse.loading || undefined}
+                    fontWeight="bold"
+                    clickEvent={handleAccept}
+                    background="primary"
+                    color="background"
+                    radius="50rem"
+                    padding=".25rem .5rem"
+                >
+                    Confirm
+                </Button>
+                <StyledIcon onClick={handleReject}>
+                    <Icon icon="X" />
+                </StyledIcon>
+            </StyledButton>
         </StyledRequestContainer>
+    ) : (
+        <StyledRequestContainer
+            borderBottom={`${props.connection ? '1px' : undefined}`}
+        >
+            <Link width="100%" to={`/${user.username}`}>
+                <StyledRequestContent>
+                    <Avatar size={2.25} user={user} />
+                    <StyledMain>
+                        <FullName user={user} fontSize={0.85} />
+                        <StyledUsername>@{user.username}</StyledUsername>
+                    </StyledMain>
+                </StyledRequestContent>
+            </Link>
+            {props.connection && (
+                <StyledButton>
+                    <ConnectionButton {...props} user={user} />
+                </StyledButton>
+            )}
+        </StyledRequestContainer>
+    )
 }
-

@@ -1,8 +1,14 @@
 import gql from 'graphql-tag'
 
 const addMessage = gql`
-    mutation addMessageToSupportForUser($subject: String, $description: String!) {
-        addMessageToSupportForUser(subject: $subject, description: $description) {
+    mutation addMessageToSupportForUser(
+        $subject: String
+        $description: String!
+    ) {
+        addMessageToSupportForUser(
+            subject: $subject
+            description: $description
+        ) {
             id
             subject
             description
@@ -25,4 +31,3 @@ const addMessage = gql`
 export default {
     addMessage,
 }
-

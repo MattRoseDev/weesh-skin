@@ -1,5 +1,5 @@
 import React from 'react'
-import { weeshReducer } from 'Root/reducers/weesh'
+import {weeshReducer} from 'Root/reducers/weesh'
 
 export const WeeshContext = React.createContext()
 
@@ -10,15 +10,17 @@ const initialWeesh = {
     totalCount: 280,
     suggestionTags: [],
     allowShowSuggestions: true,
-    textarea: null
+    textarea: null,
 }
 
-const WeeshProvider = (props) => {
+const WeeshProvider = props => {
     const [weesh, dispatch] = React.useReducer(weeshReducer, initialWeesh)
-    
-    return <WeeshContext.Provider value={{ weesh, dispatch }}>
-        {props.children}
-    </WeeshContext.Provider>
+
+    return (
+        <WeeshContext.Provider value={{weesh, dispatch}}>
+            {props.children}
+        </WeeshContext.Provider>
+    )
 }
 
 export default WeeshProvider

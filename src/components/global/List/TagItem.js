@@ -8,14 +8,15 @@ const StyledTagContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsStretch};
-    padding: .75rem .5rem;
-    border-bottom: ${({ borderBottom }) => borderBottom || '0px'} dashed ${({ theme }) => theme.colors.light};
+    padding: 0.75rem 0.5rem;
+    border-bottom: ${({borderBottom}) => borderBottom || '0px'} dashed
+        ${({theme}) => theme.colors.light};
 `
 
 const StyledTagContent = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    padding: 0 .25rem;
+    padding: 0 0.25rem;
 `
 
 const StyledMain = styled.div`
@@ -25,12 +26,12 @@ const StyledMain = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin: 0 0 0 .5rem;
+    margin: 0 0 0 0.5rem;
 `
 
 const StyledTitle = styled.span`
     margin: 0;
-    font-size: .85rem;
+    font-size: 0.85rem;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -39,7 +40,7 @@ const StyledTitle = styled.span`
 `
 const StyledCounter = styled.span`
     margin: 0;
-    font-size: .75rem;
+    font-size: 0.75rem;
     font-weight: normal;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -53,28 +54,25 @@ const StyledIcon = styled.span`
     ${C.styles.flex.flexRowCenter};
     border-radius: 50%;
     cursor: pointer;
-    border: 1px solid ${({ theme }) => theme.colors.lightGray};
+    border: 1px solid ${({theme}) => theme.colors.lightGray};
 `
 
-export default (props) => {
+export default props => {
     const tag = props.index ? props[props.index] : props
 
-    return <StyledTagContainer>
-        <Link width='100%' to={`/t/${tag.title}`}>
-            <StyledTagContent>
-                <StyledIcon>
-                    <Icon icon='Hash' color='foreground' />
-                </StyledIcon>
-                <StyledMain>
-                    <StyledTitle>
-                        #{tag.title}
-                    </StyledTitle>
-                    <StyledCounter>
-                        {tag.counter} weeshes
-                    </StyledCounter>
-                </StyledMain>
-            </StyledTagContent>
-        </Link>
-    </StyledTagContainer>
+    return (
+        <StyledTagContainer>
+            <Link width="100%" to={`/t/${tag.title}`}>
+                <StyledTagContent>
+                    <StyledIcon>
+                        <Icon icon="Hash" color="foreground" />
+                    </StyledIcon>
+                    <StyledMain>
+                        <StyledTitle>#{tag.title}</StyledTitle>
+                        <StyledCounter>{tag.counter} weeshes</StyledCounter>
+                    </StyledMain>
+                </StyledTagContent>
+            </Link>
+        </StyledTagContainer>
+    )
 }
-

@@ -8,7 +8,11 @@ export default ({content}) => {
 
     template = template.map(item => {
         if (item[0] == '#' && item.length > 1) {
-            item = <Tag to={`/t/${item.substr(1)}`} key={uuid()}>{item}</Tag>
+            item = (
+                <Tag to={`/t/${item.substr(1)}`} key={uuid()}>
+                    {item}
+                </Tag>
+            )
         }
         return item
     })

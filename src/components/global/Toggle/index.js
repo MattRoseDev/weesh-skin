@@ -10,7 +10,7 @@ const StyledContainer = styled.label`
 `
 
 const StyledSwitch = styled.span`
-    border: 1px solid ${({ theme }) => theme.colors.gray};
+    border: 1px solid ${({theme}) => theme.colors.gray};
     background-color: ${({theme}) => theme.colors.background};
     border-radius: 50rem;
     position: absolute;
@@ -19,26 +19,26 @@ const StyledSwitch = styled.span`
     left: 0;
     right: 0;
     bottom: 0;
-    transition: all .25s ease;
-    &:before{
+    transition: all 0.25s ease;
+    &:before {
         position: absolute;
-        left: .25rem;
-        bottom: .25rem;
+        left: 0.25rem;
+        bottom: 0.25rem;
         border-radius: 50%;
-        content: "";
+        content: '';
         width: 1.125rem;
         height: 1.125rem;
         background-color: ${({theme}) => theme.colors.background};
-        box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.gray};
-        transition: all .25s ease;
+        box-shadow: 0 0 0 1px ${({theme}) => theme.colors.gray};
+        transition: all 0.25s ease;
     }
 `
 
 const StyledInput = styled.input`
     display: none;
-    
+
     &:checked + ${StyledSwitch} {
-        border: 1px solid ${({ theme }) => theme.colors.primary};
+        border: 1px solid ${({theme}) => theme.colors.primary};
         background-color: ${({theme}) => theme.colors.primary};
         &:before {
             box-shadow: unset;
@@ -47,14 +47,16 @@ const StyledInput = styled.input`
     }
 `
 
-export default (props) => {
-    return <StyledContainer>
-        <StyledInput 
-            type='checkbox' 
-            defaultChecked={props.checked || undefined} 
-            onChange={props.onChange}
-            onInput={props.onInput}
-        />
-        <StyledSwitch/>
-    </StyledContainer>
+export default props => {
+    return (
+        <StyledContainer>
+            <StyledInput
+                type="checkbox"
+                defaultChecked={props.checked || undefined}
+                onChange={props.onChange}
+                onInput={props.onInput}
+            />
+            <StyledSwitch />
+        </StyledContainer>
+    )
 }

@@ -5,8 +5,8 @@ import Avatar from 'Root/components/global/Avatar'
 import EditableImage from 'Root/components/global/EditableImage'
 import Icon from 'Root/components/global/Icon'
 import CropImage from 'Root/components/global/CropImage'
-import { UserContext } from 'Root/contexts/user'
-import { EditProfileContext } from 'Root/contexts/editProfile'
+import {UserContext} from 'Root/contexts/user'
+import {EditProfileContext} from 'Root/contexts/editProfile'
 
 const StyledHeader = styled.div``
 
@@ -21,36 +21,57 @@ const StyledImagesFrame = styled.div`
 
 const initialCropImage = {
     visible: false,
-    type: null
+    type: null,
 }
 
-export default (props) => {
-    const { editProfile } = React.useContext(EditProfileContext)
+export default props => {
+    const {editProfile} = React.useContext(EditProfileContext)
     const [cropImage, setCropImage] = React.useState(initialCropImage)
 
-return editProfile && <StyledHeader>
-        <CropImage setCropImage={setCropImage} {...cropImage} />
-        <StyledImagesFrame>
-            <EditableImage onClick={() => setCropImage((prevState) => ({
-                ...prevState,
-                visible: true,
-                type: 'coverAddress',
-                width: 1040,
-                height: 346,
-            }))}>
-                <Cover height={`${window.innerWidth / 3}px`} user={editProfile} />
-            </EditableImage>
-            <StyledAvatarFrame>
-                <EditableImage radius='50%' onClick={() => setCropImage((prevState) => ({
-                ...prevState,
-                visible: true,
-                type: 'avatarAddress',
-                width: 640,
-                height: 640,
-            }))}>
-                    <Avatar user={editProfile} size={4} bordercolor='background' borderwidth={4} />
-                </EditableImage>
-            </StyledAvatarFrame>
-        </StyledImagesFrame>
-    </StyledHeader>
+    return (
+        editProfile && (
+            <StyledHeader>
+                <CropImage setCropImage={setCropImage} {...cropImage} />
+                <StyledImagesFrame>
+                    <EditableImage
+                        onClick={() =>
+                            setCropImage(prevState => ({
+                                ...prevState,
+                                visible: true,
+                                type: 'coverAddress',
+                                width: 1040,
+                                height: 346,
+                            }))
+                        }
+                    >
+                        <Cover
+                            height={`${window.innerWidth / 3}px`}
+                            user={editProfile}
+                        />
+                    </EditableImage>
+                    <StyledAvatarFrame>
+                        <EditableImage
+                            radius="50%"
+                            onClick={() =>
+                                setCropImage(prevState => ({
+                                    ...prevState,
+                                    visible: true,
+                                    type: 'avatarAddress',
+                                    width: 640,
+                                    height: 640,
+                                }))
+                            }
+                        >
+                            <Avatar
+                                user={editProfile}
+                                size={4}
+                                bordercolor="background"
+                                borderwidth={4}
+                            />
+                        </EditableImage>
+                    </StyledAvatarFrame>
+                </StyledImagesFrame>
+            </StyledHeader>
+        )
+    )
 }

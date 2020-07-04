@@ -15,10 +15,14 @@ const StyledContainer = styled.div`
     ${C.styles.flex.flexColumnCenter};
 `
 
-export default (props) => {
-    return <>
-        {props.visible && <StyledContainer>
-            <Modal {...props} />
-        </StyledContainer>}
-    </>
+export default props => {
+    return (
+        <>
+            {props.visible && (
+                <StyledContainer>
+                    <Modal {...props} />
+                </StyledContainer>
+            )}
+        </>
+    )
 }
