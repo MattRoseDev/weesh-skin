@@ -3,10 +3,10 @@ import AvatarEditor from 'react-avatar-editor'
 import styled from 'styled-components'
 import Buttons from './Buttons'
 import Button from 'Root/components/global/Button'
-import {EditProfileContext} from 'Root/contexts/editProfile'
-import {AuthContext} from 'Root/contexts/auth'
-import {SnackBarContext} from 'Root/contexts/snackbar'
-import {useMutation} from '@apollo/react-hooks'
+import { EditProfileContext } from 'Root/contexts/editProfile'
+import { AuthContext } from 'Root/contexts/auth'
+import { SnackBarContext } from 'Root/contexts/snackbar'
+import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import C from 'Root/constants'
 
@@ -16,9 +16,9 @@ const StyledContainer = styled.div`
 `
 
 const StyledAvatarEditor = styled(AvatarEditor)`
-    width: ${({width}) => `${width}px` || 'unset'}!important;
-    height: ${({height}) => `${height}px` || 'unset'} !important;
-    background: ${({theme}) => theme.colors.black};
+    width: ${({ width }) => `${width}px` || 'unset'}!important;
+    height: ${({ height }) => `${height}px` || 'unset'} !important;
+    background: ${({ theme }) => theme.colors.black};
 `
 
 const initialState = {
@@ -28,14 +28,14 @@ const initialState = {
 }
 
 export default props => {
-    const {editProfile, dispatch} = React.useContext(EditProfileContext)
-    const {auth, dispatch: authDispatch} = React.useContext(AuthContext)
-    const {snackbar, dispatch: snackbarDispatch} = React.useContext(
+    const { editProfile, dispatch } = React.useContext(EditProfileContext)
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
+    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
     const [state, setState] = React.useState(initialState)
     const [newImage, setNewImage] = React.useState(null)
-    const [singleUpload, {data, loading, error, called}] = useMutation(
+    const [singleUpload, { data, loading, error, called }] = useMutation(
         api.uploadFile.single,
     )
     let file = React.createRef()
@@ -120,7 +120,7 @@ export default props => {
                 },
             })
             setTimeout(() => {
-                snackbarDispatch({type: 'HIDE'})
+                snackbarDispatch({ type: 'HIDE' })
             }, 3 * 1000)
         }
     }, [state.image, data])

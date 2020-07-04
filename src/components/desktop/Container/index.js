@@ -1,13 +1,13 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledContainer = styled.div`
-    ${({margin}) =>
+    ${({ margin }) =>
         margin &&
         css`
             margin: ${margin};
         `};
-    ${({width}) =>
+    ${({ width }) =>
         width
             ? css`
                   min-width: ${width};

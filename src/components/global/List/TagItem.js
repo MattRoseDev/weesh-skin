@@ -9,8 +9,8 @@ const StyledTagContainer = styled.div`
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsStretch};
     padding: 0.75rem 0.5rem;
-    border-bottom: ${({borderBottom}) => borderBottom || '0px'} dashed
-        ${({theme}) => theme.colors.light};
+    border-bottom: ${({ borderBottom }) => borderBottom || '0px'} dashed
+        ${({ theme }) => theme.colors.light};
 `
 
 const StyledTagContent = styled.div`
@@ -36,7 +36,7 @@ const StyledTitle = styled.span`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 const StyledCounter = styled.span`
     margin: 0;
@@ -45,7 +45,7 @@ const StyledCounter = styled.span`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
 `
 
 const StyledIcon = styled.span`
@@ -54,7 +54,7 @@ const StyledIcon = styled.span`
     ${C.styles.flex.flexRowCenter};
     border-radius: 50%;
     cursor: pointer;
-    border: 1px solid ${({theme}) => theme.colors.lightGray};
+    border: 1px solid ${({ theme }) => theme.colors.lightGray};
 `
 
 export default props => {

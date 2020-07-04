@@ -5,8 +5,8 @@ import Avatar from 'Root/components/global/Avatar'
 import EditableImage from 'Root/components/global/EditableImage'
 import Icon from 'Root/components/global/Icon'
 import CropImage from 'Root/components/global/CropImage'
-import {UserContext} from 'Root/contexts/user'
-import {EditProfileContext} from 'Root/contexts/editProfile'
+import { UserContext } from 'Root/contexts/user'
+import { EditProfileContext } from 'Root/contexts/editProfile'
 
 const StyledHeader = styled.div``
 
@@ -25,7 +25,7 @@ const initialCropImage = {
 }
 
 export default props => {
-    const {editProfile} = React.useContext(EditProfileContext)
+    const { editProfile } = React.useContext(EditProfileContext)
     const [cropImage, setCropImage] = React.useState(initialCropImage)
 
     return (

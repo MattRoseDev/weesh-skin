@@ -4,15 +4,15 @@ import C from 'Root/constants'
 import Avatar from 'Root/components/global/Avatar'
 import Icon from 'Root/components/global/Icon'
 import DrawerDialog from 'Root/components/global/DrawerDialog'
-import Dialog, {DialogButton} from 'Root/components/global/Dialog'
+import Dialog, { DialogButton } from 'Root/components/global/Dialog'
 import moment from 'moment'
 import FullName from 'Root/components/global/FullName'
 import helpers from 'Root/helpers'
 import useHistory from 'Root/hooks/useHistory'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
-import {AuthContext} from 'Root/contexts/auth'
-import {SnackBarContext} from 'Root/contexts/snackbar'
+import { AuthContext } from 'Root/contexts/auth'
+import { SnackBarContext } from 'Root/contexts/snackbar'
 
 const StyledHeader = styled.div`
     padding: 0.75rem 0.75rem 0;
@@ -28,7 +28,7 @@ const StyledNameContainer = styled.div`
 const StyledUsername = styled.small`
     ${C.styles.flex.flexRow};
     font-size: 0.75rem;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledLeftSide = styled.div`
@@ -45,7 +45,7 @@ const StyledTextArea = styled.textarea`
     resize: none;
     border: none;
     background: transparent;
-    color: ${({theme}) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.background};
 `
 
 const StyledHeaderDialog = styled.div`
@@ -53,7 +53,7 @@ const StyledHeaderDialog = styled.div`
 `
 
 const StyledHeaderDialogMessage = styled.strong`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 1rem 0;
 `
 
@@ -68,13 +68,13 @@ const initialDialog = {
 }
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
-    const {snackbar, dispatch: snackbarDispatch} = React.useContext(
+    const { auth } = React.useContext(AuthContext)
+    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
     const [drawerDialog, setDrawerDialog] = React.useState(initialDrawerDialog)
     const [dialog, setDialog] = React.useState(initialDialog)
-    const [deleteWeesh, {data, error, loading}] = useMutation(
+    const [deleteWeesh, { data, error, loading }] = useMutation(
         api.weeshes.deleteWeesh,
         {
             variables: {
@@ -117,7 +117,7 @@ export default props => {
                     },
                 })
                 setTimeout(() => {
-                    snackbarDispatch({type: 'HIDE'})
+                    snackbarDispatch({ type: 'HIDE' })
                 }, 2 * 1000)
             },
             fontWeight: 'bold',
@@ -162,7 +162,7 @@ export default props => {
                 },
             })
             setTimeout(() => {
-                snackbarDispatch({type: 'HIDE'})
+                snackbarDispatch({ type: 'HIDE' })
             }, 2 * 1000)
             history.push(`/${auth.username}`)
         }

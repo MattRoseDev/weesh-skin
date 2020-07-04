@@ -6,9 +6,9 @@ import Container from 'Root/components/desktop/Container'
 import Main from 'Root/app/client/global/UserProfile/Content/Main'
 import C from 'Root/constants'
 import BannerMessage from 'Root/components/global/BannerMessage'
-import {useQuery, useLazyQuery} from '@apollo/react-hooks'
-import {AuthContext} from 'Root/contexts/auth'
-import {UserContext} from 'Root/contexts/user'
+import { useQuery, useLazyQuery } from '@apollo/react-hooks'
+import { AuthContext } from 'Root/contexts/auth'
+import { UserContext } from 'Root/contexts/user'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import styled from 'styled-components'
@@ -17,19 +17,19 @@ import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     min-height: ${window.innerHeight - 55}px;
 `
 
 export default props => {
-    const {match} = props
+    const { match } = props
     const [nextPage, setNextPage] = React.useState(1)
-    const {auth, dispatch} = React.useContext(AuthContext)
-    const {user, dispatch: userDispatch} = React.useContext(UserContext)
+    const { auth, dispatch } = React.useContext(AuthContext)
+    const { user, dispatch: userDispatch } = React.useContext(UserContext)
     const history = useHistory()
 
-    const {data, called, error, loading} = useQuery(
+    const { data, called, error, loading } = useQuery(
         api.users.getUserByUsernameForUser,
         {
             variables: {
@@ -70,7 +70,7 @@ export default props => {
 
     React.useEffect(() => {
         if (error) {
-            authError({error}) && dispatch({type: 'LOGOUT'})
+            authError({ error }) && dispatch({ type: 'LOGOUT' })
         }
     }, [error])
 
@@ -90,7 +90,7 @@ export default props => {
 
     return (
         <StyledContainer>
-            {user && <Meta type='UserProfile' data={{user}} />}
+            {user && <Meta type='UserProfile' data={{ user }} />}
             {loading ? (
                 <Loading
                     padding='3rem 0 0'

@@ -1,4 +1,4 @@
-export default ({data, type} = {data: null}) => {
+export default ({ data, type } = { data: null }) => {
     switch (type) {
         case 'UserProfile':
             return `${data.user.firstName || ''} ${

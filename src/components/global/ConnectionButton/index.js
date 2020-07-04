@@ -4,8 +4,8 @@ import ConnectionButton from './ConnectionButton'
 export default props => {
     const handleStatus = () => {
         if (props.connection) {
-            const {status} = props.connection
-            const {user} = props
+            const { status } = props.connection
+            const { user } = props
 
             switch (status) {
                 case 0:

@@ -5,7 +5,7 @@ import uuid from 'uuid'
 import C from 'Root/constants'
 import moment from 'moment'
 import helpers from 'Root/helpers'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Convertors from 'Root/components/global/Convertors'
 
 const StyledMain = styled.div`
@@ -19,11 +19,11 @@ const StyledText = styled.p`
     white-space: pre-wrap;
     font-size: 1.125rem;
     line-height: 1.5rem;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledDateContainer = styled.div`
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
     font-size: 0.75rem;
 `
 

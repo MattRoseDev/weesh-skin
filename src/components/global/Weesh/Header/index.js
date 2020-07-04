@@ -21,12 +21,12 @@ const StyledNameContainer = styled.div`
 const StyledUsername = styled.small`
     font-size: 0.75rem;
     ${C.styles.flex.flexRow};
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledTimestamp = styled.small`
     font-size: 0.75rem;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     margin: 0 0.25rem 0 0;
 `
 

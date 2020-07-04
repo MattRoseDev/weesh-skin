@@ -1,5 +1,5 @@
 import React from 'react'
-import {useQuery} from '@apollo/react-hooks'
+import { useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import Weesh from 'Root/components/global/Weesh'
 import Loading from 'Root/components/global/Loading'
@@ -15,7 +15,7 @@ const StyledContainer = styled.div`
 
 export default () => {
     const [state, setState] = React.useState(null)
-    const {data, called, error, loading} = useQuery(api.weeshes.getShowcase, {
+    const { data, called, error, loading } = useQuery(api.weeshes.getShowcase, {
         variables: {
             limit: 100,
         },

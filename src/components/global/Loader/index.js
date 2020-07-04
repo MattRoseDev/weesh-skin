@@ -6,7 +6,7 @@ import Icon from 'Root/components/global/Icon'
 const StyledIcon = styled.div`
     ${C.styles.spin};
     ${C.styles.flex.inlineFlexRow};
-    color: ${({theme, color}) => theme.colors[color]};
+    color: ${({ theme, color }) => theme.colors[color]};
     padding: 0;
     margin: 0;
 `

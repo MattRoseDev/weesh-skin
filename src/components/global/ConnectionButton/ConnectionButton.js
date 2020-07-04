@@ -1,10 +1,10 @@
 import React from 'react'
-import {AuthContext} from 'Root/contexts/auth'
-import {UserContext} from 'Root/contexts/user'
+import { AuthContext } from 'Root/contexts/auth'
+import { UserContext } from 'Root/contexts/user'
 import useHistory from 'Root/hooks/useHistory'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import Button from 'Root/components/global/Button'
-import Dialog, {DialogButton} from 'Root/components/global/Dialog'
+import Dialog, { DialogButton } from 'Root/components/global/Dialog'
 import Avatar from 'Root/components/global/Avatar'
 import api from 'Root/api'
 import styled from 'styled-components'
@@ -12,13 +12,13 @@ import C from 'Root/constants'
 import uuid from 'uuid'
 
 const StyledHeaderDialog = styled.div`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
     padding: 2rem 0 1rem;
 `
 
 const StyledHeaderDialogMessage = styled.div`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     text-align: center;
     padding: 1rem 0 0;
 `
@@ -35,9 +35,9 @@ const initialDialog = {
 }
 
 export default props => {
-    const {user} = props
-    const {auth} = React.useContext(AuthContext)
-    const [variables, setVariables] = React.useState({userId: user.id})
+    const { user } = props
+    const { auth } = React.useContext(AuthContext)
+    const [variables, setVariables] = React.useState({ userId: user.id })
     const [dialog, setDialog] = React.useState(initialDialog)
     const [type, setType] = React.useState(props.type)
     const history = useHistory()
@@ -50,7 +50,7 @@ export default props => {
         cancelButtonType,
     } = switchAPI(type)
 
-    const [connection, {data, error, loading}] = useMutation(
+    const [connection, { data, error, loading }] = useMutation(
         api.connections[apiType],
     )
 
@@ -71,7 +71,7 @@ export default props => {
         }
     }, [data])
 
-    const handleConnection = () => connection({variables})
+    const handleConnection = () => connection({ variables })
 
     let dialogMessage
     if (messageType) {

@@ -1,13 +1,13 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
 
 const StyledContainer = styled.div`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
-    height: ${({height}) => height || '100'}%;
-    ${({padding}) =>
+    height: ${({ height }) => height || '100'}%;
+    ${({ padding }) =>
         padding &&
         css`
             padding: ${padding};
@@ -17,19 +17,19 @@ const StyledContainer = styled.div`
 const StyledIcon = styled.span`
     ${C.styles.flex.inlineFlexRow};
     padding: 1rem;
-    border: 2px solid ${({theme}) => theme.colors.foreground};
+    border: 2px solid ${({ theme }) => theme.colors.foreground};
     border-radius: 50%;
 `
 
 const StyledTitle = styled.div`
     margin: 1.5rem 0;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     font-weight: bold;
 `
 
 const StyledMessage = styled.div`
     text-align: center;
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
     font-size: 0.85rem;
 `
 

@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import uuid from 'uuid'
 import List from 'Root/components/desktop/List'
 import Loader from 'Root/components/global/Loader'
 import SliderTab from 'Root/components/global/SliderTab'
 import C from 'Root/constants'
-import {useQuery} from '@apollo/react-hooks'
+import { useQuery } from '@apollo/react-hooks'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
-import {AuthContext} from 'Root/contexts/auth'
+import { AuthContext } from 'Root/contexts/auth'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
@@ -36,11 +36,11 @@ const switchStatus = status => {
 
 export default props => {
     let url = props.match.url.split('/')
-    const {auth} = React.useContext(AuthContext)
+    const { auth } = React.useContext(AuthContext)
     const [state, setState] = React.useState(null)
     const history = useHistory()
     const [status, setStatus] = React.useState(url[url.length - 1])
-    const {data, called, error, loading} = useQuery(
+    const { data, called, error, loading } = useQuery(
         api.connections[switchStatus(status).api],
         {
             fetchPolicy: 'no-cache',

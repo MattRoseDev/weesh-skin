@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Cover from 'Root/components/global/Cover'
 import Avatar from 'Root/components/global/Avatar'
 import Content from './Content'
-import {UserContext} from 'Root/contexts/user'
+import { UserContext } from 'Root/contexts/user'
 
 const StyledHeader = styled.div`
     position: relative;
@@ -19,7 +19,7 @@ const StyledImagesFrame = styled.div`
 `
 
 export default props => {
-    const {user} = React.useContext(UserContext)
+    const { user } = React.useContext(UserContext)
 
     return (
         <StyledHeader>

@@ -9,7 +9,7 @@ const StyledWeesh = styled.div`
     ${C.styles.flex.flexColumn};
     width: 100%;
     ${C.styles.boxShadow.primary.normal};
-    /* border: 1px solid ${({theme}) => theme.colors.light}; */
+    /* border: 1px solid ${({ theme }) => theme.colors.light}; */
     border-radius: .75rem;
     margin: 0 0 .5rem;
 `

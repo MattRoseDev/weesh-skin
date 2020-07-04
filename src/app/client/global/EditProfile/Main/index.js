@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import uuid from 'uuid'
-import {useQuery, useLazyQuery} from '@apollo/react-hooks'
-import {AuthContext} from 'Root/contexts/auth'
-import {UserContext} from 'Root/contexts/user'
-import {EditProfileContext} from 'Root/contexts/editProfile'
+import { useQuery, useLazyQuery } from '@apollo/react-hooks'
+import { AuthContext } from 'Root/contexts/auth'
+import { UserContext } from 'Root/contexts/user'
+import { EditProfileContext } from 'Root/contexts/editProfile'
 import api from 'Root/api'
 import Input from 'Root/components/global/Input'
 import Dialog from 'Root/components/global/Dialog'
@@ -15,7 +15,7 @@ import Textarea from 'Root/components/global/Textarea'
 import Button from 'Root/components/global/Button'
 import About from 'Root/components/global/About'
 import C from 'Root/constants'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import UsernameInput from './UsernameInput'
 import EmailInput from './EmailInput'
 import PasswordInput from './PasswordInput'
@@ -49,7 +49,7 @@ const StyledToggleContainer = styled.div`
     ${C.styles.flex.alignItemsCenter};
     padding: 0.75rem 1rem;
     &:not(:last-child) {
-        border-bottom: 1px dashed ${({theme}) => theme.colors.light};
+        border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
     }
 `
 
@@ -59,14 +59,14 @@ const StyledLinkContainer = styled(Link)`
     ${C.styles.flex.alignItemsCenter};
     padding: 1rem;
     &:not(:last-child) {
-        border-bottom: 1px dashed ${({theme}) => theme.colors.light};
+        border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
     }
 `
 
 const StyledToggleTitle = styled.span`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     font-size: 0.85rem;
     margin: 0 0 0 0.5rem;
     font-weight: bold;
@@ -90,12 +90,12 @@ const StyledLoader = styled.div`
 `
 
 export default props => {
-    const {editProfile, dispatch: editProfileDispatch} = React.useContext(
+    const { editProfile, dispatch: editProfileDispatch } = React.useContext(
         EditProfileContext,
     )
-    const {auth, dispatch: authDispatch} = React.useContext(AuthContext)
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
 
-    const handleChange = ({key, e}) => {
+    const handleChange = ({ key, e }) => {
         let variables
         switch (key) {
             case 'private':
@@ -130,13 +130,13 @@ export default props => {
             title: C.txts.en.editProfile.togglesLabel.unknownPerson,
             icon: 'EyeOff',
             checked: editProfile.unknown.fullname,
-            onInput: e => handleChange({key: 'unknown', e}),
+            onInput: e => handleChange({ key: 'unknown', e }),
         },
         {
             title: C.txts.en.editProfile.togglesLabel.privateAccount,
             icon: 'Lock',
             checked: editProfile.private,
-            onInput: e => handleChange({key: 'private', e}),
+            onInput: e => handleChange({ key: 'private', e }),
         },
     ]
 
@@ -175,7 +175,7 @@ export default props => {
                     label={C.txts.en.editProfile.inputsLabel.firstName}
                     padding='.65rem'
                     value={editProfile.firstName}
-                    onInput={e => handleChange({key: 'firstName', e})}
+                    onInput={e => handleChange({ key: 'firstName', e })}
                     margin='0 .5rem 0 0'
                     width={100}
                     placeholder={C.txts.en.editProfile.inputsLabel.firstName}
@@ -184,7 +184,7 @@ export default props => {
                     label={C.txts.en.editProfile.inputsLabel.lastName}
                     padding='.65rem'
                     value={editProfile.lastName}
-                    onInput={e => handleChange({key: 'lastName', e})}
+                    onInput={e => handleChange({ key: 'lastName', e })}
                     width={100}
                     placeholder={C.txts.en.editProfile.inputsLabel.lastName}
                 />
@@ -195,7 +195,7 @@ export default props => {
                 value={editProfile.bio}
                 label={C.txts.en.editProfile.inputsLabel.bio}
                 padding='.65rem'
-                onInput={e => handleChange({key: 'bio', e})}
+                onInput={e => handleChange({ key: 'bio', e })}
                 margin='.5rem 0 0'
                 width={100}
                 placeholder={C.txts.en.editProfile.inputsLabel.bio}

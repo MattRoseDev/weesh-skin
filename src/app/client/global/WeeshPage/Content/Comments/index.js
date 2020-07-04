@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import Comment from 'Root/components/global/Comment'
 import helpers from 'Root/helpers'
 import uuid from 'uuid'
-import {WeeshPageContext} from 'Root/contexts/weeshPage'
+import { WeeshPageContext } from 'Root/contexts/weeshPage'
 
 const StyledCommentsContainer = styled.div``
 
 export default props => {
-    const {weeshPage, dispatch: weeshPageDispatch} = React.useContext(
+    const { weeshPage, dispatch: weeshPageDispatch } = React.useContext(
         WeeshPageContext,
     )
 

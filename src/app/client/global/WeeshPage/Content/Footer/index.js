@@ -1,24 +1,24 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import IconButton from 'Root/components/global/IconButton'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
 import uuid from 'uuid'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useHistory from 'Root/hooks/useHistory'
-import {AuthContext} from 'Root/contexts/auth'
-import {SnackBarContext} from 'Root/contexts/snackbar'
-import {useMutation} from '@apollo/react-hooks'
+import { AuthContext } from 'Root/contexts/auth'
+import { SnackBarContext } from 'Root/contexts/snackbar'
+import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 
 const StyledFooterContainer = styled.div`
     ${C.styles.flex.flexColumn};
-    border-bottom: 1px dashed ${({theme}) => theme.colors.light};
+    border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
 `
 
 const StyledFooter = styled.div`
     margin: 0.25rem;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsStretch};
     ${C.styles.flex.justifyContentBetween};
@@ -26,7 +26,7 @@ const StyledFooter = styled.div`
 
 const StyledComments = styled(Link)`
     text-decoration: none;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     padding: 0 1rem 1rem;
     font-size: 0.85rem;
 `
@@ -44,7 +44,7 @@ const StyledNumbers = styled.div`
 const StyledNumberContainer = styled.span`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    ${({margin}) =>
+    ${({ margin }) =>
         margin &&
         css`
             margin: ${margin};
@@ -61,12 +61,12 @@ const StyledNumber = styled.span`
     ${C.styles.flex.alignItemsCenter};
     font-size: 0.75rem;
     margin: 0 0 0 0.1rem;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
-    const {snackbar, dispatch: snackbarDispatch} = React.useContext(
+    const { auth } = React.useContext(AuthContext)
+    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
     const [isLiked, setIsLiked] = React.useState(props.isLiked)
@@ -127,7 +127,7 @@ export default props => {
                         },
                     })
                     setTimeout(() => {
-                        snackbarDispatch({type: 'HIDE'})
+                        snackbarDispatch({ type: 'HIDE' })
                     }, 2 * 1000)
                 }
                 setIsBookmarked(isBookmarked ? false : true)

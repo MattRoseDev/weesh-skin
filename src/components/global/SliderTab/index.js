@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
 import uuid from 'uuid'
@@ -28,8 +28,8 @@ const StyledTab = styled.li`
 
 const StyledSlider = styled.span`
     position: absolute;
-    background: ${({theme}) => theme.colors.primary};
-    ${({tabs}) =>
+    background: ${({ theme }) => theme.colors.primary};
+    ${({ tabs }) =>
         tabs &&
         css`
             width: ${Math.round(100 / tabs)}%;
@@ -52,10 +52,10 @@ const StyledLabel = styled.label`
     ${C.styles.flex.center};
     width: 100%;
     &.active {
-        color: ${({theme}) => theme.colors.background};
+        color: ${({ theme }) => theme.colors.background};
         font-weight: bold;
     }
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     transition: all 0.25s ease;
     cursor: pointer;
 `
@@ -75,7 +75,7 @@ export default props => {
                 refSlider.current.style.left = `${Math.round(
                     key * (100 / props.tabs.length),
                 )}%`
-                props.setStatus({status: item.status})
+                props.setStatus({ status: item.status })
                 item.value = true
             } else {
                 item.value = false

@@ -1,5 +1,5 @@
 import React from 'react'
-import {tagReducer} from 'Root/reducers/tag'
+import { tagReducer } from 'Root/reducers/tag'
 
 export const TagContext = React.createContext()
 
@@ -9,7 +9,7 @@ const TagProvider = props => {
     const [tag, dispatch] = React.useReducer(tagReducer, initialTag)
 
     return (
-        <TagContext.Provider value={{tag, dispatch}}>
+        <TagContext.Provider value={{ tag, dispatch }}>
             {props.children}
         </TagContext.Provider>
     )

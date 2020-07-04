@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import C from 'Root/constants'
-import {UserContext} from 'Root/contexts/user'
-import {AuthContext} from 'Root/contexts/auth'
+import { UserContext } from 'Root/contexts/user'
+import { AuthContext } from 'Root/contexts/auth'
 import FullName from 'Root/components/global/FullName'
 import Icon from 'Root/components/global/Icon'
 import CounterForProfile from 'Root/components/global/CounterForProfile'
@@ -25,14 +25,14 @@ const StyledUsername = styled.span`
     margin: 0;
     font-size: 0.85rem;
     font-weight: normal;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledBio = styled.pre`
     margin: 0.5rem 0 0;
     font-size: 0.85rem;
     font-weight: normal;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     word-break: break-word;
     white-space: pre-wrap;
 `
@@ -45,8 +45,8 @@ const initVariables = {
 
 export default props => {
     const [numbers, setNumbers] = React.useState(initVariables)
-    const {user} = React.useContext(UserContext)
-    const {auth} = React.useContext(AuthContext)
+    const { user } = React.useContext(UserContext)
+    const { auth } = React.useContext(AuthContext)
 
     React.useEffect(() => {
         user &&

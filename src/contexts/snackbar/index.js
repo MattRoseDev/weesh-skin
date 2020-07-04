@@ -1,5 +1,5 @@
 import React from 'react'
-import {snackbarReducer} from 'Root/reducers/snackbar'
+import { snackbarReducer } from 'Root/reducers/snackbar'
 
 export const SnackBarContext = React.createContext()
 
@@ -18,7 +18,7 @@ const SnackBarProvider = props => {
     )
 
     return (
-        <SnackBarContext.Provider value={{snackbar, dispatch}}>
+        <SnackBarContext.Provider value={{ snackbar, dispatch }}>
             {props.children}
         </SnackBarContext.Provider>
     )

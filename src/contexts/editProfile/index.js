@@ -1,5 +1,5 @@
 import React from 'react'
-import {editProfileReducer} from 'Root/reducers/editProfile'
+import { editProfileReducer } from 'Root/reducers/editProfile'
 
 export const EditProfileContext = React.createContext()
 
@@ -12,7 +12,7 @@ const EditProfileProvider = props => {
     )
 
     return (
-        <EditProfileContext.Provider value={{editProfile, dispatch}}>
+        <EditProfileContext.Provider value={{ editProfile, dispatch }}>
             {props.children}
         </EditProfileContext.Provider>
     )

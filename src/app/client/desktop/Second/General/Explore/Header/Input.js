@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import {ExploreContext} from 'Root/contexts/explore'
+import { ExploreContext } from 'Root/contexts/explore'
 import C from 'Root/constants'
-import {Search} from 'react-feather'
-import {useLazyQuery} from '@apollo/react-hooks'
+import { Search } from 'react-feather'
+import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
     border-radius: 0.75rem;
     padding: 0.25rem 0.5rem;
     ${C.styles.boxShadow.primary.normal};
@@ -17,8 +17,8 @@ const StyledContainer = styled.div`
 `
 
 const StyledInput = styled.input`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     line-height: 1.5rem;
     font-size: 0.825rem;
     outline: none;
@@ -32,10 +32,10 @@ const initVariables = {
 }
 
 export default () => {
-    const {explore, dispatch} = React.useContext(ExploreContext)
+    const { explore, dispatch } = React.useContext(ExploreContext)
     const [variables, setVariables] = React.useState(initVariables)
 
-    const [exploreAll, {error, data, called, loading}] = useLazyQuery(
+    const [exploreAll, { error, data, called, loading }] = useLazyQuery(
         api.explore.exploreAll,
         {
             variables,

@@ -1,19 +1,19 @@
 import React from 'react'
 import Mobile from './mobile'
 import Desktop from './desktop'
-import {useSubscription, useLazyQuery, useQuery} from '@apollo/react-hooks'
-import {AuthContext} from 'Root/contexts/auth'
-import {SnackBarContext} from 'Root/contexts/snackbar'
-import {NotificationsContext} from 'Root/contexts/notifications'
-import {ThemeProvider} from 'styled-components'
+import { useSubscription, useLazyQuery, useQuery } from '@apollo/react-hooks'
+import { AuthContext } from 'Root/contexts/auth'
+import { SnackBarContext } from 'Root/contexts/snackbar'
+import { NotificationsContext } from 'Root/contexts/notifications'
+import { ThemeProvider } from 'styled-components'
 import api from 'Root/api'
 import C from 'Root/constants'
 import GlobalStyles from 'Root/constants/globalStyles'
 import Initialize from 'Root/components/global/Initialize'
 
 const Client = props => {
-    const {auth, dispatch: authDispatch} = React.useContext(AuthContext)
-    const {snackbar, dispatch: snackbarDispatch} = React.useContext(
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
+    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
     // const { notifications, dispatch } = React.useContext(NotificationsContext)

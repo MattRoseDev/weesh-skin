@@ -6,16 +6,16 @@ import Icon from 'Root/components/global/Icon'
 import Loading from 'Root/components/global/Loading'
 import uuid from 'uuid'
 import WeeshForShowcase from 'Root/components/global/WeeshForShowcase'
-import {useQuery} from '@apollo/react-hooks'
-import {AuthContext} from 'Root/contexts/auth'
+import { useQuery } from '@apollo/react-hooks'
+import { AuthContext } from 'Root/contexts/auth'
 import api from 'Root/api'
 import helpers from 'Root/helpers'
 import C from 'Root/constants'
 import Meta from 'Root/meta'
 
 const StyledContainer = styled.div`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
     padding: 0 0.5rem 0.5rem;
 `
@@ -27,7 +27,7 @@ const StyledHeader = styled.div`
 
 const StyledQuote = styled.p`
     font-size: 2rem;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     font-weight: lighter;
     padding: 1rem 0 2rem;
 `
@@ -48,8 +48,8 @@ const StyledThemeButton = styled.header`
 
 const StyledIconContainer = styled.button`
     ${C.styles.flex.flexRowCenter};
-    background: ${({theme}) => theme.colors.foreground};
-    border: 1px solid ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.foreground};
+    border: 1px solid ${({ theme }) => theme.colors.foreground};
     padding: 0 0.5rem;
     border-radius: 50rem;
     height: 2rem;
@@ -57,17 +57,17 @@ const StyledIconContainer = styled.button`
 `
 
 const StyledIconTitle = styled.span`
-    color: ${({theme}) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.background};
     padding: 0.25rem;
     font-size: 0.85rem;
 `
 
 export default () => {
-    const {auth, dispatch} = React.useContext(AuthContext)
+    const { auth, dispatch } = React.useContext(AuthContext)
     const [state, setState] = React.useState(null)
-    const {data, called, error, loading} = useQuery(api.weeshes.getShowcase)
+    const { data, called, error, loading } = useQuery(api.weeshes.getShowcase)
 
-    const handleTheme = () => dispatch({type: 'TOGGLE_THEME'})
+    const handleTheme = () => dispatch({ type: 'TOGGLE_THEME' })
 
     React.useEffect(() => {
         if (error) {

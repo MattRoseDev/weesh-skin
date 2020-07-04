@@ -1,11 +1,11 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 import Avatar from 'Root/components/global/Avatar'
 import Link from 'Root/components/global/Link'
 
 const StyledHeader = styled.div`
-    ${({isChild}) =>
+    ${({ isChild }) =>
         !isChild &&
         css`
             padding: 0.75rem 0 0 0.75rem;
@@ -22,12 +22,12 @@ const StyledNameContainer = styled.div`
 const StyledUsername = styled.small`
     font-size: 0.75rem;
     ${C.styles.flex.flexRow};
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledTimestamp = styled.small`
     font-size: 0.75rem;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     margin: 0 0.25rem 0 0;
 `
 

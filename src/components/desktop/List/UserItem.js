@@ -7,7 +7,7 @@ import C from 'Root/constants'
 import Link from 'Root/components/global/Link'
 import Button from 'Root/components/global/Button'
 import Icon from 'Root/components/global/Icon'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 
 const StyledContainer = styled.div`
@@ -22,8 +22,8 @@ const StyledRequestContainer = styled.div`
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsStretch};
     padding: 0.75rem 0.5rem;
-    border-bottom: ${({borderBottom}) => borderBottom || '0px'} dashed
-        ${({theme}) => theme.colors.light};
+    border-bottom: ${({ borderBottom }) => borderBottom || '0px'} dashed
+        ${({ theme }) => theme.colors.light};
 `
 
 const StyledRequestContent = styled.div`
@@ -49,7 +49,7 @@ const StyledUsername = styled.span`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
 `
 
 const StyledButton = styled.span`
@@ -57,7 +57,7 @@ const StyledButton = styled.span`
     ${C.styles.flex.alignItemsCenter};
     font-size: 0.85rem;
     font-weight: normal;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledIcon = styled.span`

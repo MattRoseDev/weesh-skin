@@ -4,17 +4,17 @@ import Link from 'Root/components/global/Link'
 import BannerMessage from 'Root/components/global/BannerMessage'
 import uuid from 'uuid'
 import styled from 'styled-components'
-import {NotificationsContext} from 'Root/contexts/notifications'
-import {AuthContext} from 'Root/contexts/auth'
-import {useSubscription, useMutation, useQuery} from '@apollo/react-hooks'
+import { NotificationsContext } from 'Root/contexts/notifications'
+import { AuthContext } from 'Root/contexts/auth'
+import { useSubscription, useMutation, useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import C from 'Root/constants'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 0 0 1rem;
     min-height: ${window.innerHeight - 55}px;
 `
@@ -23,20 +23,20 @@ const StyledRequestContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsCenter};
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 1rem;
-    border-bottom: 1px solid ${({theme}) => theme.colors.light};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.light};
 `
 
 const StyledBadge = styled.div`
-    background: ${({theme}) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.primary};
     border-radius: 50%;
     width: 0.75rem;
     height: 0.75rem;
 `
 export default () => {
-    const {auth} = React.useContext(AuthContext)
-    const {notifications, dispatch: notificationDispatch} = React.useContext(
+    const { auth } = React.useContext(AuthContext)
+    const { notifications, dispatch: notificationDispatch } = React.useContext(
         NotificationsContext,
     )
 

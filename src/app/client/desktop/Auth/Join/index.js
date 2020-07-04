@@ -6,10 +6,10 @@ import ErrorMessage from 'Root/components/global/ErrorMessage'
 import Button from 'Root/components/global/Button'
 import OR from 'Root/components/global/OR'
 import C from 'Root/constants'
-import {AuthContext} from 'Root/contexts/auth'
-import {Link} from 'react-router-dom'
+import { AuthContext } from 'Root/contexts/auth'
+import { Link } from 'react-router-dom'
 import useHistory from 'Root/hooks/useHistory'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import WelcomePicture from 'Root/public/img/login/2803208.png'
 import Meta from 'Root/meta'
@@ -23,7 +23,7 @@ const StyledContainer = styled.div`
 
 const StyledJoin = styled.form`
     ${C.styles.flex.flexColumnCenter};
-    border-left: 1px solid ${({theme}) => theme.colors.light};
+    border-left: 1px solid ${({ theme }) => theme.colors.light};
     width: 25rem;
 `
 
@@ -41,7 +41,7 @@ const StyledBox = styled.div`
 const StyledLoginLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.justifyContentCenter};
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     margin: 0;
     text-decoration: none;
     border-radius: 0.5rem;
@@ -55,18 +55,18 @@ const initVariables = {
 }
 
 export default () => {
-    const {auth, dispatch} = React.useContext(AuthContext)
+    const { auth, dispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState(initVariables)
     const history = useHistory()
 
-    const [join, {data, error, loading}] = useMutation(api.auth.join)
+    const [join, { data, error, loading }] = useMutation(api.auth.join)
 
     React.useEffect(() => {
         if (error) {
             console.log(error)
         }
         if (data) {
-            const {token, user} = data.join
+            const { token, user } = data.join
             dispatch({
                 type: 'LOGIN',
                 data: {
@@ -78,7 +78,7 @@ export default () => {
         }
     }, [data, error])
 
-    const handleJoin = () => join({variables})
+    const handleJoin = () => join({ variables })
 
     const handleSubmit = e => {
         e.preventDefault()

@@ -1,16 +1,16 @@
 import React from 'react'
-import {NotificationsContext} from 'Root/contexts/notifications'
-import {AuthContext} from 'Root/contexts/auth'
-import {useSubscription, useMutation, useQuery} from '@apollo/react-hooks'
+import { NotificationsContext } from 'Root/contexts/notifications'
+import { AuthContext } from 'Root/contexts/auth'
+import { useSubscription, useMutation, useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import C from 'Root/constants'
 
 export default () => {
-    const {auth} = React.useContext(AuthContext)
+    const { auth } = React.useContext(AuthContext)
     const [isUnreadNotification, setIsUnreadNotification] = React.useState(
         false,
     )
-    const {notifications, dispatch: notificationDispatch} = React.useContext(
+    const { notifications, dispatch: notificationDispatch } = React.useContext(
         NotificationsContext,
     )
     const notificationsResponse = useQuery(api.notifications.getNotifications)

@@ -6,10 +6,10 @@ import Button from 'Root/components/global/Button'
 import ErrorMessage from 'Root/components/global/ErrorMessage'
 import OR from 'Root/components/global/OR'
 import C from 'Root/constants'
-import {AuthContext} from 'Root/contexts/auth'
+import { AuthContext } from 'Root/contexts/auth'
 import useHistory from 'Root/hooks/useHistory'
-import {Link} from 'react-router-dom'
-import {useLazyQuery} from '@apollo/react-hooks'
+import { Link } from 'react-router-dom'
+import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
@@ -17,13 +17,13 @@ import helpers from 'Root/helpers'
 const StyledLogin = styled.form`
     ${C.styles.flex.flexColumnCenter};
     height: 100vh;
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
 `
 
 const StyledForgotPasswordLink = styled(Link)`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentEnd};
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     font-size: 0.85rem;
     margin: 0.75rem 0 1rem;
     width: 75%;
@@ -33,8 +33,8 @@ const StyledForgotPasswordLink = styled(Link)`
 const StyledJoinLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.justifyContentCenter};
-    /* border: 1px solid ${({theme}) => theme.colors.primary}; */
-    color: ${({theme}) => theme.colors.primary};
+    /* border: 1px solid ${({ theme }) => theme.colors.primary}; */
+    color: ${({ theme }) => theme.colors.primary};
     margin: 0;
     text-decoration: none;
     border-radius: .5rem;
@@ -47,10 +47,10 @@ const initVariables = {
 }
 
 export default () => {
-    const {auth, dispatch} = React.useContext(AuthContext)
+    const { auth, dispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState(initVariables)
     const history = useHistory()
-    const [loadLogin, {data, called, loading, error}] = useLazyQuery(
+    const [loadLogin, { data, called, loading, error }] = useLazyQuery(
         api.auth.login,
     )
 
@@ -59,7 +59,7 @@ export default () => {
             console.log(error.graphQLErrors[0].message)
         }
         if (called && data) {
-            const {token, user} = data.login
+            const { token, user } = data.login
             console.log(data)
             dispatch({
                 type: 'LOGIN',
