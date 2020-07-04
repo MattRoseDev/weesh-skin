@@ -6,7 +6,7 @@ import Button from './Button'
 const Auth = styled.div`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
-    font-size: ${({fontSize}) => fontSize || 1.5}rem;
+    font-size: ${({ fontSize }) => fontSize || 1.5}rem;
 `
 
 const Element = props => {

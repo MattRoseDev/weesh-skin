@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import C from 'Root/constants'
-import {AuthContext} from 'Root/contexts/auth'
-import {NotificationsContext} from 'Root/contexts/notifications'
+import { AuthContext } from 'Root/contexts/auth'
+import { NotificationsContext } from 'Root/contexts/notifications'
 import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
@@ -12,7 +12,7 @@ import NotificationBadge from 'Root/components/global/NotificationBadge'
 const NavItem = styled(NavLink)`
     ${C.styles.flex.flexRowCenter};
     list-style: none;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     border-radius: 50rem;
     padding: 0.5rem 0;
     width: 100%;
@@ -28,11 +28,11 @@ const StyledIcon = styled.span`
 const StyledAvatarBorder = styled.span`
     ${C.styles.flex.inlineFlexRow};
     border-radius: 50%;
-    border: 2px solid ${({theme}) => theme.colors.foreground};
+    border: 2px solid ${({ theme }) => theme.colors.foreground};
 `
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
+    const { auth } = React.useContext(AuthContext)
     const history = useHistory()
 
     const path = props.path == '/profile' ? `/${auth.username}` : props.path

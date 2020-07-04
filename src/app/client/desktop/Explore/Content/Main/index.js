@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {ExploreContext} from 'Root/contexts/explore'
+import { ExploreContext } from 'Root/contexts/explore'
 import uuid from 'uuid'
 import List from 'Root/components/mobile/List'
 import Icon from 'Root/components/global/Icon'
@@ -14,7 +14,7 @@ import Meta from 'Root/meta'
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.justifyContentCenter};
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
     padding: 0 0.5rem;
 `
 
@@ -25,7 +25,7 @@ const StyledLoading = styled.div`
 const StyledNotFound = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     padding: 0.5rem;
 `
 
@@ -41,7 +41,7 @@ const StyledBannerMessageContainer = styled.div`
 `
 
 export default () => {
-    const {explore} = React.useContext(ExploreContext)
+    const { explore } = React.useContext(ExploreContext)
 
     return (
         <StyledMain>

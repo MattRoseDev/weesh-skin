@@ -1,11 +1,11 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
 import Link from 'Root/components/global/Link'
 import uuid from 'uuid'
-import {AuthContext} from 'Root/contexts/auth'
-import {EditProfileContext} from 'Root/contexts/editProfile'
+import { AuthContext } from 'Root/contexts/auth'
+import { EditProfileContext } from 'Root/contexts/editProfile'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -28,7 +28,7 @@ const StyledColorContainer = styled.div`
     }};
 
     padding: 1rem;
-    border-bottom: 1px dashed ${({theme}) => theme.colors.light};
+    border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
 `
 
 const StyledColorTitle = styled.div`
@@ -43,7 +43,7 @@ const StyledColorTitle = styled.div`
               `
     }};
     font-size: 0.85rem;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledColors = styled.div`
@@ -56,7 +56,7 @@ const StyledColor = styled.div`
     ${C.styles.flex.center};
     width: 2.5rem;
     height: 2.5rem;
-    background: ${({theme, color}) => color};
+    background: ${({ theme, color }) => color};
     border-radius: 0.5rem;
     &:not(:first-child) {
         margin: 0 0 0 2rem;
@@ -90,7 +90,7 @@ const StyledBackgroundTitle = styled.div`
     font-weight: bold;
     padding: 0 0 0.75rem 0.25rem;
     font-size: 0.85rem;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledBackground = styled.div`
@@ -100,16 +100,16 @@ const StyledBackground = styled.div`
     height: 2.5rem;
     font-weight: bold;
     font-size: 0.75rem;
-    background: ${({theme, color}) => color};
-    color: ${({theme, titleColor}) => titleColor};
+    background: ${({ theme, color }) => color};
+    color: ${({ theme, titleColor }) => titleColor};
     border-radius: 0.5rem;
-    ${({active, theme}) =>
+    ${({ active, theme }) =>
         active
             ? css`
-                  border: 2px solid ${({theme}) => theme.colors.primary};
+                  border: 2px solid ${({ theme }) => theme.colors.primary};
               `
             : css`
-                  border: 1px solid ${({theme}) => theme.colors.lightGray};
+                  border: 1px solid ${({ theme }) => theme.colors.lightGray};
               `};
     &:not(:first-child) {
         margin: 0 0 0 1rem;
@@ -124,8 +124,8 @@ const StyledIcon = styled.div`
 `
 
 export default () => {
-    const {auth, dispatch: authDispatch} = React.useContext(AuthContext)
-    const {editProfile, dispatch: editProfileDispatch} = React.useContext(
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
+    const { editProfile, dispatch: editProfileDispatch } = React.useContext(
         EditProfileContext,
     )
 
@@ -167,13 +167,13 @@ export default () => {
     ]
 
     const handleEditColor = color => {
-        authDispatch({type: 'EDIT_COLOR', data: color})
-        editProfileDispatch({type: 'ENABLE_DONE_BUTTON'})
+        authDispatch({ type: 'EDIT_COLOR', data: color })
+        editProfileDispatch({ type: 'ENABLE_DONE_BUTTON' })
     }
 
     const handleEditBackground = color => {
-        authDispatch({type: 'EDIT_THEME', data: color})
-        editProfileDispatch({type: 'ENABLE_DONE_BUTTON'})
+        authDispatch({ type: 'EDIT_THEME', data: color })
+        editProfileDispatch({ type: 'ENABLE_DONE_BUTTON' })
     }
 
     return (

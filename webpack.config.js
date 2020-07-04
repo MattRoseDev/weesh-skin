@@ -2,7 +2,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const path = require('path')
 const babelConfig = require('./babel.config.json')
-const zlib = require('zlib')
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
@@ -71,19 +71,8 @@ module.exports = {
             filename: 'index.html',
             hash: true,
         }),
-        new CompressionPlugin({
-            filename: '[path].br[query]',
-            algorithm: 'brotliCompress',
-            test: /\.(js|css|html|svg)$/,
-            compressionOptions: {
-                // zlib’s `level` option matches Brotli’s `BROTLI_PARAM_QUALITY` option.
-                level: 11,
-            },
-            threshold: 10240,
-            minRatio: 0.8,
-            deleteOriginalAssets: false,
-            cache: false,
-        }),
+        new CompressionPlugin(),
+        new MinifyPlugin()
     ],
     // performance: { hints: false }
 }

@@ -7,10 +7,10 @@ import ErrorMessage from 'Root/components/global/ErrorMessage'
 import Button from 'Root/components/global/Button'
 import OR from 'Root/components/global/OR'
 import C from 'Root/constants'
-import {AuthContext} from 'Root/contexts/auth'
+import { AuthContext } from 'Root/contexts/auth'
 import useHistory from 'Root/hooks/useHistory'
-import {Link} from 'react-router-dom'
-import {useLazyQuery} from '@apollo/react-hooks'
+import { Link } from 'react-router-dom'
+import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import WelcomePicture from 'Root/public/img/login/2803208.png'
 import Meta from 'Root/meta'
@@ -31,7 +31,7 @@ const StyledBox = styled.div`
 
 const StyledIcon = styled.div`
     ${C.styles.flex.flexColumnCenter};
-    border: 3px solid ${({theme}) => theme.colors.dark};
+    border: 3px solid ${({ theme }) => theme.colors.dark};
     min-width: 8rem;
     max-width: 8rem;
     min-height: 8rem;
@@ -46,7 +46,7 @@ const StyledImg = styled.img`
 
 const StyledLogin = styled.form`
     ${C.styles.flex.flexColumnCenter};
-    border-left: 1px solid ${({theme}) => theme.colors.light};
+    border-left: 1px solid ${({ theme }) => theme.colors.light};
     width: 25rem;
     /* padding: 3rem 0 2rem; */
 `
@@ -60,7 +60,7 @@ const StyledForgotPasswordLinkContainer = styled.div`
 
 const StyledForgotPasswordLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     font-size: 0.85rem;
     text-decoration: none;
 `
@@ -68,8 +68,8 @@ const StyledForgotPasswordLink = styled(Link)`
 const StyledJoinLink = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.justifyContentCenter};
-    /* border: 1px solid ${({theme}) => theme.colors.primary}; */
-    color: ${({theme}) => theme.colors.primary};
+    /* border: 1px solid ${({ theme }) => theme.colors.primary}; */
+    color: ${({ theme }) => theme.colors.primary};
     margin: 0;
     text-decoration: none;
     border-radius: .5rem;
@@ -82,16 +82,16 @@ const initVariables = {
 }
 
 export default () => {
-    const {auth, dispatch} = React.useContext(AuthContext)
+    const { auth, dispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState(initVariables)
     const history = useHistory()
-    const [loadLogin, {data, called, loading, error}] = useLazyQuery(
+    const [loadLogin, { data, called, loading, error }] = useLazyQuery(
         api.auth.login,
     )
 
     React.useEffect(() => {
         if (called && data) {
-            const {token, user} = data.login
+            const { token, user } = data.login
             dispatch({
                 type: 'LOGIN',
                 data: {

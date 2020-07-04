@@ -1,12 +1,12 @@
 import React from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import Avatar from 'Root/components/global/Avatar'
 import Icon from 'Root/components/global/Icon'
-import {AuthContext} from 'Root/contexts/auth'
-import {WeeshPageContext} from 'Root/contexts/weeshPage'
+import { AuthContext } from 'Root/contexts/auth'
+import { WeeshPageContext } from 'Root/contexts/weeshPage'
 import C from 'Root/constants'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 
 const StyledContainer = styled.div`
@@ -15,8 +15,8 @@ const StyledContainer = styled.div`
     padding: 0.5rem;
     position: sticky;
     top: ${window.innerWidth > 768 ? '54px' : '44px'};
-    border-bottom: 1px dashed ${({theme}) => theme.colors.light};
-    background: ${({theme}) => theme.colors.background};
+    border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
+    background: ${({ theme }) => theme.colors.background};
 `
 
 const StyledForm = styled.form`
@@ -24,8 +24,8 @@ const StyledForm = styled.form`
     ${C.styles.flex.stretch};
     margin: 0 0 0 0.5rem;
     padding: 0.5rem 0.75rem;
-    border: 1px solid ${({theme}) => theme.colors.light};
-    background: ${({theme}) => theme.colors.background};
+    border: 1px solid ${({ theme }) => theme.colors.light};
+    background: ${({ theme }) => theme.colors.background};
     border-radius: 0.85rem;
 `
 
@@ -40,7 +40,7 @@ const StyledTextArea = styled(TextareaAutosize)`
     resize: none;
     padding: 0;
     margin: 0;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     background: transparent;
     border: none;
     white-space: pre-wrap;
@@ -49,14 +49,14 @@ const StyledTextArea = styled(TextareaAutosize)`
 const StyledButton = styled.button`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.justifyContentEnd};
-    ${({disabled, theme}) =>
+    ${({ disabled, theme }) =>
         disabled
             ? css`
-                  color: ${({theme}) => theme.colors.gray};
+                  color: ${({ theme }) => theme.colors.gray};
               `
             : css`
                   cursor: pointer;
-                  color: ${({theme}) => theme.colors.primary};
+                  color: ${({ theme }) => theme.colors.primary};
               `};
     padding: 0 0 0 0.5rem;
     font-size: 0.75rem;
@@ -73,13 +73,13 @@ const StyledReplyContainer = styled.span`
 `
 
 const StyledReplyLabel = styled.span`
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
 `
 
 const StyledReplyUsername = styled.strong`
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     padding: 0 0 0 0.25rem;
 `
 
@@ -91,12 +91,12 @@ const StyledReplyDiscardIcon = styled.span`
 `
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
-    const {weeshPage, dispatch: weeshPageDispatch} = React.useContext(
+    const { auth } = React.useContext(AuthContext)
+    const { weeshPage, dispatch: weeshPageDispatch } = React.useContext(
         WeeshPageContext,
     )
     const [state, setState] = React.useState('')
-    const [addWeeshComment, {data, error, loading, called}] = useMutation(
+    const [addWeeshComment, { data, error, loading, called }] = useMutation(
         api.weeshComments.add,
     )
     const textarea = React.useRef()

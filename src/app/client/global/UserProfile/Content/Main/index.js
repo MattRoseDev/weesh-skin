@@ -2,10 +2,10 @@ import React from 'react'
 import uuid from 'uuid'
 import Weesh from 'Root/components/global/Weesh'
 import InfiniteScroll from 'Root/components/global/InfiniteScroll'
-import {UserContext} from 'Root/contexts/user'
+import { UserContext } from 'Root/contexts/user'
 
 export default props => {
-    const {user} = React.useContext(UserContext)
+    const { user } = React.useContext(UserContext)
     return (
         <InfiniteScroll
             onLoadMore={props.handlePaginate}

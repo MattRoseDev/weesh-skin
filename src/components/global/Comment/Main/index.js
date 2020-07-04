@@ -1,14 +1,14 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import Comment from 'Root/components/global/Comment'
-import Dialog, {DialogButton} from 'Root/components/global/Dialog'
+import Dialog, { DialogButton } from 'Root/components/global/Dialog'
 import uuid from 'uuid'
-import {WeeshPageContext} from 'Root/contexts/weeshPage'
-import {AuthContext} from 'Root/contexts/auth'
+import { WeeshPageContext } from 'Root/contexts/weeshPage'
+import { AuthContext } from 'Root/contexts/auth'
 import moment from 'moment'
 import helpers from 'Root/helpers'
 import C from 'Root/constants'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import Link from 'Root/components/global/Link'
 import Icon from 'Root/components/global/Icon'
@@ -16,7 +16,7 @@ import Icon from 'Root/components/global/Icon'
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
     width: 100%;
-    ${({isChild}) =>
+    ${({ isChild }) =>
         !isChild &&
         css`
             padding: 0.75rem 0 0;
@@ -24,9 +24,9 @@ const StyledContainer = styled.div`
 `
 
 const StyledMain = styled.p`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     font-size: .85rem;
-    /* ${({isChild}) =>
+    /* ${({ isChild }) =>
         isChild
             ? css`
                   padding: 0 0.75rem 0.25rem;
@@ -42,7 +42,7 @@ const StyledMain = styled.p`
 const StyledUsername = styled.strong`
     font-size: 0.85rem;
     padding: 0 0.25rem 0 0;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledChild = styled.div``
@@ -55,7 +55,7 @@ const StyledFooter = styled.div`
 
 const StyledButton = styled.button`
     display: flex;
-    color: ${({theme, color}) => theme.colors[color]};
+    color: ${({ theme, color }) => theme.colors[color]};
     background: none;
     border: none;
     font-weight: bold;
@@ -67,7 +67,7 @@ const StyledButton = styled.button`
 
 const StyledLink = styled(Link)`
     display: flex;
-    color: ${({theme, color}) => theme.colors[color]};
+    color: ${({ theme, color }) => theme.colors[color]};
     background: none;
     border: none;
     font-weight: bold;
@@ -84,17 +84,17 @@ const StyledButtonIcon = styled.span`
 `
 
 const StyledDate = styled.span`
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
     font-size: 0.75rem;
 `
 
 const StyledHeaderDialog = styled.div`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
 `
 
 const StyledHeaderDialogMessage = styled.strong`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 1rem 0;
 `
 
@@ -104,11 +104,11 @@ const initialDialog = {
 
 export default props => {
     const [dialog, setDialog] = React.useState(initialDialog)
-    const {auth} = React.useContext(AuthContext)
-    const {weeshPage, dispatch: weeshPageDispatch} = React.useContext(
+    const { auth } = React.useContext(AuthContext)
+    const { weeshPage, dispatch: weeshPageDispatch } = React.useContext(
         WeeshPageContext,
     )
-    const [removeWeeshComment, {data, error, loading, called}] = useMutation(
+    const [removeWeeshComment, { data, error, loading, called }] = useMutation(
         api.weeshComments.remove,
         {
             variables: {

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {AuthContext} from 'Root/contexts/auth'
+import { AuthContext } from 'Root/contexts/auth'
 import Auth from 'Root/components/mobile/Auth'
 import Link from 'Root/components/global/Link'
 import routes from './routes'
@@ -23,18 +23,18 @@ const StyledButtons = styled.div`
 `
 
 const StyledButton = styled(Link)`
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 0.2rem 0 0;
 `
 
 const StyledGray = styled.span`
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 export default () => {
-    const {auth} = React.useContext(AuthContext)
+    const { auth } = React.useContext(AuthContext)
 
     return (
         <NavStyled>

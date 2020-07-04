@@ -1,6 +1,6 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
-import {Link} from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 import avatar from 'Root/public/img/avatar.jpg'
 import unknownAvatar from 'Root/public/img/unknownAvatar.png'
 import C from 'Root/constants'
@@ -17,8 +17,8 @@ const StyledContainer = styled.span`
 `
 
 const StyledAvatar = styled.span`
-    background-color: ${({theme}) => theme.colors.white};
-    background-image: url(${({user}) =>
+    background-color: ${({ theme }) => theme.colors.white};
+    background-image: url(${({ user }) =>
         user
             ? user.unknown.avatar
                 ? unknownAvatar
@@ -26,18 +26,18 @@ const StyledAvatar = styled.span`
                 ? `${config.UPLOAD_URL}${user.avatarAddress}`
                 : avatar
             : avatar});
-    width: ${({size}) => size || 2}rem;
-    height: ${({size}) => size || 2}rem;
-    border-width: ${({borderwidth}) => borderwidth || 1}px;
+    width: ${({ size }) => size || 2}rem;
+    height: ${({ size }) => size || 2}rem;
+    border-width: ${({ borderwidth }) => borderwidth || 1}px;
     border-style: solid;
-    border-color: ${({theme, bordercolor}) =>
+    border-color: ${({ theme, bordercolor }) =>
         bordercolor ? theme.colors[bordercolor] : theme.colors.lightGray};
     border-radius: 50%;
     background-position: center;
     background-size: cover;
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
-    ${({theme, boxShadow}) =>
+    ${({ theme, boxShadow }) =>
         boxShadow &&
         css`
             box-shadow: 1px 1px 3px 1px ${theme.colors[boxShadow]};

@@ -4,11 +4,11 @@ import cover from 'Root/public/img/cover.png'
 import config from 'Root/config'
 
 const StyledContainerCover = styled.div`
-    height: ${({height}) => (height ? `${height}` : '10rem')};
+    height: ${({ height }) => (height ? `${height}` : '10rem')};
 `
 
 const StyledCover = styled.div`
-    background-image: url(${({user}) =>
+    background-image: url(${({ user }) =>
         user && user.coverAddress
             ? `${config.UPLOAD_URL}${user.coverAddress}`
             : cover});

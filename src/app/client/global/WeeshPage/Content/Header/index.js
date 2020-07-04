@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import C from 'Root/constants'
-import {AuthContext} from 'Root/contexts/auth'
+import { AuthContext } from 'Root/contexts/auth'
 import Avatar from 'Root/components/global/Avatar'
 import FullName from 'Root/components/global/FullName'
 import MoreButton from './MoreButton'
@@ -21,7 +21,7 @@ const StyledNameContainer = styled.div`
 const StyledUsername = styled.small`
     ${C.styles.flex.flexRow};
     font-size: 0.75rem;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledLeftSide = styled.div`
@@ -29,7 +29,7 @@ const StyledLeftSide = styled.div`
 `
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
+    const { auth } = React.useContext(AuthContext)
 
     return (
         <StyledHeader>

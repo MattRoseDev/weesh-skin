@@ -7,13 +7,13 @@ const StyledTextarea = styled.textarea`
     border: none;
     background: transparent;
     font-size: 0.85rem;
-    color: ${({theme}) => theme.colors.foreground};
-    background: ${({theme}) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
     padding: 0 0 0 0.2rem;
     resize: vertical;
     width: 100%;
     ::placeholder {
-        color: ${({theme}) => theme.colors.gray};
+        color: ${({ theme }) => theme.colors.gray};
     }
 `
 

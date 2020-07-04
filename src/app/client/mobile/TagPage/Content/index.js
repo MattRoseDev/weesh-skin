@@ -6,46 +6,49 @@ import Container from 'Root/components/desktop/Container'
 import Main from './Main'
 import C from 'Root/constants'
 import BannerMessage from 'Root/components/global/BannerMessage'
-import {useQuery, useLazyQuery} from '@apollo/react-hooks'
-import {AuthContext} from 'Root/contexts/auth'
-import {TagContext} from 'Root/contexts/tag'
+import { useQuery, useLazyQuery } from '@apollo/react-hooks'
+import { AuthContext } from 'Root/contexts/auth'
+import { TagContext } from 'Root/contexts/tag'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import styled from 'styled-components'
 import authError from 'Root/errors/auth'
 
 const StyledContainer = styled.div`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledLoadingContainer = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.justifyContentStart};
     padding: 3rem;
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     min-height: ${window.innerHeight - 55}px;
 `
 
 export default props => {
-    const {match} = props
-    const {auth, dispatch} = React.useContext(AuthContext)
-    const {tag, dispatch: tagDispatch} = React.useContext(TagContext)
+    const { match } = props
+    const { auth, dispatch } = React.useContext(AuthContext)
+    const { tag, dispatch: tagDispatch } = React.useContext(TagContext)
     const history = useHistory()
 
     !auth.token && history.push('/')
 
-    const {data, called, error, loading} = useQuery(api.tags.getWeeshesByTag, {
-        variables: {
-            tagTitle: `${match.params.tagTitle}`,
+    const { data, called, error, loading } = useQuery(
+        api.tags.getWeeshesByTag,
+        {
+            variables: {
+                tagTitle: `${match.params.tagTitle}`,
+            },
+            fetchPolicy: 'no-cache',
         },
-        fetchPolicy: 'no-cache',
-    })
+    )
 
     React.useEffect(() => {
         if (error) {
-            authError({error}) && dispatch({type: 'LOGOUT'})
+            authError({ error }) && dispatch({ type: 'LOGOUT' })
         }
 
         if (called && data) {

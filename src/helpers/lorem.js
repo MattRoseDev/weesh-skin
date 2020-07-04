@@ -1,4 +1,4 @@
-import {LoremIpsum} from 'lorem-ipsum'
+import { LoremIpsum } from 'lorem-ipsum'
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {

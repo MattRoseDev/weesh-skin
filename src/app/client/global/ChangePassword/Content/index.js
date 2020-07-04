@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import uuid from 'uuid'
 import List from 'Root/components/desktop/List'
 import Loader from 'Root/components/global/Loader'
@@ -8,11 +8,11 @@ import SliderTab from 'Root/components/global/SliderTab'
 import C from 'Root/constants'
 import Input from 'Root/components/global/Input'
 import ErrorMessage from 'Root/components/global/ErrorMessage'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
-import {AuthContext} from 'Root/contexts/auth'
-import {SnackBarContext} from 'Root/contexts/snackbar'
+import { AuthContext } from 'Root/contexts/auth'
+import { SnackBarContext } from 'Root/contexts/snackbar'
 import Button from 'Root/components/global/Button'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
@@ -42,8 +42,8 @@ const initialVariables = {
 }
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
-    const {snackbar, dispatch: snackbarDispatch} = React.useContext(
+    const { auth } = React.useContext(AuthContext)
+    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
     const [state, setState] = React.useState(initialVariables)
@@ -52,7 +52,7 @@ export default props => {
     )
     const history = useHistory()
 
-    const handleChange = ({key, e}) => {
+    const handleChange = ({ key, e }) => {
         let value = e.target.value
         setState(prevState => {
             return {
@@ -90,7 +90,7 @@ export default props => {
                 },
             })
             setTimeout(() => {
-                snackbarDispatch({type: 'HIDE'})
+                snackbarDispatch({ type: 'HIDE' })
             }, 2 * 1000)
         }
     }, [changePasswordResponse])
@@ -113,7 +113,7 @@ export default props => {
                     type='password'
                     padding='.65rem'
                     value={state.oldPassword}
-                    onChange={e => handleChange({key: 'oldPassword', e})}
+                    onChange={e => handleChange({ key: 'oldPassword', e })}
                     width={100}
                     margin='1rem 0 0'
                 />
@@ -122,7 +122,7 @@ export default props => {
                     type='password'
                     padding='.65rem'
                     value={state.newPassword}
-                    onChange={e => handleChange({key: 'newPassword', e})}
+                    onChange={e => handleChange({ key: 'newPassword', e })}
                     width={100}
                     margin='1rem 0 0'
                 />
@@ -131,7 +131,7 @@ export default props => {
                     type='password'
                     padding='.65rem'
                     value={state.confirmPassword}
-                    onChange={e => handleChange({key: 'confirmPassword', e})}
+                    onChange={e => handleChange({ key: 'confirmPassword', e })}
                     width={100}
                     margin='1rem 0 0'
                 />

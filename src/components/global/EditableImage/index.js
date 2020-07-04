@@ -1,12 +1,12 @@
 import React from 'react'
 import Icon from 'Root/components/global/Icon'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 
 const StyledContainer = styled.div`
     position: relative;
     overflow: hidden;
-    ${({radius}) =>
+    ${({ radius }) =>
         radius &&
         css`
             border-radius: ${radius};

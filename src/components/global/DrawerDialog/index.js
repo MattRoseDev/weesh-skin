@@ -1,12 +1,12 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import Icon from 'Root/components/global/Icon'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import C from 'Root/constants'
 import uuid from 'uuid'
 
 const StyledContainer = styled.div`
-    ${({visible}) =>
+    ${({ visible }) =>
         !visible
             ? css`
                   display: none;
@@ -26,9 +26,9 @@ const StyledContent = styled.div`
     /* right: 0; */
     overflow: hidden;
     ${C.styles.flex.flexColumnCenter};
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
     border-radius: 1rem 1rem 0 0;
-    ${({width}) =>
+    ${({ width }) =>
         width &&
         css`
             width: ${width};
@@ -43,13 +43,13 @@ const StyledTitle = styled.span`
 `
 const StyledMessage = styled.span`
     ${C.styles.flex.flexRowCenter};
-    color: ${({color, theme}) => theme.colors.gray};
+    color: ${({ color, theme }) => theme.colors.gray};
     padding: 0.75rem 0 0;
     font-size: 0.85rem;
 `
 const StyledButton = styled.button`
     width: 100%;
-    ${({icon}) =>
+    ${({ icon }) =>
         icon
             ? css`
                   ${C.styles.flex.flexRow};
@@ -57,18 +57,18 @@ const StyledButton = styled.button`
                   ${C.styles.flex.justifyContentBetween};
               `
             : C.styles.flex.flexRowCenter};
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
     font-size: 1rem;
     vertical-align: middle;
     border: none;
-    color: ${({color, theme}) => theme.colors[color || 'foreground']};
+    color: ${({ color, theme }) => theme.colors[color || 'foreground']};
     padding: 1rem;
-    ${({border}) =>
+    ${({ border }) =>
         border &&
         css`
-            border-top: 1px ${border} ${({theme}) => theme.colors.lightGray};
+            border-top: 1px ${border} ${({ theme }) => theme.colors.lightGray};
         `};
-    ${({fontWeight}) =>
+    ${({ fontWeight }) =>
         fontWeight &&
         css`
             font-weight: ${fontWeight};

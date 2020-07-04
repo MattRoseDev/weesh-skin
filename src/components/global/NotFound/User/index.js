@@ -7,7 +7,7 @@ const StyledContaner = styled.div`
     height: 100%;
     width: 100%;
     ${C.styles.flex.flexColumnCenter};
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 const StyledMessage = styled.div`
     margin: 1rem 0 0;

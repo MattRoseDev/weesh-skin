@@ -1,5 +1,5 @@
 import React from 'react'
-import {notificationsReducer} from 'Root/reducers/notifications'
+import { notificationsReducer } from 'Root/reducers/notifications'
 
 export const NotificationsContext = React.createContext()
 
@@ -15,7 +15,7 @@ const NotificationsProvider = props => {
     )
 
     return (
-        <NotificationsContext.Provider value={{notifications, dispatch}}>
+        <NotificationsContext.Provider value={{ notifications, dispatch }}>
             {props.children}
         </NotificationsContext.Provider>
     )

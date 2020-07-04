@@ -21,19 +21,19 @@ const StyledContainer = styled.div`
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.alignItemsStart};
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     padding: 0 0.5rem 0.5rem 0.5rem;
 `
 
 const StyledDescription = styled.div`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     font-size: 0.85rem;
 `
 
 const StyledTime = styled.small`
     display: inline-block;
     font-size: 0.75rem;
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledUsername = styled.strong`
@@ -49,21 +49,21 @@ const StyledContentContainer = styled.div`
 
 const StyledContent = styled.span`
     padding: 0 0.125rem 0 0;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     white-space: pre-wrap;
     word-break: break-word;
 `
 
 const StyledIcon = styled.span`
     ${C.styles.flex.flexRowCenter};
-    border: 1px solid ${({theme}) => theme.colors.dark};
+    border: 1px solid ${({ theme }) => theme.colors.dark};
     min-width: 2.75rem;
     min-height: 2.75rem;
     border-radius: 50rem;
 `
 
 const StyledGray = styled.span`
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
     white-space: pre-wrap;
     word-break: break-word;
 `
@@ -73,7 +73,7 @@ export default props => {
         /(\$\$[0-9a-zA-Z_]+\$\$)(?!;)/gi,
     )
 
-    template = template.map(element => switchElements({element, props}))
+    template = template.map(element => switchElements({ element, props }))
 
     return (
         <StyledContainer>
@@ -136,7 +136,7 @@ const switchIcon = type => {
     }
 }
 
-const switchElements = ({element, props}) => {
+const switchElements = ({ element, props }) => {
     if (element.length > 0) {
         switch (element) {
             case '$$username$$':

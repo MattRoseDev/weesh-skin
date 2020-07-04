@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import C from 'Root/constants'
-import {AuthContext} from 'Root/contexts/auth'
+import { AuthContext } from 'Root/contexts/auth'
 import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
@@ -11,10 +11,10 @@ import NotificationBadge from 'Root/components/global/NotificationBadge'
 const NavItemContent = styled.div`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
-    color: ${({theme, color}) => theme.colors[color || 'foreground']};
+    color: ${({ theme, color }) => theme.colors[color || 'foreground']};
     list-style: none;
     transition: all .2s ease;
-    /* background: ${({theme, background}) =>
+    /* background: ${({ theme, background }) =>
         background ? theme.colors.lightPrimary : 'transparent'}; */
     border-radius: .75rem;
     /* width: 100%; */
@@ -25,12 +25,12 @@ const NavItemContent = styled.div`
 
 const NavItem = styled(NavLink)`
     &:hover ${NavItemContent} {
-        color: ${({theme, color}) => theme.colors.primary};
-        background: ${({theme}) => theme.colors.lightPrimary};
+        color: ${({ theme, color }) => theme.colors.primary};
+        background: ${({ theme }) => theme.colors.lightPrimary};
         transition: all 0.2s ease;
     }
     &:hover svg {
-        stroke: ${({theme, color}) => theme.colors.primary};
+        stroke: ${({ theme, color }) => theme.colors.primary};
         transition: all 0.2s ease;
     }
     transition: all 0.2s ease;
@@ -52,7 +52,7 @@ const StyledIcon = styled.span`
 `
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
+    const { auth } = React.useContext(AuthContext)
 
     const history = useHistory()
 

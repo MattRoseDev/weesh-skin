@@ -6,12 +6,12 @@ const StyledInput = styled.input`
     outline: none;
     border: none;
     font-size: 0.75rem;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     background: transparent;
     padding: 0 0 0 0.2rem;
     width: 100%;
     ::placeholder {
-        color: ${({theme}) => theme.colors.gray};
+        color: ${({ theme }) => theme.colors.gray};
     }
 `
 

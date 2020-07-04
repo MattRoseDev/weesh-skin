@@ -5,23 +5,23 @@ import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
 import Button from 'Root/components/global/Button'
 import Navbar from 'Root/components/mobile/Navbar'
-import {AuthContext} from 'Root/contexts/auth'
-import {UserContext} from 'Root/contexts/user'
-import {EditProfileContext} from 'Root/contexts/editProfile'
+import { AuthContext } from 'Root/contexts/auth'
+import { UserContext } from 'Root/contexts/user'
+import { EditProfileContext } from 'Root/contexts/editProfile'
 import avatar from 'Root/public/img/avatar.jpg'
 import C from 'Root/constants'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 
 const StyledHeader = styled.header`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsCenter};
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     border: none;
-    border-bottom: 1px solid ${({theme}) => theme.colors.light};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.light};
     padding: 0 0.75rem;
     height: 54px;
     position: sticky;
@@ -31,18 +31,18 @@ const StyledHeader = styled.header`
 
 const StyledTitle = styled.span`
     font-weight: bold;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledLink = styled.span`
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     padding: 0.75rem 0;
 `
 
 export default () => {
-    const {auth, dispatch: authDispatch} = React.useContext(AuthContext)
-    const {editProfile} = React.useContext(EditProfileContext)
-    const [editUser, {data, error, loading}] = useMutation(api.users.edit)
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
+    const { editProfile } = React.useContext(EditProfileContext)
+    const [editUser, { data, error, loading }] = useMutation(api.users.edit)
     const history = useHistory()
 
     const handleEditUser = () => {
@@ -79,16 +79,16 @@ export default () => {
             variables['theme'] = auth.theme
         }
         Object.values(variables).length
-            ? editUser({variables})
+            ? editUser({ variables })
             : history.replace(`/${auth.username}`)
     }
 
     const handleCancel = () => {
         if (editProfile.color != auth.color) {
-            authDispatch({type: 'EDIT_COLOR', data: editProfile.color})
+            authDispatch({ type: 'EDIT_COLOR', data: editProfile.color })
         }
         if (editProfile.theme != auth.theme) {
-            authDispatch({type: 'EDIT_THEME', data: editProfile.theme})
+            authDispatch({ type: 'EDIT_THEME', data: editProfile.theme })
         }
         history.replace(`/${auth.username}`)
     }

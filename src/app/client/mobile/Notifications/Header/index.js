@@ -6,7 +6,7 @@ import Icon from 'Root/components/global/Icon'
 import Header from 'Root/app/client/mobile/Template/Header'
 
 const StyledTitle = styled.strong`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 export default () => {

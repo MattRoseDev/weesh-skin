@@ -5,16 +5,16 @@ import Icon from 'Root/components/global/Icon'
 import Button from 'Root/components/global/Button'
 import Main from './Main'
 import C from 'Root/constants'
-import {UserContext} from 'Root/contexts/user'
-import {AuthContext} from 'Root/contexts/auth'
-import {useSubscription} from '@apollo/react-hooks'
+import { UserContext } from 'Root/contexts/user'
+import { AuthContext } from 'Root/contexts/auth'
+import { useSubscription } from '@apollo/react-hooks'
 import api from 'Root/api'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const StyledContent = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.alignItemsEnd};
-    /* box-shadow: 1px 1px 3px 1px ${({theme}) => theme.colors.light}; */
+    /* box-shadow: 1px 1px 3px 1px ${({ theme }) => theme.colors.light}; */
     padding: 0 0 .5rem;
     border-radius: 0 0 .75rem .75rem;
 `
@@ -28,15 +28,15 @@ const StyledButtonContainer = styled.div`
 const StyledBookmarkButton = styled(Link)`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.center};
-    background: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.foreground};
     padding: 0.4rem;
     margin: 0 0.5rem 0 0;
     border-radius: 50%;
 `
 
 export default props => {
-    const {user} = React.useContext(UserContext)
-    const {auth} = React.useContext(AuthContext)
+    const { user } = React.useContext(UserContext)
+    const { auth } = React.useContext(AuthContext)
 
     return (
         <StyledContent>

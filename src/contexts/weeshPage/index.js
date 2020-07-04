@@ -1,5 +1,5 @@
 import React from 'react'
-import {weeshPageReducer} from 'Root/reducers/weeshPage'
+import { weeshPageReducer } from 'Root/reducers/weeshPage'
 
 export const WeeshPageContext = React.createContext()
 
@@ -15,7 +15,7 @@ const WeeshPageProvider = props => {
     )
 
     return (
-        <WeeshPageContext.Provider value={{weeshPage, dispatch}}>
+        <WeeshPageContext.Provider value={{ weeshPage, dispatch }}>
             {props.children}
         </WeeshPageContext.Provider>
     )

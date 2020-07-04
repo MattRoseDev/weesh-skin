@@ -1,6 +1,6 @@
 import React from 'react'
-import {AuthContext} from 'Root/contexts/auth'
-import {UserContext} from 'Root/contexts/user'
+import { AuthContext } from 'Root/contexts/auth'
+import { UserContext } from 'Root/contexts/user'
 import Button from 'Root/components/global/Button'
 import ConnectionButton from './ConnectionButton'
 import C from 'Root/constants'
@@ -37,7 +37,7 @@ const handleStatus = (props, auth, user) => {
     }
 
     if (user.connection) {
-        const {status} = user.connection
+        const { status } = user.connection
 
         switch (status) {
             case 0:
@@ -63,7 +63,7 @@ const handleStatus = (props, auth, user) => {
 }
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
-    const {user} = React.useContext(UserContext)
+    const { auth } = React.useContext(AuthContext)
+    const { user } = React.useContext(UserContext)
     return handleStatus(props, auth, user)
 }

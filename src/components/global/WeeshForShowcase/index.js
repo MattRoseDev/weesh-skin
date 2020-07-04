@@ -12,7 +12,7 @@ const StyledWeesh = styled.div`
     ${C.styles.flex.flexColumn};
     width: 100%;
     ${C.styles.boxShadow.primary.normal};
-    /* border-bottom: 1px solid ${({theme}) => theme.colors.light}; */
+    /* border-bottom: 1px solid ${({ theme }) => theme.colors.light}; */
     border-radius: .75rem;
     margin: 0 0 .5rem;
 `
@@ -20,7 +20,7 @@ const StyledWeesh = styled.div`
 const StyledGlass = styled.div`
     ${C.styles.flex.flexRowCenter};
     position: absolute;
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
     backdrop-filter: blur(5px);
     border-radius: 0.75rem;
     left: 0;
@@ -30,7 +30,7 @@ const StyledGlass = styled.div`
 `
 
 export default props => {
-    const {lastItem} = props
+    const { lastItem } = props
     return (
         <StyledWeesh>
             {lastItem && (

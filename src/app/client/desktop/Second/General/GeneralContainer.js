@@ -2,13 +2,13 @@ import React from 'react'
 import Container from 'Root/components/desktop/Container'
 import C from 'Root/constants'
 import styled from 'styled-components'
-import {AuthContext} from 'Root/contexts/auth'
+import { AuthContext } from 'Root/contexts/auth'
 import Explore from './Explore'
 import Cards from './Cards'
 
 const StyledContainer = styled.div`
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     position: sticky;
     top: 0;
     bottom: 0;
@@ -18,7 +18,7 @@ const StyledContainer = styled.div`
 `
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
+    const { auth } = React.useContext(AuthContext)
 
     return (
         <StyledContainer>

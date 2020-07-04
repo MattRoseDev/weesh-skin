@@ -144,7 +144,7 @@ const edit = gql`
                 theme: $theme
                 bio: $bio
                 private: $private
-                unknown: {avatar: $unknown, fullname: $unknown}
+                unknown: { avatar: $unknown, fullname: $unknown }
             }
         ) {
             user {

@@ -1,11 +1,11 @@
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import Loader from 'Root/components/global/Loader'
 import C from 'Root/constants'
 
 const StyledContainer = styled(InfiniteScroll)`
-    ${({padding}) =>
+    ${({ padding }) =>
         padding &&
         css`
             padding: ${padding};

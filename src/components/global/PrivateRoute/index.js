@@ -1,9 +1,9 @@
 import React from 'react'
-import {Route, Redirect} from 'react-router-dom'
-import {AuthContext} from 'Root/contexts/auth'
+import { Route, Redirect } from 'react-router-dom'
+import { AuthContext } from 'Root/contexts/auth'
 
 const PrivateRoute = props => {
-    const {auth, dispatch} = React.useContext(AuthContext)
+    const { auth, dispatch } = React.useContext(AuthContext)
     if (!auth.token) {
         dispatch({
             type: 'LOGOUT',

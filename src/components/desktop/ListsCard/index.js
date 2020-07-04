@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 import uuid from 'uuid'
 
@@ -9,7 +9,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledTitle = styled.div`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     font-weight: bolder;
     font-size: 1.25rem;
     padding: 1rem;
@@ -17,7 +17,7 @@ const StyledTitle = styled.div`
 
 const StyledItem = styled.div`
     padding: 0.5rem;
-    border-top: 1px dashed ${({theme}) => theme.colors.light};
+    border-top: 1px dashed ${({ theme }) => theme.colors.light};
 `
 
 export default props => {

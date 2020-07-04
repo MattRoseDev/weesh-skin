@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 import Loader from 'Root/components/global/Loader'
 
@@ -8,9 +8,9 @@ const StyledContaner = styled.div`
     width: 100%;
     ${C.styles.flex.flexRowCenter};
     ${C.styles.flex.justifyContentCenter};
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.dark};
-    ${({padding}) =>
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.dark};
+    ${({ padding }) =>
         padding &&
         css`
             padding: ${padding};

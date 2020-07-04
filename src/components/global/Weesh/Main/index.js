@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
-import {AuthContext} from 'Root/contexts/auth'
+import { Link } from 'react-router-dom'
+import { AuthContext } from 'Root/contexts/auth'
 import C from 'Root/constants'
 import uuid from 'uuid'
 import useHistory from 'Root/hooks/useHistory'
@@ -9,7 +9,7 @@ import Convertors from 'Root/components/global/Convertors'
 
 const StyledLink = styled.div`
     text-decoration: none;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     cursor: default;
 `
 
@@ -20,11 +20,11 @@ const StyledMain = styled.p`
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap;
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledTag = styled(Link)`
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     ${C.styles.flex.inlineFlexRow};
     text-decoration: none;
 `

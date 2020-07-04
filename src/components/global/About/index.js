@@ -12,7 +12,7 @@ const StyledTitle = styled.div`
     text-align: center;
     padding: 1.25rem 0.5rem 0.75rem;
     font-size: 0.75rem;
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
     font-weight: bold;
 `
 

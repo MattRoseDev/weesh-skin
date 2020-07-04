@@ -1,7 +1,7 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import C from 'Root/constants'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const StyledLink = styled(Link)`
     color: unset;
@@ -15,12 +15,12 @@ const StyledCountItem = styled.div`
 `
 
 const StyledContainer = styled.div`
-    ${({margin}) =>
+    ${({ margin }) =>
         margin &&
         css`
             margin: ${margin};
         `};
-    ${({width}) =>
+    ${({ width }) =>
         width &&
         css`
             width: ${width};
@@ -28,12 +28,12 @@ const StyledContainer = styled.div`
 `
 
 const StyledNumber = styled.span`
-    color: ${({theme}) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.foreground};
     font-weight: bolder;
 `
 
 const StyledHoverTitle = styled.span`
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     font-size: 0.9rem;
     margin: 0 0 0 0.25rem;
     :hover {
@@ -42,7 +42,7 @@ const StyledHoverTitle = styled.span`
 `
 
 const StyledTitle = styled.span`
-    color: ${({theme}) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.dark};
     font-size: 0.9rem;
     margin: 0 0 0 0.25rem;
 `

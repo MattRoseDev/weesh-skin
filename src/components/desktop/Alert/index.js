@@ -1,5 +1,5 @@
 import React from 'react'
-import {AlertContext} from 'Root/contexts/alert'
+import { AlertContext } from 'Root/contexts/alert'
 import Icon from 'Root/components/global/Icon'
 import styled from 'styled-components'
 import C from 'Root/constants'
@@ -20,9 +20,9 @@ const StyledContent = styled.div`
     ${C.styles.flex.alignItemsCenter};
     width: 100%;
     padding: 1.25rem;
-    background: ${({theme, alert}) =>
+    background: ${({ theme, alert }) =>
         theme.colors[alert.background] || 'unset'};
-    color: ${({theme, alert}) => theme.colors[alert.color] || 'unset'};
+    color: ${({ theme, alert }) => theme.colors[alert.color] || 'unset'};
 `
 
 const StyledMessage = styled.div`
@@ -38,7 +38,7 @@ const StyledIcon = styled.div`
 `
 
 export default props => {
-    const {alert} = React.useContext(AlertContext)
+    const { alert } = React.useContext(AlertContext)
     return alert.visible ? (
         <StyledContainer>
             <StyledContent alert={alert} {...props}>

@@ -1,12 +1,12 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
-import {Link} from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 import C from 'Root/constants'
 
 const StyledContainer = styled(Link)`
     text-decoration: none;
     color: unset;
-    ${({width}) =>
+    ${({ width }) =>
         width &&
         css`
             width: ${width};

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import uuid from 'uuid'
 import List from 'Root/components/desktop/List'
 import Loader from 'Root/components/global/Loader'
@@ -9,11 +9,11 @@ import C from 'Root/constants'
 import Input from 'Root/components/global/Input'
 import Textarea from 'Root/components/global/Textarea'
 import ErrorMessage from 'Root/components/global/ErrorMessage'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
-import {AuthContext} from 'Root/contexts/auth'
-import {SnackBarContext} from 'Root/contexts/snackbar'
+import { AuthContext } from 'Root/contexts/auth'
+import { SnackBarContext } from 'Root/contexts/snackbar'
 import Button from 'Root/components/global/Button'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
@@ -41,15 +41,15 @@ const initialVariables = {
 }
 
 export default props => {
-    const {auth} = React.useContext(AuthContext)
-    const {snackbar, dispatch: snackbarDispatch} = React.useContext(
+    const { auth } = React.useContext(AuthContext)
+    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
     const [state, setState] = React.useState(initialVariables)
     const [addMessage, addMessageResponse] = useMutation(api.support.addMessage)
     const history = useHistory()
 
-    const handleChange = ({key, e}) => {
+    const handleChange = ({ key, e }) => {
         let value = e.target.value
         setState(prevState => {
             return {
@@ -84,7 +84,7 @@ export default props => {
                 },
             })
             setTimeout(() => {
-                snackbarDispatch({type: 'HIDE'})
+                snackbarDispatch({ type: 'HIDE' })
             }, 2 * 1000)
         }
     }, [addMessageResponse])
@@ -104,7 +104,7 @@ export default props => {
                     label='Subject'
                     padding='.65rem'
                     value={state.subject}
-                    onChange={e => handleChange({key: 'subject', e})}
+                    onChange={e => handleChange({ key: 'subject', e })}
                     width={100}
                     margin='1rem 0 0'
                 />
@@ -112,7 +112,7 @@ export default props => {
                     label='Description'
                     padding='.65rem'
                     value={state.description}
-                    onChange={e => handleChange({key: 'description', e})}
+                    onChange={e => handleChange({ key: 'description', e })}
                     width={100}
                     rows='10'
                     margin='1rem 0 0'

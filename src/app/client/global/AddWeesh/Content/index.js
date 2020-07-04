@@ -1,7 +1,7 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
-import {WeeshContext} from 'Root/contexts/weesh'
-import {AuthContext} from 'Root/contexts/auth'
+import styled, { css } from 'styled-components'
+import { WeeshContext } from 'Root/contexts/weesh'
+import { AuthContext } from 'Root/contexts/auth'
 import SuggestionTag from 'Root/components/global/SuggestionTag'
 import Main from 'Root/app/client/global/AddWeesh/Main'
 import Footer from './Footer'
@@ -14,7 +14,7 @@ import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
     min-height: ${window.innerHeight - 55}px;
 `
 
@@ -22,12 +22,12 @@ const StyledFrame = styled.div`
     width: 100%;
     ${C.styles.flex.flexColumn};
     padding: 0 0 1rem;
-    border-bottom: 1px solid ${({theme}) => theme.colors.light};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.light};
     overflow: hidden;
 `
 
 const StyledSliderTabContent = styled.div`
-    ${({p}) => {
+    ${({ p }) => {
         if (p) {
             if (window.innerWidth < 768) {
                 return css`
@@ -57,18 +57,18 @@ const StyledSliderTabContainer = styled.div`
     ${C.styles.flex.alignItemsCenter};
     flex-wrap: wrap;
     padding: 0.75rem;
-    border-bottom: 1px dashed ${({theme}) => theme.colors.light};
+    border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
 `
 
 const StyledSliderTabTitle = styled.span`
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
     padding: 0 0.75rem 0 0;
     font-size: 0.85rem;
 `
 
 export default props => {
-    const {weesh, dispatch} = React.useContext(WeeshContext)
-    const {auth} = React.useContext(AuthContext)
+    const { weesh, dispatch } = React.useContext(WeeshContext)
+    const { auth } = React.useContext(AuthContext)
     const data = {
         tabs: [
             {
@@ -109,7 +109,7 @@ export default props => {
         }
     }, [auth])
 
-    const handleStatus = ({status}) =>
+    const handleStatus = ({ status }) =>
         dispatch({
             type: 'ADD_WEESH',
             data: {

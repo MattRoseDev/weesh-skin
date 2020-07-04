@@ -1,10 +1,11 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import Button from 'Root/components/global/Button'
 import Icon from 'Root/components/global/Icon'
-import {WeeshContext} from 'Root/contexts/weesh'
+import { WeeshContext } from 'Root/contexts/weesh'
 import C from 'Root/constants'
-import {useMutation} from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
+import { SnackBarContext } from 'Root/contexts/snackbar'
 import api from 'Root/api'
 
 const StyledContainer = styled.div`
@@ -15,7 +16,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledButtonTitle = styled.span`
-    color: ${({theme}) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.background};
     margin: 0 0.5rem 0 0;
     font-weight: bold;
 `
@@ -25,10 +26,10 @@ const StyledNumbers = styled.div`
     ${props =>
         props.characterCount <= props.totalCount
             ? css`
-                  color: ${({theme}) => theme.colors.gray};
+                  color: ${({ theme }) => theme.colors.gray};
               `
             : css`
-                  color: ${({theme}) => theme.colors.red};
+                  color: ${({ theme }) => theme.colors.red};
               `};
 `
 
@@ -38,9 +39,12 @@ const StyledNumber = styled.span`
 `
 
 export default () => {
-    const {weesh, dispatch} = React.useContext(WeeshContext)
+    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
+        SnackBarContext,
+    )
+    const { weesh, dispatch } = React.useContext(WeeshContext)
 
-    const [addWeesh, {data, error, loading}] = useMutation(api.weeshes.add)
+    const [addWeesh, { data, error, loading }] = useMutation(api.weeshes.add)
 
     const handleAddWeesh = () =>
         addWeesh({
@@ -62,6 +66,18 @@ export default () => {
                     content: '',
                 },
             })
+            snackbarDispatch({
+                type: 'SET_DATA',
+                data: {
+                    icon: 'PenTool',
+                    message: 'Your weesh has been successfully added.',
+                    background: 'foreground',
+                    visible: true,
+                },
+            })
+            setTimeout(() => {
+                snackbarDispatch({ type: 'HIDE' })
+            }, 2 * 1000)
         }
     }, [data])
 

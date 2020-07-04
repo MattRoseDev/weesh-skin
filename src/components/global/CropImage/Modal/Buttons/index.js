@@ -3,10 +3,10 @@ import Button from './Button'
 import styled from 'styled-components'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
-import {AuthContext} from 'Root/contexts/auth'
+import { AuthContext } from 'Root/contexts/auth'
 
 const StyledContainer = styled.div`
-    width: ${({widthButtons}) => widthButtons || '100%'};
+    width: ${({ widthButtons }) => widthButtons || '100%'};
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     position: fixed;
@@ -15,7 +15,7 @@ const StyledContainer = styled.div`
 `
 
 export default props => {
-    const {auth, dispatch: authDispatch} = React.useContext(AuthContext)
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
 
     return (
         <StyledContainer {...props}>

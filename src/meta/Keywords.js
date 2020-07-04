@@ -1,4 +1,4 @@
-export default ({data, type} = {data: null}) => {
+export default ({ data, type } = { data: null }) => {
     let keywords = ['weesh']
     switch (type) {
         case 'UserProfile':

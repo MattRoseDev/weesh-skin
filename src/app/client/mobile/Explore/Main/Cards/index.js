@@ -1,7 +1,7 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import C from 'Root/constants'
-import {useQuery} from '@apollo/react-hooks'
+import { useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import uuid from 'uuid'
 import Link from 'Root/components/global/Link'
@@ -19,23 +19,23 @@ const StyledTagsContainer = styled.div`
 
 const StyledHeaderTitle = styled.span`
     padding: 0.5rem;
-    color: ${({theme}) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray};
 `
 
 const StyledItem = styled(Link)`
     padding: 0.5rem;
     ${C.styles.flex.flexColumn};
-    font-size: ${({fontSize}) => fontSize || '1rem'};
+    font-size: ${({ fontSize }) => fontSize || '1rem'};
 `
 
 const StyledItemTitle = styled.div`
-    color: ${({theme}) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
     font-weight: bold;
 `
 
 const StyledWeeshCounter = styled.div`
-    font-size: ${({fontSize}) => fontSize || '.75rem'};
-    color: ${({theme}) => theme.colors.gray};
+    font-size: ${({ fontSize }) => fontSize || '.75rem'};
+    color: ${({ theme }) => theme.colors.gray};
     margin: 0.25rem 0 0;
     white-space: nowrap;
 `
@@ -43,7 +43,7 @@ const StyledWeeshCounter = styled.div`
 export default props => {
     const [state, setState] = React.useState(null)
 
-    const {error, data, loading, called} = useQuery(api.tags.getTheBestTags, {
+    const { error, data, loading, called } = useQuery(api.tags.getTheBestTags, {
         variables: {
             limit: 5,
         },

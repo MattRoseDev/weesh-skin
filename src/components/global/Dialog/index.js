@@ -1,10 +1,10 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
-import {Link} from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 import C from 'Root/constants'
 
 const StyledContainer = styled.div`
-    ${({visible}) =>
+    ${({ visible }) =>
         !visible
             ? css`
                   display: none;
@@ -17,10 +17,10 @@ const StyledContainer = styled.div`
 const StyledContent = styled.div`
     overflow: hidden;
     ${C.styles.flex.flexColumnCenter};
-    background: ${({theme}) => theme.colors.background};
-    color: ${({theme}) => theme.colors.foreground};
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.foreground};
     border-radius: 0.75rem;
-    ${({width}) =>
+    ${({ width }) =>
         width &&
         css`
             width: ${width};
@@ -30,14 +30,14 @@ const StyledContent = styled.div`
 const StyledButton = styled.button`
     width: 100%;
     ${C.styles.flex.flexRowCenter};
-    background: ${({theme}) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
     font-size: 0.875rem;
     vertical-align: middle;
     border: none;
-    border-top: 1px dashed ${({theme}) => theme.colors.lightGray};
-    color: ${({color, theme}) => theme.colors[color || 'foreground']};
+    border-top: 1px dashed ${({ theme }) => theme.colors.lightGray};
+    color: ${({ color, theme }) => theme.colors[color || 'foreground']};
     padding: 0.85rem;
-    ${({fontWeight}) =>
+    ${({ fontWeight }) =>
         fontWeight &&
         css`
             font-weight: ${fontWeight};
