@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const getUserByUsernameForUser = gql`
-    query getUserByUsernameForUser($username: String!){
+    query getUserByUsernameForUser($username: String!) {
         getUserByUsernameForUser(username: $username) {
             id
             username
@@ -62,7 +62,7 @@ const getUserByUsernameForUser = gql`
                             avatar
                         }
                     }
-                    content 
+                    content
                     status
                     like {
                         weeshLikes {
@@ -124,30 +124,29 @@ const getUserByUsernameForUser = gql`
 
 const edit = gql`
     mutation editUserForUser(
-        $username: String, 
-        $email: String, 
-        $firstName: String, 
-        $lastName: String, 
-        $color: String, 
-        $theme: String, 
-        $bio: String,
-        $private: Boolean,
+        $username: String
+        $email: String
+        $firstName: String
+        $lastName: String
+        $color: String
+        $theme: String
+        $bio: String
+        $private: Boolean
         $unknown: Boolean
     ) {
-        editUserForUser(user: {
-            username: $username, 
-            email: $email, 
-            firstName: $firstName, 
-            lastName: $lastName, 
-            color: $color, 
-            theme: $theme, 
-            bio: $bio,
-            private: $private,
-            unknown: {
-                avatar: $unknown,
-                fullname: $unknown
+        editUserForUser(
+            user: {
+                username: $username
+                email: $email
+                firstName: $firstName
+                lastName: $lastName
+                color: $color
+                theme: $theme
+                bio: $bio
+                private: $private
+                unknown: {avatar: $unknown, fullname: $unknown}
             }
-        }) {
+        ) {
             user {
                 username
                 email
@@ -187,8 +186,14 @@ const editUsername = gql`
 `
 
 const changePassword = gql`
-    mutation changePasswordForUser($oldPassword: String!, $newPassword: String!) {
-        changePasswordForUser(oldPassword: $oldPassword, newPassword: $newPassword) {
+    mutation changePasswordForUser(
+        $oldPassword: String!
+        $newPassword: String!
+    ) {
+        changePasswordForUser(
+            oldPassword: $oldPassword
+            newPassword: $newPassword
+        ) {
             username
             firstName
             lastName
@@ -251,4 +256,3 @@ export default {
     editUsername,
     edit,
 }
-

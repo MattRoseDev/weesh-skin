@@ -1,19 +1,19 @@
 export const editProfileReducer = (state, action) => {
-    switch(action.type) {
-        case 'EDIT_PROFILE': 
+    switch (action.type) {
+        case 'EDIT_PROFILE':
             return {
                 ...state,
-                ...action.data
+                ...action.data,
             }
-        case 'ENABLE_DONE_BUTTON': 
+        case 'ENABLE_DONE_BUTTON':
             return {
                 ...state,
-                doneButton: true
+                doneButton: true,
             }
-        case 'DISABLE_DONE_BUTTON': 
+        case 'DISABLE_DONE_BUTTON':
             return {
                 ...state,
-                doneButton: false
+                doneButton: false,
             }
         default:
             return state

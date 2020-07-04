@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { AuthContext } from 'Root/contexts/auth'
+import {AuthContext} from 'Root/contexts/auth'
 import Auth from 'Root/components/mobile/Auth'
 import Link from 'Root/components/global/Link'
 import routes from './routes'
@@ -19,14 +19,14 @@ const NavStyled = styled.nav`
 
 const StyledButtons = styled.div`
     padding: 1rem;
-    font-size: .65rem;
+    font-size: 0.65rem;
 `
 
 const StyledButton = styled(Link)`
     color: ${({theme}) => theme.colors.dark};
     text-transform: uppercase;
     font-weight: bold;
-    margin: 0 .2rem 0 0;
+    margin: 0 0.2rem 0 0;
 `
 
 const StyledGray = styled.span`
@@ -34,19 +34,27 @@ const StyledGray = styled.span`
 `
 
 export default () => {
-    const { auth } = React.useContext(AuthContext)
-    
-    return <NavStyled>
-        {auth.token ? <NavItems>
-            {routes.map(item => 
-                <NavItem key={uuid()} {...item}>
-                    {item.content}
-                </NavItem>)}
-        </NavItems> : <NavItems>
-            {guestRoute.map(item =>
-                <NavItem key={uuid()} {...item}>
-                    {item.content}
-                </NavItem>)}
-        </NavItems>}
-    </NavStyled>
+    const {auth} = React.useContext(AuthContext)
+
+    return (
+        <NavStyled>
+            {auth.token ? (
+                <NavItems>
+                    {routes.map(item => (
+                        <NavItem key={uuid()} {...item}>
+                            {item.content}
+                        </NavItem>
+                    ))}
+                </NavItems>
+            ) : (
+                <NavItems>
+                    {guestRoute.map(item => (
+                        <NavItem key={uuid()} {...item}>
+                            {item.content}
+                        </NavItem>
+                    ))}
+                </NavItems>
+            )}
+        </NavStyled>
+    )
 }

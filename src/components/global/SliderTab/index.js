@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled, {css} from 'styled-components'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
 import uuid from 'uuid'
@@ -15,24 +15,26 @@ const StyledFrame = styled.ul`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentAround};
     ${C.styles.flex.alignItemsCenter};
-    padding: .3rem 0;
+    padding: 0.3rem 0;
 `
 
 const StyledTab = styled.li`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentCenter};
     width: 100%;
-    font-size: .85rem;
+    font-size: 0.85rem;
     z-index: 2;
 `
 
 const StyledSlider = styled.span`
     position: absolute;
     background: ${({theme}) => theme.colors.primary};
-    ${({ tabs }) => tabs && css`
-        width: ${Math.round(100 / tabs)}%;
-    `};
-    transition: all .25s ease;
+    ${({tabs}) =>
+        tabs &&
+        css`
+            width: ${Math.round(100 / tabs)}%;
+        `};
+    transition: all 0.25s ease;
     left: 0;
     height: 100%;
     z-index: 1;
@@ -50,28 +52,30 @@ const StyledLabel = styled.label`
     ${C.styles.flex.center};
     width: 100%;
     &.active {
-        color: ${({ theme }) => theme.colors.background};
+        color: ${({theme}) => theme.colors.background};
         font-weight: bold;
     }
     color: ${({theme}) => theme.colors.foreground};
-    transition: all .25s ease;
+    transition: all 0.25s ease;
     cursor: pointer;
 `
 
 const StyledTitle = styled.span`
-    padding: 0 0 0 .1rem;
+    padding: 0 0 0 0.1rem;
     color: inherit;
 `
 
-export default (props) => {
+export default props => {
     const refSlider = React.useRef()
     const [state, setState] = React.useState(props.tabs)
-    
-    const handleChange = (e) => {
+
+    const handleChange = e => {
         let newState = state.map((item, key) => {
-            if(item.id == e.target.id) {
-                refSlider.current.style.left = `${Math.round(key * (100 / props.tabs.length))}%`
-                props.setStatus({ status: item.status })
+            if (item.id == e.target.id) {
+                refSlider.current.style.left = `${Math.round(
+                    key * (100 / props.tabs.length),
+                )}%`
+                props.setStatus({status: item.status})
                 item.value = true
             } else {
                 item.value = false
@@ -81,18 +85,34 @@ export default (props) => {
         setState(newState)
     }
 
-    return <StyledContainer>
-        <StyledFrame>
-            {state.map(item => <StyledTab key={item.id}>
-                <StyledLabel className={item.value && 'active'} htmlFor={item.id}>
-                    <Icon icon={item.icon} size='14' color={item.value ? 'background' : 'foreground'} />
-                    <StyledTitle className={item.value && 'active'}>
-                        {item.title}
-                    </StyledTitle>
-                </StyledLabel>
-                <StyledInput id={item.id} checked={item.value} onChange={(e) => handleChange(e)} type='checkbox' />
-            </StyledTab>)}
-            <StyledSlider ref={refSlider} tabs={props.tabs.length} />
-        </StyledFrame>
-    </StyledContainer> 
+    return (
+        <StyledContainer>
+            <StyledFrame>
+                {state.map(item => (
+                    <StyledTab key={item.id}>
+                        <StyledLabel
+                            className={item.value && 'active'}
+                            htmlFor={item.id}
+                        >
+                            <Icon
+                                icon={item.icon}
+                                size="14"
+                                color={item.value ? 'background' : 'foreground'}
+                            />
+                            <StyledTitle className={item.value && 'active'}>
+                                {item.title}
+                            </StyledTitle>
+                        </StyledLabel>
+                        <StyledInput
+                            id={item.id}
+                            checked={item.value}
+                            onChange={e => handleChange(e)}
+                            type="checkbox"
+                        />
+                    </StyledTab>
+                ))}
+                <StyledSlider ref={refSlider} tabs={props.tabs.length} />
+            </StyledFrame>
+        </StyledContainer>
+    )
 }

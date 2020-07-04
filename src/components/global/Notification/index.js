@@ -21,18 +21,18 @@ const StyledContainer = styled.div`
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.alignItemsStart};
-    color: ${({ theme }) => theme.colors.foreground};
-    padding: 0 .5rem .5rem .5rem;
+    color: ${({theme}) => theme.colors.foreground};
+    padding: 0 0.5rem 0.5rem 0.5rem;
 `
 
 const StyledDescription = styled.div`
-    color: ${({ theme }) => theme.colors.foreground};
-    font-size: .85rem;
+    color: ${({theme}) => theme.colors.foreground};
+    font-size: 0.85rem;
 `
 
 const StyledTime = styled.small`
     display: inline-block;
-    font-size: .75rem;
+    font-size: 0.75rem;
     color: ${({theme}) => theme.colors.dark};
 `
 
@@ -48,8 +48,8 @@ const StyledContentContainer = styled.div`
 `
 
 const StyledContent = styled.span`
-    padding: 0 .125rem 0 0;
-    color: ${({ theme }) => theme.colors.foreground};
+    padding: 0 0.125rem 0 0;
+    color: ${({theme}) => theme.colors.foreground};
     white-space: pre-wrap;
     word-break: break-word;
 `
@@ -63,62 +63,105 @@ const StyledIcon = styled.span`
 `
 
 const StyledGray = styled.span`
-    color: ${({ theme }) => theme.colors.gray};
+    color: ${({theme}) => theme.colors.gray};
     white-space: pre-wrap;
     word-break: break-word;
 `
 
-export default (props) => {
-    let template = props.notificationType.template.split(/(\$\$[0-9a-zA-Z_]+\$\$)(?!;)/ig)
+export default props => {
+    let template = props.notificationType.template.split(
+        /(\$\$[0-9a-zA-Z_]+\$\$)(?!;)/gi,
+    )
 
     template = template.map(element => switchElements({element, props}))
 
-    return <StyledContainer>
-        <StyledContentContainer>
-            <Link to={`/${props.recipient.username}`}>
-                <Avatar size={2.5} user={props.recipient} />
-            </Link>
+    return (
+        <StyledContainer>
+            <StyledContentContainer>
+                <Link to={`/${props.recipient.username}`}>
+                    <Avatar size={2.5} user={props.recipient} />
+                </Link>
+                <Link to={props.url}>
+                    <StyledMain>
+                        <StyledDescription>
+                            {template}
+                            <StyledTime>
+                                {helpers.dateFormat(
+                                    moment(props.createdAt).fromNow(true),
+                                )}
+                            </StyledTime>
+                        </StyledDescription>
+                    </StyledMain>
+                </Link>
+            </StyledContentContainer>
             <Link to={props.url}>
-                <StyledMain>
-                    <StyledDescription>
-                        {template}
-                        <StyledTime>{helpers.dateFormat(moment(props.createdAt).fromNow(true))}</StyledTime>
-                    </StyledDescription>
-                </StyledMain>
+                <StyledIcon>
+                    {switchIcon(props.notificationType.type)}
+                </StyledIcon>
             </Link>
-        </StyledContentContainer>
-        <Link to={props.url}>
-            <StyledIcon>
-                {switchIcon(props.notificationType.type)}
-            </StyledIcon>
-        </Link>
-    </StyledContainer>
+        </StyledContainer>
+    )
 }
 
-const switchIcon = (type) => {
+const switchIcon = type => {
     switch (type) {
         case 'like_weesh':
-            return <Icon icon='Heart' size={20} strokeWidth={1.5} color='dark'/>
+            return (
+                <Icon icon="Heart" size={20} strokeWidth={1.5} color="dark" />
+            )
         case 'comment_weesh':
-            return <Icon icon='MessageCircle' size={20} strokeWidth={1.5} color='dark'/>
+            return (
+                <Icon
+                    icon="MessageCircle"
+                    size={20}
+                    strokeWidth={1.5}
+                    color="dark"
+                />
+            )
         case 'reply_comment':
-            return <Icon icon='CornerUpRight' size={20} strokeWidth={1.5} color='dark'/>
+            return (
+                <Icon
+                    icon="CornerUpRight"
+                    size={20}
+                    strokeWidth={1.5}
+                    color="dark"
+                />
+            )
         case 'accept_follow_request':
-            return <Icon icon='Check' size={20} strokeWidth={1.5} color='dark'/>
+            return (
+                <Icon icon="Check" size={20} strokeWidth={1.5} color="dark" />
+            )
         case 'start_following':
-            return <Icon icon='Plus' size={20} strokeWidth={1.5} color='dark'/>
+            return <Icon icon="Plus" size={20} strokeWidth={1.5} color="dark" />
     }
 }
 
 const switchElements = ({element, props}) => {
-    if(element.length > 0) {
+    if (element.length > 0) {
         switch (element) {
-            case '$$username$$': return <StyledUsername key={uuid()}>
-                <FullName fontSize={.85} user={props.recipient} />
-            </StyledUsername>
-            case '$$weesh$$': return <StyledGray key={uuid()}>{props.weesh && `${props.weesh.content.substr(0, 50)}${props.weesh.content.length > 50 ? '... ' : ' '}`}</StyledGray>
-            case '$$comment$$': return <StyledContent key={uuid()}>{props.comment && `${props.comment.content} `}</StyledContent>
-            default: return <StyledContent key={uuid()}>{element}</StyledContent>
+            case '$$username$$':
+                return (
+                    <StyledUsername key={uuid()}>
+                        <FullName fontSize={0.85} user={props.recipient} />
+                    </StyledUsername>
+                )
+            case '$$weesh$$':
+                return (
+                    <StyledGray key={uuid()}>
+                        {props.weesh &&
+                            `${props.weesh.content.substr(0, 50)}${
+                                props.weesh.content.length > 50 ? '... ' : ' '
+                            }`}
+                    </StyledGray>
+                )
+            case '$$comment$$':
+                return (
+                    <StyledContent key={uuid()}>
+                        {props.comment && `${props.comment.content} `}
+                    </StyledContent>
+                )
+            default:
+                return <StyledContent key={uuid()}>{element}</StyledContent>
         }
     } else {
         return null

@@ -1,11 +1,11 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled, {css} from 'styled-components'
 import C from 'Root/constants'
 import uuid from 'uuid'
 
 const StyledContainer = styled.div`
     ${C.styles.boxShadow.primary.normal};
-    border-radius: .75rem;
+    border-radius: 0.75rem;
 `
 
 const StyledTitle = styled.div`
@@ -16,17 +16,18 @@ const StyledTitle = styled.div`
 `
 
 const StyledItem = styled.div`
-    padding: .5rem;
-    border-top: 1px dashed ${({ theme }) => theme.colors.light};
+    padding: 0.5rem;
+    border-top: 1px dashed ${({theme}) => theme.colors.light};
 `
 
-export default (props) => {
-    return <StyledContainer {...props}>
-        {props.title && <StyledTitle>
-            {props.title}
-        </StyledTitle>}
-        {props.items && props.items.map(item => <StyledItem key={uuid()}>
-            {item}
-        </StyledItem>)}
-    </StyledContainer>
+export default props => {
+    return (
+        <StyledContainer {...props}>
+            {props.title && <StyledTitle>{props.title}</StyledTitle>}
+            {props.items &&
+                props.items.map(item => (
+                    <StyledItem key={uuid()}>{item}</StyledItem>
+                ))}
+        </StyledContainer>
+    )
 }

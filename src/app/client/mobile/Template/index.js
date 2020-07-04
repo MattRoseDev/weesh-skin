@@ -8,18 +8,20 @@ import styled from 'styled-components'
 
 const StyledContainer = styled.div`
     position: relative;
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.foreground};
+    background: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.colors.foreground};
 `
 
-export default (props) => {
-    return <StyledContainer>
-        {/* <Header/> */}
-        <Main>
-            <Alert/>
-            <SnackBar/>
-            {props.children}
-        </Main>
-        {/* <Footer/> */}
-    </StyledContainer>
+export default props => {
+    return (
+        <StyledContainer>
+            {/* <Header/> */}
+            <Main>
+                <Alert />
+                <SnackBar />
+                {props.children}
+            </Main>
+            {/* <Footer/> */}
+        </StyledContainer>
+    )
 }

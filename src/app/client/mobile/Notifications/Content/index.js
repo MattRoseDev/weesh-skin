@@ -4,17 +4,17 @@ import Link from 'Root/components/global/Link'
 import BannerMessage from 'Root/components/global/BannerMessage'
 import uuid from 'uuid'
 import styled from 'styled-components'
-import { NotificationsContext } from 'Root/contexts/notifications'
-import { AuthContext } from 'Root/contexts/auth'
-import { useMutation, useQuery } from '@apollo/react-hooks'
+import {NotificationsContext} from 'Root/contexts/notifications'
+import {AuthContext} from 'Root/contexts/auth'
+import {useMutation, useQuery} from '@apollo/react-hooks'
 import api from 'Root/api'
 import C from 'Root/constants'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.foreground};
+    background: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.colors.foreground};
     padding: 0 0 3.5rem;
 `
 
@@ -22,21 +22,23 @@ const StyledRequestContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsCenter};
-    color: ${({ theme }) => theme.colors.foreground};
+    color: ${({theme}) => theme.colors.foreground};
     padding: 1rem;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.light};
+    border-bottom: 1px solid ${({theme}) => theme.colors.light};
 `
 
 const StyledBadge = styled.div`
     background: ${({theme}) => theme.colors.primary};
     border-radius: 50%;
-    width: .75rem;
-    height: .75rem;
+    width: 0.75rem;
+    height: 0.75rem;
 `
 
 export default () => {
-    const { auth } = React.useContext(AuthContext)
-    const { notifications, dispatch: notificationDispatch } = React.useContext(NotificationsContext)
+    const {auth} = React.useContext(AuthContext)
+    const {notifications, dispatch: notificationDispatch} = React.useContext(
+        NotificationsContext,
+    )
 
     const requestsResponse = useQuery(api.connections.getRequests, {
         fetchPolicy: 'no-cache',
@@ -45,7 +47,11 @@ export default () => {
     const [readRequest, readResponse] = useMutation(api.notifications.read)
 
     React.useEffect(() => {
-        if (!notifications.isEmpty && Object.values(notifications.store).length > 0 && !Object.values(notifications.store)[0].read) {
+        if (
+            !notifications.isEmpty &&
+            Object.values(notifications.store).length > 0 &&
+            !Object.values(notifications.store)[0].read
+        ) {
             readRequest()
             notificationDispatch({
                 type: 'READ_ALL',
@@ -61,15 +67,35 @@ export default () => {
         }
     }, [readResponse.data])
 
-    return <StyledContainer>
-        <Meta />
-        {requestsResponse.data && requestsResponse.data.getRequestsUsersConnectionByIdForUser.userConnections.length > 0 && <Link to={`/${auth.username}/requests`}>
-            <StyledRequestContainer>
-                Follow Requests
-                {requestsResponse.data && requestsResponse.data.getRequestsUsersConnectionByIdForUser.userConnections.length > 0 && <StyledBadge />}
-            </StyledRequestContainer>
-        </Link>}
-        {(Object.values(notifications.store).length > 0) && Object.values(notifications.store).map(notification => (<Notification key={uuid()} {...notification} />))}
-        {notifications.isEmpty && <BannerMessage padding='3rem 0' icon='Bell' title={C.txts.en.g.noNotifications} />}
-    </StyledContainer>
+    return (
+        <StyledContainer>
+            <Meta />
+            {requestsResponse.data &&
+                requestsResponse.data.getRequestsUsersConnectionByIdForUser
+                    .userConnections.length > 0 && (
+                    <Link to={`/${auth.username}/requests`}>
+                        <StyledRequestContainer>
+                            Follow Requests
+                            {requestsResponse.data &&
+                                requestsResponse.data
+                                    .getRequestsUsersConnectionByIdForUser
+                                    .userConnections.length > 0 && (
+                                    <StyledBadge />
+                                )}
+                        </StyledRequestContainer>
+                    </Link>
+                )}
+            {Object.values(notifications.store).length > 0 &&
+                Object.values(notifications.store).map(notification => (
+                    <Notification key={uuid()} {...notification} />
+                ))}
+            {notifications.isEmpty && (
+                <BannerMessage
+                    padding="3rem 0"
+                    icon="Bell"
+                    title={C.txts.en.g.noNotifications}
+                />
+            )}
+        </StyledContainer>
+    )
 }

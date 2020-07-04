@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const like = gql`
-    mutation likeWeeshForUser($weeshId: ID!){
+    mutation likeWeeshForUser($weeshId: ID!) {
         likeWeeshForUser(weeshId: $weeshId) {
             id
             user {
@@ -25,7 +25,7 @@ const like = gql`
                         avatar
                     }
                 }
-                content 
+                content
                 status
                 like {
                     weeshLikes {
@@ -51,7 +51,7 @@ const like = gql`
 `
 
 const dislike = gql`
-    mutation dislikeWeeshForUser($weeshId: ID!){
+    mutation dislikeWeeshForUser($weeshId: ID!) {
         dislikeWeeshForUser(weeshId: $weeshId) {
             id
             user {
@@ -75,7 +75,7 @@ const dislike = gql`
                         avatar
                     }
                 }
-                content 
+                content
                 status
                 like {
                     weeshLikes {
@@ -104,4 +104,3 @@ export default {
     like,
     dislike,
 }
-

@@ -1,42 +1,42 @@
 export const notificationsReducer = (state, action) => {
     let store
-    switch(action.type) {
-        case 'PUSH_NOTIFICATION': 
+    switch (action.type) {
+        case 'PUSH_NOTIFICATION':
             store = {}
             action.data.forEach(item => {
                 store[`${item.id}`] = item
             })
             return {
                 ...state,
-                store
+                store,
             }
-        case 'UNSHIFT_NOTIFICATION': 
+        case 'UNSHIFT_NOTIFICATION':
             store = {
                 [action.data.id]: action.data,
-                ...state.store
+                ...state.store,
             }
             return {
                 ...state,
                 isEmpty: false,
-                store
+                store,
             }
-        case 'READ_ALL': 
+        case 'READ_ALL':
             store = {}
             Object.values(state.store).forEach(item => {
                 store[`${item.id}`] = {
                     ...item,
-                    read: true
+                    read: true,
                 }
             })
             return {
                 ...state,
-                store
+                store,
             }
         case 'EMPTY':
             return {
                 ...state,
                 store: {},
-                isEmpty: true
+                isEmpty: true,
             }
         default:
             return state

@@ -22,21 +22,25 @@ const StyledGlass = styled.div`
     position: absolute;
     background: ${({theme}) => theme.colors.background};
     backdrop-filter: blur(5px);
-    border-radius: .75rem;
+    border-radius: 0.75rem;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
 `
 
-export default (props) => {
-    const { lastItem } = props
-    return <StyledWeesh>
-        {lastItem && <StyledGlass>
-            <Auth/>
-        </StyledGlass>}
-        <Header {...props} />
-        <Main {...props} />
-        <Footer {...props} />
-    </StyledWeesh>
+export default props => {
+    const {lastItem} = props
+    return (
+        <StyledWeesh>
+            {lastItem && (
+                <StyledGlass>
+                    <Auth />
+                </StyledGlass>
+            )}
+            <Header {...props} />
+            <Main {...props} />
+            <Footer {...props} />
+        </StyledWeesh>
+    )
 }

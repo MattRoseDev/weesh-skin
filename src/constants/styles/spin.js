@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import {css} from 'styled-components'
 import themes from 'Root/constants/themes'
 
 export default css`

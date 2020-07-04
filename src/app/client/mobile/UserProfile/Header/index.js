@@ -10,9 +10,11 @@ const StyledLogo = styled.div`
 `
 
 export default () => {
-    return <Header>
-        <StyledLogo>
-            <Logo fontSize={1.375} />
-        </StyledLogo>
-    </Header>
+    return (
+        <Header>
+            <StyledLogo>
+                <Logo fontSize={1.375} />
+            </StyledLogo>
+        </Header>
+    )
 }

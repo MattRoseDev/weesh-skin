@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const suggestion = gql`
-    query exploreAllForUser($expression: String!, $limit: Int, $page: Int){
+    query exploreAllForUser($expression: String!, $limit: Int, $page: Int) {
         exploreAllForUser(expression: $expression, limit: $limit, page: $page) {
             tag {
                 tags {
@@ -19,7 +19,7 @@ const suggestion = gql`
 `
 
 const getTheBestTags = gql`
-    query getTheBestTagsForUser($limit: Int, $page: Int){
+    query getTheBestTagsForUser($limit: Int, $page: Int) {
         getTheBestTagsForUser(limit: $limit, page: $page) {
             tags {
                 id
@@ -35,8 +35,12 @@ const getTheBestTags = gql`
 `
 
 const getWeeshesByTag = gql`
-    query getWeeshesByTagForUser($tagTitle: String!, $limit: Int, $page: Int){
-        getWeeshesByTagForUser(tagTitle: $tagTitle, limit: $limit, page: $page) {
+    query getWeeshesByTagForUser($tagTitle: String!, $limit: Int, $page: Int) {
+        getWeeshesByTagForUser(
+            tagTitle: $tagTitle
+            limit: $limit
+            page: $page
+        ) {
             weeshesTag {
                 weesh {
                     id
@@ -52,7 +56,7 @@ const getWeeshesByTag = gql`
                             avatar
                         }
                     }
-                    content 
+                    content
                     status
                     like {
                         weeshLikes {
@@ -116,4 +120,3 @@ export default {
     getWeeshesByTag,
     suggestion,
 }
-

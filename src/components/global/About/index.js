@@ -10,19 +10,17 @@ const StyledContainer = styled.div`
 
 const StyledTitle = styled.div`
     text-align: center;
-    padding: 1.25rem .5rem .75rem;
-    font-size: .75rem;
+    padding: 1.25rem 0.5rem 0.75rem;
+    font-size: 0.75rem;
     color: ${({theme}) => theme.colors.gray};
     font-weight: bold;
 `
 
-export default (props) => {
-    return <StyledContainer>
-        <StyledTitle>
-            VERSION 1.0.0
-        </StyledTitle>
-        <StyledTitle>
-            © 2020 WEESH
-        </StyledTitle>
-    </StyledContainer>
+export default props => {
+    return (
+        <StyledContainer>
+            <StyledTitle>VERSION 1.0.0</StyledTitle>
+            <StyledTitle>© 2020 WEESH</StyledTitle>
+        </StyledContainer>
+    )
 }

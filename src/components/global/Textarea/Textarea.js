@@ -6,10 +6,10 @@ const StyledTextarea = styled.textarea`
     outline: none;
     border: none;
     background: transparent;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: ${({theme}) => theme.colors.foreground};
-    background: ${({ theme }) => theme.colors.background};
-    padding: 0 0 0 .2rem;
+    background: ${({theme}) => theme.colors.background};
+    padding: 0 0 0 0.2rem;
     resize: vertical;
     width: 100%;
     ::placeholder {
@@ -17,14 +17,16 @@ const StyledTextarea = styled.textarea`
     }
 `
 
-export default (props) => {
-    return <StyledTextarea 
-        id={props.id}
-        placeholder={props.placeholder} 
-        type={props.type} 
-        onKeyUp={props.onChange}
-        onInput={props.onInput}
-        defaultValue={props.value || ''}
-        rows={props.rows || undefined}
-    />
+export default props => {
+    return (
+        <StyledTextarea
+            id={props.id}
+            placeholder={props.placeholder}
+            type={props.type}
+            onKeyUp={props.onChange}
+            onInput={props.onInput}
+            defaultValue={props.value || ''}
+            rows={props.rows || undefined}
+        />
+    )
 }

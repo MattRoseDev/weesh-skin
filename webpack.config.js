@@ -9,10 +9,11 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'bundle.js',
-        publicPath: '/'
+        publicPath: '/',
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
@@ -20,19 +21,21 @@ module.exports = {
                     query: {
                         cacheDirectory: true,
                         presets: babelConfig.presets,
-                        plugins: babelConfig.plugins
-                    }
-                }
+                        plugins: babelConfig.plugins,
+                    },
+                },
             },
             {
                 test: /\.html$/,
-                use: [{
-                    loader: 'html-loader'
-                }]
+                use: [
+                    {
+                        loader: 'html-loader',
+                    },
+                ],
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader'],
             },
             // {
             //     test: /\.(png|jpg|jpeg|gif|woff|woff2|ttf|eot|svg)$/,
@@ -42,17 +45,13 @@ module.exports = {
             // },
             {
                 test: /\.(png|jpg|jpeg|gif|woff|woff2|ttf|eot|svg)$/,
-                use: [
-                    'file-loader'
-                ]
+                use: ['file-loader'],
             },
-            
-        ]
+        ],
     },
     resolve: {
         alias: {
             Root: path.resolve(__dirname, '.', 'src'),
-            
         },
         extensions: ['.js', '.jsx'],
     },
@@ -70,7 +69,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: path.join(__dirname, './src', 'index.html'),
             filename: 'index.html',
-            hash: true
+            hash: true,
         }),
         new CompressionPlugin({
             filename: '[path].br[query]',
@@ -83,8 +82,8 @@ module.exports = {
             threshold: 10240,
             minRatio: 0.8,
             deleteOriginalAssets: false,
-            cache: false
-        })
+            cache: false,
+        }),
     ],
     // performance: { hints: false }
 }

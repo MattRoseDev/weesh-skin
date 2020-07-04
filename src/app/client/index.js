@@ -1,26 +1,28 @@
 import React from 'react'
 import Mobile from './mobile'
 import Desktop from './desktop'
-import { useSubscription, useLazyQuery, useQuery } from '@apollo/react-hooks'
-import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import { NotificationsContext } from 'Root/contexts/notifications'
-import { ThemeProvider } from 'styled-components'
+import {useSubscription, useLazyQuery, useQuery} from '@apollo/react-hooks'
+import {AuthContext} from 'Root/contexts/auth'
+import {SnackBarContext} from 'Root/contexts/snackbar'
+import {NotificationsContext} from 'Root/contexts/notifications'
+import {ThemeProvider} from 'styled-components'
 import api from 'Root/api'
 import C from 'Root/constants'
 import GlobalStyles from 'Root/constants/globalStyles'
 import Initialize from 'Root/components/global/Initialize'
 
-const Client = (props) => {
-    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
-    const { snackbar, dispatch: snackbarDispatch } = React.useContext(SnackBarContext)
+const Client = props => {
+    const {auth, dispatch: authDispatch} = React.useContext(AuthContext)
+    const {snackbar, dispatch: snackbarDispatch} = React.useContext(
+        SnackBarContext,
+    )
     // const { notifications, dispatch } = React.useContext(NotificationsContext)
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
 
-    window.addEventListener('resize',() => {
+    window.addEventListener('resize', () => {
         setWindowWidth(window.innerWidth)
     })
-    
+
     // const { data, error } = useSubscription(api.notifications.add,{
     //     variables: {
     //         userId: `${auth.id}`
@@ -28,12 +30,14 @@ const Client = (props) => {
     // })
 
     // const [loadNotifications, loadResult] = useLazyQuery(api.notifications.getNotifications)
-    const [getProfileUser, getProfileUserResult] = useLazyQuery(api.auth.getUserProfile) 
+    const [getProfileUser, getProfileUserResult] = useLazyQuery(
+        api.auth.getUserProfile,
+    )
 
     React.useEffect(() => {
         if (!auth.id) {
             getProfileUser()
-        }  
+        }
 
         // if (!loadResult.called && !notifications.isEmpty && !Object.values(notifications.store).length) {
         //     loadNotifications()
@@ -62,24 +66,29 @@ const Client = (props) => {
         if (getProfileUserResult.data) {
             authDispatch({
                 type: 'LOGIN',
-                data: getProfileUserResult.data.getUserProfileForUser
+                data: getProfileUserResult.data.getUserProfileForUser,
             })
-             
         }
     }, [getProfileUserResult.data])
 
-    return <ThemeProvider theme={{
+    return (
+        <ThemeProvider
+            theme={{
                 colors: {
                     ...C.themes[auth.theme || 'light'].colors,
-                    ...C.themes[auth.theme || 'light'].colors[`${auth.color}Pack`]
-                }
-            }}>
+                    ...C.themes[auth.theme || 'light'].colors[
+                        `${auth.color}Pack`
+                    ],
+                },
+            }}
+        >
             <>
                 <GlobalStyles />
                 <Initialize />
                 {windowWidth > 768 ? <Desktop /> : <Mobile />}
             </>
-    </ThemeProvider>
+        </ThemeProvider>
+    )
 }
 
 export default Client

@@ -1,5 +1,5 @@
 const PORT = 5000
-let API_URL, WS_URL, DOMAIN_URL,PROTOCOL, UPLOAD_URL
+let API_URL, WS_URL, DOMAIN_URL, PROTOCOL, UPLOAD_URL
 
 const SOURCE = 'liara'
 const DEBUG = true
@@ -11,14 +11,14 @@ switch (SOURCE) {
         UPLOAD_URL = `${PROTOCOL}://${DOMAIN_URL}/public`
         API_URL = `${PROTOCOL}://${DOMAIN_URL}/api/v1/graphql`
         WS_URL = `wss://${DOMAIN_URL}/graphql`
-        break;
+        break
     case 'localhost':
         PROTOCOL = 'http'
         DOMAIN_URL = `localhost:${PORT}`
         UPLOAD_URL = `${PROTOCOL}://${DOMAIN_URL}/public`
         API_URL = `${PROTOCOL}://${DOMAIN_URL}/api/v1/graphql`
         WS_URL = `ws://${DOMAIN_URL}/graphql`
-        break;
+        break
 }
 
 export default {
@@ -28,5 +28,5 @@ export default {
     API_URL,
     WS_URL,
     DOMAIN_URL,
-    DEBUG
+    DEBUG,
 }

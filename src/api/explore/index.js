@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const exploreAll = gql`
-    query exploreAllForUser($expression: String!, $limit: Int, $page: Int){
+    query exploreAllForUser($expression: String!, $limit: Int, $page: Int) {
         exploreAllForUser(expression: $expression, limit: $limit, page: $page) {
             user {
                 users {
@@ -35,6 +35,5 @@ const exploreAll = gql`
 `
 
 export default {
-    exploreAll
+    exploreAll,
 }
-

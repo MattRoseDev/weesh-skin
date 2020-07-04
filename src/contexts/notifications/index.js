@@ -1,20 +1,24 @@
 import React from 'react'
-import { notificationsReducer } from 'Root/reducers/notifications'
-
+import {notificationsReducer} from 'Root/reducers/notifications'
 
 export const NotificationsContext = React.createContext()
 
 const initialNotifications = {
     store: {},
-    isEmpty: false
+    isEmpty: false,
 }
 
-const NotificationsProvider = (props) => {
-    const [notifications, dispatch] = React.useReducer(notificationsReducer, initialNotifications)
+const NotificationsProvider = props => {
+    const [notifications, dispatch] = React.useReducer(
+        notificationsReducer,
+        initialNotifications,
+    )
 
-    return <NotificationsContext.Provider value={{ notifications, dispatch }}>
-        {props.children}
-    </NotificationsContext.Provider>
+    return (
+        <NotificationsContext.Provider value={{notifications, dispatch}}>
+            {props.children}
+        </NotificationsContext.Provider>
+    )
 }
 
 export default NotificationsProvider

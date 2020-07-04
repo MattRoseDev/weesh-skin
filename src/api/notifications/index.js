@@ -1,11 +1,11 @@
 import gql from 'graphql-tag'
 
 const add = gql`
-    subscription addNotificationForUser($userId: ID!){
+    subscription addNotificationForUser($userId: ID!) {
         addNotificationForUser(userId: $userId) {
             id
             user {
-                 id
+                id
                 username
                 firstName
                 lastName
@@ -16,7 +16,7 @@ const add = gql`
                 }
             }
             recipient {
-                 id
+                id
                 username
                 firstName
                 lastName
@@ -47,7 +47,7 @@ const add = gql`
                         avatar
                     }
                 }
-                content 
+                content
                 status
             }
             updatedAt
@@ -57,7 +57,7 @@ const add = gql`
 `
 
 const getNotifications = gql`
-    query getNotificationsUserForUser($limit: Int, $page: Int){
+    query getNotificationsUserForUser($limit: Int, $page: Int) {
         getNotificationsUserForUser(limit: $limit, page: $page) {
             notifications {
                 id
@@ -104,7 +104,7 @@ const getNotifications = gql`
                             avatar
                         }
                     }
-                    content 
+                    content
                     status
                 }
                 comment {
@@ -231,10 +231,8 @@ const read = gql`
     }
 `
 
-
 export default {
     add,
     read,
     getNotifications,
 }
-

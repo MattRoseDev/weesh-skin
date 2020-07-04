@@ -14,10 +14,12 @@ const StyledWeesh = styled.div`
     margin: 0 0 .5rem;
 `
 
-export default (props) => {
-    return <StyledWeesh>
-        <Header {...props} />
-        <Main {...props} />
-        <Footer {...props} />
-    </StyledWeesh>
+export default props => {
+    return (
+        <StyledWeesh>
+            <Header {...props} />
+            <Main {...props} />
+            <Footer {...props} />
+        </StyledWeesh>
+    )
 }

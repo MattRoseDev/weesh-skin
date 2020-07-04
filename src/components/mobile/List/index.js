@@ -9,14 +9,21 @@ const StyledContainer = styled.div`
     max-width: 100vw;
 `
 
-export default (props) => {
-    return <StyledContainer>
-        {props.users.map(user => (
-            user.title != undefined ? <TagItem key={uuid()} {...user} /> : 
-            <UserItem request={props.request || undefined}
-            index={props.index || undefined}
-            key={uuid()} {...user} /> 
-                
-        ))}
-    </StyledContainer>
+export default props => {
+    return (
+        <StyledContainer>
+            {props.users.map(user =>
+                user.title != undefined ? (
+                    <TagItem key={uuid()} {...user} />
+                ) : (
+                    <UserItem
+                        request={props.request || undefined}
+                        index={props.index || undefined}
+                        key={uuid()}
+                        {...user}
+                    />
+                ),
+            )}
+        </StyledContainer>
+    )
 }

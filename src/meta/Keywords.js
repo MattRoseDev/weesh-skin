@@ -1,4 +1,4 @@
-export default ({ data, type } = { data: null }) => {
+export default ({data, type} = {data: null}) => {
     let keywords = ['weesh']
     switch (type) {
         case 'UserProfile':
@@ -7,7 +7,8 @@ export default ({ data, type } = { data: null }) => {
             data.user.username && keywords.push(data.user.username)
             return keywords.join(',')
         case 'WeeshPage':
-            data.weesh.user.firstName && keywords.push(data.weesh.user.firstName)
+            data.weesh.user.firstName &&
+                keywords.push(data.weesh.user.firstName)
             data.weesh.user.lastName && keywords.push(data.weesh.user.lastName)
             data.weesh.user.username && keywords.push(data.weesh.user.username)
             return keywords.join(',')

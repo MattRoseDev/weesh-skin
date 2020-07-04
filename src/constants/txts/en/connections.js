@@ -5,5 +5,5 @@ export default {
         FOLLOW: 'Follow',
         FOLLOWING: 'Following',
         REQUEST: 'Requested',
-    }
+    },
 }

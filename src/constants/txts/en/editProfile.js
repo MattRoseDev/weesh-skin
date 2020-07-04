@@ -3,7 +3,7 @@ export default {
         cancelButton: 'Cancel',
         doneButton: 'Done',
         title: 'Settings',
-        logout: 'Logout'
+        logout: 'Logout',
     },
     inputsLabel: {
         firstName: 'First Name',
@@ -24,16 +24,16 @@ export default {
         lengthError: 'Username must be more than 4 characters.',
         available: 'Username is available.',
         alreadyTaken: 'Username is already taken.',
-        checking: 'Checking username...'
+        checking: 'Checking username...',
     },
     emailMessages: {
         lengthError: 'Email is not valid.',
         available: 'Email is available.',
         alreadyTaken: 'Email is already taken.',
-        checking: 'Checking email...'
+        checking: 'Checking email...',
     },
     theme: {
         background: 'Background',
         color: 'Color',
-    }
+    },
 }

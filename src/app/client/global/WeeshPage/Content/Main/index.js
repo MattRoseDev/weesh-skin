@@ -5,7 +5,7 @@ import uuid from 'uuid'
 import C from 'Root/constants'
 import moment from 'moment'
 import helpers from 'Root/helpers'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Convertors from 'Root/components/global/Convertors'
 
 const StyledMain = styled.div`
@@ -13,41 +13,49 @@ const StyledMain = styled.div`
 `
 
 const StyledText = styled.p`
-    padding: .75rem 0;
+    padding: 0.75rem 0;
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap;
     font-size: 1.125rem;
     line-height: 1.5rem;
-    color: ${({ theme }) => theme.colors.foreground};
+    color: ${({theme}) => theme.colors.foreground};
 `
 
 const StyledDateContainer = styled.div`
     color: ${({theme}) => theme.colors.gray};
-    font-size: .75rem;
+    font-size: 0.75rem;
 `
 
-export default (props) => {
+export default props => {
     const [content, setContent] = React.useState(null)
 
     React.useEffect(() => {
         if (!content) {
-            setContent(Convertors.Weesh({
-                content: props.content
-            }))
+            setContent(
+                Convertors.Weesh({
+                    content: props.content,
+                }),
+            )
         }
     })
 
-return <StyledMain>
-        <StyledText>
-            {content}
-        </StyledText>
+    return (
+        <StyledMain>
+            <StyledText>{content}</StyledText>
 
-        {props.updatedAt && <StyledDateContainer>
-            {helpers.dateFormat(moment(props.updatedAt).format('hh:mm  A · MMM DD, YYYY'))}
-        </StyledDateContainer>}
-        {/* <StyledTagContainer>
+            {props.updatedAt && (
+                <StyledDateContainer>
+                    {helpers.dateFormat(
+                        moment(props.updatedAt).format(
+                            'hh:mm  A · MMM DD, YYYY',
+                        ),
+                    )}
+                </StyledDateContainer>
+            )}
+            {/* <StyledTagContainer>
             {props.tags.map(tag => <Tag key={uuid()}>{tag}</Tag>)}
         </StyledTagContainer> */}
-    </StyledMain>
+        </StyledMain>
+    )
 }

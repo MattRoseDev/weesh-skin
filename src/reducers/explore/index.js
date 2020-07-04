@@ -1,9 +1,9 @@
 export const exploreReducer = (state, action) => {
-    switch(action.type) {
-        case 'EXPLORE': 
+    switch (action.type) {
+        case 'EXPLORE':
             return {
                 ...state,
-                ...action.data
+                ...action.data,
             }
         default:
             return state

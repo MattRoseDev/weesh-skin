@@ -13,7 +13,7 @@ const StyledHeader = styled.div`
 `
 
 const StyledTitle = styled.div`
-    color: ${({ theme }) => theme.colors.foreground};
+    color: ${({theme}) => theme.colors.foreground};
     width: 95%;
     font-weight: bold;
     word-break: break-word;
@@ -23,14 +23,14 @@ const StyledTitle = styled.div`
     text-align: center;
 `
 
-export default (props) => {
-    return <Header>
-        <BackButton />
-        <StyledHeader>
-            <StyledTitle>
-                Bookmarks
-            </StyledTitle>
-        </StyledHeader>
-        <Icon size={24} color='background' icon='ChevronLeft' />
-    </Header>
+export default props => {
+    return (
+        <Header>
+            <BackButton />
+            <StyledHeader>
+                <StyledTitle>Bookmarks</StyledTitle>
+            </StyledHeader>
+            <Icon size={24} color="background" icon="ChevronLeft" />
+        </Header>
+    )
 }
