@@ -113,22 +113,22 @@ export default () => {
     auth.token && history.push('/')
     return (
         <StyledContainer>
-            <Meta type="login" />
+            <Meta type='login' />
             <StyledBox>
-                <StyledImg height="400" src={WelcomePicture} />
+                <StyledImg height='400' src={WelcomePicture} />
                 <StyledLogin onSubmit={e => handleSubmit(e)}>
-                    <Logo fontSize={4.5} margin="1.5rem" />
+                    <Logo fontSize={4.5} margin='1.5rem' />
                     {/* <StyledIcon>
                     <Icon icon='User' color='dark' size={100} strokeWidth={1} />
                 </StyledIcon> */}
                     {error && (
                         <ErrorMessage
-                            width="75%"
+                            width='75%'
                             message={error.graphQLErrors[0].message}
                         />
                     )}
                     <Input
-                        margin=".75rem 0 0"
+                        margin='.75rem 0 0'
                         onChange={e => {
                             let username = e.target.value
                             setVariables(prevState => ({
@@ -137,11 +137,11 @@ export default () => {
                             }))
                         }}
                         width={75}
-                        icon="AtSign"
-                        placeholder="Username or Email"
+                        icon='AtSign'
+                        placeholder='Username or Email'
                     />
                     <Input
-                        margin=".75rem 0 0"
+                        margin='.75rem 0 0'
                         onChange={e => {
                             let password = e.target.value
                             setVariables(prevState => ({
@@ -150,9 +150,9 @@ export default () => {
                             }))
                         }}
                         width={75}
-                        icon="Lock"
-                        placeholder="Password"
-                        type="password"
+                        icon='Lock'
+                        placeholder='Password'
+                        type='password'
                     />
                     <StyledForgotPasswordLinkContainer>
                         {/* <StyledForgotPasswordLink to='forgotpassword'>
@@ -160,20 +160,20 @@ export default () => {
                     </StyledForgotPasswordLink> */}
                     </StyledForgotPasswordLinkContainer>
                     <Button
-                        color="background"
-                        background="primary"
-                        fontWeight="bold"
+                        color='background'
+                        background='primary'
+                        fontWeight='bold'
                         isLoading={loading || undefined}
-                        margin=".5rem 0 0"
-                        radius=".75rem"
-                        padding=".85rem"
-                        fontSize=".85rem"
-                        width="75%"
+                        margin='.5rem 0 0'
+                        radius='.75rem'
+                        padding='.85rem'
+                        fontSize='.85rem'
+                        width='75%'
                     >
                         {C.txts.en.auth.loginButton}
                     </Button>
                     <OR width={75} margin={1.5} />
-                    <StyledJoinLink to="join">
+                    <StyledJoinLink to='join'>
                         {C.txts.en.auth.joinLink}
                     </StyledJoinLink>
                 </StyledLogin>

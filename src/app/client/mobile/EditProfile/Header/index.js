@@ -51,7 +51,7 @@ export default props => {
                     </EditableImage>
                     <StyledAvatarFrame>
                         <EditableImage
-                            radius="50%"
+                            radius='50%'
                             onClick={() =>
                                 setCropImage(prevState => ({
                                     ...prevState,
@@ -65,7 +65,7 @@ export default props => {
                             <Avatar
                                 user={editProfile}
                                 size={4}
-                                bordercolor="background"
+                                bordercolor='background'
                                 borderwidth={4}
                             />
                         </EditableImage>

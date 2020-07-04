@@ -27,7 +27,7 @@ export default props => {
             hasMore={props.hasNextPage}
             loader={
                 <StyledLoader>
-                    <Loader size={20} strokeWidth={1.25} color="gray" />
+                    <Loader size={20} strokeWidth={1.25} color='gray' />
                 </StyledLoader>
             }
         >

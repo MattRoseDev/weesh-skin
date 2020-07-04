@@ -9,11 +9,11 @@ export default props => {
 
             switch (status) {
                 case 0:
-                    return <ConnectionButton user={user} type="FOLLOW" />
+                    return <ConnectionButton user={user} type='FOLLOW' />
                 case 1:
-                    return <ConnectionButton user={user} type="REQUEST" />
+                    return <ConnectionButton user={user} type='REQUEST' />
                 case 2:
-                    return <ConnectionButton user={user} type="FOLLOWING" />
+                    return <ConnectionButton user={user} type='FOLLOWING' />
             }
         }
     }

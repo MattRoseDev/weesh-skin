@@ -75,11 +75,11 @@ export default props => {
     return (
         <StyledContainer>
             {weeshPage.user && (
-                <Meta type="WeeshPage" data={{weesh: weeshPage}} />
+                <Meta type='WeeshPage' data={{weesh: weeshPage}} />
             )}
             {loading ? (
                 <StyledLoadingContainer>
-                    <Loading size={28} strokeWidth={1.25} color="gray" />
+                    <Loading size={28} strokeWidth={1.25} color='gray' />
                 </StyledLoadingContainer>
             ) : (
                 called &&
@@ -95,8 +95,8 @@ export default props => {
             )}
             {!loading && error && !state && (
                 <BannerMessage
-                    padding="3rem 0 0"
-                    icon="Frown"
+                    padding='3rem 0 0'
+                    icon='Frown'
                     title={C.txts.en.g.weeshNotFound}
                 />
             )}

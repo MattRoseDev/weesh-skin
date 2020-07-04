@@ -102,7 +102,7 @@ export default props => {
     return (
         <>
             <Dialog
-                width="18rem"
+                width='18rem'
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}
             >
@@ -117,13 +117,13 @@ export default props => {
                         handleConnection()
                         toggleDialog(false)
                     }}
-                    fontWeight="bold"
-                    color="red"
+                    fontWeight='bold'
+                    color='red'
                 >
                     {acceptButtonType}
                 </DialogButton>
                 <DialogButton
-                    fontWeight="bold"
+                    fontWeight='bold'
                     onClick={() => toggleDialog(false)}
                 >
                     {cancelButtonType}
@@ -131,18 +131,18 @@ export default props => {
             </Dialog>
             <Button
                 color={auth.color}
-                hoverbackground="lightPrimary"
-                bordercolor="primary"
-                borderwidth="1px"
-                fontWeight="bold"
+                hoverbackground='lightPrimary'
+                bordercolor='primary'
+                borderwidth='1px'
+                fontWeight='bold'
                 isLoading={loading || undefined}
                 onClick={() => {
                     if (props.type == 'FOLLOWING') toggleDialog(true)
                     else handleConnection()
                 }}
-                padding=".5rem .75rem"
-                radius="50rem"
-                width="6rem"
+                padding='.5rem .75rem'
+                radius='50rem'
+                width='6rem'
             >
                 {props.children}
             </Button>

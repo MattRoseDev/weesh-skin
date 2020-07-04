@@ -145,7 +145,7 @@ export default props => {
     return (
         <StyledContainer {...props}>
             <Dialog
-                width="18rem"
+                width='18rem'
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}
             >
@@ -159,13 +159,13 @@ export default props => {
                         removeWeeshComment()
                         toggleDialog(false)
                     }}
-                    fontWeight="bold"
-                    color="red"
+                    fontWeight='bold'
+                    color='red'
                 >
                     Delete
                 </DialogButton>
                 <DialogButton
-                    fontWeight="bold"
+                    fontWeight='bold'
                     onClick={() => toggleDialog(false)}
                 >
                     Cancel
@@ -185,29 +185,29 @@ export default props => {
                 </StyledDate>
                 {auth.token ? (
                     !props.isChild && (
-                        <StyledButton onClick={handleReply} color="gray">
+                        <StyledButton onClick={handleReply} color='gray'>
                             <StyledButtonIcon>
                                 <Icon
-                                    icon="CornerUpRight"
+                                    icon='CornerUpRight'
                                     size={14}
-                                    color="gray"
+                                    color='gray'
                                 />
                             </StyledButtonIcon>
                             {C.txts.en.weeshPage.comment.reply}
                         </StyledButton>
                     )
                 ) : (
-                    <StyledLink to="/login" color="gray">
+                    <StyledLink to='/login' color='gray'>
                         <StyledButtonIcon>
-                            <Icon icon="CornerUpRight" size={14} color="gray" />
+                            <Icon icon='CornerUpRight' size={14} color='gray' />
                         </StyledButtonIcon>
                         {C.txts.en.weeshPage.comment.reply}
                     </StyledLink>
                 )}
                 {props.user.id == auth.id && (
-                    <StyledButton onClick={handleRemove} color="red">
+                    <StyledButton onClick={handleRemove} color='red'>
                         <StyledButtonIcon>
-                            <Icon icon="Trash2" size={14} color="red" />
+                            <Icon icon='Trash2' size={14} color='red' />
                         </StyledButtonIcon>
                         {C.txts.en.weeshPage.comment.remove}
                     </StyledButton>

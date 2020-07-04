@@ -71,16 +71,16 @@ export default () => {
     // auth.token && history.push('/')
     return (
         <StyledLogin onSubmit={e => handleSubmit(e)}>
-            <Meta type="Join" />
+            <Meta type='Join' />
             <Logo fontSize={4} />
             {error && (
                 <ErrorMessage
-                    width="75%"
+                    width='75%'
                     message={error.graphQLErrors[0].message}
                 />
             )}
             <Input
-                margin=".5rem 0 0"
+                margin='.5rem 0 0'
                 onChange={e => {
                     let firstName = e.target.value
                     setVariables(prevState => ({
@@ -89,11 +89,11 @@ export default () => {
                     }))
                 }}
                 width={75}
-                icon="User"
-                placeholder="Name"
+                icon='User'
+                placeholder='Name'
             />
             <Input
-                margin=".5rem 0 0"
+                margin='.5rem 0 0'
                 onChange={e => {
                     let email = e.target.value
                     setVariables(prevState => ({
@@ -102,11 +102,11 @@ export default () => {
                     }))
                 }}
                 width={75}
-                icon="Mail"
-                placeholder="Email"
+                icon='Mail'
+                placeholder='Email'
             />
             <Input
-                margin=".5rem 0 0"
+                margin='.5rem 0 0'
                 onChange={e => {
                     let password = e.target.value
                     setVariables(prevState => ({
@@ -115,25 +115,25 @@ export default () => {
                     }))
                 }}
                 width={75}
-                icon="Lock"
-                placeholder="Password"
-                type="password"
+                icon='Lock'
+                placeholder='Password'
+                type='password'
             />
             <Button
-                color="background"
-                background="primary"
-                fontWeight="bold"
+                color='background'
+                background='primary'
+                fontWeight='bold'
                 isLoading={loading || undefined}
-                width="75%"
-                margin=".75rem 0 0"
-                padding=".85rem"
-                radius=".75rem"
-                fontSize=".85rem"
+                width='75%'
+                margin='.75rem 0 0'
+                padding='.85rem'
+                radius='.75rem'
+                fontSize='.85rem'
             >
                 {C.txts.en.auth.joinButton}
             </Button>
             <OR width={75} margin={1.5} />
-            <StyledJoinLink to="login">
+            <StyledJoinLink to='login'>
                 {C.txts.en.auth.loginLink}
             </StyledJoinLink>
         </StyledLogin>

@@ -43,9 +43,9 @@ export default props => {
         <StyledContainer>
             {bookmark && (
                 <>
-                    <BackButton icon="ArrowLeft" />
+                    <BackButton icon='ArrowLeft' />
                     <StyledBookmark>Bookmarks</StyledBookmark>
-                    <Icon color="background" />
+                    <Icon color='background' />
                 </>
             )}
         </StyledContainer>

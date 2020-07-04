@@ -96,7 +96,7 @@ export default props => {
     }, [acceptResponse, rejectResponse])
 
     return props.request ? (
-        <StyledRequestContainer borderBottom="1px" ref={requestContainer}>
+        <StyledRequestContainer borderBottom='1px' ref={requestContainer}>
             <Link to={`/${user.username}`}>
                 <StyledRequestContent>
                     <Avatar size={2.25} user={user} />
@@ -109,17 +109,17 @@ export default props => {
             <StyledButton>
                 <Button
                     isLoading={acceptResponse.loading || undefined}
-                    fontWeight="bold"
+                    fontWeight='bold'
                     clickEvent={handleAccept}
-                    background="primary"
-                    color="background"
-                    radius="50rem"
-                    padding=".25rem .5rem"
+                    background='primary'
+                    color='background'
+                    radius='50rem'
+                    padding='.25rem .5rem'
                 >
                     Confirm
                 </Button>
                 <StyledIcon onClick={handleReject}>
-                    <Icon icon="X" />
+                    <Icon icon='X' />
                 </StyledIcon>
             </StyledButton>
         </StyledRequestContainer>
@@ -127,7 +127,7 @@ export default props => {
         <StyledRequestContainer
             borderBottom={`${props.connection ? '1px' : undefined}`}
         >
-            <Link width="100%" to={`/${user.username}`}>
+            <Link width='100%' to={`/${user.username}`}>
                 <StyledRequestContent>
                     <Avatar size={2.25} user={user} />
                     <StyledMain>

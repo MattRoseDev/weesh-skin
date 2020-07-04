@@ -119,7 +119,7 @@ export default props => {
 
     return auth.username ? (
         <StyledContainer>
-            <Meta type="AddWeesh" />
+            <Meta type='AddWeesh' />
             <StyledFrame>
                 <StyledSliderTabContainer>
                     <StyledSliderTabTitle>To:</StyledSliderTabTitle>
@@ -133,6 +133,6 @@ export default props => {
             </StyledFrame>
         </StyledContainer>
     ) : (
-        <Loading padding="3rem 0 0" size={28} strokeWidth={1.25} color="gray" />
+        <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' />
     )
 }

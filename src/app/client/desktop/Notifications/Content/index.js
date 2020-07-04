@@ -91,8 +91,8 @@ export default () => {
                 ))}
             {notifications.isEmpty && (
                 <BannerMessage
-                    padding="3rem 0"
-                    icon="Bell"
+                    padding='3rem 0'
+                    icon='Bell'
                     title={C.txts.en.g.noNotifications}
                 />
             )}

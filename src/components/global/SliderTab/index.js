@@ -96,7 +96,7 @@ export default props => {
                         >
                             <Icon
                                 icon={item.icon}
-                                size="14"
+                                size='14'
                                 color={item.value ? 'background' : 'foreground'}
                             />
                             <StyledTitle className={item.value && 'active'}>
@@ -107,7 +107,7 @@ export default props => {
                             id={item.id}
                             checked={item.value}
                             onChange={e => handleChange(e)}
-                            type="checkbox"
+                            type='checkbox'
                         />
                     </StyledTab>
                 ))}

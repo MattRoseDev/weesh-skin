@@ -192,13 +192,13 @@ export default props => {
                             item.number > 0 && (
                                 <StyledNumberContainer
                                     key={uuid()}
-                                    margin="0 0 0 .75rem"
+                                    margin='0 0 0 .75rem'
                                 >
                                     <Icon
                                         icon={item.icon}
                                         size={12}
-                                        fill="dark"
-                                        color="dark"
+                                        fill='dark'
+                                        color='dark'
                                     />
                                     <StyledNumber>{item.number}</StyledNumber>
                                 </StyledNumberContainer>

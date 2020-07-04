@@ -34,7 +34,7 @@ export default props => {
         editProfile && (
             <StyledHeader>
                 <CropImage
-                    widthButtons="18rem"
+                    widthButtons='18rem'
                     setCropImage={setCropImage}
                     {...cropImage}
                 />
@@ -50,11 +50,11 @@ export default props => {
                             }))
                         }
                     >
-                        <Cover height="213px" user={editProfile} />
+                        <Cover height='213px' user={editProfile} />
                     </EditableImage>
                     <StyledAvatarFrame>
                         <EditableImage
-                            radius="50%"
+                            radius='50%'
                             onClick={() =>
                                 setCropImage(prevState => ({
                                     ...prevState,
@@ -68,7 +68,7 @@ export default props => {
                             <Avatar
                                 user={editProfile}
                                 size={7}
-                                bordercolor="background"
+                                bordercolor='background'
                                 borderwidth={4}
                             />
                         </EditableImage>

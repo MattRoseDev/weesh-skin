@@ -48,7 +48,7 @@ export default () => {
             <Meta />
             {explore.loading && (
                 <StyledLoading>
-                    <Loading size={20} strokeWidth={1.25} color="gray" />
+                    <Loading size={20} strokeWidth={1.25} color='gray' />
                 </StyledLoading>
             )}
             {!explore.loading &&
@@ -60,7 +60,7 @@ export default () => {
                 explore.results &&
                 explore.results.length < 1 && (
                     <StyledNotFound>
-                        <Icon icon="Info" />
+                        <Icon icon='Info' />
                         <StyledNotFoundMessage>
                             {C.txts.en.g.noResultsFound}
                         </StyledNotFoundMessage>

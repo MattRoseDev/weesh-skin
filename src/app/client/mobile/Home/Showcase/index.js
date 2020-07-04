@@ -81,12 +81,12 @@ export default () => {
 
     return (
         <StyledContainer>
-            <Meta type="Showcase" />
+            <Meta type='Showcase' />
             <StyledThemeButton>
                 <StyledIconContainer onClick={handleTheme}>
                     <Icon
                         size={20}
-                        color="background"
+                        color='background'
                         icon={`${auth.theme == 'light' ? 'Moon' : 'Sun'}`}
                     />
                     <StyledIconTitle>
@@ -101,7 +101,7 @@ export default () => {
             </StyledHeader>
             <StyledShowcase>
                 {loading ? (
-                    <Loading size={28} strokeWidth={1.25} color="gray" />
+                    <Loading size={28} strokeWidth={1.25} color='gray' />
                 ) : (
                     state &&
                     state.weeshes &&

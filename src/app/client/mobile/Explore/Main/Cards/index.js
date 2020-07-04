@@ -64,7 +64,7 @@ export default props => {
     return (
         <StyledContainer {...props}>
             <StyledHeaderTitle>TRENDING</StyledHeaderTitle>
-            {state && <Item data={state[0]} fontSize="2rem" />}
+            {state && <Item data={state[0]} fontSize='2rem' />}
             <StyledTagsContainer>
                 {state &&
                     state.map((tag, key) =>

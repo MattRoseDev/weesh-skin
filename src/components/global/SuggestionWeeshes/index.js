@@ -31,10 +31,10 @@ export default () => {
         <StyledContainer>
             {loading ? (
                 <Loading
-                    padding="3rem 0 0"
+                    padding='3rem 0 0'
                     size={28}
                     strokeWidth={1.25}
-                    color="gray"
+                    color='gray'
                 />
             ) : (
                 state &&

@@ -17,7 +17,7 @@ const StyledSidebar = styled.header`
 export default () => {
     return (
         <StyledSidebar>
-            <Logo fontSize={3} padding="2.5rem 0 0" />
+            <Logo fontSize={3} padding='2.5rem 0 0' />
             <Navbar />
         </StyledSidebar>
     )

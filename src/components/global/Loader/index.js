@@ -14,7 +14,7 @@ const StyledIcon = styled.div`
 export default props => {
     return (
         <StyledIcon>
-            <Icon icon="Loader" {...props} />
+            <Icon icon='Loader' {...props} />
         </StyledIcon>
     )
 }

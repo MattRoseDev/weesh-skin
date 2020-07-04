@@ -54,7 +54,7 @@ export default props => {
                 )}
                 <StyledContent>
                     {props.icon && (
-                        <Icon icon={props.icon} color="gray" size={16} />
+                        <Icon icon={props.icon} color='gray' size={16} />
                     )}
                     <Input {...props} id={id} />
                 </StyledContent>

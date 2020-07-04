@@ -15,7 +15,7 @@ export default props => {
         <Header>
             <BackButton />
             <StyledTitle>Change Password</StyledTitle>
-            <Icon size={24} color="background" icon="ChevronLeft" />
+            <Icon size={24} color='background' icon='ChevronLeft' />
         </Header>
     )
 }

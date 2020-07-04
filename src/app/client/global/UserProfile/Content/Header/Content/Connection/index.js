@@ -9,15 +9,15 @@ const handleStatus = (props, auth, user) => {
     if (!auth.token) {
         return (
             <Button
-                color="primary"
-                hoverbackground="lightPrimary"
-                bordercolor="primary"
-                borderwidth="1px"
-                radius="50rem"
-                padding=".5rem 1.25rem"
-                fontWeight="bold"
-                to="/login"
-                width="6rem"
+                color='primary'
+                hoverbackground='lightPrimary'
+                bordercolor='primary'
+                borderwidth='1px'
+                radius='50rem'
+                padding='.5rem 1.25rem'
+                fontWeight='bold'
+                to='/login'
+                width='6rem'
             >
                 Follow
             </Button>
@@ -27,15 +27,15 @@ const handleStatus = (props, auth, user) => {
     if (props.match.params.username == auth.username) {
         return (
             <Button
-                radius="50rem"
-                color="primary"
-                hoverbackground="lightPrimary"
-                bordercolor="primary"
-                borderwidth="1px"
-                padding=".5rem 1.25rem"
-                fontWeight="bold"
-                to="settings/profile"
-                width="6rem"
+                radius='50rem'
+                color='primary'
+                hoverbackground='lightPrimary'
+                bordercolor='primary'
+                borderwidth='1px'
+                padding='.5rem 1.25rem'
+                fontWeight='bold'
+                to='settings/profile'
+                width='6rem'
             >
                 Settings
             </Button>
@@ -48,19 +48,19 @@ const handleStatus = (props, auth, user) => {
         switch (status) {
             case 0:
                 return (
-                    <ConnectionButton type="FOLLOW">
+                    <ConnectionButton type='FOLLOW'>
                         {C.txts.en.connections.buttonStatus.FOLLOW}
                     </ConnectionButton>
                 )
             case 1:
                 return (
-                    <ConnectionButton type="REQUEST">
+                    <ConnectionButton type='REQUEST'>
                         {C.txts.en.connections.buttonStatus.REQUEST}
                     </ConnectionButton>
                 )
             case 2:
                 return (
-                    <ConnectionButton type="FOLLOWING">
+                    <ConnectionButton type='FOLLOWING'>
                         {C.txts.en.connections.buttonStatus.FOLLOWING}
                     </ConnectionButton>
                 )

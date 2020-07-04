@@ -23,7 +23,7 @@ export default props => {
             <Icon
                 onClick={handleBack}
                 size={props.size || 24}
-                color="foreground"
+                color='foreground'
                 fill={
                     C.themes[auth.theme || 'light'].colors[props.fill] || 'none'
                 }

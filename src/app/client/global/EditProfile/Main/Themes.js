@@ -191,9 +191,9 @@ export default () => {
                         >
                             {auth.color == item.title && (
                                 <Icon
-                                    icon="Check"
+                                    icon='Check'
                                     strokeWidth={3}
-                                    color="white"
+                                    color='white'
                                 />
                             )}
                         </StyledColor>
@@ -222,8 +222,8 @@ export default () => {
                         >
                             <StyledIcon>
                                 <Icon
-                                    icon="Circle"
-                                    size="15"
+                                    icon='Circle'
+                                    size='15'
                                     fill={
                                         auth.theme ==
                                         item.title.toLocaleLowerCase()

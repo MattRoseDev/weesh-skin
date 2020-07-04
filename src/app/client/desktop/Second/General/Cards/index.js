@@ -53,7 +53,7 @@ export default props => {
 
     return (
         <StyledContainer {...props}>
-            <ListsCard title="TRENDING" items={state} />
+            <ListsCard title='TRENDING' items={state} />
         </StyledContainer>
     )
 }

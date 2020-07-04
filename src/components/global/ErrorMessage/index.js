@@ -25,7 +25,7 @@ export default props => {
     return (
         <StyledContainer {...props}>
             <StyledIcon>
-                <Icon size="18" icon="X" color="red" />
+                <Icon size='18' icon='X' color='red' />
             </StyledIcon>
             {props.message}
         </StyledContainer>

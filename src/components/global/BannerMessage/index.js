@@ -39,7 +39,7 @@ export default props => {
             <StyledIcon>
                 <Icon
                     icon={props.icon}
-                    color="foreground"
+                    color='foreground'
                     strokeWidth={1}
                     size={60}
                 />

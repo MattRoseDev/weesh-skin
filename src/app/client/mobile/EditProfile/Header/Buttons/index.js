@@ -115,10 +115,10 @@ export default () => {
             {auth.id != undefined && editProfile ? (
                 <StyledHeader>
                     <Button
-                        color="primary"
-                        padding="1rem .5rem"
-                        fontWeight="bold"
-                        fontSize="1rem"
+                        color='primary'
+                        padding='1rem .5rem'
+                        fontWeight='bold'
+                        fontSize='1rem'
                         clickEvent={handleCancel}
                     >
                         {C.txts.en.editProfile.header.cancelButton}
@@ -129,20 +129,20 @@ export default () => {
                     {editProfile && editProfile.doneButton ? (
                         <Button
                             clickEvent={handleEditUser}
-                            color="primary"
-                            padding="1rem .5rem"
-                            fontWeight="bold"
-                            fontSize="1rem"
+                            color='primary'
+                            padding='1rem .5rem'
+                            fontWeight='bold'
+                            fontSize='1rem'
                         >
                             {C.txts.en.editProfile.header.doneButton}
                         </Button>
                     ) : (
                         <Button
                             disabled
-                            color="gray"
-                            padding="1rem .5rem"
-                            fontWeight="bold"
-                            fontSize="1rem"
+                            color='gray'
+                            padding='1rem .5rem'
+                            fontWeight='bold'
+                            fontSize='1rem'
                         >
                             {C.txts.en.editProfile.header.doneButton}
                         </Button>

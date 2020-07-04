@@ -20,15 +20,15 @@ const StyledSection = styled.div`
 export default props => {
     return (
         <StyledContainer>
-            <Border leftColor="light" rightColor="light">
-                <Container width="38rem">
+            <Border leftColor='light' rightColor='light'>
+                <Container width='38rem'>
                     <StyledSection>
                         <Header {...props} />
                         <Content {...props} />
                     </StyledSection>
                 </Container>
             </Border>
-            <Container width="24rem">
+            <Container width='24rem'>
                 <Second {...props} />
             </Container>
         </StyledContainer>

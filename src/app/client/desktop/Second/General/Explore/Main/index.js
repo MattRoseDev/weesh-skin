@@ -44,7 +44,7 @@ export default () => {
         <StyledMain>
             {explore.loading ? (
                 <StyledLoading>
-                    <Loading size={20} strokeWidth={1.25} color="gray" />
+                    <Loading size={20} strokeWidth={1.25} color='gray' />
                 </StyledLoading>
             ) : (
                 explore.results &&
@@ -52,7 +52,7 @@ export default () => {
                     <List users={explore.results} />
                 ) : (
                     <StyledNotFound>
-                        <Icon icon="Info" />
+                        <Icon icon='Info' />
                         <StyledNotFoundMessage>
                             {C.txts.en.g.noResultsFound}
                         </StyledNotFoundMessage>

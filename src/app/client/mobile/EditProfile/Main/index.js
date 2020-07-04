@@ -133,12 +133,12 @@ export default props => {
         <StyledMain>
             <StyledLogoutContainer>
                 <Button
-                    padding=".5rem .75rem"
-                    radius="50rem"
-                    fontWeight="bold"
-                    background="foreground"
-                    color="background"
-                    to="/logout"
+                    padding='.5rem .75rem'
+                    radius='50rem'
+                    fontWeight='bold'
+                    background='foreground'
+                    color='background'
+                    to='/logout'
                 >
                     {C.txts.en.editProfile.header.logout}
                 </Button>
@@ -146,16 +146,16 @@ export default props => {
             <StyledInputGroup>
                 <Input
                     label={C.txts.en.editProfile.inputsLabel.firstName}
-                    padding=".65rem"
+                    padding='.65rem'
                     value={editProfile.firstName}
                     onInput={e => handleChange({key: 'firstName', e})}
-                    margin="0 .5rem 0 0"
+                    margin='0 .5rem 0 0'
                     width={100}
                     placeholder={C.txts.en.editProfile.inputsLabel.firstName}
                 />
                 <Input
                     label={C.txts.en.editProfile.inputsLabel.lastName}
-                    padding=".65rem"
+                    padding='.65rem'
                     value={editProfile.lastName}
                     onInput={e => handleChange({key: 'lastName', e})}
                     width={100}
@@ -167,9 +167,9 @@ export default props => {
             <Textarea
                 value={editProfile.bio}
                 label={C.txts.en.editProfile.inputsLabel.bio}
-                padding=".65rem"
+                padding='.65rem'
                 onInput={e => handleChange({key: 'bio', e})}
-                margin=".5rem 0 0"
+                margin='.5rem 0 0'
                 width={100}
                 placeholder={C.txts.en.editProfile.inputsLabel.bio}
             />
@@ -178,7 +178,7 @@ export default props => {
                 {toggles.map(toggle => (
                     <StyledToggleContainer key={uuid()}>
                         <StyledToggleTitleContainer>
-                            <Icon icon={toggle.icon} color="foreground" />
+                            <Icon icon={toggle.icon} color='foreground' />
                             <StyledToggleTitle>
                                 {toggle.title}
                             </StyledToggleTitle>
