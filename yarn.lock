@@ -977,6 +977,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.10.4":
+  version "7.10.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.4.tgz#a6724f1a6b8d2f6ea5236dbfe58c7d7ea9c5eb99"
+  integrity sha512-UpTN5yUJr9b4EX2CnGNWIvER7Ab83ibv0pcvvHc4UOdrBI5jb8bj+32cCwPX6xu0mt2daFNjYhoi+X7beH0RSw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.10.1":
   version "7.10.1"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.10.1.tgz#e167154a94cb5f14b28dc58f5356d2162f539811"
@@ -1026,6 +1033,13 @@
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
+
+"@tanem/svg-injector@^8.0.56":
+  version "8.0.57"
+  resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-8.0.57.tgz#43943b61aa0ecaa0b9447ad74b8948625459bfa0"
+  integrity sha512-PUi7Rgtz+AV49mwwILHok2O7dT6Wd4K9w0x+HcE/clFCdtJLTEf1UJZfK0VvmiSkwvL//LFxpHT6xKrUJwwiww==
+  dependencies:
+    "@babel/runtime" "^7.10.4"
 
 "@types/domhandler@2.4.1":
   version "2.4.1"
@@ -5566,6 +5580,15 @@ react-scroll@^1.7.16:
   dependencies:
     lodash.throttle "^4.1.1"
     prop-types "^15.5.8"
+
+react-svg@^11.0.29:
+  version "11.0.29"
+  resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-11.0.29.tgz#b122538304118d814812d6ba4fd3145ff1da66ca"
+  integrity sha512-ak5E+uvz4pvOibgIhgW9wgygMBKfVErEwLKLj43o7+iC161nGYbmUeZ9aiS9W4/OoF+MWBEiNkNXpfNOI0SVRA==
+  dependencies:
+    "@babel/runtime" "^7.10.4"
+    "@tanem/svg-injector" "^8.0.56"
+    prop-types "^15.7.2"
 
 react-textarea-autosize@^7.1.2:
   version "7.1.2"

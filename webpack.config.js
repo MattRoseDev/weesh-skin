@@ -72,7 +72,7 @@ module.exports = {
             hash: true,
         }),
         new CompressionPlugin(),
-        new MinifyPlugin()
+        new MinifyPlugin(),
     ],
     // performance: { hints: false }
 }
