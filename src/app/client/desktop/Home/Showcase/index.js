@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Auth from 'Root/components/mobile/Auth'
 import Logo from 'Root/components/global/Logo'
 import Icon from 'Root/components/global/Icon'
+import Catalog from 'Root/components/global/Catalog'
 import Loading from 'Root/components/global/Loading'
 import uuid from 'uuid'
 import WeeshForShowcase from 'Root/components/global/WeeshForShowcase'
@@ -22,7 +23,7 @@ const StyledContainer = styled.div`
 
 const StyledHeader = styled.div`
     ${C.styles.flex.flexColumnCenter};
-    height: 65vh;
+    padding: 8rem 0 4rem;
 `
 
 const StyledQuote = styled.p`
@@ -80,25 +81,6 @@ export default () => {
         }
     }, [data, error])
 
-    const details = [
-        {
-            title: 'Wishes are written',
-            description: 'Post what you wish for.',
-        },
-        {
-            title: 'Others exprience',
-            description: 'Hear others thoughts.',
-        },
-        {
-            title: 'Safe and Secret',
-            description: 'We protect your weeshes.',
-        },
-        {
-            title: 'Give advice',
-            description: 'Comment what you think about other wishes.',
-        },
-    ]
-
     return (
         <StyledContainer>
             <Meta type='Showcase' />
@@ -119,6 +101,7 @@ export default () => {
                 <StyledQuote>{C.txts.en.g.quote}</StyledQuote>
                 <Auth />
             </StyledHeader>
+            <Catalog />
             <StyledShowcase>
                 {loading ? (
                     <Loading size={28} strokeWidth={1.25} color='gray' />
