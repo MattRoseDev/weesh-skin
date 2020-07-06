@@ -2,7 +2,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const path = require('path')
 const babelConfig = require('./babel.config.json')
-const MinifyPlugin = require('babel-minify-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
@@ -72,7 +71,6 @@ module.exports = {
             hash: true,
         }),
         new CompressionPlugin(),
-        new MinifyPlugin()
     ],
     // performance: { hints: false }
 }
