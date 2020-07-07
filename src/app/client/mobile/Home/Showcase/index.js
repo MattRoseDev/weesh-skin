@@ -23,6 +23,7 @@ const StyledContainer = styled.div`
 const StyledHeader = styled.div`
     ${C.styles.flex.flexColumnCenter};
     height: 65vh;
+    min-height: 30rem;
 `
 
 const StyledQuote = styled.p`

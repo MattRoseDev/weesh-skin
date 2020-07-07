@@ -23,7 +23,7 @@ export default [
         content: 'User',
     },
     {
-        title: 'Weesh',
+        title: 'Add Weesh',
         path: '/compose/weesh',
         content: 'Plus',
         strokeWidth: 2,
