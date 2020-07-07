@@ -1,5 +1,5 @@
 export default ({ data, type } = { data: null }) => {
-    let keywords = ['weesh']
+    let keywords = ['weesh', 'dream', 'dreams', 'wish', 'wishes', 'goal', 'goals', 'target', 'purpose','imagine']
     switch (type) {
         case 'UserProfile':
             data.user.firstName && keywords.push(data.user.firstName)
@@ -17,20 +17,24 @@ export default ({ data, type } = { data: null }) => {
             keywords.push(data.tag)
             return keywords.join(',')
         case 'EditProfile':
-            return 'weesh'
+            return keywords.join(',')
         case 'AddWeesh':
-            return 'weesh'
+            return keywords.join(',')
         case 'Support':
-            return 'weesh'
+            return keywords.join(',')
         case 'Bookmarks':
-            return 'weesh'
+            return keywords.join(',')
         case 'Showcase':
-            return 'weesh'
+            return keywords.join(',')
         case 'Login':
-            return 'weesh,login,sign in'
+            keywords.push('login')
+            keywords.push('sign in')
+            return keywords.join(',')
         case 'Join':
-            return 'weesh,join,sign up'
+            keywords.push('join')
+            keywords.push('sign up')
+            return keywords.join(',')
         default:
-            return 'weesh'
+            return keywords.join(',')
     }
 }
