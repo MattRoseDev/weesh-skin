@@ -3,11 +3,7 @@ import styled from 'styled-components'
 import Auth from 'Root/components/mobile/Auth'
 import Logo from 'Root/components/global/Logo'
 import Icon from 'Root/components/global/Icon'
-<<<<<<< HEAD
 import Catalog from 'Root/components/mobile/Catalog'
-=======
-import Catalog from 'Root/components/global/Catalog'
->>>>>>> 46172449f6b8f2eda3338579dc084a8eef75acbe
 import Loading from 'Root/components/global/Loading'
 import uuid from 'uuid'
 import WeeshForShowcase from 'Root/components/global/WeeshForShowcase'
