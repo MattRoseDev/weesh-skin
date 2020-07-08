@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const babelConfig = require('./babel.config.json')
 
@@ -71,6 +72,14 @@ module.exports = {
             hash: true,
         }),
         new CompressionPlugin(),
+        new CopyPlugin({
+            patterns: [
+                { 
+                    from: path.join(__dirname, './src/static'), 
+                    to: 'static'
+                },
+            ],
+        })
     ],
     // performance: { hints: false }
 }
