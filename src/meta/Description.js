@@ -5,6 +5,6 @@ export default ({ data, type } = { data: null }) => {
         case 'WeeshPage':
             return `${data.weesh.content.substr(0, 160).replace(/\n/gi, ' ')}`
         default:
-            return 'Have you ever written your wishes? We can keep your wishes and help you achieve them sooner.Join us and share your wishes private or public.'
+            return 'Have you ever written your wishes? We can keep your wishes and help you achieve them sooner. Join us and share your wishes private or public.'
     }
 }
