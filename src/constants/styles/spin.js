@@ -10,5 +10,5 @@ export default css`
             transform: rotateZ(360deg);
         }
     }
-    animation: spin 1.5s ease infinite;
+    animation: spin 1s ease infinite;
 `
