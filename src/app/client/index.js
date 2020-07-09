@@ -10,6 +10,7 @@ import api from 'Root/api'
 import C from 'Root/constants'
 import GlobalStyles from 'Root/constants/globalStyles'
 import Initialize from 'Root/components/global/Initialize'
+import useHistory from 'Root/hooks/useHistory'
 
 const Client = props => {
     const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
@@ -18,6 +19,7 @@ const Client = props => {
     )
     // const { notifications, dispatch } = React.useContext(NotificationsContext)
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
+    const history = useHistory()
 
     window.addEventListener('resize', () => {
         setWindowWidth(window.innerWidth)
@@ -64,11 +66,16 @@ const Client = props => {
         // }
 
         if (getProfileUserResult.data) {
+            if (!getProfileUserResult.data.getUserProfileForUser && getProfileUserResult.called && !getProfileUserResult.loading) {
+                history.push('/logout')
+            }
             authDispatch({
                 type: 'LOGIN',
                 data: getProfileUserResult.data.getUserProfileForUser,
             })
         }
+
+        
     }, [getProfileUserResult.data])
 
     return (
