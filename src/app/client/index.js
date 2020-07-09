@@ -91,7 +91,7 @@ const Client = props => {
         >
             <>
                 <GlobalStyles />
-                <Initialize />
+                {auth.id && <Initialize />}
                 {windowWidth > 768 ? <Desktop /> : <Mobile />}
             </>
         </ThemeProvider>
