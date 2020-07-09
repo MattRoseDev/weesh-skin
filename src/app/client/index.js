@@ -66,7 +66,7 @@ const Client = props => {
         // }
 
         if (getProfileUserResult.data) {
-            if (!getProfileUserResult.data.getUserProfileForUser && getProfileUserResult.called && !getProfileUserResult.loading) {
+            if (!getProfileUserResult.data.getUserProfileForUser && getProfileUserResult.called && !getProfileUserResult.loading && auth.token) {
                 history.push('/logout')
             }
             authDispatch({
