@@ -62,9 +62,6 @@ export default () => {
     const [join, { data, error, loading }] = useMutation(api.auth.join)
 
     React.useEffect(() => {
-        if (error) {
-            console.log(error)
-        }
         if (data) {
             const { token, user } = data.join
             dispatch({

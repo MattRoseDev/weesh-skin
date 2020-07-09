@@ -55,9 +55,6 @@ export default () => {
     )
 
     React.useEffect(() => {
-        if (error) {
-            console.log(error.graphQLErrors[0].message)
-        }
         if (called && data) {
             const { token, user } = data.login
             console.log(data)

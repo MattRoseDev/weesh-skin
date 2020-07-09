@@ -45,9 +45,6 @@ export default () => {
     const [join, { data, error, loading }] = useMutation(api.auth.join)
 
     React.useEffect(() => {
-        if (error) {
-            console.log(error.graphQLErrors[0].message)
-        }
         if (data) {
             const { token, user } = data.join
             dispatch({
