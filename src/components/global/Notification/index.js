@@ -133,6 +133,8 @@ const switchIcon = type => {
             )
         case 'start_following':
             return <Icon icon='Plus' size={20} strokeWidth={1.5} color='dark' />
+        case 'welcome_message':
+            return <Icon icon='Inbox' size={20} strokeWidth={1.5} color='dark' />
     }
 }
 
@@ -159,6 +161,12 @@ const switchElements = ({ element, props }) => {
                     <StyledContent key={uuid()}>
                         {props.comment && `${props.comment.content} `}
                     </StyledContent>
+                )
+            case '$$you$$':
+                return (
+                    <StyledUsername key={uuid()}>
+                        <StyledUsername>{props.user.firstName} {props.user.lastName}</StyledUsername>
+                    </StyledUsername>
                 )
             default:
                 return <StyledContent key={uuid()}>{element}</StyledContent>
