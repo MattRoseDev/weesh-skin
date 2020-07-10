@@ -84,6 +84,7 @@ const initVariables = {
 export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState(initVariables)
+    const [state, setState] = React.useState(false)
     const history = useHistory()
     const [loadLogin, { data, called, loading, error }] = useLazyQuery(
         api.auth.login,

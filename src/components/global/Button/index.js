@@ -14,6 +14,7 @@ const StyledLink = styled(Link)`
 
 const StyledContainer = styled.div`
     margin: ${({ margin }) => margin || 'unset'};
+    padding: 0;
     width: ${({ width }) => (width ? `${width}` : 'unset')};
     ${C.styles.flex.flexRow};
     position: relative;
@@ -21,6 +22,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledButton = styled.button`
+    margin: 0;
     cursor: inherit;
     ${({ boxShadow }) =>
         boxShadow &&
@@ -70,7 +72,8 @@ const StyledLoader = styled.div`
     top: ${({ borderwidth }) => (borderwidth ? `${borderwidth}` : 0)};
     padding: 0;
     margin: 0;
-    ${C.styles.flex.flexRowCenter};
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.center};
     ${({ theme, color }) =>
         color &&
         css`
