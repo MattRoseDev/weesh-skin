@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 const suggestion = gql`
     query exploreAllForUser($expression: String!, $limit: Int, $page: Int) {
-        exploreAllForUser(expression: $expression, limit: $limit, page: $page) {
+        exploreAllForUser(expression: $expression, type: "SUGGESTION",limit: $limit, page: $page) {
             tag {
                 tags {
                     id

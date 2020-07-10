@@ -23,7 +23,7 @@ const StyledContainer = styled.div`
 
 const StyledButton = styled.button`
     margin: 0;
-    cursor: inherit;
+    cursor: ${({ cursor }) => cursor || 'pointer'};
     ${({ boxShadow }) =>
         boxShadow &&
         css`

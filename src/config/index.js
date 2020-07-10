@@ -1,7 +1,7 @@
 const PORT = 5000
 let API_URL, WS_URL, DOMAIN_URL, PROTOCOL, UPLOAD_URL
 
-const SOURCE = 'liara'
+const SOURCE = 'localhost'
 const DEBUG = true
 
 switch (SOURCE) {
