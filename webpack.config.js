@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -71,6 +73,15 @@ module.exports = {
             filename: 'index.html',
             hash: true,
         }),
+        new webpack.DefinePlugin({ 
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.AggressiveMergingPlugin(),
+        new webpack.optimize.MinChunkSizePlugin({
+            minChunkSize: 10000 // Minimum number of characters
+        }),
         new CompressionPlugin(),
         new CopyPlugin({
             patterns: [
@@ -81,5 +92,12 @@ module.exports = {
             ],
         })
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+        minimize: true,
+        minimizer: [new TerserPlugin()],
+    }
     // performance: { hints: false }
 }
