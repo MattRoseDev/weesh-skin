@@ -1,8 +1,8 @@
 import colors from 'Root/constants/colors'
 export default {
-    background: '#15212c',
+    background: '#17223a',
     foreground: '#ffffff',
-    black: '#15212c',
+    black: '#17223a',
     white: '#ffffff',
     light: '#38454c',
     // primary: '#0069ff',
