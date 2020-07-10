@@ -22,6 +22,7 @@ const StyledHeaderDialogMessage = styled.div`
 `
 
 const StyledUsername = styled.strong`
+    color: ${({ theme }) => theme.colors.foreground};
     color: inherit;
 `
 
