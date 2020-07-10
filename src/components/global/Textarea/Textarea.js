@@ -12,6 +12,7 @@ const StyledTextarea = styled.textarea`
     padding: 0 0 0 0.2rem;
     resize: vertical;
     width: 100%;
+    height: 100%;
     ::placeholder {
         color: ${({ theme }) => theme.colors.gray};
     }
