@@ -24,6 +24,7 @@ const StyledHeaderDialogMessage = styled.div`
 `
 
 const StyledUsername = styled.strong`
+    color: ${({ theme }) => theme.colors.foreground};
     width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -147,7 +148,7 @@ export default props => {
                     </Button>
                 ) : (
                     <Button
-                        color='primary'
+                        color={auth.color}
                         hoverbackground='lightPrimary'
                         bordercolor='primary'
                         borderwidth='1px'

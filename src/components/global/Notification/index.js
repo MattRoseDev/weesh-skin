@@ -37,6 +37,7 @@ const StyledTime = styled.small`
 `
 
 const StyledUsername = styled.strong`
+    color: ${({ theme }) => theme.colors.foreground};
     display: inline;
     /* padding: 0 .25rem 0 0; */
 `
