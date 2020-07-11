@@ -57,7 +57,6 @@ export default () => {
     React.useEffect(() => {
         if (called && data) {
             const { token, user } = data.login
-            console.log(data)
             dispatch({
                 type: 'LOGIN',
                 data: {

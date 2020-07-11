@@ -7,6 +7,7 @@ import AuthProvider from 'Root/contexts/auth'
 import AlertProvider from 'Root/contexts/alert'
 import SnackBarProvider from 'Root/contexts/snackbar'
 import NotificationProvider from 'Root/contexts/notifications'
+import EditProfileProvider from 'Root/contexts/editProfile'
 import uuid from 'uuid'
 
 const routes = [
@@ -24,11 +25,13 @@ export default () => {
                 <NotificationProvider>
                     <SnackBarProvider>
                         <AlertProvider>
-                            <ApolloProvider client={apollo}>
-                                {routes.map(route => (
-                                    <Route key={uuid()} {...route} />
-                                ))}
-                            </ApolloProvider>
+                            <EditProfileProvider>
+                                <ApolloProvider client={apollo}>
+                                    {routes.map(route => (
+                                        <Route key={uuid()} {...route} />
+                                    ))}
+                                </ApolloProvider>
+                            </EditProfileProvider>
                         </AlertProvider>
                     </SnackBarProvider>
                 </NotificationProvider>

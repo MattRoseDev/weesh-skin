@@ -9,6 +9,7 @@ import BannerMessage from 'Root/components/global/BannerMessage'
 import { useQuery, useLazyQuery } from '@apollo/react-hooks'
 import { AuthContext } from 'Root/contexts/auth'
 import { UserContext } from 'Root/contexts/user'
+import { EditProfileContext } from 'Root/contexts/editProfile'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import styled from 'styled-components'
@@ -26,6 +27,9 @@ export default props => {
     const { match } = props
     const [nextPage, setNextPage] = React.useState(1)
     const { auth, dispatch } = React.useContext(AuthContext)
+    const { editProfile, dispatch: editProfileDispatch } = React.useContext(
+        EditProfileContext,
+    )
     const { user, dispatch: userDispatch } = React.useContext(UserContext)
     const history = useHistory()
 
@@ -80,6 +84,13 @@ export default props => {
             userDispatch({
                 type: 'ADD_USER_DATA',
                 data: response,
+            })
+            editProfileDispatch({
+                type: 'EDIT_PROFILE',
+                data: {
+                    ...response,
+                    doneButton: true,
+                },
             })
             data.getUserByUsernameForUser.weesh.paginate &&
                 setNextPage(

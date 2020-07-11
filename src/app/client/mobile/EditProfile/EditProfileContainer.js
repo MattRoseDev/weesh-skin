@@ -38,55 +38,26 @@ export default props => {
 
     !auth.token && history.push('/')
 
-    const { data, called, error, loading } = useQuery(
-        api.users.getUserByUsernameForUser,
-        {
-            variables: {
-                username: `${auth.username}`,
-            },
-            fetchPolicy: 'no-cache',
-        },
-    )
-
     React.useEffect(() => {
-        if (error) {
-            console.log(error)
-        }
-
-        if (called && data && !editProfile) {
-            const result = data.getUserByUsernameForUser
+        if (!editProfile && auth.id) {
             editProfileDispatch({
                 type: 'EDIT_PROFILE',
                 data: {
-                    ...result,
+                    ...auth,
                     doneButton: true,
                 },
             })
         }
-    }, [data, error])
+    }, [editProfile])
 
     return (
         <StyledContainer>
-            {editProfile && auth.id != undefined ? (
+            {editProfile && auth.id != undefined && (
                 <>
                     <Buttons {...props} />
                     <Header {...props} />
                     <Main {...props} />
                 </>
-            ) : (
-                loading && (
-                    <StyledLoadingContainer>
-                        <Loading
-                            size={28}
-                            padding='3rem 0 0'
-                            strokeWidth={1.25}
-                            color='gray'
-                        />
-                    </StyledLoadingContainer>
-                )
-            )}
-            {error && !editProfile && loading && (
-                <BannerMessage icon='User' title={C.txts.en.g.userNotFound} />
             )}
         </StyledContainer>
     )
