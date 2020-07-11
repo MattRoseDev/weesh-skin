@@ -108,6 +108,7 @@ export default props => {
                 variables = {
                     [key]: {
                         fullname: e.target.checked,
+                        avatar: e.target.checked,
                     },
                 }
 
@@ -231,6 +232,6 @@ export default props => {
             <About />
         </StyledMain>
     ) : (
-        <></>
-    )
+            <></>
+        )
 }

@@ -31,20 +31,12 @@ export default props => {
     const { editProfile, dispatch: editProfileDispatch } = React.useContext(
         EditProfileContext,
     )
-    const [isEditProfile, setIsEditProfile] = React.useState(false)
     const history = useHistory()
 
     !auth.token && history.push('/')
 
-    // const { data, called, error, loading } = useQuery(api.users.getUserByUsernameForUser, {
-    //     variables: {
-    //         username: `${auth.username}`
-    //     },
-    //     fetchPolicy: 'no-cache',
-    // })
-
     React.useEffect(() => {
-        if (!isEditProfile) {
+        if (!editProfile && auth.id) {
             editProfileDispatch({
                 type: 'EDIT_PROFILE',
                 data: {
@@ -52,20 +44,18 @@ export default props => {
                     doneButton: true,
                 },
             })
-            setIsEditProfile(true)
         }
-    }, [isEditProfile])
+    }, [editProfile])
 
     return (
         <StyledContainer>
             {editProfile && auth.id != undefined && (
                 <>
-                    <>
-                        <Header {...props} />
-                        <Main {...props} />
-                    </>
+                    <Header {...props} />
+                    <Main {...props} />
                 </>
             )}
         </StyledContainer>
     )
 }
+
