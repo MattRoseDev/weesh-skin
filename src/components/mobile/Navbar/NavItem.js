@@ -28,7 +28,7 @@ const StyledIcon = styled.span`
 const StyledAvatarBorder = styled.span`
     ${C.styles.flex.inlineFlexRow};
     border-radius: 50%;
-    border: 2px solid ${({ theme }) => theme.colors.foreground};
+    border: 1px solid ${({ theme }) => theme.colors.foreground};
 `
 
 export default props => {
