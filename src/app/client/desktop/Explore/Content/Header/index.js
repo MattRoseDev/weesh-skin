@@ -4,7 +4,7 @@ import Logo from 'Root/components/global/Logo'
 import Auth from 'Root/components/mobile/Auth'
 import Navbar from 'Root/components/mobile/Navbar'
 import { AuthContext } from 'Root/contexts/auth'
-import Input from './Input'
+import Input from 'Root/app/client/global/Explore/Header/Input'
 import C from 'Root/constants'
 
 const Header = styled.header`

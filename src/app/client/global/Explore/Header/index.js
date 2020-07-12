@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Input from 'Root/app/client/global/Explore/Header/Input'
+import Input from './Input'
 import Header from 'Root/app/client/mobile/Template/Header'
 
 export default props => {

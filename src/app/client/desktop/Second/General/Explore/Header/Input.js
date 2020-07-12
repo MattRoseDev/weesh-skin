@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ExploreContext } from 'Root/contexts/explore'
 import C from 'Root/constants'
-import { Search } from 'react-feather'
+import IconButton from 'Root/components/global/IconButton'
 import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 
@@ -34,6 +34,7 @@ const initVariables = {
 export default () => {
     const { explore, dispatch } = React.useContext(ExploreContext)
     const [variables, setVariables] = React.useState(initVariables)
+    const [timer, setTimer] = React.useState(0)
 
     const [exploreAll, { error, data, called, loading }] = useLazyQuery(
         api.explore.exploreAll,
@@ -60,29 +61,34 @@ export default () => {
         }
     }, [data])
 
-    const handleChange = e => {
+    const handleKeyUp = (e) => {
+        clearTimeout(timer)
+        setTimer(setTimeout(handleSearch(e.target.value), 1000))
+    }
+
+    const handleSearch = expression => {
         dispatch({
             type: 'EXPLORE',
             data: {
-                expression: e.target.value,
+                expression,
                 loading,
             },
         })
         setVariables({
-            expression: e.target.value,
+            expression,
             limit: 5,
         })
-        if (e.target.value.length > 0) {
+        if (expression.length > 0) {
             exploreAll()
         }
     }
 
     return (
         <StyledContainer>
-            <Search onClick={handleChange} color='gray' />
+            <IconButton icon='Search' onClick={handleSearch} color='gray' />
             <StyledInput
                 placeholder={C.txts.en.explore.input}
-                onChange={e => handleChange(e)}
+                onKeyUp={e => handleKeyUp(e)}
             />
         </StyledContainer>
     )
