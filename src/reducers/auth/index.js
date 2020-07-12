@@ -7,7 +7,7 @@ export const authReducer = (state, action) => {
             }
         case 'LOGOUT':
             return {
-                theme: state.theme == 'light' ? 'light' : 'night',
+                theme: 'light',
                 color: 'blue',
                 token: false,
             }
