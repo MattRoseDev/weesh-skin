@@ -120,8 +120,8 @@ const getHomeWeeshes = gql`
 `
 
 const getShowcase = gql`
-    query getTheBestWeeshesForUser($limit: Int, $page: Int) {
-        getTheBestWeeshesForUser(limit: $limit, page: $page) {
+    query getTheBestWeeshesForUser($type: String, $limit: Int, $page: Int) {
+        getTheBestWeeshesForUser(type: $type, limit: $limit, page: $page) {
             weeshes {
                 id
                 link
