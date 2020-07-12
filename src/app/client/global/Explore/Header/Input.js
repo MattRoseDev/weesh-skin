@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ExploreContext } from 'Root/contexts/explore'
 import C from 'Root/constants'
-import { Search } from 'react-feather'
+import IconButton from 'Root/components/global/IconButton'
 import { useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import queryString from 'query-string'
@@ -37,6 +37,7 @@ export default props => {
     }
     const { explore, dispatch } = React.useContext(ExploreContext)
     const [variables, setVariables] = React.useState(initVariables)
+    const [timer, setTimer] = React.useState(0)
 
     const { error, data, called, loading, fetchMore } = useQuery(
         api.explore.exploreAll,
@@ -46,9 +47,6 @@ export default props => {
     )
 
     React.useEffect(() => {
-        if (error) {
-            console.log(error)
-        }
         if (called && data && !loading) {
             const result = data.exploreAllForUser
             dispatch({
@@ -61,24 +59,29 @@ export default props => {
                 },
             })
         }
-    }, [data])
+    }, [data, loading])
 
-    const handleChange = e => {
+    const handleKeyUp = (e) => {
+        clearTimeout(timer)
+        setTimer(setTimeout(handleSearch(e.target.value), 1000))
+    }
+
+    const handleSearch = (expression) => {
         dispatch({
             type: 'EXPLORE',
             data: {
-                expression: e.target.value,
+                expression,
                 loading,
             },
         })
         setVariables({
-            expression: e.target.value,
+            expression,
             limit: 100,
         })
-        if (e.target.value.length > 0) {
+        if (expression.length > 0) {
             fetchMore({
                 variables: {
-                    expression: e.target.value,
+                    expression,
                     limit: 100,
                 },
                 updateQuery: (prev, { fetchMoreResult, ...rest }) => {
@@ -90,11 +93,11 @@ export default props => {
 
     return (
         <StyledContainer>
-            <Search onClick={handleChange} color='gray' />
+            <IconButton icon='Search' onClick={handleSearch} color='gray' />
             <StyledInput
                 defaultValue={variables.expression}
                 placeholder={C.txts.en.explore.input}
-                onChange={e => handleChange(e)}
+                onKeyUp={e => handleKeyUp(e)}
             />
         </StyledContainer>
     )
