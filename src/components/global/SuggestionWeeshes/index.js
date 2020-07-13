@@ -16,6 +16,7 @@ const StyledContainer = styled.div`
 export default () => {
     const [state, setState] = React.useState(null)
     const { data, called, error, loading } = useQuery(api.weeshes.getShowcase, {
+        fetchPolicy: 'no-cache',
         variables: {
             limit: 100,
         },
