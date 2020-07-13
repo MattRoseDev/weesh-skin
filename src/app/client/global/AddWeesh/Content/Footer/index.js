@@ -94,8 +94,7 @@ export default () => {
                 clickEvent={handleAddWeesh}
                 isLoading={loading || undefined}
                 padding='.5rem 1rem'
-                radius='50rem'
-            >
+                radius='50rem'>
                 <StyledButtonTitle>Weesh</StyledButtonTitle>
                 <Icon icon='PenTool' color='background' />
             </Button>

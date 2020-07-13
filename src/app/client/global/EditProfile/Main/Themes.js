@@ -187,8 +187,7 @@ export default () => {
                         <StyledColor
                             {...item}
                             onClick={() => handleEditColor(item.title)}
-                            key={uuid()}
-                        >
+                            key={uuid()}>
                             {auth.color == item.title && (
                                 <Icon
                                     icon='Check'
@@ -218,8 +217,7 @@ export default () => {
                                     item.title.toLocaleLowerCase(),
                                 )
                             }
-                            key={uuid()}
-                        >
+                            key={uuid()}>
                             <StyledIcon>
                                 <Icon
                                     icon='Circle'

@@ -61,12 +61,12 @@ export default props => {
         }
     }, [data, loading])
 
-    const handleKeyUp = (e) => {
+    const handleKeyUp = e => {
         clearTimeout(timer)
         setTimer(setTimeout(handleSearch(e.target.value), 1000))
     }
 
-    const handleSearch = (expression) => {
+    const handleSearch = expression => {
         dispatch({
             type: 'EXPLORE',
             data: {

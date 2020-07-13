@@ -92,8 +92,7 @@ export default props => {
                     <StyledTab key={item.id}>
                         <StyledLabel
                             className={item.value && 'active'}
-                            htmlFor={item.id}
-                        >
+                            htmlFor={item.id}>
                             <Icon
                                 icon={item.icon}
                                 size='14'

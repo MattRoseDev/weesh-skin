@@ -1,5 +1,5 @@
 import config from 'Root/config'
-import weesh from 'Root/public/weesh.png';
+import weesh from 'Root/public/weesh.png'
 
 export default ({ data, type } = { data: null }) => {
     switch (type) {

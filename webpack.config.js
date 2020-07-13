@@ -73,24 +73,24 @@ module.exports = {
             filename: 'index.html',
             hash: true,
         }),
-        new webpack.DefinePlugin({ 
+        new webpack.DefinePlugin({
             'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
+                NODE_ENV: JSON.stringify('production'),
+            },
         }),
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.optimize.MinChunkSizePlugin({
-            minChunkSize: 10000 // Minimum number of characters
+            minChunkSize: 10000, // Minimum number of characters
         }),
         new CompressionPlugin(),
         new CopyPlugin({
             patterns: [
-                { 
-                    from: path.join(__dirname, './src/static'), 
-                    to: 'static'
+                {
+                    from: path.join(__dirname, './src/static'),
+                    to: 'static',
                 },
             ],
-        })
+        }),
     ],
     optimization: {
         splitChunks: {
@@ -98,6 +98,6 @@ module.exports = {
         },
         minimize: true,
         minimizer: [new TerserPlugin()],
-    }
+    },
     // performance: { hints: false }
 }

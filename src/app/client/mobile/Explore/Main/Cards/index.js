@@ -83,8 +83,7 @@ const Item = props => {
             )}
             {props.data.weeshCounter && (
                 <StyledWeeshCounter
-                    fontSize={props.data.fontSize ? '1rem' : '.75rem'}
-                >
+                    fontSize={props.data.fontSize ? '1rem' : '.75rem'}>
                     {props.data.weeshCounter} weeshes
                 </StyledWeeshCounter>
             )}

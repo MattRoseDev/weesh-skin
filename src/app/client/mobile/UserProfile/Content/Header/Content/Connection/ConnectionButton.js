@@ -80,8 +80,7 @@ export default props => {
             if (item == '$$username$$') {
                 item = (
                     <StyledUsername
-                        key={uuid()}
-                    >{`${user.username}`}</StyledUsername>
+                        key={uuid()}>{`${user.username}`}</StyledUsername>
                 )
             }
             return item
@@ -100,8 +99,7 @@ export default props => {
             <Dialog
                 width='18rem'
                 {...dialog}
-                toggleDialogFunction={visible => toggleDialog(visible)}
-            >
+                toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledHeaderDialog>
                     <Avatar size={4} user={user} />
                     <StyledHeaderDialogMessage>
@@ -114,14 +112,12 @@ export default props => {
                         toggleDialog(false)
                     }}
                     fontWeight='bold'
-                    color='red'
-                >
+                    color='red'>
                     {acceptButtonType}
                 </DialogButton>
                 <DialogButton
                     fontWeight='bold'
-                    onClick={() => toggleDialog(false)}
-                >
+                    onClick={() => toggleDialog(false)}>
                     {cancelButtonType}
                 </DialogButton>
             </Dialog>
@@ -135,8 +131,7 @@ export default props => {
                     else handleConnection()
                 }}
                 padding='.5rem .75rem'
-                radius='50rem'
-            >
+                radius='50rem'>
                 {props.children}
             </Button>
         </>

@@ -81,8 +81,7 @@ export default props => {
             if (item == '$$username$$') {
                 item = (
                     <StyledUsername
-                        key={uuid()}
-                    >{`${user.username}`}</StyledUsername>
+                        key={uuid()}>{`${user.username}`}</StyledUsername>
                 )
             }
             return item
@@ -101,8 +100,7 @@ export default props => {
             <Dialog
                 width='18rem'
                 {...dialog}
-                toggleDialogFunction={visible => toggleDialog(visible)}
-            >
+                toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledHeaderDialog>
                     <Avatar size={4} user={user} />
                     <StyledHeaderDialogMessage>
@@ -115,14 +113,12 @@ export default props => {
                         toggleDialog(false)
                     }}
                     fontWeight='bold'
-                    color='red'
-                >
+                    color='red'>
                     {acceptButtonType}
                 </DialogButton>
                 <DialogButton
                     fontWeight='bold'
-                    onClick={() => toggleDialog(false)}
-                >
+                    onClick={() => toggleDialog(false)}>
                     {cancelButtonType}
                 </DialogButton>
             </Dialog>
@@ -142,8 +138,7 @@ export default props => {
                         bordercolor='light'
                         borderwidth='1px'
                         loaderSize={16}
-                        margin='0 .5rem 0 0'
-                    >
+                        margin='0 .5rem 0 0'>
                         {C.txts.en.connections.buttonStatus[type]}
                     </Button>
                 ) : (
@@ -162,8 +157,7 @@ export default props => {
                         radius='50rem'
                         width='6rem'
                         loaderSize={16}
-                        margin='0 .5rem 0 0'
-                    >
+                        margin='0 .5rem 0 0'>
                         {C.txts.en.connections.buttonStatus[type]}
                     </Button>
                 ))}

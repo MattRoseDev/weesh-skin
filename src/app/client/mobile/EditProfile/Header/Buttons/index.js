@@ -119,8 +119,7 @@ export default () => {
                         padding='1rem .5rem'
                         fontWeight='bold'
                         fontSize='1rem'
-                        clickEvent={handleCancel}
-                    >
+                        clickEvent={handleCancel}>
                         {C.txts.en.editProfile.header.cancelButton}
                     </Button>
                     <StyledTitle>
@@ -132,8 +131,7 @@ export default () => {
                             color='primary'
                             padding='1rem .5rem'
                             fontWeight='bold'
-                            fontSize='1rem'
-                        >
+                            fontSize='1rem'>
                             {C.txts.en.editProfile.header.doneButton}
                         </Button>
                     ) : (
@@ -142,8 +140,7 @@ export default () => {
                             color='gray'
                             padding='1rem .5rem'
                             fontWeight='bold'
-                            fontSize='1rem'
-                        >
+                            fontSize='1rem'>
                             {C.txts.en.editProfile.header.doneButton}
                         </Button>
                     )}

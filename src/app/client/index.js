@@ -66,7 +66,12 @@ const Client = props => {
         // }
 
         if (getProfileUserResult.data) {
-            if (!getProfileUserResult.data.getUserProfileForUser && getProfileUserResult.called && !getProfileUserResult.loading && auth.token) {
+            if (
+                !getProfileUserResult.data.getUserProfileForUser &&
+                getProfileUserResult.called &&
+                !getProfileUserResult.loading &&
+                auth.token
+            ) {
                 history.push('/logout')
             }
             authDispatch({
@@ -74,8 +79,6 @@ const Client = props => {
                 data: getProfileUserResult.data.getUserProfileForUser,
             })
         }
-
-        
     }, [getProfileUserResult.data])
 
     return (
@@ -87,8 +90,7 @@ const Client = props => {
                         `${auth.color}Pack`
                     ],
                 },
-            }}
-        >
+            }}>
             <>
                 <GlobalStyles />
                 {auth.id && <Initialize />}

@@ -149,8 +149,7 @@ export default props => {
             <StyledContainer
                 hasComment={
                     props.comment && props.comment.weeshComments.length > 0
-                }
-            >
+                }>
                 <Avatar user={auth} />
                 <StyledFormContainer>
                     {weeshPage.reply && (
@@ -162,8 +161,7 @@ export default props => {
                                 </StyledReplyUsername>
                             </StyledReplyLabel>
                             <StyledReplyDiscardIcon
-                                onClick={handleDiscardReply}
-                            >
+                                onClick={handleDiscardReply}>
                                 <Icon icon='X' size='18' color='gray' />
                             </StyledReplyDiscardIcon>
                         </StyledReplyContainer>
@@ -179,8 +177,7 @@ export default props => {
                         />
                         <StyledButton
                             disabled={state.length < 1}
-                            onClick={handleAddWeeshComment}
-                        >
+                            onClick={handleAddWeeshComment}>
                             Send
                         </StyledButton>
                     </StyledForm>

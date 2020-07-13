@@ -126,8 +126,7 @@ export default props => {
                             radius='5rem'
                             margin='.75rem 0 0'
                             fontWeight='bold'
-                            isLoading={addMessageResponse.loading || undefined}
-                        >
+                            isLoading={addMessageResponse.loading || undefined}>
                             Submit
                         </Button>
                     ) : (
@@ -138,8 +137,7 @@ export default props => {
                             color='gray'
                             radius='5rem'
                             margin='.75rem 0 0'
-                            fontWeight='bold'
-                        >
+                            fontWeight='bold'>
                             Submit
                         </Button>
                     )}

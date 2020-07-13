@@ -51,8 +51,7 @@ export default props => {
                         padding='.4rem'
                         margin='0 .5rem 0 0'
                         radius='50%'
-                        to={`/${auth.username}/bookmarks`}
-                    >
+                        to={`/${auth.username}/bookmarks`}>
                         <Icon icon='Bookmark' color={`${auth.color}`} />
                     </Button>
                 )}

@@ -29,8 +29,7 @@ export default props => {
                 <StyledLoader>
                     <Loader size={20} strokeWidth={1.25} color='gray' />
                 </StyledLoader>
-            }
-        >
+            }>
             {props.children}
         </StyledContainer>
     )
