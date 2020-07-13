@@ -71,6 +71,17 @@ export default props => {
     )
     const [isLiked, setIsLiked] = React.useState(props.isLiked)
     const [isBookmarked, setIsBookmarked] = React.useState(props.isBookmarked)
+    const [numbers, setNumbers] = React.useState([
+        {
+            number: props.like && props.like.paginate.totalDocs,
+            icon: 'Heart',
+        },
+        {
+            number: props.commentsCounter,
+            icon: 'MessageCircle',
+        },
+    ])
+
     const history = useHistory()
 
     const [likeWeesh, likeWeeshResult] = useMutation(api.weeshLikes.like, {
@@ -151,24 +162,28 @@ export default props => {
                 }
                 if (isLiked) {
                     dislikeWeesh()
+                    setNumbers(prevState => [
+                        {
+                            ...prevState[0],
+                            number: prevState[0].number - 1
+                        },
+                        prevState[1],
+                    ])
                 } else {
                     likeWeesh()
+                    setNumbers(prevState => [
+                        {
+                            ...prevState[0],
+                            number: prevState[0].number + 1
+                        },
+                        prevState[1],
+                    ])
                 }
                 setIsLiked(isLiked ? false : true)
             },
         },
     ]
 
-    const numbers = [
-        {
-            number: props.like && props.like.paginate.totalDocs,
-            icon: 'Heart',
-        },
-        {
-            number: props.commentsCounter,
-            icon: 'MessageCircle',
-        },
-    ]
     return (
         <StyledFooterContainer>
             <StyledFooter>
