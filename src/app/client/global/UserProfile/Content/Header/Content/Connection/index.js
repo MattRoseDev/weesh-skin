@@ -17,8 +17,7 @@ const handleStatus = (props, auth, user) => {
                 padding='.5rem 1.25rem'
                 fontWeight='bold'
                 to='/login'
-                width='6rem'
-            >
+                width='6rem'>
                 Follow
             </Button>
         )
@@ -35,8 +34,7 @@ const handleStatus = (props, auth, user) => {
                 padding='.5rem 1.25rem'
                 fontWeight='bold'
                 to='settings/profile'
-                width='6rem'
-            >
+                width='6rem'>
                 Settings
             </Button>
         )

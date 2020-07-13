@@ -61,7 +61,7 @@ export default () => {
         }
     }, [data])
 
-    const handleKeyUp = (e) => {
+    const handleKeyUp = e => {
         clearTimeout(timer)
         setTimer(setTimeout(handleSearch(e.target.value), 1000))
     }

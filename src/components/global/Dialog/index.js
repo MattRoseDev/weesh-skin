@@ -54,8 +54,7 @@ export default props => {
                 if (e.target == e.currentTarget) {
                     props.toggleDialogFunction(false)
                 }
-            }}
-        >
+            }}>
             <StyledContent {...props}>{props.children}</StyledContent>
         </StyledContainer>
     )

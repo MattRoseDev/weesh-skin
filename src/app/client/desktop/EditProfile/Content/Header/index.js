@@ -48,8 +48,7 @@ export default props => {
                                 width: 1040,
                                 height: 346,
                             }))
-                        }
-                    >
+                        }>
                         <Cover height='213px' user={editProfile} />
                     </EditableImage>
                     <StyledAvatarFrame>
@@ -63,8 +62,7 @@ export default props => {
                                     width: 640,
                                     height: 640,
                                 }))
-                            }
-                        >
+                            }>
                             <Avatar
                                 user={editProfile}
                                 size={7}

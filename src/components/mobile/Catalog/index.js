@@ -26,7 +26,7 @@ const StyledContent = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.center};
     color: ${({ theme }) => theme.colors.foreground};
-    padding: .75rem 0 0;
+    padding: 0.75rem 0 0;
 `
 const StyledTitle = styled.h3`
     font-size: 1rem;
@@ -34,7 +34,7 @@ const StyledTitle = styled.h3`
     color: ${({ theme }) => theme.colors.foreground};
 `
 const StyledDescription = styled.p`
-    font-size: .75rem;
+    font-size: 0.75rem;
     text-align: center;
     color: ${({ theme }) => theme.colors.foreground};
 `
@@ -72,26 +72,35 @@ export default () => {
         },
     ]
 
-
     return (
         <StyledContainer>
-            {details.map(detail => <Item key={uuid()} {...detail} color={C.themes[`${auth.theme}`].colors.foreground}/>)}
+            {details.map(detail => (
+                <Item
+                    key={uuid()}
+                    {...detail}
+                    color={C.themes[`${auth.theme}`].colors.foreground}
+                />
+            ))}
         </StyledContainer>
     )
 }
 
-const Item = (props) => {
-    return <StyledItem>
-        <ReactSVG src={props.icon} beforeInjection={svg => {
-            svg.setAttribute('style', `width: ${props.width}px;height: ${props.height}px;fill:${props.color}`)
-        }} />
-        <StyledContent>
-            <StyledTitle>
-                {props.title}
-            </StyledTitle>
-            <StyledDescription>
-                {props.description}
-            </StyledDescription>
-        </StyledContent>
-    </StyledItem>
+const Item = props => {
+    return (
+        <StyledItem>
+            <ReactSVG
+                src={props.icon}
+                beforeInjection={svg => {
+                    svg.setAttribute(
+                        'style',
+                        `width: ${props.width}px;height: ${props.height}px;fill:${props.color}`,
+                    )
+                }}
+            />
+            <StyledContent>
+                <StyledTitle>{props.title}</StyledTitle>
+                <StyledDescription>{props.description}</StyledDescription>
+            </StyledContent>
+        </StyledItem>
+    )
 }

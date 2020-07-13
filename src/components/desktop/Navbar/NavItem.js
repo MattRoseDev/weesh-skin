@@ -86,8 +86,7 @@ export default props => {
                 <NavItem
                     color='foreground'
                     exact={props.exact || false}
-                    to={path}
-                >
+                    to={path}>
                     <NavItemContent color='foreground'>
                         <StyledIcon>
                             {props.path == '/notifications' && (

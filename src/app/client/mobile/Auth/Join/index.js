@@ -125,8 +125,7 @@ export default () => {
                 margin='.75rem 0 0'
                 padding='.85rem'
                 radius='.75rem'
-                fontSize='.85rem'
-            >
+                fontSize='.85rem'>
                 {C.txts.en.auth.joinButton}
             </Button>
             <OR width={75} margin={1.5} />

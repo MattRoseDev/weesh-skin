@@ -27,16 +27,14 @@ export default props => {
                         visible: false,
                     }))
                 }
-                margin='.5rem 0 .5rem .5rem'
-            >
+                margin='.5rem 0 .5rem .5rem'>
                 <Icon color='red' icon='X' />
                 {C.txts.en.cropImage.discardButton}
             </Button>
             <Button
                 color='primary'
                 onClick={props.uploadFunc}
-                margin='.5rem .5rem .5rem'
-            >
+                margin='.5rem .5rem .5rem'>
                 <Icon color={`${auth.color}`} icon='ArrowUp' />
                 {C.txts.en.cropImage.uploadButton}
             </Button>

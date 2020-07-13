@@ -85,8 +85,7 @@ export default props => {
                 if (e.target == e.currentTarget) {
                     props.toggleDialogFunction(false)
                 }
-            }}
-        >
+            }}>
             <StyledContent {...props}>
                 {props.buttons &&
                     props.buttons.map(button => (

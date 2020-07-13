@@ -138,8 +138,7 @@ export default props => {
                     fontWeight='bold'
                     background='foreground'
                     color='background'
-                    to='/logout'
-                >
+                    to='/logout'>
                     {C.txts.en.editProfile.header.logout}
                 </Button>
             </StyledLogoutContainer>

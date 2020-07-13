@@ -123,8 +123,7 @@ export default () => {
                 margin='.5rem 0 0'
                 padding='.85rem'
                 fontSize='.85rem'
-                width='75%'
-            >
+                width='75%'>
                 {C.txts.en.auth.loginButton}
             </Button>
             <OR width={75} margin={1.5} />

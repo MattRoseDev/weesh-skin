@@ -165,7 +165,7 @@ export default props => {
                     setNumbers(prevState => [
                         {
                             ...prevState[0],
-                            number: prevState[0].number - 1
+                            number: prevState[0].number - 1,
                         },
                         prevState[1],
                     ])
@@ -174,7 +174,7 @@ export default props => {
                     setNumbers(prevState => [
                         {
                             ...prevState[0],
-                            number: prevState[0].number + 1
+                            number: prevState[0].number + 1,
                         },
                         prevState[1],
                     ])
@@ -207,8 +207,7 @@ export default props => {
                             item.number > 0 && (
                                 <StyledNumberContainer
                                     key={uuid()}
-                                    margin='0 0 0 .75rem'
-                                >
+                                    margin='0 0 0 .75rem'>
                                     <Icon
                                         icon={item.icon}
                                         size={12}

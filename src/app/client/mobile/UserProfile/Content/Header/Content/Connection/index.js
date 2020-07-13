@@ -14,8 +14,7 @@ const handleStatus = (props, auth, user) => {
                 color='background'
                 padding='.5rem 1.25rem'
                 fontWeight='bold'
-                to='/login'
-            >
+                to='/login'>
                 Follow
             </Button>
         )
@@ -29,8 +28,7 @@ const handleStatus = (props, auth, user) => {
                 color='background'
                 padding='.5rem 1.25rem'
                 fontWeight='bold'
-                to='settings/profile'
-            >
+                to='settings/profile'>
                 Settings
             </Button>
         )

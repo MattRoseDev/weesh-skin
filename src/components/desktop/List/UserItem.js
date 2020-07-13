@@ -112,8 +112,7 @@ export default props => {
                     color='background'
                     padding='.25rem .5rem'
                     radius='50rem'
-                    fontWeight='bold'
-                >
+                    fontWeight='bold'>
                     Confirm
                 </Button>
                 <StyledIcon onClick={handleReject}>
@@ -123,8 +122,7 @@ export default props => {
         </StyledRequestContainer>
     ) : (
         <StyledRequestContainer
-            borderBottom={`${props.connection ? '1px' : undefined}`}
-        >
+            borderBottom={`${props.connection ? '1px' : undefined}`}>
             <Link width='100%' to={`/${user.username}`}>
                 <StyledRequestContent>
                     <Avatar size={2.25} user={user} />

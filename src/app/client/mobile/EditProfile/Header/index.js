@@ -42,8 +42,7 @@ export default props => {
                                 width: 1040,
                                 height: 346,
                             }))
-                        }
-                    >
+                        }>
                         <Cover
                             height={`${window.innerWidth / 3}px`}
                             user={editProfile}
@@ -60,8 +59,7 @@ export default props => {
                                     width: 640,
                                     height: 640,
                                 }))
-                            }
-                        >
+                            }>
                             <Avatar
                                 user={editProfile}
                                 size={4}

@@ -166,8 +166,7 @@ export default props => {
                     hoverbackground='lightPrimary'
                     bordercolor='primary'
                     borderwidth='1px'
-                    to='/logout'
-                >
+                    to='/logout'>
                     {C.txts.en.editProfile.header.logout}
                 </Button>
             </StyledLogoutContainer>
@@ -232,6 +231,6 @@ export default props => {
             <About />
         </StyledMain>
     ) : (
-            <></>
-        )
+        <></>
+    )
 }

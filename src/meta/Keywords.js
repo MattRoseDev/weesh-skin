@@ -1,5 +1,16 @@
 export default ({ data, type } = { data: null }) => {
-    let keywords = ['weesh', 'dream', 'dreams', 'wish', 'wishes', 'goal', 'goals', 'target', 'purpose','imagine']
+    let keywords = [
+        'weesh',
+        'dream',
+        'dreams',
+        'wish',
+        'wishes',
+        'goal',
+        'goals',
+        'target',
+        'purpose',
+        'imagine',
+    ]
     switch (type) {
         case 'UserProfile':
             data.user.firstName && keywords.push(data.user.firstName)

@@ -167,8 +167,7 @@ export default props => {
                 color='black'
                 radius='50rem'
                 padding='.5rem 1rem'
-                margin='1rem 0 0'
-            >
+                margin='1rem 0 0'>
                 {C.txts.en.cropImage.chooseFile}
             </Button>
             <Buttons {...props} uploadFunc={handleUploadImage} />

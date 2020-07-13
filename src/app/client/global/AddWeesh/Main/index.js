@@ -150,8 +150,7 @@ export default props => {
                 ref={frontInput}
                 contentEditable={true}
                 suppressContentEditableWarning={true}
-                onInput={e => handleChange(e)}
-            ></StyledInput>
+                onInput={e => handleChange(e)}></StyledInput>
             <StyledOutput>{state}</StyledOutput>
         </StyledContainer>
     )

@@ -78,8 +78,7 @@ export default props => {
 const Tag = props => {
     return (
         <StyledTag
-            onClick={() => props.handleCompleteTag({ title: props.title })}
-        >
+            onClick={() => props.handleCompleteTag({ title: props.title })}>
             #{props.title}
         </StyledTag>
     )

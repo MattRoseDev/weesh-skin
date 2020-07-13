@@ -89,7 +89,7 @@ export default props => {
                 type: 'EDIT_PROFILE',
                 data: {
                     ...response,
-                    doneButton: true
+                    doneButton: true,
                 },
             })
             data.getUserByUsernameForUser.weesh.paginate &&

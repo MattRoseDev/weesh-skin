@@ -147,8 +147,7 @@ export default props => {
                             fontWeight='bold'
                             isLoading={
                                 changePasswordResponse.loading || undefined
-                            }
-                        >
+                            }>
                             Submit
                         </Button>
                     ) : (
@@ -159,8 +158,7 @@ export default props => {
                             color='gray'
                             radius='5rem'
                             margin='.75rem 0 0'
-                            fontWeight='bold'
-                        >
+                            fontWeight='bold'>
                             Submit
                         </Button>
                     )}

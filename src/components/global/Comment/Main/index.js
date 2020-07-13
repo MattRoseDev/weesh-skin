@@ -147,8 +147,7 @@ export default props => {
             <Dialog
                 width='18rem'
                 {...dialog}
-                toggleDialogFunction={visible => toggleDialog(visible)}
-            >
+                toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledHeaderDialog>
                     <StyledHeaderDialogMessage>
                         Delete your Comment?
@@ -160,14 +159,12 @@ export default props => {
                         toggleDialog(false)
                     }}
                     fontWeight='bold'
-                    color='red'
-                >
+                    color='red'>
                     Delete
                 </DialogButton>
                 <DialogButton
                     fontWeight='bold'
-                    onClick={() => toggleDialog(false)}
-                >
+                    onClick={() => toggleDialog(false)}>
                     Cancel
                 </DialogButton>
             </Dialog>
