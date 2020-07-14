@@ -1,7 +1,7 @@
 export default {
-    loginButton: 'Log In',
+    loginButton: 'Login',
     joinButton: 'Join',
     joinLink: 'Join Us',
-    loginLink: 'Log In to Weesh',
+    loginLink: 'Login to Weesh',
     forgotPasswordLink: 'Forgot Password?',
 }

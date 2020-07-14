@@ -1,3 +1,4 @@
+import google from './google'
 const PORT = 5000
 let API_URL, WS_URL, DOMAIN_URL, PROTOCOL, UPLOAD_URL
 
@@ -22,6 +23,7 @@ switch (SOURCE) {
 }
 
 export default {
+    google,
     PORT,
     PROTOCOL,
     UPLOAD_URL,

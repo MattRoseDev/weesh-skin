@@ -47,6 +47,31 @@ const join = gql`
         }
     }
 `
+
+const oAuthGoogle = gql`
+    mutation oAuthGoogle($gToken: String!) {
+        oAuthGoogle(gToken: $gToken) {
+            user {
+                id
+                firstName
+                lastName
+                color
+                theme
+                bio
+                username
+                email
+                private
+                avatarAddress
+                unknown {
+                    fullname
+                    avatar
+                }
+            }
+            token
+        }
+    }
+`
+
 const getUserProfile = gql`
     query getUserProfileForUse {
         getUserProfileForUser {
@@ -71,5 +96,6 @@ const getUserProfile = gql`
 export default {
     login,
     join,
+    oAuthGoogle,
     getUserProfile,
 }

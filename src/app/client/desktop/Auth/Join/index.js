@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Logo from 'Root/components/global/Logo'
+import GoogleAuth from 'Root/components/global/GoogleAuth'
 import Input from 'Root/components/global/Input'
 import ErrorMessage from 'Root/components/global/ErrorMessage'
 import Button from 'Root/components/global/Button'
@@ -59,8 +60,11 @@ export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState(initVariables)
     const history = useHistory()
-
+    const [isLoading, setIsLoading] = React.useState(false)
     const [join, { data, error, loading }] = useMutation(api.auth.join)
+    const [oAuthGoogleRequest, oAuthGoogleResponse] = useMutation(
+        api.auth.oAuthGoogle,
+    )
 
     React.useEffect(() => {
         if (data) {
@@ -75,6 +79,28 @@ export default () => {
             setTimeout(() => history.push('/'), 500)
         }
     }, [data, error])
+
+    React.useEffect(() => {
+        setIsLoading(loading)
+    }, [loading])
+
+    React.useEffect(() => {
+        if (oAuthGoogleResponse.data) {
+            const { token, user } = oAuthGoogleResponse.data.oAuthGoogle
+            dispatch({
+                type: 'LOGIN',
+                data: {
+                    token,
+                    ...user,
+                },
+            })
+            setTimeout(() => history.push('/'), 500)
+        }
+    }, [oAuthGoogleResponse.data, oAuthGoogleResponse.error])
+
+    React.useEffect(() => {
+        setIsLoading(oAuthGoogleResponse.loading)
+    }, [oAuthGoogleResponse.loading])
 
     const handleJoin = () => join({ variables })
 
@@ -141,7 +167,7 @@ export default () => {
                         color='background'
                         radius='.5rem'
                         background='primary'
-                        isLoading={loading || undefined}
+                        isLoading={isLoading || undefined}
                         fontWeight='bold'
                         width='75%'
                         margin='1.5rem 0 0'
@@ -150,6 +176,10 @@ export default () => {
                         fontSize='.85rem'>
                         {C.txts.en.auth.joinButton}
                     </Button>
+                    <GoogleAuth
+                        buttonText='Join with Google'
+                        handleRequest={oAuthGoogleRequest}
+                    />
                     <OR width={75} margin={1.5} />
                     <StyledLoginLink to='login'>
                         {C.txts.en.auth.loginLink}
