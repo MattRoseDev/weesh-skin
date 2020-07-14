@@ -12,7 +12,7 @@ import useHistory from 'Root/hooks/useHistory'
 import { Link } from 'react-router-dom'
 import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
-import WelcomePicture from 'Root/public/img/login/2803208.png'
+import WelcomePicture from 'Root/public/img/login/welcome.png'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
@@ -24,31 +24,20 @@ const StyledContainer = styled.div`
 
 const StyledBox = styled.div`
     ${C.styles.flex.flexRowCenter};
-    ${C.styles.boxShadow.primary.bold};
     overflow: hidden;
-    border-radius: 2rem;
-`
-
-const StyledIcon = styled.div`
-    ${C.styles.flex.flexColumnCenter};
-    border: 3px solid ${({ theme }) => theme.colors.dark};
-    min-width: 8rem;
-    max-width: 8rem;
-    min-height: 8rem;
-    max-height: 8rem;
-    border-radius: 50%;
-    margin: 0 0 2rem;
+    border: none;
 `
 
 const StyledImg = styled.img`
-    padding: 5rem 2rem;
+    padding: 0rem 2rem;
 `
 
 const StyledLogin = styled.form`
     ${C.styles.flex.flexColumnCenter};
-    border-left: 1px solid ${({ theme }) => theme.colors.light};
+    border: 1px solid ${({ theme }) => theme.colors.light};
+    border-radius: 2rem;
     width: 25rem;
-    /* padding: 3rem 0 2rem; */
+    padding: 3rem 0 2rem;
 `
 
 const StyledForgotPasswordLinkContainer = styled.div`
@@ -119,9 +108,6 @@ export default () => {
                 <StyledImg height='400' src={WelcomePicture} />
                 <StyledLogin onSubmit={e => handleSubmit(e)}>
                     <Logo fontSize={4.5} margin='1.5rem' />
-                    {/* <StyledIcon>
-                    <Icon icon='User' color='dark' size={100} strokeWidth={1} />
-                </StyledIcon> */}
                     {error && (
                         <ErrorMessage
                             width='75%'

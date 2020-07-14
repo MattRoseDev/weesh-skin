@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 import useHistory from 'Root/hooks/useHistory'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
-import WelcomePicture from 'Root/public/img/login/2803208.png'
+import WelcomePicture from 'Root/public/img/login/welcome.png'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
 
@@ -23,8 +23,10 @@ const StyledContainer = styled.div`
 
 const StyledJoin = styled.form`
     ${C.styles.flex.flexColumnCenter};
-    border-left: 1px solid ${({ theme }) => theme.colors.light};
+    border: 1px solid ${({ theme }) => theme.colors.light};
+    border-radius: 2rem;
     width: 25rem;
+    padding: 3rem 0 2rem;
 `
 
 const StyledImg = styled.img`
@@ -33,9 +35,8 @@ const StyledImg = styled.img`
 
 const StyledBox = styled.div`
     ${C.styles.flex.flexRowCenter};
-    ${C.styles.boxShadow.primary.bold};
+    border: none;
     overflow: hidden;
-    border-radius: 2rem;
 `
 
 const StyledLoginLink = styled(Link)`
