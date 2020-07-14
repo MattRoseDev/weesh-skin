@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Logo from 'Root/components/global/Logo'
+import GoogleAuth from 'Root/components/global/GoogleAuth'
 import Input from 'Root/components/global/Input'
 import Button from 'Root/components/global/Button'
 import ErrorMessage from 'Root/components/global/ErrorMessage'
@@ -9,7 +10,7 @@ import C from 'Root/constants'
 import { AuthContext } from 'Root/contexts/auth'
 import useHistory from 'Root/hooks/useHistory'
 import { Link } from 'react-router-dom'
-import { useLazyQuery } from '@apollo/react-hooks'
+import { useLazyQuery, useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
@@ -50,10 +51,13 @@ export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState(initVariables)
     const history = useHistory()
+    const [isLoading, setIsLoading] = React.useState(false)
     const [loadLogin, { data, called, loading, error }] = useLazyQuery(
         api.auth.login,
     )
-
+    const [oAuthGoogleRequest, oAuthGoogleResponse] = useMutation(
+        api.auth.oAuthGoogle,
+    )
     React.useEffect(() => {
         if (called && data) {
             const { token, user } = data.login
@@ -67,6 +71,28 @@ export default () => {
             setTimeout(() => history.push('/'), 100)
         }
     }, [data, error])
+
+    React.useEffect(() => {
+        setIsLoading(loading)
+    }, [loading])
+
+    React.useEffect(() => {
+        if (oAuthGoogleResponse.data) {
+            const { token, user } = oAuthGoogleResponse.data.oAuthGoogle
+            dispatch({
+                type: 'LOGIN',
+                data: {
+                    token,
+                    ...user,
+                },
+            })
+            setTimeout(() => history.push('/'), 500)
+        }
+    }, [oAuthGoogleResponse.data, oAuthGoogleResponse.error])
+
+    React.useEffect(() => {
+        setIsLoading(oAuthGoogleResponse.loading)
+    }, [oAuthGoogleResponse.loading])
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -119,13 +145,17 @@ export default () => {
                 color='background'
                 background='primary'
                 fontWeight='bold'
-                isLoading={loading || undefined}
-                margin='.5rem 0 0'
+                isLoading={isLoading || undefined}
+                margin='.75rem 0 0'
                 padding='.85rem'
                 fontSize='.85rem'
                 width='75%'>
                 {C.txts.en.auth.loginButton}
             </Button>
+            <GoogleAuth
+                buttonText='Login with Google'
+                handleRequest={oAuthGoogleRequest}
+            />
             <OR width={75} margin={1.5} />
             <StyledJoinLink to='join'>{C.txts.en.auth.joinLink}</StyledJoinLink>
         </StyledLogin>
