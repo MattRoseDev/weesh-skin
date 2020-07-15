@@ -31,7 +31,7 @@ const StyledJoin = styled.form`
 `
 
 const StyledImg = styled.img`
-    padding: 5rem 2rem;
+    padding: 0 2rem;
 `
 
 const StyledBox = styled.div`

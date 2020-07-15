@@ -1,5 +1,6 @@
 import React from 'react'
 import helpers from 'Root/helpers'
+import client from 'Root/apollo'
 import { AuthContext } from 'Root/contexts/auth'
 import { Redirect } from 'react-router-dom'
 
@@ -9,6 +10,7 @@ export default () => {
     Object.keys(auth).map(item => {
         storage.remove(item)
     })
+    client.cache.reset()
     dispatch({ type: 'LOGOUT' })
 
     return <Redirect to='/login' />
