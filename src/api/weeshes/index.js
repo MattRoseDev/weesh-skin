@@ -350,7 +350,7 @@ const getWeeshByLink = gql`
                 }
             }
             commentsCounter
-            # updatedAt
+            updatedAt
         }
     }
 `
