@@ -9,6 +9,7 @@ const StyledTag = styled(Link)`
     ${C.styles.flex.inlineFlexRow};
     text-decoration: none;
     font-size: inherit;
+    user-select: text !important;
 `
 
 export default props => {
