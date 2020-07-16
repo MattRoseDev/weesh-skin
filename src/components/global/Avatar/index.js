@@ -18,14 +18,29 @@ const StyledContainer = styled.span`
 
 const StyledAvatar = styled.span`
     background-color: ${({ theme }) => theme.colors.white};
-    background-image: url(${({ user }) =>
-        user
-            ? user.unknown.avatar
-                ? unknownAvatar
-                : user.avatarAddress
-                ? `${config.UPLOAD_URL}${user.avatarAddress}`
-                : avatar
-            : avatar});
+    ${({ user }) => {
+        if (user) {
+            if (user.unknown.avatar) {
+                return css`
+                    background-image: url(${unknownAvatar});
+                `
+            } else {
+                if (user.avatarAddress) {
+                    return css`
+                        background-image: url(${`${config.UPLOAD_URL}${user.avatarAddress}`});
+                    `
+                } else {
+                    return css`
+                        background-image: url(${avatar});
+                    `
+                }
+            }
+        } else {
+            return css`
+                background-image: url(${avatar});
+            `
+        }
+    }};
     width: ${({ size }) => size || 2}rem;
     height: ${({ size }) => size || 2}rem;
     border-width: ${({ borderwidth }) => borderwidth || 1}px;
