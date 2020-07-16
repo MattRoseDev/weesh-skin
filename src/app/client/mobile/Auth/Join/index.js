@@ -58,7 +58,7 @@ export default () => {
                     ...user,
                 },
             })
-            setTimeout(() => history.push('/'), 500)
+            setTimeout(() => history.push('/explore'), 500)
         }
     }, [data, error])
 
@@ -76,7 +76,7 @@ export default () => {
                     ...user,
                 },
             })
-            setTimeout(() => history.push('/'), 500)
+            setTimeout(() => history.push('/explore'), 500)
         }
     }, [oAuthGoogleResponse.data, oAuthGoogleResponse.error])
 
