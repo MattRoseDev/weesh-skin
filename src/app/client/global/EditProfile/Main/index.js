@@ -199,6 +199,7 @@ export default props => {
                 margin='.5rem 0 0'
                 width={100}
                 placeholder={C.txts.en.editProfile.inputsLabel.bio}
+                rows={5}
             />
             <StyledToggles>
                 {toggles.map(toggle => (
