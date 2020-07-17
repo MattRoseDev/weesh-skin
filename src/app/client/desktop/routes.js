@@ -8,6 +8,7 @@ import UserProfile from './UserProfile'
 import TagPage from './TagPage'
 import BookmarkPage from './BookmarkPage'
 import ConnectionsPage from './ConnectionsPage'
+import LikesPage from './LikesPage'
 import RequestsPage from './RequestsPage'
 import ChangePassword from './ChangePassword'
 import Support from './Support'
@@ -99,6 +100,12 @@ const routes = [
         exact: true,
         path: '/:username/requests',
         component: RequestsPage,
+    },
+    {
+        private: true,
+        exact: true,
+        path: '/w/:link/likes',
+        component: LikesPage,
     },
     {
         // private: true,

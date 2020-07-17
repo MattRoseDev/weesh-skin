@@ -1,10 +1,10 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import IconButton from 'Root/components/global/IconButton'
+import Link from 'Root/components/global/Link'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
 import uuid from 'uuid'
-import { Link } from 'react-router-dom'
 import useHistory from 'Root/hooks/useHistory'
 import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
@@ -41,7 +41,7 @@ const StyledNumbers = styled.div`
     margin: 0 0.75rem 0 0;
 `
 
-const StyledNumberContainer = styled.span`
+const StyledNumberContainer = styled(Link)`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
     ${({ margin }) =>
@@ -75,10 +75,12 @@ export default props => {
         {
             number: props.like && props.like.paginate.totalDocs,
             icon: 'Heart',
+            link: `/w/${props.link}/likes`,
         },
         {
             number: props.commentsCounter,
             icon: 'MessageCircle',
+            link: `/w/${props.link}`,
         },
     ])
 
@@ -207,7 +209,8 @@ export default props => {
                             item.number > 0 && (
                                 <StyledNumberContainer
                                     key={uuid()}
-                                    margin='0 0 0 .75rem'>
+                                    margin='0 0 0 .75rem'
+                                    to={item.link}>
                                     <Icon
                                         icon={item.icon}
                                         size={12}

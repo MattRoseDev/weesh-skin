@@ -100,7 +100,56 @@ const dislike = gql`
     }
 `
 
+const getLikes = gql`
+    query getWeeshLikesByLinkForUser($link: String!) {
+        getWeeshLikesByLinkForUser(link: $link) {
+            weeshLikes {
+                user {
+                    id
+                    username
+                    firstName
+                    lastName
+                    avatarAddress
+                    unknown {
+                        fullname
+                        avatar
+                    }
+                }
+                connection {
+                    follower {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            avatar
+                            fullname
+                        }
+                    }
+                    following {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        unknown {
+                            avatar
+                            fullname
+                        }
+                    }
+                    status
+                }
+            }
+            paginate {
+                totalDocs
+            }
+        }
+    }
+`
+
 export default {
     like,
     dislike,
+    getLikes,
 }
