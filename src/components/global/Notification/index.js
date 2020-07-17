@@ -51,7 +51,7 @@ const StyledContentContainer = styled.div`
 const StyledContent = styled.span`
     padding: 0 0.125rem 0 0;
     color: ${({ theme }) => theme.colors.foreground};
-    white-space: pre-wrap;
+    white-space: normal;
     word-break: break-word;
 `
 
