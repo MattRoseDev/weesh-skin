@@ -68,7 +68,9 @@ export default props => {
             {user.bio && <StyledBio>{user.bio}</StyledBio>}
             <StyledButtonContainer>
                 <CounterForProfile
-                    title='Followers'
+                    title={`${
+                        numbers.followers == '1' ? 'Follower' : 'Followers'
+                    }`}
                     to={
                         (auth.username == user.username ||
                             !user.private ||
@@ -91,7 +93,10 @@ export default props => {
                     }
                     number={numbers.following}
                 />
-                <CounterForProfile title='Weeshes' number={numbers.weeshes} />
+                <CounterForProfile
+                    title={`${numbers.weeshes == '1' ? 'Weesh' : 'Weeshes'}`}
+                    number={numbers.weeshes}
+                />
             </StyledButtonContainer>
         </StyledContainer>
     )
