@@ -122,7 +122,7 @@ export default props => {
             type: 'SET_REPLY',
             data: props,
         })
-        weeshPage.textarea.current.focus()
+        weeshPage.textarea.current._reactInternalFiber.child.stateNode.focus()
     }
 
     const handleRemove = () => {
