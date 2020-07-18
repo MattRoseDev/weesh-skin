@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import cover from 'Root/public/img/cover.png'
 import config from 'Root/config'
 
@@ -8,10 +8,17 @@ const StyledContainerCover = styled.div`
 `
 
 const StyledCover = styled.div`
-    background-image: url(${({ user }) =>
-        user && user.coverAddress
-            ? `${config.UPLOAD_URL}${user.coverAddress}`
-            : cover});
+    ${({ user }) => {
+        if (user && user.coverAddress) {
+            return css`
+                background-image: url(${`${config.UPLOAD_URL}${user.coverAddress}`});
+            `
+        } else {
+            return css`
+                background-image: url(${`${cover}`});
+            `
+        }
+    }};
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
