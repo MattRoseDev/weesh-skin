@@ -168,6 +168,7 @@ const getUserBookmarksWeeshes = gql`
                     }
                     commentsCounter
                     updatedAt
+                    createdAt
                 }
             }
             paginate {

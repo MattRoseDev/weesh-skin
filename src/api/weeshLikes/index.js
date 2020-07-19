@@ -46,6 +46,7 @@ const like = gql`
                 }
             }
             updatedAt
+            createdAt
         }
     }
 `
@@ -96,6 +97,7 @@ const dislike = gql`
                 }
             }
             updatedAt
+            createdAt
         }
     }
 `

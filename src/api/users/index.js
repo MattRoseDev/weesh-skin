@@ -112,6 +112,7 @@ const getUserByUsernameForUser = gql`
                     }
                     commentsCounter
                     updatedAt
+                    createdAt
                 }
                 paginate {
                     totalDocs

@@ -48,10 +48,11 @@ export default props => {
             {props.updatedAt && (
                 <StyledDateContainer>
                     {helpers.dateFormat(
-                        moment(props.updatedAt).format(
+                        moment(props.createdAt).format(
                             'hh:mm  A · MMM DD, YYYY',
                         ),
                     )}
+                    {`${props.updatedAt == props.createdAt ? '' : ' · edited'}`}
                 </StyledDateContainer>
             )}
             {/* <StyledTagContainer>
