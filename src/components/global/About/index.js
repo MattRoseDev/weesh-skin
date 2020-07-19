@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import uuid from 'uuid'
 import C from 'Root/constants'
+import config from 'Root/config'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -19,7 +20,7 @@ const StyledTitle = styled.div`
 export default props => {
     return (
         <StyledContainer>
-            <StyledTitle>VERSION 1.0.0</StyledTitle>
+            <StyledTitle>VERSION {config.VERSION}</StyledTitle>
             <StyledTitle>© 2020 WEESH</StyledTitle>
         </StyledContainer>
     )

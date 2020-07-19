@@ -1,5 +1,6 @@
 import google from './google'
 const PORT = 5000
+const VERSION = '1.0.0'
 let API_URL, WS_URL, DOMAIN_URL, PROTOCOL, UPLOAD_URL
 
 const SOURCE = 'liara'
@@ -25,6 +26,7 @@ switch (SOURCE) {
 export default {
     google,
     PORT,
+    VERSION,
     PROTOCOL,
     UPLOAD_URL,
     API_URL,

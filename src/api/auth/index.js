@@ -85,6 +85,7 @@ const getUserProfile = gql`
             email
             private
             avatarAddress
+            coverAddress
             unknown {
                 fullname
                 avatar
