@@ -4,6 +4,7 @@ import { weeshReducer } from 'Root/reducers/weesh'
 export const WeeshContext = React.createContext()
 
 const initialWeesh = {
+    id: null,
     content: '',
     status: null,
     characterCount: 0,

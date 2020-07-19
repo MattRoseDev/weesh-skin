@@ -42,11 +42,6 @@ const StyledOutput = styled.div`
     z-index: 0;
 `
 
-const StyledTag = styled.span`
-    color: ${({ theme }) => theme.colors.primary};
-    ${C.styles.flex.inlineFlexRow};
-`
-
 export default props => {
     const { weesh, dispatch } = React.useContext(WeeshContext)
     const [state, setState] = React.useState([])

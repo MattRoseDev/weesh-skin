@@ -26,110 +26,17 @@ const StyledFrame = styled.div`
     overflow: hidden;
 `
 
-const StyledSliderTabContent = styled.div`
-    ${({ p }) => {
-        if (p) {
-            if (window.innerWidth < 768) {
-                return css`
-                    flex-grow: 1;
-                `
-            } else {
-                return css`
-                    width: 30%;
-                `
-            }
-        } else {
-            if (window.innerWidth < 768) {
-                return css`
-                    flex-grow: 1;
-                `
-            } else {
-                return css`
-                    width: 50%;
-                `
-            }
-        }
-    }};
-`
-
-const StyledSliderTabContainer = styled.div`
-    ${C.styles.flex.flexRow};
-    ${C.styles.flex.alignItemsCenter};
-    flex-wrap: wrap;
-    padding: 0.75rem;
-    border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
-`
-
-const StyledSliderTabTitle = styled.span`
-    color: ${({ theme }) => theme.colors.gray};
-    padding: 0 0.75rem 0 0;
-    font-size: 0.85rem;
-`
-
 export default props => {
-    const { weesh, dispatch } = React.useContext(WeeshContext)
+    const { weesh } = React.useContext(WeeshContext)
     const { auth } = React.useContext(AuthContext)
-    const data = {
-        tabs: [
-            {
-                id: uuid(),
-                title: C.txts.en.addWeesh.everyone,
-                icon: 'Globe',
-                value: true,
-                status: 3,
-            },
-            {
-                id: uuid(),
-                title: C.txts.en.addWeesh.friends,
-                icon: 'Users',
-                value: false,
-                status: 2,
-            },
-            {
-                id: uuid(),
-                title: C.txts.en.addWeesh.onlyMe,
-                icon: 'User',
-                value: false,
-                status: 1,
-            },
-        ],
-    }
 
-    auth.private && data.tabs.splice(0, 1)
-    data.tabs[0].value = true
-
-    React.useEffect(() => {
-        if (auth.id) {
-            dispatch({
-                type: 'ADD_WEESH',
-                data: {
-                    status: data.tabs[0].status,
-                },
-            })
-        }
-    }, [auth])
-
-    const handleStatus = ({ status }) =>
-        dispatch({
-            type: 'ADD_WEESH',
-            data: {
-                status,
-            },
-        })
-
-    return auth.username ? (
+    return auth.id ? (
         <StyledContainer>
             <Meta type='AddWeesh' />
             <StyledFrame>
-                <StyledSliderTabContainer>
-                    <StyledSliderTabTitle>To:</StyledSliderTabTitle>
-                    <StyledSliderTabContent p={auth.private}>
-                        <SliderTab tabs={data.tabs} setStatus={handleStatus} />
-                    </StyledSliderTabContent>
-                </StyledSliderTabContainer>
                 <SuggestionTag />
-                <Main data={data} weesh={weesh} />
-                <Footer data={data} />
+                <Main weesh={weesh} />
+                <Footer />
             </StyledFrame>
         </StyledContainer>
     ) : (

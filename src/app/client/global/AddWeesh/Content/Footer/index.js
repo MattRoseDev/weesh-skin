@@ -3,7 +3,10 @@ import styled, { css } from 'styled-components'
 import Button from 'Root/components/global/Button'
 import Icon from 'Root/components/global/Icon'
 import { WeeshContext } from 'Root/contexts/weesh'
+import { AuthContext } from 'Root/contexts/auth'
 import C from 'Root/constants'
+import Dialog, { DialogButton } from 'Root/components/global/Dialog'
+import StyledComponents from 'Root/StyledComponents'
 import { useMutation } from '@apollo/react-hooks'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import api from 'Root/api'
@@ -38,21 +41,53 @@ const StyledNumber = styled.span`
     ${C.styles.flex.inlineFlexRow};
 `
 
+const StyledShareContainer = styled.div`
+    ${C.styles.flex.flexRow};
+    width: 100%;
+`
+
+const StyledShareItam = styled.div`
+    ${C.styles.flex.flexColumn};
+    ${C.styles.flex.alignItemsCenter};
+    ${C.styles.flex.justifyContentBetween};
+    width: 100%;
+    color: ${({ theme }) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.primary};
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    margin: 0.5rem;
+    cursor: pointer;
+`
+
+const StyledShareItamTitle = styled.span`
+    padding: 0.25rem 0 0;
+    font-size: 0.85rem;
+    color: ${({ theme }) => theme.colors.background};
+`
+
+const initialDialog = {
+    visible: false,
+}
+
 export default () => {
     const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
     const { weesh, dispatch } = React.useContext(WeeshContext)
+    const { auth } = React.useContext(AuthContext)
+    const [dialog, setDialog] = React.useState(initialDialog)
 
     const [addWeesh, { data, error, loading }] = useMutation(api.weeshes.add)
 
-    const handleAddWeesh = () =>
+    const handleAddWeesh = status => {
+        toggleDialog(false)
         addWeesh({
             variables: {
                 content: weesh.content,
-                status: weesh.status,
+                status,
             },
         })
+    }
 
     React.useEffect(() => {
         if (error) {
@@ -81,17 +116,74 @@ export default () => {
         }
     }, [data])
 
+    const toggleDialog = visible => {
+        setDialog(prevState => ({
+            ...prevState,
+            visible,
+        }))
+    }
+
+    const shareOptions = [
+        {
+            title: C.txts.en.addWeesh.public,
+            icon: 'Globe',
+            status: 3,
+        },
+        {
+            title: C.txts.en.addWeesh.friends,
+            icon: 'Users',
+            status: 2,
+        },
+        {
+            title: C.txts.en.addWeesh.private,
+            icon: 'User',
+            status: 1,
+        },
+    ]
+
+    auth.private && shareOptions.splice(0, 1)
+
+    const limitedCharacter = weesh.content.length > 2 ? true : false
+
     return (
         <StyledContainer>
+            <Dialog
+                width='19rem'
+                padding='.5rem'
+                {...dialog}
+                toggleDialogFunction={visible => toggleDialog(visible)}>
+                <StyledComponents.Dialog.Header.Container>
+                    <StyledComponents.Dialog.Header.Message padding='1rem'>
+                        <strong>{C.txts.en.addWeesh.shareQuestion}</strong>
+                    </StyledComponents.Dialog.Header.Message>
+                </StyledComponents.Dialog.Header.Container>
+                <StyledShareContainer>
+                    {shareOptions.map(item => (
+                        <StyledShareItam
+                            onClick={() => handleAddWeesh(item.status)}>
+                            <Icon
+                                icon={item.icon}
+                                color='background'
+                                size={30}
+                            />
+                            <StyledShareItamTitle>
+                                {item.title}
+                            </StyledShareItamTitle>
+                        </StyledShareItam>
+                    ))}
+                </StyledShareContainer>
+            </Dialog>
             <StyledNumbers {...weesh}>
                 <StyledNumber>{weesh.characterCount}</StyledNumber>/
                 <StyledNumber>{weesh.totalCount}</StyledNumber>
             </StyledNumbers>
             <Button
-                color='background'
-                background='primary'
+                color={limitedCharacter ? 'background' : 'gray'}
+                cursor={limitedCharacter ? 'pointer' : 'not-allowed'}
+                background={limitedCharacter ? 'primary' : 'lightGray'}
                 boxShadow='light'
-                clickEvent={handleAddWeesh}
+                disabled={limitedCharacter ? false : true}
+                clickEvent={() => toggleDialog(true)}
                 isLoading={loading || undefined}
                 padding='.5rem 1rem'
                 radius='50rem'>
