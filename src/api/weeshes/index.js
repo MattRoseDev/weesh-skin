@@ -68,12 +68,6 @@ const getHomeWeeshes = gql`
                 content
                 status
                 like {
-                    weeshLikes {
-                        user {
-                            id
-                            username
-                        }
-                    }
                     paginate {
                         totalDocs
                     }
@@ -88,46 +82,6 @@ const getHomeWeeshes = gql`
                     user {
                         id
                         username
-                    }
-                }
-                comment {
-                    weeshComments {
-                        user {
-                            id
-                            username
-                            firstName
-                            lastName
-                            avatarAddress
-                            unknown {
-                                fullname
-                                avatar
-                            }
-                        }
-                        content
-                        children {
-                            weeshComments {
-                                user {
-                                    id
-                                    username
-                                    firstName
-                                    lastName
-                                    avatarAddress
-                                    unknown {
-                                        fullname
-                                        avatar
-                                    }
-                                }
-                                content
-                                updatedAt
-                            }
-                            paginate {
-                                totalDocs
-                            }
-                        }
-                        updatedAt
-                    }
-                    paginate {
-                        totalDocs
                     }
                 }
                 commentsCounter
@@ -162,12 +116,6 @@ const getShowcase = gql`
                 content
                 status
                 like {
-                    weeshLikes {
-                        user {
-                            id
-                            username
-                        }
-                    }
                     paginate {
                         totalDocs
                     }
@@ -184,52 +132,13 @@ const getShowcase = gql`
                         username
                     }
                 }
-                comment {
-                    weeshComments {
-                        user {
-                            id
-                            username
-                            firstName
-                            lastName
-                            avatarAddress
-                            unknown {
-                                fullname
-                                avatar
-                            }
-                        }
-                        content
-                        children {
-                            weeshComments {
-                                user {
-                                    id
-                                    username
-                                    firstName
-                                    lastName
-                                    avatarAddress
-                                    unknown {
-                                        fullname
-                                        avatar
-                                    }
-                                }
-                                content
-                                updatedAt
-                            }
-                            paginate {
-                                totalDocs
-                            }
-                        }
-                        updatedAt
-                    }
-                    paginate {
-                        totalDocs
-                    }
-                }
                 commentsCounter
                 updatedAt
                 createdAt
             }
             paginate {
                 totalDocs
+                nextPage
             }
         }
     }
@@ -256,12 +165,6 @@ const getWeeshes = gql`
                 content
                 status
                 like {
-                    weeshLikes {
-                        user {
-                            id
-                            username
-                        }
-                    }
                     paginate {
                         totalDocs
                     }
@@ -308,12 +211,6 @@ const getWeeshByLink = gql`
             content
             status
             like {
-                weeshLikes {
-                    user {
-                        id
-                        username
-                    }
-                }
                 paginate {
                     totalDocs
                 }

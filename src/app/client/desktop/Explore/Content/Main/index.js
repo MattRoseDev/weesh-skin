@@ -15,7 +15,7 @@ const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.justifyContentCenter};
     background: ${({ theme }) => theme.colors.background};
-    padding: 0 0.5rem;
+    padding: 0;
 `
 
 const StyledLoading = styled.div`

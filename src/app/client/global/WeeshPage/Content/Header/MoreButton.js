@@ -97,6 +97,16 @@ export default props => {
             fontWeight: 'bold',
         },
         {
+            label: 'Edit',
+            icon: 'Edit',
+            color: 'foreground',
+            clickEvent: () => {
+                history.push(`/w/${props.link}/edit`)
+            },
+            fontWeight: 'bold',
+            border: auth.id == props.user.id ? 'dashed' : false,
+        },
+        {
             label: 'Copy URL',
             icon: 'Copy',
             color: 'foreground',
@@ -124,16 +134,6 @@ export default props => {
             border: auth.id == props.user.id ? 'dashed' : false,
         },
         {
-            label: 'Edit',
-            icon: 'Edit',
-            color: 'foreground',
-            clickEvent: () => {
-                history.push(`/w/${props.link}/edit`)
-            },
-            fontWeight: 'bold',
-            border: auth.id == props.user.id ? 'dashed' : false,
-        },
-        {
             label: 'Cancel',
             color: 'foreground',
             clickEvent: () => toggleDrawerDialog(false),
@@ -142,7 +142,16 @@ export default props => {
         },
     ]
 
-    if (auth.id !== props.user.id) buttons = buttons.splice(1)
+    if (auth.id !== props.user.id) {
+        buttons = buttons.splice(2)
+    } else {
+        // const weeshTime = new Date(props.createdAt).getTime()
+        // const newTime = new Date().getTime()
+        // const hours = Math.floor((newTime - weeshTime) / (60 * 60 * 1000))
+        // if(hours >= 12) {
+        //     buttons.splice(1,1)
+        // }
+    }
 
     const toggleDrawerDialog = visible => {
         setDrawerDialog(prevState => ({

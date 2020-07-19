@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import uuid from 'uuid'
 import List from 'Root/components/mobile/List'
-import Loader from 'Root/components/global/Loader'
+import Loading from 'Root/components/global/Loading'
 import SliderTab from 'Root/components/global/SliderTab'
 import C from 'Root/constants'
 import { useQuery } from '@apollo/react-hooks'
@@ -84,9 +84,12 @@ export default props => {
         <StyledContainer>
             <Meta />
             {loading ? (
-                <StyledLoaderContainer>
-                    <Loader size={20} strokeWidth={1.25} color='gray' />
-                </StyledLoaderContainer>
+                <Loading
+                    padding='3rem 0 0'
+                    size={28}
+                    strokeWidth={1.25}
+                    color='gray'
+                />
             ) : (
                 state && (
                     <List index={switchStatus(status).index} users={state} />

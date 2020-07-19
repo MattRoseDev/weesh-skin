@@ -106,12 +106,12 @@ export default () => {
             status: 3,
         },
         {
-            title: C.txts.en.addWeesh.friends,
+            title: C.txts.en.addWeesh.private,
             icon: 'Users',
             status: 2,
         },
         {
-            title: C.txts.en.addWeesh.private,
+            title: C.txts.en.addWeesh.secret,
             icon: 'User',
             status: 1,
         },
