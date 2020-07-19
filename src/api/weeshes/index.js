@@ -18,6 +18,28 @@ const add = gql`
     }
 `
 
+const editWeesh = gql`
+    mutation editWeeshForUser($weeshId: ID!, $content: String!, $status: Int) {
+        editWeeshForUser(
+            weeshId: $weeshId
+            content: $content
+            status: $status
+        ) {
+            id
+            user {
+                id
+                username
+                firstName
+                lastName
+                avatarAddress
+            }
+            content
+            status
+            updatedAt
+        }
+    }
+`
+
 const deleteWeesh = gql`
     mutation deleteWeeshForUser($weeshId: ID!) {
         deleteWeeshForUser(weeshId: $weeshId) {
@@ -110,6 +132,7 @@ const getHomeWeeshes = gql`
                 }
                 commentsCounter
                 updatedAt
+                createdAt
             }
             paginate {
                 totalDocs
@@ -203,6 +226,7 @@ const getShowcase = gql`
                 }
                 commentsCounter
                 updatedAt
+                createdAt
             }
             paginate {
                 totalDocs
@@ -255,6 +279,7 @@ const getWeeshes = gql`
                     }
                 }
                 updatedAt
+                createdAt
             }
             paginate {
                 totalDocs
@@ -351,12 +376,14 @@ const getWeeshByLink = gql`
             }
             commentsCounter
             updatedAt
+            createdAt
         }
     }
 `
 
 export default {
     add,
+    editWeesh,
     deleteWeesh,
     getWeeshes,
     getHomeWeeshes,

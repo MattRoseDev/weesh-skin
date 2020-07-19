@@ -111,6 +111,7 @@ const getWeeshesByTag = gql`
                     }
                     commentsCounter
                     updatedAt
+                    createdAt
                 }
             }
             paginate {

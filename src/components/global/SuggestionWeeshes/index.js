@@ -18,7 +18,7 @@ export default () => {
     const { data, called, error, loading } = useQuery(api.weeshes.getShowcase, {
         fetchPolicy: 'no-cache',
         variables: {
-            limit: 100,
+            limit: 10,
         },
     })
 

@@ -28,6 +28,7 @@ const StyledContent = styled.div`
     ${C.styles.flex.flexColumnCenter};
     background: ${({ theme }) => theme.colors.background};
     border-radius: 1rem 1rem 0 0;
+    border: 1px solid ${({ theme }) => theme.colors.lightGray};
     ${({ width }) =>
         width &&
         css`

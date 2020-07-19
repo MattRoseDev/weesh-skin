@@ -14,6 +14,7 @@ import ChangePassword from './ChangePassword'
 import Support from './Support'
 import WeeshPage from './WeeshPage'
 import AddWeesh from './AddWeesh'
+import EditWeesh from './EditWeesh'
 import EditProfile from './EditProfile'
 import NotFound from 'Root/components/global/NotFound'
 
@@ -106,6 +107,12 @@ const routes = [
         exact: true,
         path: '/w/:link/likes',
         component: LikesPage,
+    },
+    {
+        private: true,
+        exact: true,
+        path: '/w/:link/edit',
+        component: EditWeesh,
     },
     {
         // private: true,

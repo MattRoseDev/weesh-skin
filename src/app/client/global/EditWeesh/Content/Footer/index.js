@@ -9,6 +9,7 @@ import Dialog, { DialogButton } from 'Root/components/global/Dialog'
 import StyledComponents from 'Root/StyledComponents'
 import { useMutation } from '@apollo/react-hooks'
 import { SnackBarContext } from 'Root/contexts/snackbar'
+import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 
 const StyledContainer = styled.div`
@@ -53,12 +54,16 @@ export default () => {
     const { auth } = React.useContext(AuthContext)
     const [dialog, setDialog] = React.useState(initialDialog)
 
-    const [addWeesh, { data, error, loading }] = useMutation(api.weeshes.add)
+    const [editWeesh, { data, error, loading }] = useMutation(
+        api.weeshes.editWeesh,
+    )
+    const history = useHistory()
 
-    const handleAddWeesh = status => {
+    const handleEditWeesh = status => {
         toggleDialog(false)
-        addWeesh({
+        editWeesh({
             variables: {
+                weeshId: weesh.id,
                 content: weesh.content,
                 status,
             },
@@ -70,7 +75,7 @@ export default () => {
             console.log(error)
         }
         if (data) {
-            const res = data.addWeeshForUser
+            const res = data.editWeeshForUser
             dispatch({
                 type: 'ADD_WEESH',
                 data: {
@@ -80,8 +85,8 @@ export default () => {
             snackbarDispatch({
                 type: 'SET_DATA',
                 data: {
-                    icon: 'PenTool',
-                    message: 'Your weesh added successfully.',
+                    icon: 'Edit',
+                    message: 'Your weesh edited successfully.',
                     background: 'foreground',
                     visible: true,
                 },
@@ -89,6 +94,7 @@ export default () => {
             setTimeout(() => {
                 snackbarDispatch({ type: 'HIDE' })
             }, 2 * 1000)
+            history.push(`/${auth.username}`)
         }
     }, [data])
 
@@ -139,7 +145,7 @@ export default () => {
                 <StyledComponents.Share.Container>
                     {shareOptions.map(item => (
                         <StyledComponents.Share.Item
-                            onClick={() => handleAddWeesh(item.status)}>
+                            onClick={() => handleEditWeesh(item.status)}>
                             <Icon
                                 icon={item.icon}
                                 color={auth.color}
@@ -166,8 +172,8 @@ export default () => {
                 isLoading={loading || undefined}
                 padding='.5rem 1rem'
                 radius='50rem'>
-                <StyledButtonTitle>Weesh</StyledButtonTitle>
-                <Icon icon='PenTool' color='background' />
+                <StyledButtonTitle>Edit</StyledButtonTitle>
+                <Icon icon='Edit' color='background' />
             </Button>
         </StyledContainer>
     )

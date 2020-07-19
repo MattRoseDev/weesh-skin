@@ -111,7 +111,7 @@ export default props => {
                     type: 'SET_DATA',
                     data: {
                         icon: 'Copy',
-                        message: 'URL copied to clipboard.  ',
+                        message: 'URL copied to clipboard.',
                         background: 'foreground',
                         visible: true,
                     },

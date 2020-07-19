@@ -4,13 +4,27 @@ import { Link } from 'react-router-dom'
 import C from 'Root/constants'
 
 const StyledContainer = styled.div`
-    ${({ visible }) =>
-        !visible
-            ? css`
-                  display: none;
-              `
-            : C.styles.flex.flexRowCenter};
+    ${({ visible, contentPosition }) => {
+        if (!visible) {
+            return css`
+                display: none;
+            `
+        } else {
+            if (!contentPosition || contentPosition == 'center') {
+                return css`
+                    ${C.styles.flex.flexColumnCenter};
+                `
+            } else if (contentPosition == 'top') {
+                return css`
+                    ${C.styles.flex.flexColumn};
+                    ${C.styles.flex.justifyContentStart};
+                    ${C.styles.flex.alignItemsCenter};
+                `
+            }
+        }
+    }};
     ${C.styles.position.positionFixedZiro};
+    padding-top: 5rem;
     background: rgba(0, 0, 0, 0.5);
     z-index: 100;
 `
@@ -20,6 +34,7 @@ const StyledContent = styled.div`
     background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.foreground};
     border-radius: 0.75rem;
+    border: 1px solid ${({ theme }) => theme.colors.lightGray};
     ${({ width }) =>
         width &&
         css`
@@ -55,6 +70,7 @@ export default props => {
     return (
         <StyledContainer
             visible={props.visible || undefined}
+            contentPosition={props.contentPosition || undefined}
             onClick={e => {
                 if (e.target == e.currentTarget) {
                     props.toggleDialogFunction(false)

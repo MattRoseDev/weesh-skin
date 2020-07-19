@@ -6,6 +6,7 @@ import moment from 'moment'
 import FullName from 'Root/components/global/FullName'
 import Link from 'Root/components/global/Link'
 import helpers from 'Root/helpers'
+import useHistory from 'Root/hooks/useHistory'
 
 const StyledHeader = styled.div`
     padding: 0.75rem 0.75rem 0;
@@ -37,8 +38,14 @@ const StyledLeftSide = styled.div`
 const StyledRightSide = styled.div``
 
 export default props => {
+    const history = useHistory()
+
+    const handleClick = e => {
+        e.target == e.currentTarget && history.push(`/w/${props.link}`)
+    }
+
     return (
-        <StyledHeader>
+        <StyledHeader onClick={e => handleClick(e)}>
             {props.user && (
                 <StyledLeftSide>
                     <Avatar to={`/${props.user.username}`} {...props} />
@@ -60,8 +67,13 @@ export default props => {
                 <StyledRightSide>
                     <StyledTimestamp>
                         {helpers.dateFormat(
-                            moment(props.updatedAt).fromNow(true),
+                            moment(props.createdAt).fromNow(true),
                         )}
+                        {`${
+                            props.updatedAt == props.createdAt
+                                ? ''
+                                : ' · edited'
+                        }`}
                     </StyledTimestamp>
                 </StyledRightSide>
             )}
