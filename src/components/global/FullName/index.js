@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { AuthContext } from 'Root/contexts/auth'
 import C from 'Root/constants'
-import Emoji from 'react-emoji-render'
 
 const StyledFullName = styled.h4`
     ${C.styles.flex.inlineFlex};
