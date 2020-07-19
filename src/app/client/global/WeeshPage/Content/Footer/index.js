@@ -7,6 +7,7 @@ import C from 'Root/constants'
 import uuid from 'uuid'
 import useHistory from 'Root/hooks/useHistory'
 import { AuthContext } from 'Root/contexts/auth'
+import { WeeshPageContext } from 'Root/contexts/weeshPage'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
@@ -68,6 +69,9 @@ export default props => {
     const { auth } = React.useContext(AuthContext)
     const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
+    )
+    const { weeshPage, dispatch: weeshPageDispatch } = React.useContext(
+        WeeshPageContext,
     )
     const [isLiked, setIsLiked] = React.useState(props.isLiked)
     const [isBookmarked, setIsBookmarked] = React.useState(props.isBookmarked)
@@ -151,7 +155,7 @@ export default props => {
             fill: () => undefined,
             color: () => 'foreground',
             handleClick: () => {
-                history.push(`/w/${props.link}`)
+                weeshPage.textarea.current._reactInternalFiber.child.stateNode.focus()
             },
         },
         {
