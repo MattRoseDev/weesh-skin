@@ -27,14 +27,6 @@ export default ({ data, type } = { data: null }) => {
             keywords.push(`#${data.tag}`)
             keywords.push(data.tag)
             return keywords.join(',')
-        case 'EditProfile':
-            return keywords.join(',')
-        case 'AddWeesh':
-            return keywords.join(',')
-        case 'Support':
-            return keywords.join(',')
-        case 'Bookmarks':
-            return keywords.join(',')
         case 'Showcase':
             return keywords.join(',')
         case 'Login':

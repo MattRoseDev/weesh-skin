@@ -1,6 +1,7 @@
 export default {
-    everyone: 'Everyone',
+    public: 'Public',
     friends: 'Friends',
-    onlyMe: 'Only me',
-    textEditorPlaceholder: 'I wish ...',
+    private: 'Private',
+    shareQuestion: 'Who can see you weesh?',
+    textEditorPlaceholder: 'I weesh ...',
 }

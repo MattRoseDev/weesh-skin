@@ -20,7 +20,7 @@ export default props => {
     return (
         <>
             {props.user.unknown.fullname && auth.id != props.user.id ? (
-                <StyledFullName fontSize={props.fontSize}>
+                <StyledFullName fontSize={props.fontSize || undefined}>
                     {C.txts.en.g.unknownPerson}
                 </StyledFullName>
             ) : (

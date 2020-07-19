@@ -124,6 +124,16 @@ export default props => {
             border: auth.id == props.user.id ? 'dashed' : false,
         },
         {
+            label: 'Edit',
+            icon: 'Edit',
+            color: 'foreground',
+            clickEvent: () => {
+                history.push(`/w/${props.link}/edit`)
+            },
+            fontWeight: 'bold',
+            border: auth.id == props.user.id ? 'dashed' : false,
+        },
+        {
             label: 'Cancel',
             color: 'foreground',
             clickEvent: () => toggleDrawerDialog(false),

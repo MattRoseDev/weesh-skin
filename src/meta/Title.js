@@ -14,6 +14,8 @@ export default ({ data, type } = { data: null }) => {
             return `Edit Profile | Weesh`
         case 'AddWeesh':
             return `Add | Weesh`
+        case 'EditWeesh':
+            return `Edit | Weesh`
         case 'Support':
             return `Support | Weesh`
         case 'Bookmarks':

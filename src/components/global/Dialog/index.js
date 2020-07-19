@@ -25,6 +25,11 @@ const StyledContent = styled.div`
         css`
             width: ${width};
         `};
+    ${({ padding }) =>
+        padding &&
+        css`
+            padding: ${padding};
+        `};
 `
 
 const StyledButton = styled.button`
@@ -49,17 +54,28 @@ const StyledButton = styled.button`
 export default props => {
     return (
         <StyledContainer
-            {...props}
+            visible={props.visible || undefined}
             onClick={e => {
                 if (e.target == e.currentTarget) {
                     props.toggleDialogFunction(false)
                 }
             }}>
-            <StyledContent {...props}>{props.children}</StyledContent>
+            <StyledContent
+                padding={props.padding || undefined}
+                width={props.width || undefined}>
+                {props.children}
+            </StyledContent>
         </StyledContainer>
     )
 }
 
 export const DialogButton = props => {
-    return <StyledButton {...props}>{props.children}</StyledButton>
+    return (
+        <StyledButton
+            onClick={props.onClick || undefined}
+            fontWeight={props.fontWeight || undefined}
+            color={props.color || undefined}>
+            {props.children}
+        </StyledButton>
+    )
 }
