@@ -86,6 +86,10 @@ export default props => {
 
     const history = useHistory()
 
+    const handleClick = e => {
+        e.target == e.currentTarget && history.push(`/w/${props.link}`)
+    }
+
     const [likeWeesh, likeWeeshResult] = useMutation(api.weeshLikes.like, {
         variables: {
             weeshId: `${props.id}`,
@@ -188,7 +192,7 @@ export default props => {
 
     return (
         <StyledFooterContainer>
-            <StyledFooter>
+            <StyledFooter onClick={e => handleClick(e)}>
                 <StyledButtons>
                     {buttons.map(item => (
                         <StyledButtonContainer key={uuid()}>
