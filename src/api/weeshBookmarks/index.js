@@ -78,12 +78,6 @@ const remove = gql`
                 content
                 status
                 like {
-                    weeshLikes {
-                        user {
-                            id
-                            username
-                        }
-                    }
                     paginate {
                         totalDocs
                     }
@@ -121,17 +115,6 @@ const getUserBookmarksWeeshes = gql`
                     content
                     status
                     like {
-                        weeshLikes {
-                            user {
-                                id
-                                username
-                                avatarAddress
-                                unknown {
-                                    avatar
-                                    fullname
-                                }
-                            }
-                        }
                         paginate {
                             totalDocs
                         }
@@ -146,24 +129,6 @@ const getUserBookmarksWeeshes = gql`
                         user {
                             id
                             username
-                        }
-                    }
-                    comment {
-                        weeshComments {
-                            user {
-                                id
-                                username
-                                avatarAddress
-                                unknown {
-                                    avatar
-                                    fullname
-                                }
-                            }
-                            content
-                            updatedAt
-                        }
-                        paginate {
-                            totalDocs
                         }
                     }
                     commentsCounter

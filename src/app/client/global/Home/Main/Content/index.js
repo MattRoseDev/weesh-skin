@@ -34,6 +34,7 @@ export default () => {
         api.weeshes.getHomeWeeshes,
         {
             fetchPolicy: 'no-cache',
+            limit: 5,
         },
     )
 

@@ -64,17 +64,6 @@ const getWeeshesByTag = gql`
                     content
                     status
                     like {
-                        weeshLikes {
-                            user {
-                                id
-                                username
-                                avatarAddress
-                                unknown {
-                                    avatar
-                                    fullname
-                                }
-                            }
-                        }
                         paginate {
                             totalDocs
                         }
@@ -89,24 +78,6 @@ const getWeeshesByTag = gql`
                         user {
                             id
                             username
-                        }
-                    }
-                    comment {
-                        weeshComments {
-                            user {
-                                id
-                                username
-                                avatarAddress
-                                unknown {
-                                    avatar
-                                    fullname
-                                }
-                            }
-                            content
-                            updatedAt
-                        }
-                        paginate {
-                            totalDocs
                         }
                     }
                     commentsCounter

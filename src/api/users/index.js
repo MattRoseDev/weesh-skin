@@ -65,17 +65,6 @@ const getUserByUsernameForUser = gql`
                     content
                     status
                     like {
-                        weeshLikes {
-                            user {
-                                id
-                                username
-                                avatarAddress
-                                unknown {
-                                    avatar
-                                    fullname
-                                }
-                            }
-                        }
                         paginate {
                             totalDocs
                         }
@@ -90,24 +79,6 @@ const getUserByUsernameForUser = gql`
                         user {
                             id
                             username
-                        }
-                    }
-                    comment {
-                        weeshComments {
-                            user {
-                                id
-                                username
-                                avatarAddress
-                                unknown {
-                                    avatar
-                                    fullname
-                                }
-                            }
-                            content
-                            updatedAt
-                        }
-                        paginate {
-                            totalDocs
                         }
                     }
                     commentsCounter

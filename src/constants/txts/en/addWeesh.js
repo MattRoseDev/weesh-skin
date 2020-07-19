@@ -1,7 +1,7 @@
 export default {
     public: 'Public',
-    friends: 'Friends',
     private: 'Private',
-    shareQuestion: 'Who can see your weesh?',
+    secret: 'Secret',
+    shareQuestion: 'What type is your Weesh?',
     textEditorPlaceholder: 'I weesh ...',
 }
