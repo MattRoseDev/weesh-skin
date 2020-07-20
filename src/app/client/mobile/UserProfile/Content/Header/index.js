@@ -24,7 +24,10 @@ export default props => {
     return (
         <StyledHeader>
             <StyledImagesFrame>
-                <Cover height={`${window.innerWidth / 3}px`} user={user} />
+                <Cover
+                    height={`${Math.floor(window.innerWidth / 3)}px`}
+                    user={user}
+                />
                 <StyledAvatarFrame>
                     <Avatar
                         user={user}

@@ -170,7 +170,7 @@ export default props => {
             <StyledFrame>
                 {isUploading && (
                     <StyledLoadingContainer background='rgba(0,0,0,0.5)'>
-                        <Loader size={45} strokeWidth={1.5} color='white' />
+                        <Loader size={40} strokeWidth={1.5} color='white' />
                         <StyledLoadingTitle>Uploading</StyledLoadingTitle>
                     </StyledLoadingContainer>
                 )}
