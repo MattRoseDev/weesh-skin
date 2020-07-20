@@ -19,7 +19,7 @@ const StyledContaner = styled.div`
 
 export default props => {
     return (
-        <StyledContaner {...props}>
+        <StyledContaner padding={props.padding || undefined}>
             <Loader {...props} />
         </StyledContaner>
     )
