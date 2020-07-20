@@ -5,15 +5,14 @@ import { AuthContext } from 'Root/contexts/auth'
 import SuggestionTag from 'Root/components/global/SuggestionTag'
 import Main from 'Root/app/client/global/EditWeesh/Main'
 import Footer from './Footer'
-import SliderTab from 'Root/components/global/SliderTab'
 import Loading from 'Root/components/global/Loading'
 import uuid from 'uuid'
 import C from 'Root/constants'
 import Meta from 'Root/meta'
 import helpers from 'Root/helpers'
+import useHistory from 'Root/hooks/useHistory'
 import { useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
-import { ReactTitle } from 'react-meta-tags'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -33,6 +32,7 @@ export default props => {
     const { match } = props
     const { weesh, dispatch } = React.useContext(WeeshContext)
     const { auth } = React.useContext(AuthContext)
+    const history = useHistory()
     const { data, called, error, loading } = useQuery(
         api.weeshes.getWeeshByLink,
         {
@@ -44,7 +44,16 @@ export default props => {
     )
 
     React.useEffect(() => {
+        if (error) {
+            return history.push(`/`)
+        }
+    }, [error])
+
+    React.useEffect(() => {
         if (data) {
+            if (auth.id && data.getWeeshByLinkForUser.user.id != auth.id) {
+                return history.push(`/w/${match.params.link}`)
+            }
             dispatch({
                 type: 'ADD_WEESH',
                 data: {
@@ -53,7 +62,7 @@ export default props => {
                 },
             })
         }
-    }, [data])
+    }, [data, auth.id])
 
     return auth.id && weesh.id ? (
         <StyledContainer>

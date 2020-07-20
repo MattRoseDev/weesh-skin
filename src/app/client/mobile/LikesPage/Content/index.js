@@ -36,14 +36,16 @@ export default props => {
 
     React.useEffect(() => {
         if (error) {
-            console.log(error)
+            return history.push(`/`)
         }
+    }, [error])
 
+    React.useEffect(() => {
         if (called && data) {
             const result = data.getWeeshLikesByLinkForUser.weeshLikes
             setState(result)
         }
-    }, [data, error])
+    }, [data])
 
     return (
         <StyledContainer>

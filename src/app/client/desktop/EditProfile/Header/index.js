@@ -53,12 +53,6 @@ export default () => {
         }
         if (editProfile.private != auth.private) {
             variables['private'] = editProfile.private
-            authDispatch({
-                type: 'LOGIN',
-                data: {
-                    private: editProfile.private,
-                },
-            })
         }
         const indexes = ['firstName', 'lastName', 'bio']
         for (let index of indexes) {
