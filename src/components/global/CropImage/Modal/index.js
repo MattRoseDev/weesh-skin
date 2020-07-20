@@ -3,6 +3,8 @@ import AvatarEditor from 'react-avatar-editor'
 import styled from 'styled-components'
 import Buttons from './Buttons'
 import Button from 'Root/components/global/Button'
+import Loader from 'Root/components/global/Loader'
+import StyledComponents from 'Root/StyledComponents'
 import { EditProfileContext } from 'Root/contexts/editProfile'
 import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
@@ -15,8 +17,24 @@ const StyledContainer = styled.div`
     ${C.styles.flex.flexColumnCenter};
 `
 
+const StyledFrame = styled.div`
+    position: relative;
+`
+
+const StyledLoadingContainer = styled.div`
+    ${C.styles.flex.flexColumnCenter};
+    ${C.styles.position.positionAbsoluteZiro};
+    background: rgba(0, 0, 0, 0.9);
+`
+
+const StyledLoadingTitle = styled.div`
+    padding: 1rem 0 0;
+    font-size: 0.85rem;
+    color: white;
+`
+
 const StyledAvatarEditor = styled(AvatarEditor)`
-    width: ${({ width }) => `${width}px` || 'unset'}!important;
+    width: ${({ width }) => `${width}px` || 'unset'} !important;
     height: ${({ height }) => `${height}px` || 'unset'} !important;
     background: ${({ theme }) => theme.colors.black};
 `
@@ -35,6 +53,7 @@ export default props => {
     )
     const [state, setState] = React.useState(initialState)
     const [newImage, setNewImage] = React.useState(null)
+    const [isUploading, setIsUploading] = React.useState(false)
     const [singleUpload, { data, loading, error, called }] = useMutation(
         api.uploadFile.single,
     )
@@ -62,6 +81,7 @@ export default props => {
         let res = cropper.current.getImageScaledToCanvas()
         let canvas = res.toDataURL()
         setNewImage(res.toDataURL())
+        setIsUploading(true)
         singleUpload({
             variables: {
                 file: base64toFile(canvas, file.current.files[0].name),
@@ -147,7 +167,13 @@ export default props => {
                 ref={file}
                 onChange={e => handleLoadImage(e)}
             />
-            <div>
+            <StyledFrame>
+                {isUploading && (
+                    <StyledLoadingContainer background='rgba(0,0,0,0.5)'>
+                        <Loader size={45} strokeWidth={1.5} color='white' />
+                        <StyledLoadingTitle>Uploading</StyledLoadingTitle>
+                    </StyledLoadingContainer>
+                )}
                 <StyledAvatarEditor
                     ref={cropper}
                     image={state.image}
@@ -160,7 +186,7 @@ export default props => {
                     disableBoundaryChecks={false}
                     disableHiDPIScaling={false}
                 />
-            </div>
+            </StyledFrame>
             <Button
                 clickEvent={() => file.current.click()}
                 background='white'
