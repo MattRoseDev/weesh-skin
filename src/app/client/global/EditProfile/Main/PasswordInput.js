@@ -23,12 +23,17 @@ const StyledTitle = styled.div`
 
 export default () => {
     const { auth } = React.useContext(AuthContext)
-
+    const { changePassword } = C.txts.en.editProfile
     return (
         <StyledContainer to='/settings/changePassword'>
             <Icon icon='Key' color='foreground' />
             <StyledTitle>
-                {`${auth.password ? 'Change' : 'Set'}`} Password
+                {`${
+                    auth.password
+                        ? `${changePassword.change}`
+                        : `${changePassword.set}`
+                }`}{' '}
+                {changePassword.password}
             </StyledTitle>
         </StyledContainer>
     )

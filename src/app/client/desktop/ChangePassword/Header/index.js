@@ -31,14 +31,22 @@ const StyledTitle = styled.div`
 
 export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
+    const { changePassword } = C.txts.en.editProfile
     return (
         <>
             {auth.token ? (
                 <StyledContainer>
                     <BackButton icon='ArrowLeft' />
-                    <StyledTitle>
-                        {`${auth.password ? 'Change' : 'Set'}`} Password
-                    </StyledTitle>
+                    {auth.password != undefined && (
+                        <StyledTitle>
+                            {`${
+                                auth.password
+                                    ? `${changePassword.change}`
+                                    : `${changePassword.set}`
+                            }`}{' '}
+                            {changePassword.password}
+                        </StyledTitle>
+                    )}
                     <Icon color='background' />
                 </StyledContainer>
             ) : (

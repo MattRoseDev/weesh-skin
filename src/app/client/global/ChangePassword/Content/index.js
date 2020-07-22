@@ -1,10 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import uuid from 'uuid'
-import List from 'Root/components/desktop/List'
-import Loader from 'Root/components/global/Loader'
-import SliderTab from 'Root/components/global/SliderTab'
 import C from 'Root/constants'
 import Input from 'Root/components/global/Input'
 import ErrorMessage from 'Root/components/global/ErrorMessage'
@@ -15,7 +10,6 @@ import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import Button from 'Root/components/global/Button'
 import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     min-height: ${window.innerHeight - 55}px;
@@ -27,12 +21,6 @@ const StyledForm = styled.form``
 const StyledButtonContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentEnd};
-`
-
-const StyledLoaderContainer = styled.div`
-    ${C.styles.flex.flexRow};
-    ${C.styles.flex.justifyContentCenter};
-    padding: 1rem;
 `
 
 const initialVariables = {
@@ -103,17 +91,17 @@ export default props => {
 
     let inputs = [
         {
-            label: 'Old Value',
+            label: C.txts.en.editProfile.changePassword.oldPassword,
             value: state.oldPassword,
             onChange: e => handleChange({ key: 'oldPassword', e }),
         },
         {
-            label: 'New Password',
+            label: C.txts.en.editProfile.changePassword.newPassword,
             value: state.newPassword,
             onChange: e => handleChange({ key: 'newPassword', e }),
         },
         {
-            label: 'Confirm Password',
+            label: C.txts.en.editProfile.changePassword.confirmPassword,
             value: state.confirmPassword,
             onChange: e => handleChange({ key: 'confirmPassword', e }),
         },
@@ -158,7 +146,7 @@ export default props => {
                             isLoading={
                                 changePasswordResponse.loading || undefined
                             }>
-                            Submit
+                            {C.txts.en.editProfile.changePassword.submit}
                         </Button>
                     ) : (
                         <Button
@@ -169,7 +157,7 @@ export default props => {
                             radius='5rem'
                             margin='.75rem 0 0'
                             fontWeight='bold'>
-                            Submit
+                            {C.txts.en.editProfile.changePassword.submit}
                         </Button>
                     )}
                 </StyledButtonContainer>
