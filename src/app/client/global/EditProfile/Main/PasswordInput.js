@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Icon from 'Root/components/global/Icon'
 import C from 'Root/constants'
 import Link from 'Root/components/global/Link'
+import { AuthContext } from 'Root/contexts/auth'
 
 const StyledContainer = styled(Link)`
     ${C.styles.flex.flexRow}
@@ -21,10 +22,14 @@ const StyledTitle = styled.div`
 `
 
 export default () => {
+    const { auth } = React.useContext(AuthContext)
+
     return (
         <StyledContainer to='/settings/changePassword'>
             <Icon icon='Key' color='foreground' />
-            <StyledTitle>Change Password</StyledTitle>
+            <StyledTitle>
+                {`${auth.password ? 'Change' : 'Set'}`} Password
+            </StyledTitle>
         </StyledContainer>
     )
 }

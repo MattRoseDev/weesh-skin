@@ -36,7 +36,9 @@ export default () => {
             {auth.token ? (
                 <StyledContainer>
                     <BackButton icon='ArrowLeft' />
-                    <StyledTitle>Change Password</StyledTitle>
+                    <StyledTitle>
+                        {`${auth.password ? 'Change' : 'Set'}`} Password
+                    </StyledTitle>
                     <Icon color='background' />
                 </StyledContainer>
             ) : (
