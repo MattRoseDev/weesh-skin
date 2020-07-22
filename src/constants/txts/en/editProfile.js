@@ -36,4 +36,13 @@ export default {
         background: 'Background',
         color: 'Color',
     },
+    changePassword: {
+        oldPassword: 'Old Password',
+        newPassword: 'New Password',
+        confirmPassword: 'Confirm Password',
+        change: 'Change',
+        set: 'Set',
+        password: 'Password',
+        submit: 'Submit',
+    },
 }
