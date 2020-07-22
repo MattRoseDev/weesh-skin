@@ -42,7 +42,7 @@ const initialVariables = {
 }
 
 export default props => {
-    const { auth } = React.useContext(AuthContext)
+    const { auth, dispatch } = React.useContext(AuthContext)
     const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
@@ -79,6 +79,12 @@ export default props => {
 
     React.useEffect(() => {
         if (changePasswordResponse.data) {
+            dispatch({
+                type: 'LOGIN',
+                data: {
+                    password: true,
+                },
+            })
             history.goBack()
             snackbarDispatch({
                 type: 'SET_DATA',
@@ -95,6 +101,26 @@ export default props => {
         }
     }, [changePasswordResponse])
 
+    let inputs = [
+        {
+            label: 'Old Value',
+            value: state.oldPassword,
+            onChange: e => handleChange({ key: 'oldPassword', e }),
+        },
+        {
+            label: 'New Password',
+            value: state.newPassword,
+            onChange: e => handleChange({ key: 'newPassword', e }),
+        },
+        {
+            label: 'Confirm Password',
+            value: state.confirmPassword,
+            onChange: e => handleChange({ key: 'confirmPassword', e }),
+        },
+    ]
+
+    if (!auth.password) [(inputs = inputs.splice(1))]
+
     return (
         <StyledContainer>
             <Meta type='EditProfile' />
@@ -108,40 +134,24 @@ export default props => {
                 />
             )}
             <StyledForm onSubmit={e => handleSubmit(e)}>
-                <Input
-                    label={'Old Password'}
-                    type='password'
-                    padding='.65rem'
-                    value={state.oldPassword}
-                    onChange={e => handleChange({ key: 'oldPassword', e })}
-                    width={100}
-                    margin='1rem 0 0'
-                />
-                <Input
-                    label={'New Password'}
-                    type='password'
-                    padding='.65rem'
-                    value={state.newPassword}
-                    onChange={e => handleChange({ key: 'newPassword', e })}
-                    width={100}
-                    margin='1rem 0 0'
-                />
-                <Input
-                    label={'Confirm Password'}
-                    type='password'
-                    padding='.65rem'
-                    value={state.confirmPassword}
-                    onChange={e => handleChange({ key: 'confirmPassword', e })}
-                    width={100}
-                    margin='1rem 0 0'
-                />
+                {inputs.map(item => (
+                    <Input
+                        label={item.label}
+                        type='password'
+                        padding='.65rem'
+                        value={item.value}
+                        onChange={item.onChange}
+                        width={100}
+                        margin='1rem 0 0'
+                    />
+                ))}
                 <StyledButtonContainer>
                     {state.newPassword.length > 0 &&
                     state.newPassword == state.confirmPassword ? (
                         <Button
                             padding='.65rem 1.5rem'
                             background='primary'
-                            color='foreground'
+                            color='background'
                             radius='5rem'
                             margin='.75rem 0 0'
                             fontWeight='bold'
@@ -155,7 +165,7 @@ export default props => {
                             cursor='not-allowed'
                             padding='.65rem 1.5rem'
                             background='lightGray'
-                            color='gray'
+                            color='background'
                             radius='5rem'
                             margin='.75rem 0 0'
                             fontWeight='bold'>

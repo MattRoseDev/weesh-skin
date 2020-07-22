@@ -11,6 +11,7 @@ const login = gql`
                 theme
                 bio
                 username
+                password
                 email
                 private
                 avatarAddress
@@ -82,6 +83,7 @@ const getUserProfile = gql`
             theme
             bio
             username
+            password
             email
             private
             avatarAddress
