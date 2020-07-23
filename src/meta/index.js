@@ -34,10 +34,6 @@ export default props => {
             />
             <meta name='twitter:image:src' content={Image({ ...props })} />
             <meta name='twitter:card' content='summary' />
-            <meta
-                name='google-site-verification'
-                content='uLM9_nZHgQhK1tWDulp_Sotibp71uF2xJVRe6vQB-V8'
-            />
         </MetaTags>
     )
 }
