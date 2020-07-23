@@ -89,6 +89,10 @@ module.exports = {
                     from: path.join(__dirname, './src/static'),
                     to: 'static',
                 },
+                {
+                    from: path.join(__dirname, './seo'),
+                    to: '.',
+                },
             ],
         }),
     ],
