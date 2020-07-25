@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components'
 import { WeeshContext } from 'Root/contexts/weesh'
 import { AuthContext } from 'Root/contexts/auth'
 import SuggestionTag from 'Root/components/global/SuggestionTag'
+import StyledComponents, { Components } from 'Root/StyledComponents'
 import Main from 'Root/app/client/global/AddWeesh/Main'
 import Footer from './Footer'
-import SliderTab from 'Root/components/global/SliderTab'
 import Loading from 'Root/components/global/Loading'
 import uuid from 'uuid'
 import C from 'Root/constants'
@@ -19,9 +19,8 @@ const StyledContainer = styled.div`
 `
 
 const StyledFrame = styled.div`
-    width: 100%;
     ${C.styles.flex.flexColumn};
-    padding: 0 0 1rem;
+    padding: 0.75rem 0.75rem 0.5rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.light};
     overflow: hidden;
 `
@@ -33,11 +32,28 @@ export default props => {
     return auth.id ? (
         <StyledContainer>
             <Meta type='AddWeesh' />
-            <StyledFrame>
-                <SuggestionTag />
-                <Main weesh={weesh} />
-                <Footer />
-            </StyledFrame>
+            <SuggestionTag />
+            <StyledComponents.AddWeesh.Frame>
+                <StyledComponents.Weesh.Header.LeftSide>
+                    <Components.Global.Avatar
+                        to={`/${auth.username}`}
+                        user={auth}
+                    />
+                    {auth.username && (
+                        <StyledComponents.Weesh.Header.NameContainer>
+                            <Components.Global.FullName
+                                user={auth}
+                                fontSize={0.85}
+                            />
+                            <StyledComponents.Weesh.Header.Username>
+                                @{auth.username}
+                            </StyledComponents.Weesh.Header.Username>
+                        </StyledComponents.Weesh.Header.NameContainer>
+                    )}
+                </StyledComponents.Weesh.Header.LeftSide>
+                <Main type='ADD' weesh={weesh} />
+                <Footer type='ADD' />
+            </StyledComponents.AddWeesh.Frame>
         </StyledContainer>
     ) : (
         <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' />
