@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import C from 'Root/constants'
-import Avatar from 'Root/components/global/Avatar'
 import moment from 'moment'
-import FullName from 'Root/components/global/FullName'
+import StyledComponents, { Components } from 'Root/StyledComponents'
 import Link from 'Root/components/global/Link'
 import helpers from 'Root/helpers'
 import useHistory from 'Root/hooks/useHistory'
@@ -12,17 +11,6 @@ const StyledHeader = styled.div`
     padding: 0.75rem 0.75rem 0;
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
-`
-
-const StyledNameContainer = styled.div`
-    ${C.styles.flex.flexColumn};
-    margin: 0 0 0 0.5rem;
-`
-
-const StyledUsername = styled.small`
-    font-size: 0.75rem;
-    ${C.styles.flex.flexRow};
-    color: ${({ theme }) => theme.colors.dark};
 `
 
 const StyledTimestamp = styled.small`
@@ -47,21 +35,27 @@ export default props => {
     return (
         <StyledHeader onClick={e => handleClick(e)}>
             {props.user && (
-                <StyledLeftSide>
-                    <Avatar to={`/${props.user.username}`} {...props} />
+                <StyledComponents.Weesh.Header.LeftSide>
+                    <Components.Global.Avatar
+                        to={`/${props.user.username}`}
+                        {...props}
+                    />
                     {props.user && (
-                        <StyledNameContainer>
+                        <StyledComponents.Weesh.Header.NameContainer>
                             <Link to={`/${props.user.username}`}>
-                                <FullName {...props} fontSize={0.85} />
+                                <Components.Global.FullName
+                                    {...props}
+                                    fontSize={0.85}
+                                />
                             </Link>
                             <Link to={`/${props.user.username}`}>
-                                <StyledUsername>
+                                <StyledComponents.Weesh.Header.Username>
                                     @{props.user.username}
-                                </StyledUsername>
+                                </StyledComponents.Weesh.Header.Username>
                             </Link>
-                        </StyledNameContainer>
+                        </StyledComponents.Weesh.Header.NameContainer>
                     )}
-                </StyledLeftSide>
+                </StyledComponents.Weesh.Header.LeftSide>
             )}
             {props.updatedAt && (
                 <StyledRightSide>
