@@ -9,9 +9,9 @@ const initialWeesh = {
     status: null,
     characterCount: 0,
     totalCount: 280,
-    suggestionTags: [],
+    suggestions: [],
+    suggestionType: null,
     allowShowSuggestions: true,
-    textarea: null,
 }
 
 const WeeshProvider = props => {

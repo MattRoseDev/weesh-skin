@@ -13,10 +13,10 @@ export const weeshReducer = (state, action) => {
                 ...action.data,
                 characterCount,
             }
-        case 'EMPTY_SUGGESTION_TAGS':
+        case 'EMPTY_SUGGESTION':
             return {
                 ...state,
-                suggestionTags: [],
+                suggestions: [],
                 allowShowSuggestions: false,
             }
         default:
