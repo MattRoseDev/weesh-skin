@@ -2,7 +2,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { WeeshContext } from 'Root/contexts/weesh'
 import { AuthContext } from 'Root/contexts/auth'
-import SuggestionTag from 'Root/components/global/SuggestionTag'
 import StyledComponents, { Components } from 'Root/StyledComponents'
 import Main from 'Root/app/client/global/AddWeesh/Main'
 import Footer from 'Root/app/client/global/AddWeesh/Content/Footer'
@@ -68,7 +67,7 @@ export default props => {
     return auth.id && weesh.id ? (
         <StyledContainer>
             <Meta type='EditWeesh' />
-            <SuggestionTag />
+            <Components.Global.SuggestionAddWeesh />
             <StyledComponents.AddWeesh.Frame>
                 <StyledComponents.Weesh.Header.LeftSide>
                     <Components.Global.Avatar

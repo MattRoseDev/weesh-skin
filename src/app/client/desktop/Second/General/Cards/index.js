@@ -31,6 +31,7 @@ export default props => {
     const [state, setState] = React.useState(null)
 
     const { error, data, loading, called } = useQuery(api.tags.getTheBestTags, {
+        fetchPolicy: 'no-cache',
         variables: {
             limit: 5,
         },

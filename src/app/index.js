@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Client from './client'
+import StyledComponents, { Components } from 'Root/StyledComponents'
 import { ApolloProvider } from '@apollo/react-hooks'
 import apollo from 'Root/apollo'
 import AuthProvider from 'Root/contexts/auth'
