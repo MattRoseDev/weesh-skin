@@ -7,7 +7,7 @@ import uuid from 'uuid'
 import Link from 'Root/components/global/Link'
 
 const StyledContainer = styled.div`
-    padding: 0.75rem 0 0;
+    padding: 0.75rem 0.5rem 0;
     ${C.styles.scrollbar.hide};
 `
 
@@ -44,6 +44,7 @@ export default props => {
     const [state, setState] = React.useState(null)
 
     const { error, data, loading, called } = useQuery(api.tags.getTheBestTags, {
+        fetchPolicy: 'no-cache',
         variables: {
             limit: 5,
         },

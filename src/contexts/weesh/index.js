@@ -5,13 +5,18 @@ export const WeeshContext = React.createContext()
 
 const initialWeesh = {
     id: null,
+    store: {
+        state: null,
+        setState: null,
+    },
     content: '',
     status: null,
     characterCount: 0,
     totalCount: 280,
-    suggestionTags: [],
+    suggestions: [],
+    defaultSuggestions: [],
+    suggestionType: null,
     allowShowSuggestions: true,
-    textarea: null,
 }
 
 const WeeshProvider = props => {

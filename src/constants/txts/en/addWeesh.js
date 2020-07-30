@@ -4,4 +4,6 @@ export default {
     secret: 'Secret',
     shareQuestion: 'What type is your Weesh?',
     textEditorPlaceholder: 'I weesh ...',
+    addButton: 'Weesh',
+    editButton: 'Edit',
 }
