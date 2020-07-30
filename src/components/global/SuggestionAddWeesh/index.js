@@ -1,4 +1,5 @@
 import React from 'react'
+import { EditorState, ContentState, Modifier, SelectionState } from 'draft-js'
 import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 import { WeeshContext } from 'Root/contexts/weesh'
@@ -70,39 +71,113 @@ const StyledUserTitle = styled.span`
 export default props => {
     const { weesh, dispatch } = React.useContext(WeeshContext)
 
+    const getSearchText = (editorState, selection) => {
+        const anchorKey = selection.getAnchorKey()
+        const anchorOffset = selection.getAnchorOffset() - 1
+        const currentContent = editorState.getCurrentContent()
+        const currentBlock = currentContent.getBlockForKey(anchorKey)
+        const blockText = currentBlock.getText()
+
+        return getWordAt(blockText, anchorOffset)
+    }
+
+    const getWordAt = (string, position) => {
+        // Perform type conversions.
+        const str = String(string)
+        // eslint-disable-next-line no-bitwise
+        const pos = Number(position) >>> 0
+
+        // Search for the word's beginning and end.
+        const left = str.slice(0, pos + 1).search(/\S+$/)
+        const right = str.slice(pos).search(/\s/)
+
+        // The last word in the string is a special case.
+        if (right < 0) {
+            return {
+                word: str.slice(left),
+                begin: left,
+                end: str.length,
+            }
+        }
+
+        // Return the word, using the located bounds to extract it from the string.
+        return {
+            word: str.slice(left, right + pos),
+            begin: left,
+            end: right + pos,
+        }
+    }
+
     const handleClick = value => {
-        console.log(value)
+        const { state, setState } = weesh.store
+        const selection = state.editorState.getSelection()
+
+        const { begin, end } = getSearchText(state.editorState, selection)
+
+        const newSelectionState = selection.merge({
+            anchorOffset: begin,
+            focusOffset: end,
+        })
+
+        const contentState = state.editorState.getCurrentContent()
+
+        const mentionReplacedContent = Modifier.replaceText(
+            contentState,
+            newSelectionState,
+            value,
+        )
+        const newEditorState = EditorState.push(
+            state.editorState,
+            mentionReplacedContent,
+            'insert-mentino',
+        )
+
+        const forceSelection = selection.merge({
+            anchorOffset: begin + value.length,
+            focusOffset: begin + value.length,
+        })
+
+        setState({
+            editorState: EditorState.forceSelection(
+                newEditorState,
+                forceSelection,
+            ),
+        })
+
+        dispatch({
+            type: 'ADD_CONTENT',
+            data: {
+                content: newEditorState.getCurrentContent().getPlainText(),
+            },
+        })
     }
 
     return (
-        <>
+        <StyledContainer width={props.width || undefined}>
             {weesh.suggestions.length > 0 && (
-                <StyledContainer {...props}>
-                    {weesh.suggestionType == 'TAG' &&
-                        weesh.suggestions.map(tag => (
-                            <Tag
-                                {...tag}
-                                key={uuid()}
-                                handleClick={value => handleClick(value)}
-                            />
-                        ))}
+                <>
                     {weesh.suggestionType == 'USER' &&
                         weesh.suggestions.map(user => (
-                            <User
-                                {...user}
-                                key={uuid()}
-                                handleClick={value => handleClick(value)}
-                            />
+                            <UserItem {...user} handleClick={handleClick} />
                         ))}
-                </StyledContainer>
+                    {weesh.suggestionType == 'TAG' &&
+                        weesh.suggestions.map(tag => (
+                            <TagItem {...tag} handleClick={handleClick} />
+                        ))}
+                </>
             )}
-        </>
+            {weesh.suggestions.length < 1 &&
+                weesh.defaultSuggestions.length > 0 &&
+                weesh.defaultSuggestions.map(tag => (
+                    <TagItem {...tag} handleClick={handleClick} />
+                ))}
+        </StyledContainer>
     )
 }
 
-const Tag = props => {
+const TagItem = props => {
     return (
-        <StyledBlock onClick={() => props.handleClick(props.title)}>
+        <StyledBlock onClick={() => props.handleClick(`#${props.title}`)}>
             <StyledItem padding='.3rem'>
                 <StyledContent>
                     <StyledTag>#{props.title}</StyledTag>
@@ -110,7 +185,7 @@ const Tag = props => {
                         {helpers.labelFormat({
                             single: 'weesh',
                             plural: 'weeshes',
-                            number: props.counter,
+                            number: props.weeshCounter || props.counter,
                         })}
                     </StyledNumber>
                 </StyledContent>
@@ -119,9 +194,9 @@ const Tag = props => {
     )
 }
 
-const User = props => {
+const UserItem = props => {
     return (
-        <StyledBlock onClick={() => props.handleClick(props.username)}>
+        <StyledBlock onClick={() => props.handleClick(`@${props.username}`)}>
             <StyledItem padding='.25rem .5rem'>
                 <Components.Global.Avatar user={props} size={1.5} />
                 <StyledContent>

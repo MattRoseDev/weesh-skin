@@ -17,7 +17,13 @@ export const weeshReducer = (state, action) => {
             return {
                 ...state,
                 suggestions: [],
-                allowShowSuggestions: false,
+                allowShowSuggestions: true,
+            }
+        case 'ADD_SUGGESTION':
+            return {
+                ...state,
+                ...action.data,
+                allowShowSuggestions: true,
             }
         default:
             return state

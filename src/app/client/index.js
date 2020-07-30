@@ -37,12 +37,6 @@ const Client = props => {
     )
 
     React.useEffect(() => {
-        if (getProfileUserResponse.error) {
-            console.log(getProfileUserResponse.error)
-        }
-    }, [getProfileUserResponse.error])
-
-    React.useEffect(() => {
         if (!auth.id) {
             getProfileUser()
         }
