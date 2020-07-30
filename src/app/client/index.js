@@ -32,7 +32,7 @@ const Client = props => {
     // })
 
     // const [loadNotifications, loadResult] = useLazyQuery(api.notifications.getNotifications)
-    const [getProfileUser, getProfileUserResult] = useLazyQuery(
+    const [getProfileUser, getProfileUserResponse] = useLazyQuery(
         api.auth.getUserProfile,
     )
 
@@ -65,21 +65,21 @@ const Client = props => {
         //     })
         // }
 
-        if (getProfileUserResult.data) {
+        if (getProfileUserResponse.data) {
             if (
-                !getProfileUserResult.data.getUserProfileForUser &&
-                getProfileUserResult.called &&
-                !getProfileUserResult.loading &&
+                !getProfileUserResponse.data.getUserProfileForUser &&
+                getProfileUserResponse.called &&
+                !getProfileUserResponse.loading &&
                 auth.token
             ) {
                 history.push('/logout')
             }
             authDispatch({
                 type: 'LOGIN',
-                data: getProfileUserResult.data.getUserProfileForUser,
+                data: getProfileUserResponse.data.getUserProfileForUser,
             })
         }
-    }, [getProfileUserResult.data])
+    }, [getProfileUserResponse.data])
 
     return (
         <ThemeProvider

@@ -1,5 +1,33 @@
 import gql from 'graphql-tag'
 
+const suggestion = gql`
+    query exploreAllForUser($expression: String!, $limit: Int, $page: Int) {
+        exploreAllForUser(
+            expression: $expression
+            type: "SUGGESTION"
+            limit: $limit
+            page: $page
+        ) {
+            user {
+                users {
+                    id
+                    username
+                    firstName
+                    lastName
+                    avatarAddress
+                    unknown {
+                        fullname
+                        avatar
+                    }
+                }
+                paginate {
+                    totalDocs
+                }
+            }
+        }
+    }
+`
+
 const getUserByUsernameForUser = gql`
     query getUserByUsernameForUser($username: String!) {
         getUserByUsernameForUser(username: $username) {
@@ -226,5 +254,6 @@ export default {
     changePassword,
     checkEmail,
     editUsername,
+    suggestion,
     edit,
 }

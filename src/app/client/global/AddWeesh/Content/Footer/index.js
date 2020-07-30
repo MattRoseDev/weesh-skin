@@ -15,7 +15,7 @@ const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsEnd};
     ${C.styles.flex.justifyContentBetween};
-    padding: 0 1rem;
+    padding: 0;
 `
 
 const StyledButtonTitle = styled.span`
@@ -45,7 +45,7 @@ const initialDialog = {
     visible: false,
 }
 
-export default () => {
+export default props => {
     const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
@@ -53,7 +53,8 @@ export default () => {
     const { auth } = React.useContext(AuthContext)
     const [dialog, setDialog] = React.useState(initialDialog)
 
-    const [addWeesh, { data, error, loading }] = useMutation(api.weeshes.add)
+    const [addWeesh, addWeeshResponse] = useMutation(api.weeshes.add)
+    const [editWeesh, editWeeshResponse] = useMutation(api.weeshes.editWeesh)
 
     const handleAddWeesh = status => {
         toggleDialog(false)
@@ -65,32 +66,16 @@ export default () => {
         })
     }
 
-    React.useEffect(() => {
-        if (error) {
-            console.log(error)
-        }
-        if (data) {
-            const res = data.addWeeshForUser
-            dispatch({
-                type: 'ADD_WEESH',
-                data: {
-                    content: '',
-                },
-            })
-            snackbarDispatch({
-                type: 'SET_DATA',
-                data: {
-                    icon: 'PenTool',
-                    message: 'Your weesh added successfully.',
-                    background: 'foreground',
-                    visible: true,
-                },
-            })
-            setTimeout(() => {
-                snackbarDispatch({ type: 'HIDE' })
-            }, 2 * 1000)
-        }
-    }, [data])
+    const handleEditWeesh = status => {
+        toggleDialog(false)
+        editWeesh({
+            variables: {
+                weeshId: weesh.id,
+                content: weesh.content,
+                status,
+            },
+        })
+    }
 
     const toggleDialog = visible => {
         setDialog(prevState => ({
@@ -119,7 +104,10 @@ export default () => {
 
     auth.private && shareOptions.splice(0, 1)
 
-    const limitedCharacter = weesh.content.length > 2 ? true : false
+    const charLength = weesh.content.length > 2 ? true : false
+
+    const isAddType = props.type == 'ADD' ? true : false
+    const CONST = C.txts.en.addWeesh
 
     return (
         <StyledContainer>
@@ -139,7 +127,11 @@ export default () => {
                 <StyledComponents.Share.Container>
                     {shareOptions.map(item => (
                         <StyledComponents.Share.Item
-                            onClick={() => handleAddWeesh(item.status)}>
+                            onClick={() => {
+                                isAddType
+                                    ? handleAddWeesh(item.status)
+                                    : handleEditWeesh(item.status)
+                            }}>
                             <Icon
                                 icon={item.icon}
                                 color={auth.color}
@@ -157,17 +149,26 @@ export default () => {
                 <StyledNumber>{weesh.totalCount}</StyledNumber>
             </StyledNumbers>
             <Button
-                color={limitedCharacter ? 'background' : 'gray'}
-                cursor={limitedCharacter ? 'pointer' : 'not-allowed'}
-                background={limitedCharacter ? 'primary' : 'lightGray'}
+                color={charLength ? 'background' : 'gray'}
+                cursor={charLength ? 'pointer' : 'not-allowed'}
+                background={charLength ? 'primary' : 'lightGray'}
                 boxShadow='light'
-                disabled={limitedCharacter ? false : true}
+                disabled={charLength ? false : true}
                 clickEvent={() => toggleDialog(true)}
-                isLoading={loading || undefined}
+                isLoading={
+                    (isAddType
+                        ? addWeeshResponse.loading
+                        : editWeeshResponse.loading) || undefined
+                }
                 padding='.5rem 1rem'
                 radius='50rem'>
-                <StyledButtonTitle>Weesh</StyledButtonTitle>
-                <Icon icon='PenTool' color='background' />
+                <StyledButtonTitle>
+                    {isAddType ? CONST.addButton : CONST.editButton}
+                </StyledButtonTitle>
+                <Icon
+                    icon={isAddType ? 'PenTool' : 'Edit'}
+                    color='background'
+                />
             </Button>
         </StyledContainer>
     )

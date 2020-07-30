@@ -9,6 +9,7 @@ const initialAuth = {
     token: storage.get({ key: 'token' }) || false,
     theme: storage.get({ key: 'theme' }) || 'light',
     color: storage.get({ key: 'color' }) || 'blue',
+    pathname: null,
 }
 
 const AuthProvider = props => {
