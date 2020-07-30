@@ -171,6 +171,10 @@ export default props => {
                 weesh.defaultSuggestions.map(tag => (
                     <TagItem {...tag} handleClick={handleClick} />
                 ))}
+            {weesh.suggestions.length < 1 &&
+                weesh.defaultSuggestions.length < 1 && (
+                    <Components.Global.Loading padding='.5rem' />
+                )}
         </StyledContainer>
     )
 }

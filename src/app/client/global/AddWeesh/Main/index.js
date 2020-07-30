@@ -105,7 +105,6 @@ export default props => {
     React.useEffect(() => {
         if (weesh.defaultSuggestions.length < 1) {
             getTheBestTags()
-            console.log('default-----------')
         }
     }, [weesh.defaultSuggestions])
 
