@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { WeeshContext } from 'Root/contexts/weesh'
 import C from 'Root/constants'
 import Editor from 'draft-js-plugins-editor'
-import { EditorState, ContentState } from 'draft-js'
+import { EditorState, ContentState, Modifier, SelectionState } from 'draft-js'
 import { useLazyQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import createLinkifyPlugin from 'draft-js-linkify-plugin'
@@ -24,7 +24,7 @@ const StyledPrimary = styled.span`
 
 export default props => {
     const { weesh, dispatch } = React.useContext(WeeshContext)
-    const [initComponent, setInitComponent] = React.useState(false)
+    const [initComponent, setInitComponent] = React.useState(true)
 
     const MENTION_REGEX = /@[\w]+/g
     const HASHTAG_REGEX = /#[\w\u0590-\u05ff]+/g
@@ -81,23 +81,65 @@ export default props => {
         ),
     })
 
+    const [getTheBestTags, getTheBestTagsResponse] = useLazyQuery(
+        api.tags.getTheBestTags,
+        {
+            fetchPolicy: 'no-cache',
+        },
+    )
+
     const [getTagSuggestion, getTagSuggestionResponse] = useLazyQuery(
         api.tags.suggestion,
+        {
+            fetchPolicy: 'no-cache',
+        },
     )
+
     const [getUserSuggestion, getUserSuggestionResponse] = useLazyQuery(
         api.users.suggestion,
+        {
+            fetchPolicy: 'no-cache',
+        },
     )
+
+    React.useEffect(() => {
+        if (weesh.defaultSuggestions.length < 1) {
+            getTheBestTags()
+            console.log('default-----------')
+        }
+    }, [weesh.defaultSuggestions])
+
+    React.useEffect(() => {
+        const { data } = getTheBestTagsResponse
+        if (data && weesh.allowShowSuggestions) {
+            dispatch({
+                type: 'ADD_WEESH',
+                data: {
+                    defaultSuggestions: data.getTheBestTagsForUser
+                        ? data.getTheBestTagsForUser.tags
+                        : [],
+                    store: {
+                        state,
+                        setState,
+                    },
+                },
+            })
+        }
+    }, [getTheBestTagsResponse.data])
 
     React.useEffect(() => {
         const { data } = getTagSuggestionResponse
         if (data && weesh.allowShowSuggestions) {
-            console.log(data.exploreAllForUser)
             dispatch({
                 type: 'ADD_WEESH',
                 data: {
                     suggestions: data.exploreAllForUser
                         ? data.exploreAllForUser.tag.tags
                         : [],
+                    store: {
+                        state,
+                        setState,
+                    },
                 },
             })
         }
@@ -106,20 +148,45 @@ export default props => {
     React.useEffect(() => {
         const { data } = getUserSuggestionResponse
         if (data && weesh.allowShowSuggestions) {
-            console.log(data.exploreAllForUser)
             dispatch({
                 type: 'ADD_WEESH',
                 data: {
                     suggestions: data.exploreAllForUser
                         ? data.exploreAllForUser.user.users
                         : [],
+                    store: {
+                        state,
+                        setState,
+                    },
                 },
             })
         }
     }, [getUserSuggestionResponse.data])
 
     const handleChange = editorState => {
-        setState({ editorState })
+        if (initComponent) {
+            const selection = editorState.getSelection()
+            const anchorKey = state.editorState
+                .getCurrentContent()
+                .getFirstBlock()
+                .getKey()
+            const forceSelection = selection.merge({
+                anchorOffset: 0,
+                focusOffset: 0,
+                anchorKey,
+                focusKey: anchorKey,
+            })
+            setState({
+                editorState: EditorState.forceSelection(
+                    editorState,
+                    forceSelection,
+                ),
+            })
+            setInitComponent(false)
+        } else {
+            setState({ editorState })
+        }
+
         handleCursorPosition(editorState)
         dispatch({
             type: 'ADD_CONTENT',
@@ -137,7 +204,6 @@ export default props => {
         let start = selectionState.getStartOffset()
         let text = currentContentBlock.getText().slice(0, start).split(' ')
         let expression = text[text.length - 1]
-        console.log(expression)
         if (expression.match(/^#[\w]/gi)) {
             getTagSuggestion({
                 variables: {
@@ -145,7 +211,7 @@ export default props => {
                 },
             })
             dispatch({
-                type: 'ADD_WEESH',
+                type: 'ADD_SUGGESTION',
                 data: {
                     allowShowSuggestions: true,
                     suggestionType: 'TAG',
@@ -158,7 +224,7 @@ export default props => {
                 },
             })
             dispatch({
-                type: 'ADD_WEESH',
+                type: 'ADD_SUGGESTION',
                 data: {
                     allowShowSuggestions: true,
                     suggestionType: 'USER',
