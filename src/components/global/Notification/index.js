@@ -138,6 +138,10 @@ const switchIcon = type => {
             return (
                 <Icon icon='Inbox' size={20} strokeWidth={1.5} color='dark' />
             )
+        case 'mention_in_weesh':
+            return (
+                <Icon icon='AtSign' size={20} strokeWidth={1.5} color='dark' />
+            )
     }
 }
 
@@ -154,7 +158,9 @@ const switchElements = ({ element, props }) => {
                 return (
                     <StyledGray key={uuid()}>
                         {props.weesh &&
-                            `${props.weesh.content.substr(0, 50)}${
+                            `${props.weesh.content
+                                .replace(/\n/g, ' ')
+                                .substr(0, 50)}${
                                 props.weesh.content.length > 50 ? '... ' : ' '
                             }`}
                     </StyledGray>
@@ -162,7 +168,8 @@ const switchElements = ({ element, props }) => {
             case '$$comment$$':
                 return (
                     <StyledContent key={uuid()}>
-                        {props.comment && `${props.comment.content} `}
+                        {props.comment &&
+                            `${props.comment.content.replace(/\n/g, ' ')} `}
                     </StyledContent>
                 )
             case '$$you$$':
@@ -174,7 +181,11 @@ const switchElements = ({ element, props }) => {
                     </StyledUsername>
                 )
             default:
-                return <StyledContent key={uuid()}>{element}</StyledContent>
+                return (
+                    <StyledContent key={uuid()}>
+                        {element.replace(/\n/g, ' ')}
+                    </StyledContent>
+                )
         }
     } else {
         return null
