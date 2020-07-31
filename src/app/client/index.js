@@ -14,10 +14,6 @@ import useHistory from 'Root/hooks/useHistory'
 
 const Client = props => {
     const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
-    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
-        SnackBarContext,
-    )
-    // const { notifications, dispatch } = React.useContext(NotificationsContext)
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
     const history = useHistory()
 
@@ -25,13 +21,6 @@ const Client = props => {
         setWindowWidth(window.innerWidth)
     })
 
-    // const { data, error } = useSubscription(api.notifications.add,{
-    //     variables: {
-    //         userId: `${auth.id}`
-    //     }
-    // })
-
-    // const [loadNotifications, loadResult] = useLazyQuery(api.notifications.getNotifications)
     const [getProfileUser, getProfileUserResponse] = useLazyQuery(
         api.auth.getUserProfile,
     )
@@ -40,30 +29,6 @@ const Client = props => {
         if (!auth.id) {
             getProfileUser()
         }
-
-        // if (!loadResult.called && !notifications.isEmpty && !Object.values(notifications.store).length) {
-        //     loadNotifications()
-        // }
-
-        // if (loadResult.called && loadResult.data) {
-        //     if (loadResult.data.getNotificationsUserForUser.notifications.length > 0) {
-        //         () => dispatch({
-        //             type: 'PUSH_NOTIFICATION',
-        //             data: loadResult.data.getNotificationsUserForUser.notifications,
-        //         })
-        //     } else {
-        //         dispatch({
-        //             type: 'EMPTY',
-        //         })
-        //     }
-        // }
-
-        // if (data) {
-        //     dispatch({
-        //         type: 'UNSHIFT_NOTIFICATION',
-        //         data: data.addNotificationForUser
-        //     })
-        // }
 
         if (getProfileUserResponse.data) {
             if (

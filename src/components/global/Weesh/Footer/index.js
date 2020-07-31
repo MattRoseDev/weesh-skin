@@ -10,6 +10,7 @@ import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
+import handleSnackBar from 'Root/hooks/handleSnackBar'
 
 const StyledFooterContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -134,18 +135,18 @@ export default props => {
                     removeFromBookmark()
                 } else {
                     addToBookmark()
-                    // snackbarDispatch({
-                    //     type: 'SET_DATA',
-                    //     data: {
-                    //         icon: 'Bookmark',
-                    //         message: 'Added to your Bookmarks.',
-                    //         background: 'foreground',
-                    //         visible: true,
-                    //     },
-                    // })
-                    // setTimeout(() => {
-                    //     snackbarDispatch({ type: 'HIDE' })
-                    // }, 2 * 1000)
+                    snackbarDispatch({
+                        type: 'SET_DATA',
+                        data: {
+                            icon: 'Bookmark',
+                            message: 'Added to your Bookmarks.',
+                            background: 'foreground',
+                            visible: true,
+                        },
+                    })
+                    setTimeout(() => {
+                        snackbarDispatch({ type: 'HIDE' })
+                    }, 2 * 1000)
                 }
                 setIsBookmarked(isBookmarked ? false : true)
             },

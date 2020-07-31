@@ -1,10 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import uuid from 'uuid'
-import List from 'Root/components/desktop/List'
-import Loader from 'Root/components/global/Loader'
-import SliderTab from 'Root/components/global/SliderTab'
 import C from 'Root/constants'
 import Input from 'Root/components/global/Input'
 import Textarea from 'Root/components/global/Textarea'
@@ -16,7 +11,6 @@ import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import Button from 'Root/components/global/Button'
 import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     padding: 0 0.75rem;
