@@ -10,7 +10,6 @@ import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
-import handleSnackBar from 'Root/hooks/handleSnackBar'
 
 const StyledFooterContainer = styled.div`
     ${C.styles.flex.flexColumn};

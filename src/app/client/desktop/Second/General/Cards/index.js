@@ -33,7 +33,7 @@ export default props => {
     const { error, data, loading, called } = useQuery(api.tags.getTheBestTags, {
         fetchPolicy: 'no-cache',
         variables: {
-            limit: 5,
+            limit: 8,
         },
     })
 
