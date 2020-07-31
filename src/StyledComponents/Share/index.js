@@ -14,8 +14,14 @@ const Item = styled.div`
     background: transparent;
     padding: 0.75rem;
     border-radius: 0.75rem;
-    border: 1px solid ${({ theme }) => theme.colors.primary};
+    border: 1px solid ${({ theme }) => theme.colors.light};
+    &:hover {
+        background: ${({ theme }) => theme.colors.lightPrimary};
+        border: 1px solid ${({ theme }) => theme.colors.lightPrimary};
+        transition: all 0.2s ease;
+    }
     margin: 0.5rem;
+
     cursor: pointer;
 `
 
