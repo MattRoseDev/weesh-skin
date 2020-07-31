@@ -195,13 +195,13 @@ export default props => {
                 defaultValue={`${window.location.origin}/w/${props.link}`}
             />
             <DrawerDialog
-                width={window.innerWidth < 768 ? '100%' : '30%'}
+                width={window.innerWidth < 960 ? '100%' : '30%'}
                 buttons={buttons}
                 {...drawerDialog}
                 toggleDialogFunction={visible => toggleDrawerDialog(visible)}
             />
             <Dialog
-                width={window.innerWidth < 768 ? '65%' : '18rem'}
+                width={window.innerWidth < 960 ? '65%' : '18rem'}
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledHeaderDialog>
