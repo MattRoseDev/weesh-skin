@@ -20,6 +20,7 @@ const StyledMain = styled.p`
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap;
+    user-select: text !important;
     color: ${({ theme }) => theme.colors.foreground};
 `
 
