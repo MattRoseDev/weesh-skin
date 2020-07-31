@@ -104,7 +104,10 @@ export default props => {
 
     auth.private && shareOptions.splice(0, 1)
 
-    const charLength = weesh.content.length > 2 ? true : false
+    const charLength =
+        weesh.content.length > 2 && weesh.content.length < weesh.totalCount + 1
+            ? true
+            : false
 
     const isAddType = props.type == 'ADD' ? true : false
     const CONST = C.txts.en.addWeesh

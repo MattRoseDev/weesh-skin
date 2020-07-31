@@ -14,7 +14,7 @@ const StyledContainer = styled.div`
     ${C.styles.flex.alignItemsStart};
     padding: 0.5rem;
     position: sticky;
-    top: ${window.innerWidth > 768 ? '54px' : '44px'};
+    top: ${window.innerWidth > 960 ? '54px' : '44px'};
     border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
     background: ${({ theme }) => theme.colors.background};
 `
