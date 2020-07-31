@@ -6,10 +6,11 @@ import { WeeshContext } from 'Root/contexts/weesh'
 import { AuthContext } from 'Root/contexts/auth'
 import C from 'Root/constants'
 import Dialog, { DialogButton } from 'Root/components/global/Dialog'
-import StyledComponents from 'Root/StyledComponents'
+import StyledComponents, { Components } from 'Root/StyledComponents'
 import { useMutation } from '@apollo/react-hooks'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import api from 'Root/api'
+import useHistory from 'Root/hooks/useHistory'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -46,15 +47,15 @@ const initialDialog = {
 }
 
 export default props => {
-    const { snackbar, dispatch: snackbarDispatch } = React.useContext(
-        SnackBarContext,
-    )
+    const { dispatch: snackbarDispatch } = React.useContext(SnackBarContext)
     const { weesh, dispatch } = React.useContext(WeeshContext)
     const { auth } = React.useContext(AuthContext)
     const [dialog, setDialog] = React.useState(initialDialog)
 
     const [addWeesh, addWeeshResponse] = useMutation(api.weeshes.add)
     const [editWeesh, editWeeshResponse] = useMutation(api.weeshes.editWeesh)
+
+    const history = useHistory()
 
     const handleAddWeesh = status => {
         toggleDialog(false)
@@ -63,6 +64,10 @@ export default props => {
                 content: weesh.content,
                 status,
             },
+        })
+        handleAfterSubmit({
+            icon: 'PenTool',
+            message: 'Your weesh added successfully.',
         })
     }
 
@@ -75,6 +80,26 @@ export default props => {
                 status,
             },
         })
+        handleAfterSubmit({
+            icon: 'Edit',
+            message: 'Your weesh edited successfully.',
+        })
+    }
+
+    const handleAfterSubmit = ({ icon, message }) => {
+        history.push(`/${auth.username}`)
+        snackbarDispatch({
+            type: 'SET_DATA',
+            data: {
+                icon,
+                message,
+                background: 'foreground',
+                visible: true,
+            },
+        })
+        setTimeout(() => {
+            snackbarDispatch({ type: 'HIDE' })
+        }, 2 * 1000)
     }
 
     const toggleDialog = visible => {
