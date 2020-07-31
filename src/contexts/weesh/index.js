@@ -12,7 +12,7 @@ const initialWeesh = {
     content: '',
     status: null,
     characterCount: 0,
-    totalCount: 280,
+    totalCount: 340,
     suggestions: [],
     defaultSuggestions: [],
     suggestionType: null,
