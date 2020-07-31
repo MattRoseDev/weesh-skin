@@ -50,6 +50,10 @@ const add = gql`
                 content
                 status
             }
+            comment {
+                id
+                content
+            }
             updatedAt
             createdAt
         }
