@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@apollo/react-hooks": "^3.1.5",
+        "anchorme": "^2.1.2",
         "apollo-boost": "^0.4.9",
         "apollo-cache": "^1.3.5",
         "apollo-client": "^2.6.10",
@@ -28,6 +29,7 @@
         "graphql": "^14.5.8",
         "graphql-tag": "^2.10.1",
         "html-react-parser": "^0.10.2",
+        "linkifyjs": "^2.1.9",
         "moment": "^2.24.0",
         "query-string": "^6.12.0",
         "react": "^16.12.0",

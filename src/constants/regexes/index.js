@@ -1,4 +1,6 @@
+import weesh from './weesh'
+
 export default {
-    weesh: /(\#[0-9a-zA-Z_]*)(?!;)/gim,
+    weesh,
     notification: /(\$\$[0-9a-zA-Z_]+\$\$)(?!;)/gim,
 }
