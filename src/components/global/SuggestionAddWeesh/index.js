@@ -130,9 +130,8 @@ export default props => {
         const newEditorState = EditorState.push(
             state.editorState,
             mentionReplacedContent,
-            'insert-mentino',
+            'insert-mention',
         )
-
         const forceSelection = selection.merge({
             anchorOffset: begin + value.length,
             focusOffset: begin + value.length,
@@ -170,11 +169,11 @@ export default props => {
             {weesh.suggestions.length < 1 &&
                 weesh.defaultSuggestions.length > 0 &&
                 weesh.defaultSuggestions.map(tag => (
-                    <TagItem {...tag} handleClick={handleClick} />
+                    <div style={{ padding: '1.25rem' }}></div> // <TagItem {...tag} handleClick={handleClick} />
                 ))}
             {weesh.suggestions.length < 1 &&
                 weesh.defaultSuggestions.length < 1 && (
-                    <Components.Global.Loading padding='.5rem' />
+                    <Components.Global.Loading padding='.65rem' />
                 )}
         </StyledContainer>
     )
