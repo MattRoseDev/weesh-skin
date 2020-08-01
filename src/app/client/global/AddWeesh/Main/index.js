@@ -203,7 +203,7 @@ export default props => {
         let start = selectionState.getStartOffset()
         let text = currentContentBlock.getText().slice(0, start).split(' ')
         let expression = text[text.length - 1]
-        if (expression.match(/^#[\w]/gi)) {
+        if (expression.match(C.regexes.weesh.hashtag)) {
             getTagSuggestion({
                 variables: {
                     expression: `${expression.substr(1)}`,
@@ -216,7 +216,7 @@ export default props => {
                     suggestionType: 'TAG',
                 },
             })
-        } else if (expression.match(/^@[\w]/gi)) {
+        } else if (expression.match(C.regexes.weesh.mention)) {
             getUserSuggestion({
                 variables: {
                     expression: `${expression.substr(1)}`,
