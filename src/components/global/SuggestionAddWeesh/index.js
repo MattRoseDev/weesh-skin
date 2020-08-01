@@ -51,7 +51,7 @@ const StyledContent = styled.span`
 const StyledTag = styled.span`
     color: ${({ theme }) => theme.colors.primary};
     font-weight: bold;
-    padding: 0 0.25rem 0 0;
+    padding: 0 0.25rem 0.2rem 0;
     font-size: 0.95rem;
 `
 
@@ -59,13 +59,14 @@ const StyledNumber = styled.span`
     color: ${({ theme }) => theme.colors.gray};
     font-weight: normal;
     white-space: nowrap;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    padding: 0 0.25rem 0 0;
 `
 
 const StyledUserTitle = styled.span`
     color: ${({ theme }) => theme.colors.dark};
     font-weight: normal;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 `
 
 export default props => {
