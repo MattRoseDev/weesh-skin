@@ -67,7 +67,7 @@ export default () => {
                     <InfiniteScroll
                         onLoadMore={handlePaginate}
                         hasNextPage={nextPage}
-                        padding='0 .5rem 3.125rem'>
+                        padding='0 .6rem 3.125rem'>
                         {state.map(weesh => (
                             <Weesh {...weesh} key={uuid()} />
                         ))}

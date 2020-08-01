@@ -24,7 +24,7 @@ export default props => {
                     {C.txts.en.g.unknownPerson}
                 </StyledFullName>
             ) : (
-                <StyledFullName fontSize={props.fontSize}>
+                <StyledFullName fontSize={props.fontSize || undefined}>
                     {props.user.firstName} {props.user.lastName}
                 </StyledFullName>
             )}
