@@ -9,6 +9,8 @@ const StyledLink = styled(Link)`
 `
 
 const StyledCountItem = styled.div`
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.alignItemsCenter};
     color: unset;
     text-decoration: none;
     margin: 0 0.5rem 0 0;
@@ -33,6 +35,8 @@ const StyledNumber = styled.span`
 `
 
 const StyledHoverTitle = styled.span`
+    ${C.styles.flex.inlineFlexRow};
+    ${C.styles.flex.alignItemsCenter};
     color: ${({ theme }) => theme.colors.dark};
     font-size: 0.9rem;
     margin: 0 0 0 0.25rem;
@@ -42,6 +46,8 @@ const StyledHoverTitle = styled.span`
 `
 
 const StyledTitle = styled.span`
+    ${C.styles.flex.inlineFlexRow};
+    ${C.styles.flex.alignItemsCenter};
     color: ${({ theme }) => theme.colors.dark};
     font-size: 0.9rem;
     margin: 0 0 0 0.25rem;
@@ -49,7 +55,9 @@ const StyledTitle = styled.span`
 
 export default props => {
     return (
-        <StyledContainer {...props}>
+        <StyledContainer
+            margin={props.margin || undefined}
+            width={props.width || undefined}>
             {props.to ? (
                 <StyledLink to={props.to}>
                     <StyledCountItem>

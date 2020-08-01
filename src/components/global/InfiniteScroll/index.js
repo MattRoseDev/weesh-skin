@@ -5,6 +5,8 @@ import Loader from 'Root/components/global/Loader'
 import C from 'Root/constants'
 
 const StyledContainer = styled(InfiniteScroll)`
+    ${C.styles.flex.flexColumn};
+    ${C.styles.flex.alignItemsCenter};
     ${({ padding }) =>
         padding &&
         css`
@@ -21,7 +23,7 @@ const StyledLoader = styled.div`
 export default props => {
     return (
         <StyledContainer
-            {...props}
+            padding={props.padding || undefined}
             dataLength={props.children.length}
             next={props.onLoadMore}
             hasMore={props.hasNextPage}
