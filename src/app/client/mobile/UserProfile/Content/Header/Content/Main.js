@@ -6,7 +6,6 @@ import { AuthContext } from 'Root/contexts/auth'
 import FullName from 'Root/components/global/FullName'
 import Icon from 'Root/components/global/Icon'
 import CounterForProfile from 'Root/components/global/CounterForProfile'
-import diamond from 'Root/public/icons/diamond.svg'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -97,10 +96,6 @@ export default props => {
                 <CounterForProfile
                     title={`${numbers.weeshes == '1' ? 'Weesh' : 'Weeshes'}`}
                     number={numbers.weeshes}
-                />
-                <CounterForProfile
-                    title={<img src={diamond} height='18' />}
-                    number={2}
                 />
             </StyledButtonContainer>
         </StyledContainer>

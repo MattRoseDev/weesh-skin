@@ -1,15 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import Connection from 'Root/app/client/global/UserProfile/Content/Header/Content/Connection/index'
-import Icon from 'Root/components/global/Icon'
-import Button from 'Root/components/global/Button'
+import StyledComponents, { Components } from 'Root/StyledComponents'
 import Main from './Main'
 import C from 'Root/constants'
 import { UserContext } from 'Root/contexts/user'
 import { AuthContext } from 'Root/contexts/auth'
 import { useSubscription } from '@apollo/react-hooks'
 import api from 'Root/api'
-import { Link } from 'react-router-dom'
+import diamond from 'Root/public/icons/diamond.svg'
 
 const StyledContent = styled.div`
     ${C.styles.flex.flexColumn};
@@ -24,14 +23,21 @@ const StyledButtonContainer = styled.div`
     ${C.styles.flex.alignItemsCenter};
     padding: 0.75rem 0.75rem 0.75rem;
 `
-
-const StyledBookmarkButton = styled(Link)`
+const StyledCredit = styled(Components.Global.Link)`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.center};
-    background: ${({ theme }) => theme.colors.foreground};
-    padding: 0.4rem;
+    border: 1px solid ${({ theme }) => theme.colors.primary};
+    /* background: ${({ theme }) => theme.colors.lightPrimary}; */
+    padding: .4rem .75rem;
     margin: 0 0.5rem 0 0;
-    border-radius: 50%;
+    border-radius: 50rem;
+`
+const StyledCreditItem = styled.span`
+    color: ${({ theme }) => theme.colors.primary};
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.center};
+    margin: 0 0.25rem 0 0;
+    font-size: 1rem;
 `
 
 export default props => {
@@ -41,8 +47,21 @@ export default props => {
     return (
         <StyledContent>
             <StyledButtonContainer>
+                <Components.Global.Button
+                    color='primary'
+                    hoverbackground='lightPrimary'
+                    bordercolor='primary'
+                    borderwidth='1px'
+                    fontWeight='bold'
+                    padding='.4rem .85rem'
+                    margin='0 .5rem 0 0'
+                    radius='50rem'
+                    to='/credit'>
+                    <StyledCreditItem>6</StyledCreditItem>
+                    <img src={diamond} height='18' />
+                </Components.Global.Button>
                 {auth.id == user.id && (
-                    <Button
+                    <Components.Global.Button
                         color='primary'
                         hoverbackground='lightPrimary'
                         bordercolor='primary'
@@ -52,8 +71,11 @@ export default props => {
                         margin='0 .5rem 0 0'
                         radius='50%'
                         to={`/${auth.username}/bookmarks`}>
-                        <Icon icon='Bookmark' color={`${auth.color}`} />
-                    </Button>
+                        <Components.Global.Icon
+                            icon='Bookmark'
+                            color={`${auth.color}`}
+                        />
+                    </Components.Global.Button>
                 )}
                 <Connection {...props} />
             </StyledButtonContainer>
