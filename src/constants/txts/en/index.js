@@ -6,6 +6,7 @@ import connections from './connections'
 import editProfile from './editProfile'
 import cropImage from './cropImage'
 import weeshPage from './weeshPage'
+import credit from './credit'
 
 export default {
     g,
@@ -16,4 +17,5 @@ export default {
     editProfile,
     cropImage,
     weeshPage,
+    credit,
 }
