@@ -27,8 +27,18 @@ const login = gql`
 `
 
 const join = gql`
-    mutation join($email: String!, $password: String!, $firstName: String!) {
-        join(email: $email, password: $password, firstName: $firstName) {
+    mutation join(
+        $email: String!
+        $password: String!
+        $firstName: String!
+        $invitationCode: String
+    ) {
+        join(
+            email: $email
+            password: $password
+            firstName: $firstName
+            invitationCode: $invitationCode
+        ) {
             user {
                 id
                 firstName
@@ -52,8 +62,8 @@ const join = gql`
 `
 
 const oAuthGoogle = gql`
-    mutation oAuthGoogle($gToken: String!) {
-        oAuthGoogle(gToken: $gToken) {
+    mutation oAuthGoogle($gToken: String!, $invitationCode: String) {
+        oAuthGoogle(gToken: $gToken, invitationCode: $invitationCode) {
             user {
                 id
                 firstName

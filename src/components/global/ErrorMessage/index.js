@@ -23,7 +23,9 @@ const StyledIcon = styled.div`
 
 export default props => {
     return (
-        <StyledContainer {...props}>
+        <StyledContainer
+            width={props.width || undefined}
+            margin={props.margin || undefined}>
             <StyledIcon>
                 <Icon size='18' icon='X' color='red' />
             </StyledIcon>

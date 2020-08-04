@@ -4,6 +4,7 @@ import support from './support'
 import explore from './explore'
 import tags from './tags'
 import connections from './connections'
+import invitations from './invitations'
 import weeshes from './weeshes'
 import notifications from './notifications'
 import uploadFile from './uploadFile'
@@ -18,6 +19,7 @@ export default {
     explore,
     tags,
     connections,
+    invitations,
     weeshes,
     notifications,
     uploadFile,

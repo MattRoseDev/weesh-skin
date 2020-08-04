@@ -4,6 +4,7 @@ import { AuthContext } from 'Root/contexts/auth'
 import { useSubscription, useMutation, useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import C from 'Root/constants'
+import helpers from 'Root/helpers'
 
 export default () => {
     const { auth } = React.useContext(AuthContext)
@@ -24,6 +25,8 @@ export default () => {
             },
         },
     )
+
+    helpers.storage.remove({ key: 'invitationCode' })
 
     React.useEffect(() => {
         if (!isUnreadNotification && notificationsResponse.data) {

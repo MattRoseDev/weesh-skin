@@ -64,13 +64,18 @@ const StyledIconTitle = styled.span`
     font-size: 0.85rem;
 `
 
-export default () => {
+export default props => {
     const { auth, dispatch } = React.useContext(AuthContext)
     const [state, setState] = React.useState(null)
     const { data, called, error, loading } = useQuery(api.weeshes.getShowcase, {
         variables: {
             type: 'SHOWCASE',
         },
+    })
+
+    helpers.saveQueryString({
+        location: props.location,
+        param: 'invitationCode',
     })
 
     const handleTheme = () => dispatch({ type: 'TOGGLE_THEME' })
