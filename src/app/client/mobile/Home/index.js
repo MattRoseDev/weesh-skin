@@ -6,11 +6,11 @@ import styled from 'styled-components'
 
 const StyledContainer = styled.div``
 
-export default () => {
+export default props => {
     const { auth } = React.useContext(AuthContext)
     return (
         <StyledContainer>
-            {!auth.token ? <Showcase /> : <Main />}
+            {!auth.token ? <Showcase {...props} /> : <Main />}
         </StyledContainer>
     )
 }

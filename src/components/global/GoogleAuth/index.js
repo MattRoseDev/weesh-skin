@@ -2,6 +2,7 @@ import React from 'react'
 import { GoogleLogin } from 'react-google-login'
 import styled from 'styled-components'
 import config from 'Root/config'
+import helpers from 'Root/helpers'
 
 const StyeldButton = styled(GoogleLogin)`
     width: 75%;
@@ -21,10 +22,17 @@ const StyeldButton = styled(GoogleLogin)`
 
 export default props => {
     const responseGoogle = response => {
+        let variables = {
+            gToken: `${response.tokenId}`,
+        }
+        if (props.data) {
+            variables = {
+                ...variables,
+                ...props.data,
+            }
+        }
         props.handleRequest({
-            variables: {
-                gToken: `${response.tokenId}`,
-            },
+            variables,
         })
     }
     return (

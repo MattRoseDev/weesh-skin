@@ -6,6 +6,9 @@ import Loader from './Loader'
 import Link from './Link'
 import Icon from './Icon'
 import Button from './Button'
+import InvitedBy from './InvitedBy'
+import ErrorMessage from './ErrorMessage'
+import Diamond from './Diamond'
 
 export default {
     Avatar,
@@ -16,4 +19,7 @@ export default {
     Link,
     Icon,
     Button,
+    InvitedBy,
+    ErrorMessage,
+    Diamond,
 }

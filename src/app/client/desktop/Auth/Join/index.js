@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Components } from 'Root/StyledComponents'
 import Logo from 'Root/components/global/Logo'
 import GoogleAuth from 'Root/components/global/GoogleAuth'
 import Input from 'Root/components/global/Input'
-import ErrorMessage from 'Root/components/global/ErrorMessage'
 import Button from 'Root/components/global/Button'
 import OR from 'Root/components/global/OR'
 import C from 'Root/constants'
@@ -56,7 +56,7 @@ const initVariables = {
     password: '',
 }
 
-export default () => {
+export default props => {
     const { auth, dispatch } = React.useContext(AuthContext)
     const [variables, setVariables] = React.useState(initVariables)
     const history = useHistory()
@@ -65,6 +65,11 @@ export default () => {
     const [oAuthGoogleRequest, oAuthGoogleResponse] = useMutation(
         api.auth.oAuthGoogle,
     )
+
+    helpers.saveQueryString({
+        location: props.location,
+        param: 'invitationCode',
+    })
 
     React.useEffect(() => {
         if (data) {
@@ -102,7 +107,14 @@ export default () => {
         setIsLoading(oAuthGoogleResponse.loading)
     }, [oAuthGoogleResponse.loading])
 
-    const handleJoin = () => join({ variables })
+    const handleJoin = () =>
+        join({
+            variables: {
+                ...variables,
+                invitationCode:
+                    helpers.storage.get({ key: 'invitationCode' }) || '',
+            },
+        })
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -117,10 +129,12 @@ export default () => {
                 <StyledImg height='400' src={WelcomePicture} />
                 <StyledJoin onSubmit={e => handleSubmit(e)}>
                     <Logo fontSize={5} margin='1.5rem' />
+                    <Components.Global.InvitedBy />
                     {error && (
-                        <ErrorMessage
+                        <Components.Global.ErrorMessage
                             width='75%'
                             message={error.graphQLErrors[0].message}
+                            margin='.5rem 0 0'
                         />
                     )}
                     <Input
@@ -179,6 +193,12 @@ export default () => {
                     <GoogleAuth
                         buttonText='Join with Google'
                         handleRequest={oAuthGoogleRequest}
+                        data={{
+                            invitationCode:
+                                helpers.storage.get({
+                                    key: 'invitationCode',
+                                }) || '',
+                        }}
                     />
                     <OR width={75} margin={1.5} />
                     <StyledLoginLink to='login'>

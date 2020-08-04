@@ -77,7 +77,7 @@ export default () => {
     const [state, setState] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(false)
     const history = useHistory()
-    const [loadLogin, { data, called, loading, error }] = useLazyQuery(
+    const [loginRequest, { data, called, loading, error }] = useLazyQuery(
         api.auth.login,
     )
     const [oAuthGoogleRequest, oAuthGoogleResponse] = useMutation(
@@ -122,7 +122,7 @@ export default () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        loadLogin({
+        loginRequest({
             variables,
         })
     }
