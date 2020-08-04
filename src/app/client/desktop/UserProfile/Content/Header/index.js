@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Cover from 'Root/components/global/Cover'
 import Avatar from 'Root/components/global/Avatar'
-import Content from './Content'
+import Content from 'Root/app/client/global/UserProfile/Content/Header/Content'
 import { UserContext } from 'Root/contexts/user'
 
 const StyledHeader = styled.div`

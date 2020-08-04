@@ -33,11 +33,14 @@ const StyledBio = styled.pre`
     font-size: 0.85rem;
     font-weight: normal;
     color: ${({ theme }) => theme.colors.foreground};
+    word-break: break-word;
+    white-space: pre-wrap;
 `
 
 const initVariables = {
     followers: 0,
     following: 0,
+    weeshes: 0,
 }
 
 export default props => {
@@ -50,6 +53,9 @@ export default props => {
             setNumbers({
                 followers: user.followers.paginate.totalDocs,
                 following: user.following.paginate.totalDocs,
+                weeshes: user.weesh.paginate
+                    ? user.weesh.paginate.totalDocs
+                    : 0,
             })
     }, [user])
 
@@ -62,7 +68,9 @@ export default props => {
             {user.bio && <StyledBio>{user.bio}</StyledBio>}
             <StyledButtonContainer>
                 <CounterForProfile
-                    title='Followers'
+                    title={`${
+                        numbers.followers == '1' ? 'Follower' : 'Followers'
+                    }`}
                     to={
                         (auth.username == user.username ||
                             !user.private ||
@@ -84,6 +92,10 @@ export default props => {
                             : undefined
                     }
                     number={numbers.following}
+                />
+                <CounterForProfile
+                    title={`${numbers.weeshes == '1' ? 'Weesh' : 'Weeshes'}`}
+                    number={numbers.weeshes}
                 />
             </StyledButtonContainer>
         </StyledContainer>
