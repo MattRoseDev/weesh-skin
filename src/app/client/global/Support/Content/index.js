@@ -116,7 +116,7 @@ export default props => {
                         <Button
                             padding='.65rem 1.5rem'
                             background='primary'
-                            color='foreground'
+                            color='background'
                             radius='5rem'
                             margin='.75rem 0 0'
                             fontWeight='bold'

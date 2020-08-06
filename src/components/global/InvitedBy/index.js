@@ -49,22 +49,19 @@ export default () => {
         }
     }, [data])
 
-    return invitationCode ? (
-        <StyledContainer>
-            <StyledTitle>Invited By</StyledTitle>
+    return (
+        <>
             {state && (
-                <>
-                    <Components.Global.Avatar user={state} size={1} />
-                    <StyledUsername>{state.username}</StyledUsername>
-                </>
+                <StyledContainer>
+                    <StyledTitle>Invited By</StyledTitle>
+                    {state && (
+                        <>
+                            <Components.Global.Avatar user={state} size={1} />
+                            <StyledUsername>{state.username}</StyledUsername>
+                        </>
+                    )}
+                </StyledContainer>
             )}
-            {loading && (
-                <>
-                    <Components.Global.Loader size={16} />
-                </>
-            )}
-        </StyledContainer>
-    ) : (
-        ''
+        </>
     )
 }
