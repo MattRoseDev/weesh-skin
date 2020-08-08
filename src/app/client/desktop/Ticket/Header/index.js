@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import BackButton from 'Root/components/global/BackButton'
 import Avatar from 'Root/components/global/Avatar'
-import FullName from 'Root/components/global/FullName'
-import Loading from 'Root/components/global/Loading'
 import Icon from 'Root/components/global/Icon'
 import Navbar from 'Root/components/mobile/Navbar'
 import { AuthContext } from 'Root/contexts/auth'
@@ -18,26 +16,32 @@ const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
     border: none;
     border-bottom: 1px solid ${({ theme }) => theme.colors.light};
-    padding: 0 0.75rem;
+    padding: 0 1rem;
     height: 54px;
     position: sticky;
     top: 0;
     z-index: 10;
 `
 
+const StyledTitle = styled.div`
+    font-weight: bold;
+    color: ${({ theme }) => theme.colors.foreground};
+    font-size: 1.25rem;
+`
+
 export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
-    const { user } = React.useContext(UserContext)
-
     return (
-        <StyledContainer>
-            {user && (
-                <>
+        <>
+            {auth.token ? (
+                <StyledContainer>
                     <BackButton icon='ArrowLeft' />
-                    <FullName user={user} fontSize='1.125rem' />
+                    <StyledTitle>Ticket</StyledTitle>
                     <Icon color='background' />
-                </>
+                </StyledContainer>
+            ) : (
+                <></>
             )}
-        </StyledContainer>
+        </>
     )
 }

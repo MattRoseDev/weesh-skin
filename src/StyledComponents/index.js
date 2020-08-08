@@ -4,6 +4,7 @@ import Share from './Share'
 import Weesh from './Weesh'
 import AddWeesh from './AddWeesh'
 import Link from './Link'
+import Title from './Title'
 
 export const Components = components
 
@@ -13,4 +14,5 @@ export default {
     Weesh,
     AddWeesh,
     Link,
+    Title,
 }

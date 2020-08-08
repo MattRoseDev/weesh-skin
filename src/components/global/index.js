@@ -9,6 +9,9 @@ import Button from './Button'
 import InvitedBy from './InvitedBy'
 import ErrorMessage from './ErrorMessage'
 import Diamond from './Diamond'
+import BannerMessage from './BannerMessage'
+import User from './User'
+import InfiniteScroll from './InfiniteScroll'
 
 export default {
     Avatar,
@@ -22,4 +25,7 @@ export default {
     InvitedBy,
     ErrorMessage,
     Diamond,
+    BannerMessage,
+    User,
+    InfiniteScroll,
 }

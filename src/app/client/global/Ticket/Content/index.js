@@ -5,10 +5,10 @@ import { useMutation, useQuery } from '@apollo/react-hooks'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
 import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
 import StyledComponent, { Components } from 'Root/StyledComponents'
-import Ticket from './Ticket'
-import AddTicket from './AddTicket'
+import { SnackBarContext } from 'Root/contexts/snackbar'
+import Message from './Message'
+import AddMessage from './AddMessage'
 import Meta from 'Root/meta'
 
 const StyledContainer = styled.div``
@@ -16,31 +16,47 @@ const StyledContainer = styled.div``
 const StyledHeader = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
+    ${C.styles.flex.justifyContentBetween};
     padding: 1rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.light};
-    cursor: pointer;
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledTitle = styled.div`
+    color: ${({ theme }) => theme.colors.foreground};
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: text;
+    width: 75%;
+`
+
+const StyledAdd = styled.div`
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.alignItemsCenter};
+    cursor: pointer;
+`
+
+const StyledAddTitle = styled.div`
     color: ${({ theme }) => theme.colors.primary};
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
     padding: 0 0 0 0.25rem;
 `
 
-const StyledAdd = styled(Components.Global.Link)``
-
 export default props => {
+    const { match } = props
     const { auth } = React.useContext(AuthContext)
-    const [state, setState] = React.useState(null)
     const [nextPage, setNextPage] = React.useState(1)
-    const [showAddTicket, setShowAddTicket] = React.useState(false)
+    const [showAddMessage, setShowAddMessage] = React.useState(false)
+    const [state, setState] = React.useState(null)
+    const [ticket, setTicket] = React.useState(null)
     const { data, error, loading, called, fetchMore } = useQuery(
-        api.support.getTickets,
+        api.support.getTicket,
         {
-            fetchPolicy: 'no-cache',
             variables: {
-                limit: 8,
+                link: `${match.params.link}`,
             },
         },
     )
@@ -58,20 +74,30 @@ export default props => {
 
     const handlePaginate = () =>
         fetchMoreWeeshes({ page: nextPage }).then(res => {
-            console.log('fetchhhhhh')
-            const result = res.data.getUserTicketsForUser.tickets
-            setState(prevState => [...prevState, ...result])
-            setNextPage(res.data.getUserTicketsForUser.paginate.nextPage)
+            console.log('fetchhhh')
+            const response =
+                res.data.getTicketUserByLinkForUser.message.ticketMessages
+            setState(prevState => [...prevState, ...response])
+            setNextPage(
+                res.data.getTicketUserByLinkForUser.message.paginate.nextPage,
+            )
         })
 
     React.useEffect(() => {
-        if (called && data) {
+        if (called && data && nextPage == 1) {
             console.log('first')
-            const result = data.getUserTicketsForUser.tickets
-            setState(result)
-            setNextPage(data.getUserTicketsForUser.paginate.nextPage)
+            const response =
+                data.getTicketUserByLinkForUser.message.ticketMessages
+            const ticketResponse = data.getTicketUserByLinkForUser
+            setTicket(ticketResponse)
+            setState(response)
+            setNextPage(
+                data.getTicketUserByLinkForUser.message.paginate.nextPage,
+            )
         }
     }, [data])
+
+    console.log(state)
 
     return (
         <StyledContainer>
@@ -85,26 +111,30 @@ export default props => {
                 />
             ) : (
                 <>
-                    {
-                        <StyledHeader
-                            onClick={() => setShowAddTicket(!showAddTicket)}>
+                    <StyledHeader>
+                        <StyledTitle>{ticket && ticket.subject}</StyledTitle>
+                        <StyledAdd
+                            onClick={() => setShowAddMessage(!showAddMessage)}>
                             <Components.Global.Icon
-                                icon='PlusSquare'
+                                icon='Edit'
                                 color={auth.color}
                             />
-                            <StyledTitle>New ticket</StyledTitle>
-                        </StyledHeader>
-                    }
-                    {showAddTicket && (
-                        <AddTicket setShowAddTicket={setShowAddTicket} />
+                            <StyledAddTitle>Message</StyledAddTitle>
+                        </StyledAdd>
+                    </StyledHeader>
+                    {showAddMessage && (
+                        <AddMessage
+                            setShowAddMessage={setShowAddMessage}
+                            {...ticket}
+                        />
                     )}
                     {state && state.length > 0 && (
                         <Components.Global.InfiniteScroll
                             onLoadMore={handlePaginate}
                             hasNextPage={nextPage}
                             padding='0 .6rem 3.125rem'>
-                            {state.map(ticket => (
-                                <Ticket {...ticket} />
+                            {state.map(message => (
+                                <Message {...message} />
                             ))}
                         </Components.Global.InfiniteScroll>
                     )}

@@ -151,7 +151,7 @@ const switchElements = ({ element, props }) => {
             case '$$username$$':
                 return (
                     <StyledUsername key={uuid()}>
-                        <FullName fontSize={0.85} user={props.recipient} />
+                        <FullName fontSize='0.85rem' user={props.recipient} />
                     </StyledUsername>
                 )
             case '$$weesh$$':

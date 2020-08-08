@@ -38,7 +38,7 @@ export default props => {
                 {props.user && (
                     <Link to={`/${props.user.username}`}>
                         <StyledNameContainer>
-                            <FullName {...props} fontSize={1} />
+                            <FullName {...props} fontSize='1rem' />
                             <StyledUsername>
                                 @{props.user.username}
                             </StyledUsername>

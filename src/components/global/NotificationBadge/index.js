@@ -18,7 +18,7 @@ const StyledBadge = styled.span`
     min-height: 0.5rem;
     min-width: 0.5rem;
     font-size: 0.75rem;
-    background: ${({ theme }) => theme.colors.red};
+    background: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.background};
 `
 

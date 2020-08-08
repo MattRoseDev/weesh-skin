@@ -13,6 +13,7 @@ import LikesPage from './LikesPage'
 import RequestsPage from './RequestsPage'
 import ChangePassword from './ChangePassword'
 import Support from './Support'
+import Ticket from './Ticket'
 import WeeshPage from './WeeshPage'
 import AddWeesh from './AddWeesh'
 import EditWeesh from './EditWeesh'
@@ -66,6 +67,11 @@ const routes = [
         private: true,
         path: '/settings/changePassword',
         component: ChangePassword,
+    },
+    {
+        private: true,
+        path: '/support/:link',
+        component: Ticket,
     },
     {
         private: true,

@@ -1,68 +1,66 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import C from 'Root/constants'
-import { Components } from 'Root/StyledComponents'
-import { useQuery } from 'react-apollo'
-import helpers from 'Root/helpers'
-import api from 'Root/api'
+import diamond from 'Root/public/icons/diamond.svg'
 
-const StyledContainer = styled.div`
-    ${C.styles.flex.flexRow};
-    ${C.styles.flex.alignItemsCenter};
-    padding: 0 1rem;
-    width: 75%;
-`
-
-const StyledTitle = styled.small`
-    font-size: 0.75rem;
-    padding: 0 0.25rem 0 0;
-    color: ${({ theme }) => theme.colors.gray};
-`
-
-const StyledUsername = styled.strong`
-    padding: 0 0 0 0.25rem;
-    font-size: 0.85rem;
-    color: ${({ theme }) => theme.colors.dark};
-`
-
-const StyledContent = styled.span`
+const StyledContainer = styled.span`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
+    ${({ margin }) =>
+        margin &&
+        css`
+            margin: ${margin};
+        `};
+    ${({ sign }) =>
+        sign &&
+        sign == -1 &&
+        css`
+            filter: grayscale(1);
+        `};
 `
 
-export default () => {
-    const invitationCode = helpers.storage.get({ key: 'invitationCode' })
-    const [state, setState] = React.useState(null)
-    const { data, error, loading } = useQuery(
-        api.invitations.getUserByInvitationCodeForUser,
-        {
-            variables: {
-                invitationCode,
-            },
-        },
-    )
+const StyledValue = styled.span`
+    ${({ fontSize }) =>
+        fontSize &&
+        css`
+            font-size: ${fontSize};
+        `};
+    ${({ paddingValue }) =>
+        paddingValue &&
+        css`
+            padding: ${paddingValue};
+        `};
+    ${({ marginValue }) =>
+        marginValue &&
+        css`
+            margin: ${marginValue};
+        `};
+    background: linear-gradient(to right top, #0ba7dd, #68e9ff);
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-size: 100% 100%;
+    font-family: Autumn_in_November;
+    font-weight: bolder;
+    overflow: hidden;
+`
 
-    React.useEffect(() => {
-        if (data) {
-            const response = data.getUserByInvitationCodeForUser
-            setState(response)
-        }
-    }, [data])
-
+export default props => {
+    const sign = props.sign !== false && Math.sign(props.value)
     return (
-        <StyledContainer>
-            <StyledTitle>Invited By</StyledTitle>
-            {state && (
-                <>
-                    <Components.Global.Avatar user={state} size={1} />
-                    <StyledUsername>{state.username}</StyledUsername>
-                </>
+        <StyledContainer
+            margin={props.margin || undefined}
+            sign={sign || undefined}>
+            {props.value !== undefined && (
+                <StyledValue
+                    fontSize={props.fontSize || undefined}
+                    paddingValue={props.paddingValue || undefined}
+                    marginValue={props.marginValue || undefined}>
+                    {sign == 1 ? '+' : ''}
+                    {props.value}
+                </StyledValue>
             )}
-            {loading && (
-                <>
-                    <Components.Global.Loader size={16} />
-                </>
-            )}
+            <img src={diamond} width={props.width || 20} />
         </StyledContainer>
     )
 }

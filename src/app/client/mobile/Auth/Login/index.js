@@ -100,7 +100,7 @@ export default () => {
             variables,
         })
     }
-    // auth.token && history.push('/')
+    auth.token && history.push('/')
     return (
         <StyledLogin onSubmit={e => handleSubmit(e)}>
             <Meta type='Login' />

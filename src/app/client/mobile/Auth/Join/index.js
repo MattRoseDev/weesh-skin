@@ -104,7 +104,7 @@ export default props => {
         handleJoin()
     }
 
-    // auth.token && history.push('/')
+    auth.token && history.push('/')
     return (
         <StyledLogin onSubmit={e => handleSubmit(e)}>
             <Meta type='Join' />
