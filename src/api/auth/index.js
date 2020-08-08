@@ -102,6 +102,7 @@ const getUserProfile = gql`
             avatarAddress
             coverAddress
             invitationCode
+            isNewTicketMessage
             unknown {
                 fullname
                 avatar

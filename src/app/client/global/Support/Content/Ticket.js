@@ -22,14 +22,14 @@ const StyledContent = styled.p`
 const StyledFooter = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    ${C.styles.flex.justifyContentBetween};
 `
 
 const StyledBadge = styled.span`
     background: ${({ theme }) => theme.colors.primary};
     border-radius: 50%;
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0 0.25rem 0 0;
 `
 
 export default props => {
@@ -46,14 +46,14 @@ export default props => {
                 {props.message.ticketMessages[0].message.replace(/\n/g, ' ')}
             </StyledContent>
             <StyledFooter>
+                {!props.message.ticketMessages[0].read &&
+                    props.message.ticketMessages[0].recipient.id == auth.id && (
+                        <StyledBadge />
+                    )}
                 <StyledComponents.Title color='gray' fontSize='.75rem'>
                     {helpers.dateFormat(moment(props.createdAt).fromNow(true))}{' '}
                     · #{props.link}
                 </StyledComponents.Title>
-                {!props.message.ticketMessages[0].read &&
-                    props.message.ticketMessages[0].user.id != auth.id && (
-                        <StyledBadge />
-                    )}
             </StyledFooter>
         </StyledContainer>
     )

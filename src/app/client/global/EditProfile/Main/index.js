@@ -7,6 +7,7 @@ import { UserContext } from 'Root/contexts/user'
 import { EditProfileContext } from 'Root/contexts/editProfile'
 import api from 'Root/api'
 import Input from 'Root/components/global/Input'
+import { Components } from 'Root/StyledComponents'
 import Dialog from 'Root/components/global/Dialog'
 import Icon from 'Root/components/global/Icon'
 import Link from 'Root/components/global/Link'
@@ -151,6 +152,7 @@ export default props => {
             title: C.txts.en.editProfile.linksLabel.support,
             icon: 'Headphones',
             link: '/support',
+            badge: auth && auth.isNewTicketMessage,
         },
     ]
 
@@ -226,6 +228,9 @@ export default props => {
                             <Icon icon={item.icon} color='foreground' />
                             <StyledToggleTitle>{item.title}</StyledToggleTitle>
                         </StyledToggleTitleContainer>
+                        {item.badge && (
+                            <Components.Global.Badge width='.75rem' />
+                        )}
                     </StyledLinkContainer>
                 ))}
             </StyledToggles>

@@ -7,6 +7,7 @@ import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
 import NotificationBadge from 'Root/components/global/NotificationBadge'
+import { Components } from 'Root/StyledComponents'
 
 const NavItemContent = styled.div`
     ${C.styles.flex.inlineFlexRow};
@@ -65,8 +66,10 @@ export default props => {
                 <NavItem color='primary' exact={props.exact || false} to={path}>
                     <NavItemContent background='foreground' color='primary'>
                         <StyledIcon>
-                            {props.path == '/notifications' && (
-                                <NotificationBadge />
+                            {props.path == '/profile' && (
+                                <Components.Global.BadgeForIcon
+                                    value={auth.isNewTicketMessage}
+                                />
                             )}
                             {props.path == '/profile' ? (
                                 <Avatar user={auth} size={1.5} />
@@ -91,6 +94,11 @@ export default props => {
                         <StyledIcon>
                             {props.path == '/notifications' && (
                                 <NotificationBadge />
+                            )}
+                            {props.path == '/profile' && (
+                                <Components.Global.BadgeForIcon
+                                    value={auth.isNewTicketMessage}
+                                />
                             )}
                             {props.path == '/profile' ? (
                                 <Avatar user={auth} size={1.5} />

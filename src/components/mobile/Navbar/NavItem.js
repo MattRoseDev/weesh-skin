@@ -8,6 +8,7 @@ import useHistory from 'Root/hooks/useHistory'
 import Icon from 'Root/components/global/Icon'
 import Avatar from 'Root/components/global/Avatar'
 import NotificationBadge from 'Root/components/global/NotificationBadge'
+import { Components } from 'Root/StyledComponents'
 
 const NavItem = styled(NavLink)`
     ${C.styles.flex.flexRowCenter};
@@ -43,6 +44,11 @@ export default props => {
                 props.path == '/profile') ? (
                 <NavItem exact={props.exact || false} to={path}>
                     <StyledIcon>
+                        {props.path == '/profile' && (
+                            <Components.Global.BadgeForIcon
+                                value={auth.isNewTicketMessage}
+                            />
+                        )}
                         {props.path == '/profile' ? (
                             <StyledAvatarBorder>
                                 <Avatar user={auth} size={1.25} />
@@ -62,6 +68,11 @@ export default props => {
                     <StyledIcon>
                         {props.path == '/notifications' && (
                             <NotificationBadge />
+                        )}
+                        {props.path == '/profile' && (
+                            <Components.Global.BadgeForIcon
+                                value={auth.isNewTicketMessage}
+                            />
                         )}
                         {props.path == '/profile' ? (
                             <Avatar user={auth} size={1.35} />
