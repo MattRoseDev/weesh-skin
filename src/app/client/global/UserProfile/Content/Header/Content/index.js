@@ -52,16 +52,19 @@ export default props => {
             <StyledButtonContainer>
                 <Components.Global.Button
                     color='primary'
-                    hoverbackground='lightPrimary'
-                    bordercolor='primary'
+                    bordercolor='light'
                     borderwidth='1px'
                     fontWeight='bold'
-                    padding='.4rem .85rem'
+                    padding='.45rem .85rem'
                     margin='0 .5rem 0 0'
                     radius='50rem'
                     to='/credit'>
-                    <StyledCreditNumber>6</StyledCreditNumber>
-                    <img src={diamond} height='18' />
+                    <Components.Global.Diamond
+                        width={18}
+                        value={0}
+                        fontSize='1rem'
+                        marginValue='0 0.25rem -0.3rem 0'
+                    />
                 </Components.Global.Button>
                 {auth.id == user.id && (
                     <Components.Global.Button

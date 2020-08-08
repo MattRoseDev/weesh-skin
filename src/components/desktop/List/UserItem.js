@@ -99,7 +99,7 @@ export default props => {
                 <StyledRequestContent>
                     <Avatar size={2.25} user={user} />
                     <StyledMain>
-                        <FullName user={user} fontSize={0.85} />
+                        <FullName user={user} fontSize='0.85rem' />
                         <StyledUsername>@{user.username}</StyledUsername>
                     </StyledMain>
                 </StyledRequestContent>
@@ -127,7 +127,7 @@ export default props => {
                 <StyledRequestContent>
                     <Avatar size={2.25} user={user} />
                     <StyledMain>
-                        <FullName user={user} fontSize={0.85} />
+                        <FullName user={user} fontSize='0.85rem' />
                         <StyledUsername>@{user.username}</StyledUsername>
                     </StyledMain>
                 </StyledRequestContent>

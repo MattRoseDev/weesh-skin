@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 import Input from 'Root/components/global/Input'
 import ErrorMessage from 'Root/components/global/ErrorMessage'
@@ -29,9 +29,9 @@ export default props => {
     return (
         <StyledContainer>
             <Meta type='Credit' />
-            <InvitationLink invitationCode={auth.invitationCode || undefined} />
             <Diamond />
-            <Ledger />
+            <InvitationLink invitationCode={auth.invitationCode || undefined} />
+            {/* <Ledger /> */}
         </StyledContainer>
     )
 }

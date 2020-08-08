@@ -5,7 +5,7 @@ import C from 'Root/constants'
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.alignItemsCenter};
-    margin: 1rem;
+    margin: 0 1rem 1rem;
 `
 
 const StyledCodeTitle = styled.label`
@@ -17,7 +17,7 @@ const StyledCodeTitle = styled.label`
 const StyledCode = styled.span`
     /* font-weight: bold; */
     margin: 0.5rem 0 0;
-    font-size: 2rem;
+    font-size: 2.5rem;
     letter-spacing: 0.25rem;
     color: ${({ theme }) => theme.colors.foreground};
 `

@@ -61,7 +61,7 @@ export default props => {
 
     return (
         <StyledContainer>
-            <FullName user={user} fontSize={1.25} />
+            <FullName user={user} fontSize='1.25rem' />
             <StyledUsername>
                 {user.username && `@${user.username}`}
             </StyledUsername>

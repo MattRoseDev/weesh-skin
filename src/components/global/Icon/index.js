@@ -10,6 +10,7 @@ export default props => {
         <Icon
             {...props}
             size={props.size || 20}
+            strokeWidth={props.strokeWidth || 2}
             color={
                 C.themes[auth.theme || 'light'].colors[props.color || 'dark']
             }

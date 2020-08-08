@@ -34,7 +34,7 @@ export default () => {
             {user && (
                 <>
                     <BackButton icon='ArrowLeft' />
-                    <FullName user={user} fontSize={1.125} />
+                    <FullName user={user} fontSize='1.125rem' />
                     <Icon color='background' />
                 </>
             )}
