@@ -42,7 +42,7 @@ export default props => {
             <Components.Global.User
                 fontSize='.85rem'
                 fontWeight='bold'
-                user={props.user}
+                user={props.sender}
                 size={1.5}
             />
             <StyledContent>{props.message.replace(/\n/g, ' ')}</StyledContent>

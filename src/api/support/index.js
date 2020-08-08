@@ -9,8 +9,16 @@ const addTicket = gql`
 `
 
 const addMessage = gql`
-    mutation addUserTicketMessageForUser($ticketId: ID!, $message: String!) {
-        addUserTicketMessageForUser(ticketId: $ticketId, message: $message) {
+    mutation addUserTicketMessageForUser(
+        $ticketId: ID!
+        $recipientId: ID!
+        $message: String!
+    ) {
+        addUserTicketMessageForUser(
+            ticketId: $ticketId
+            recipientId: $recipientId
+            message: $message
+        ) {
             id
         }
     }
@@ -26,7 +34,7 @@ const getTickets = gql`
                 message {
                     ticketMessages {
                         id
-                        user {
+                        recipient {
                             id
                             username
                         }
@@ -51,10 +59,18 @@ const getTicket = gql`
             id
             link
             subject
+            sender {
+                id
+                username
+            }
+            recipient {
+                id
+                username
+            }
             message(limit: $limit, page: $page) {
                 ticketMessages {
                     id
-                    user {
+                    sender {
                         id
                         username
                         firstName
@@ -81,9 +97,16 @@ const getTicket = gql`
     }
 `
 
+const readMessages = gql`
+    mutation readUserTicketMessageForUser($ticketId: ID!) {
+        readUserTicketMessageForUser(ticketId: $ticketId)
+    }
+`
+
 export default {
     addTicket,
     addMessage,
     getTickets,
     getTicket,
+    readMessages,
 }

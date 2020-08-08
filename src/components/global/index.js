@@ -12,6 +12,8 @@ import Diamond from './Diamond'
 import BannerMessage from './BannerMessage'
 import User from './User'
 import InfiniteScroll from './InfiniteScroll'
+import Badge from './Badge'
+import BadgeForIcon from './BadgeForIcon'
 
 export default {
     Avatar,
@@ -28,4 +30,6 @@ export default {
     BannerMessage,
     User,
     InfiniteScroll,
+    Badge,
+    BadgeForIcon,
 }

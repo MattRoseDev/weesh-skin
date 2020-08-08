@@ -59,6 +59,10 @@ export default props => {
         if (state.message.length > 0) {
             addMessage({
                 variables: {
+                    recipientId:
+                        auth.id == props.sender.id
+                            ? props.recipient.id
+                            : props.sender.id,
                     ticketId: props.id,
                     message: state.message,
                 },

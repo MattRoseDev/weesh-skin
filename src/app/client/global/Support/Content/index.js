@@ -58,7 +58,6 @@ export default props => {
 
     const handlePaginate = () =>
         fetchMoreWeeshes({ page: nextPage }).then(res => {
-            console.log('fetchhhhhh')
             const result = res.data.getUserTicketsForUser.tickets
             setState(prevState => [...prevState, ...result])
             setNextPage(res.data.getUserTicketsForUser.paginate.nextPage)
@@ -66,7 +65,6 @@ export default props => {
 
     React.useEffect(() => {
         if (called && data) {
-            console.log('first')
             const result = data.getUserTicketsForUser.tickets
             setState(result)
             setNextPage(data.getUserTicketsForUser.paginate.nextPage)

@@ -47,14 +47,18 @@ const StyledAddTitle = styled.div`
 
 export default props => {
     const { match } = props
-    const { auth } = React.useContext(AuthContext)
+    const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
     const [nextPage, setNextPage] = React.useState(1)
     const [showAddMessage, setShowAddMessage] = React.useState(false)
     const [state, setState] = React.useState(null)
     const [ticket, setTicket] = React.useState(null)
+    const [readMessages, readMessageResponse] = useMutation(
+        api.support.readMessages,
+    )
     const { data, error, loading, called, fetchMore } = useQuery(
         api.support.getTicket,
         {
+            fetchPolicy: 'no-cache',
             variables: {
                 link: `${match.params.link}`,
             },
@@ -74,7 +78,6 @@ export default props => {
 
     const handlePaginate = () =>
         fetchMoreWeeshes({ page: nextPage }).then(res => {
-            console.log('fetchhhh')
             const response =
                 res.data.getTicketUserByLinkForUser.message.ticketMessages
             setState(prevState => [...prevState, ...response])
@@ -84,11 +87,17 @@ export default props => {
         })
 
     React.useEffect(() => {
-        if (called && data && nextPage == 1) {
-            console.log('first')
+        if (!state && called && data && nextPage == 1) {
             const response =
                 data.getTicketUserByLinkForUser.message.ticketMessages
             const ticketResponse = data.getTicketUserByLinkForUser
+            if (response && response[0].read == false) {
+                readMessages({
+                    variables: {
+                        ticketId: `${ticketResponse.id}`,
+                    },
+                })
+            }
             setTicket(ticketResponse)
             setState(response)
             setNextPage(
@@ -97,12 +106,22 @@ export default props => {
         }
     }, [data])
 
-    console.log(state)
+    React.useEffect(() => {
+        if (readMessageResponse.data) {
+            authDispatch({
+                type: 'LOGIN',
+                data: {
+                    isNewTicketMessage:
+                        readMessageResponse.data.readUserTicketMessageForUser,
+                },
+            })
+        }
+    }, [readMessageResponse.data])
 
     return (
         <StyledContainer>
             <Meta type='Support' />
-            {loading ? (
+            {readMessageResponse.loading || loading ? (
                 <Components.Global.Loading
                     padding='3rem 0 0'
                     size={28}
@@ -110,35 +129,41 @@ export default props => {
                     color='gray'
                 />
             ) : (
-                <>
-                    <StyledHeader>
-                        <StyledTitle>{ticket && ticket.subject}</StyledTitle>
-                        <StyledAdd
-                            onClick={() => setShowAddMessage(!showAddMessage)}>
-                            <Components.Global.Icon
-                                icon='Edit'
-                                color={auth.color}
+                state && (
+                    <>
+                        <StyledHeader>
+                            <StyledTitle>
+                                {ticket && ticket.subject}
+                            </StyledTitle>
+                            <StyledAdd
+                                onClick={() =>
+                                    setShowAddMessage(!showAddMessage)
+                                }>
+                                <Components.Global.Icon
+                                    icon='Edit'
+                                    color={auth.color}
+                                />
+                                <StyledAddTitle>Message</StyledAddTitle>
+                            </StyledAdd>
+                        </StyledHeader>
+                        {showAddMessage && (
+                            <AddMessage
+                                setShowAddMessage={setShowAddMessage}
+                                {...ticket}
                             />
-                            <StyledAddTitle>Message</StyledAddTitle>
-                        </StyledAdd>
-                    </StyledHeader>
-                    {showAddMessage && (
-                        <AddMessage
-                            setShowAddMessage={setShowAddMessage}
-                            {...ticket}
-                        />
-                    )}
-                    {state && state.length > 0 && (
-                        <Components.Global.InfiniteScroll
-                            onLoadMore={handlePaginate}
-                            hasNextPage={nextPage}
-                            padding='0 .6rem 3.125rem'>
-                            {state.map(message => (
-                                <Message {...message} />
-                            ))}
-                        </Components.Global.InfiniteScroll>
-                    )}
-                </>
+                        )}
+                        {state && state.length > 0 && (
+                            <Components.Global.InfiniteScroll
+                                onLoadMore={handlePaginate}
+                                hasNextPage={nextPage}
+                                padding='0 .6rem 3.125rem'>
+                                {state.map(message => (
+                                    <Message {...message} />
+                                ))}
+                            </Components.Global.InfiniteScroll>
+                        )}
+                    </>
+                )
             )}
         </StyledContainer>
     )
