@@ -69,6 +69,12 @@ export default props => {
     React.useEffect(() => {
         if (addTicketResponse.data) {
             props.setShowAddTicket(false)
+            props.setTickets(prevState => {
+                return [
+                    addTicketResponse.data.addUserTicketForUser,
+                    ...prevState,
+                ]
+            })
             snackbarDispatch({
                 type: 'SET_DATA',
                 data: {

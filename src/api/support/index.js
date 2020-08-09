@@ -4,6 +4,21 @@ const addTicket = gql`
     mutation addUserTicketForUser($subject: String!, $message: String!) {
         addUserTicketForUser(subject: $subject, message: $message) {
             id
+            link
+            subject
+            message {
+                ticketMessages {
+                    id
+                    recipient {
+                        id
+                        username
+                    }
+                    message
+                    read
+                    createdAt
+                }
+            }
+            createdAt
         }
     }
 `
@@ -20,6 +35,22 @@ const addMessage = gql`
             message: $message
         ) {
             id
+            sender {
+                id
+                username
+                firstName
+                lastName
+                bio
+                private
+                avatarAddress
+                unknown {
+                    avatar
+                    fullname
+                }
+            }
+            message
+            read
+            createdAt
         }
     }
 `
@@ -82,6 +113,10 @@ const getTicket = gql`
                             avatar
                             fullname
                         }
+                    }
+                    recipient {
+                        id
+                        username
                     }
                     message
                     read

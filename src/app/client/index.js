@@ -29,7 +29,6 @@ const Client = props => {
         if (!auth.id) {
             getProfileUser()
         }
-
         if (getProfileUserResponse.data) {
             if (
                 !getProfileUserResponse.data.getUserProfileForUser &&

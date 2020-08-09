@@ -83,7 +83,7 @@ export default props => {
                 />
             ) : (
                 <>
-                    {
+                    {auth.username !== 'team' && (
                         <StyledHeader
                             onClick={() => setShowAddTicket(!showAddTicket)}>
                             <Components.Global.Icon
@@ -92,9 +92,12 @@ export default props => {
                             />
                             <StyledTitle>New ticket</StyledTitle>
                         </StyledHeader>
-                    }
+                    )}
                     {showAddTicket && (
-                        <AddTicket setShowAddTicket={setShowAddTicket} />
+                        <AddTicket
+                            setShowAddTicket={setShowAddTicket}
+                            setTickets={setState}
+                        />
                     )}
                     {state && state.length > 0 && (
                         <Components.Global.InfiniteScroll
