@@ -79,29 +79,29 @@ export default props => {
     const handlePaginate = () =>
         fetchMoreWeeshes({ page: nextPage }).then(res => {
             const response =
-                res.data.getTicketUserByLinkForUser.message.ticketMessages
+                res.data.getUserTicketByLinkForUser.message.ticketMessages
             setState(prevState => [...prevState, ...response])
             setNextPage(
-                res.data.getTicketUserByLinkForUser.message.paginate.nextPage,
+                res.data.getUserTicketByLinkForUser.message.paginate.nextPage,
             )
         })
 
     React.useEffect(() => {
         if (!state && called && data && nextPage == 1) {
             const response =
-                data.getTicketUserByLinkForUser.message.ticketMessages
-            const ticketResponse = data.getTicketUserByLinkForUser
+                data.getUserTicketByLinkForUser.message.ticketMessages
+            const ticketResponse = data.getUserTicketByLinkForUser
             if (response && response[0].read == false) {
-                readMessages({
-                    variables: {
-                        ticketId: `${ticketResponse.id}`,
-                    },
-                })
+                // readMessages({
+                //     variables: {
+                //         ticketId: `${ticketResponse.id}`,
+                //     },
+                // })
             }
             setTicket(ticketResponse)
             setState(response)
             setNextPage(
-                data.getTicketUserByLinkForUser.message.paginate.nextPage,
+                data.getUserTicketByLinkForUser.message.paginate.nextPage,
             )
         }
     }, [data])
@@ -121,7 +121,7 @@ export default props => {
     return (
         <StyledContainer>
             <Meta type='Support' />
-            {readMessageResponse.loading || loading ? (
+            {loading ? (
                 <Components.Global.Loading
                     padding='3rem 0 0'
                     size={28}

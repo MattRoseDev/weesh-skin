@@ -3,6 +3,7 @@ import { AuthContext } from 'Root/contexts/auth'
 import { UserContext } from 'Root/contexts/user'
 import Button from 'Root/components/global/Button'
 import ConnectionButton from './ConnectionButton'
+import { Components } from 'Root/StyledComponents'
 import C from 'Root/constants'
 
 const handleStatus = (props, auth, user) => {
@@ -31,11 +32,14 @@ const handleStatus = (props, auth, user) => {
                 hoverbackground='lightPrimary'
                 bordercolor='primary'
                 borderwidth='1px'
-                padding='.5rem 1.25rem'
+                padding='.5rem 1.125rem'
                 fontWeight='bold'
                 to='settings/profile'
                 width='6rem'>
                 Settings
+                {auth.isNewTicketMessage && (
+                    <Components.Global.Badge margin='0 0 0 .5rem' />
+                )}
             </Button>
         )
     }

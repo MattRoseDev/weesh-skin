@@ -1,16 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledBadge = styled.span`
     background: ${({ theme }) => theme.colors.primary};
     border-radius: 50%;
     width: ${({ width }) => (width ? width : '.5rem')};
     height: ${({ width }) => (width ? width : '.5rem')};
-    ${({ padding }) =>
-        padding &&
-        css`
-            padding: ${padding};
-        `};
     ${({ margin }) =>
         margin &&
         css`
