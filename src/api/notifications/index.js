@@ -4,7 +4,7 @@ const add = gql`
     subscription addNotificationForUser($userId: ID!) {
         addNotificationForUser(userId: $userId) {
             id
-            user {
+            sender {
                 id
                 username
                 firstName
@@ -65,7 +65,7 @@ const getNotifications = gql`
         getNotificationsUserForUser(limit: $limit, page: $page) {
             notifications {
                 id
-                user {
+                sender {
                     id
                     username
                     firstName
@@ -161,7 +161,7 @@ const read = gql`
         readNotificationsUserForUser {
             notifications {
                 id
-                user {
+                sender {
                     id
                     username
                     firstName
