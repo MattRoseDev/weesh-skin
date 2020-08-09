@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import C from 'Root/constants'
 import { Components } from 'Root/StyledComponents'
+import { AuthContext } from 'Root/contexts/auth'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
     padding: 0.75rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.light};
+    width: 100%;
 `
 
 const StyledIcon = styled(Components.Global.Icon)`
@@ -47,30 +49,31 @@ const StyledUsername = styled.strong`
 `
 
 export default props => {
-    const value = props.value == 0 ? 1 : props.value
+    const { auth } = React.useContext(AuthContext)
+    let amount = props.amount == 0 ? 1 : props.amount
+    amount = props.sender.id == auth.id ? -amount : amount
+    const user = props.sender.id == auth.id ? props.recipient : props.sender
     return (
         <StyledContainer>
             {/* <StyledIcon strokeWidth={2.5} size={40}
-                icon={Math.sign(value) == -1 ? 'ArrowDown' : 'ArrowUp'}
-                color={Math.sign(value) == -1 ? 'gray' : 'blue'} /> */}
+                icon={Math.sign(amount) == -1 ? 'ArrowDown' : 'ArrowUp'}
+                color={Math.sign(amount) == -1 ? 'gray' : 'blue'} /> */}
             <StyledContent>
                 <StyledTransfer>
                     <StyledIcon
                         strokeWidth={3}
                         size={20}
-                        icon={Math.sign(value) == -1 ? 'ArrowDown' : 'ArrowUp'}
-                        color={Math.sign(value) == -1 ? 'gray' : 'blue'}
+                        icon={Math.sign(amount) == -1 ? 'ArrowDown' : 'ArrowUp'}
+                        color={Math.sign(amount) == -1 ? 'gray' : 'blue'}
                     />
-                    <Components.Global.User user={{ username: 'Weesh' }} />
+                    <Components.Global.User margin='0 0 0 .25rem' user={user} />
                 </StyledTransfer>
-                <StyledReason>
-                    Supporting us by your opinion in ticket #e243edb1
-                </StyledReason>
+                <StyledReason>{props.reason}</StyledReason>
             </StyledContent>
             <StyledCredits>
                 <Components.Global.Diamond
                     width={25}
-                    value={value}
+                    value={amount}
                     fontSize='1.5rem'
                     paddingValue='.5rem .25rem 0 0'
                     margin='0 0 0 .5rem'

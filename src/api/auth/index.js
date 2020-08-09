@@ -16,6 +16,7 @@ const login = gql`
                 private
                 avatarAddress
                 invitationCode
+                credit
                 unknown {
                     fullname
                     avatar
@@ -51,6 +52,7 @@ const join = gql`
                 private
                 avatarAddress
                 invitationCode
+                credit
                 unknown {
                     fullname
                     avatar
@@ -76,6 +78,7 @@ const oAuthGoogle = gql`
                 private
                 avatarAddress
                 invitationCode
+                credit
                 unknown {
                     fullname
                     avatar
@@ -103,6 +106,7 @@ const getUserProfile = gql`
             coverAddress
             invitationCode
             isNewTicketMessage
+            credit
             unknown {
                 fullname
                 avatar

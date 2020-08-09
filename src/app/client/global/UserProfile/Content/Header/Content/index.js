@@ -50,22 +50,44 @@ export default props => {
     return (
         <StyledContent>
             <StyledButtonContainer>
-                <Components.Global.Button
-                    color='primary'
-                    bordercolor='light'
-                    borderwidth='1px'
-                    fontWeight='bold'
-                    padding='.45rem .85rem'
-                    margin='0 .5rem 0 0'
-                    radius='50rem'
-                    to='/credit'>
-                    <Components.Global.Diamond
-                        width={18}
-                        value={0}
-                        fontSize='1rem'
-                        marginValue='0 0.25rem -0.3rem 0'
-                    />
-                </Components.Global.Button>
+                {props.match.params.username == auth.username ? (
+                    <Components.Global.Button
+                        color='primary'
+                        bordercolor='light'
+                        borderwidth='1px'
+                        fontWeight='bold'
+                        padding='.45rem .85rem'
+                        margin='0 .5rem 0 0'
+                        radius='50rem'
+                        to='/credit'>
+                        <Components.Global.Diamond
+                            width={18}
+                            value={auth.credit}
+                            sign={false}
+                            fontSize='1rem'
+                            marginValue='0 0.25rem -0.3rem 0'
+                        />
+                    </Components.Global.Button>
+                ) : (
+                    <Components.Global.Button
+                        color='primary'
+                        // bordercolor='light'
+                        borderwidth='1px'
+                        fontWeight='bold'
+                        padding='.25rem .25rem'
+                        margin='0 .5rem 0 0'
+                        cursor='default'
+                        radius='50rem'>
+                        <Components.Global.Diamond
+                            width={26}
+                            value={user.credit}
+                            sign={false}
+                            fontSize='1.5rem'
+                            marginValue='0 0.25rem -0.4rem 0'
+                        />
+                    </Components.Global.Button>
+                )}
+
                 {auth.id == user.id && (
                     <Components.Global.Button
                         color='primary'

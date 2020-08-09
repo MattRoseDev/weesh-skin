@@ -11,6 +11,7 @@ import uploadFile from './uploadFile'
 import weeshComments from './weeshComments'
 import weeshLikes from './weeshLikes'
 import weeshBookmarks from './weeshBookmarks'
+import credits from './credits'
 
 export default {
     auth,
@@ -26,4 +27,5 @@ export default {
     weeshComments,
     weeshLikes,
     weeshBookmarks,
+    credits,
 }

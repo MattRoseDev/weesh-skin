@@ -42,6 +42,7 @@ const getUserByUsernameForUser = gql`
             coverAddress
             bio
             private
+            credit
             unknown {
                 avatar
                 fullname
