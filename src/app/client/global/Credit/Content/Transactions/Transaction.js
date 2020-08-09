@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import C from 'Root/constants'
-import { Components } from 'Root/StyledComponents'
+import StyledComponents, { Components } from 'Root/StyledComponents'
 import { AuthContext } from 'Root/contexts/auth'
+import moment from 'moment'
+import helpers from 'Root/helpers'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -66,7 +68,16 @@ export default props => {
                         icon={Math.sign(amount) == -1 ? 'ArrowDown' : 'ArrowUp'}
                         color={Math.sign(amount) == -1 ? 'gray' : 'blue'}
                     />
-                    <Components.Global.User margin='0 0 0 .25rem' user={user} />
+                    <Components.Global.User
+                        margin='0 .25rem'
+                        fontSize='.75rem'
+                        user={user}
+                    />
+                    <StyledComponents.Title
+                        fontSize='.75rem'
+                        color='gray'>{` ${helpers.dateFormat(
+                        moment(props.createdAt).fromNow(true),
+                    )}`}</StyledComponents.Title>
                 </StyledTransfer>
                 <StyledReason>{props.reason}</StyledReason>
             </StyledContent>

@@ -16,7 +16,7 @@ const StyledFullName = styled.h4`
             margin: ${margin};
         `};
     font-weight: bold;
-    font-size: ${({ fontSize }) => (fontSize ? `${fontSize}rem` : '1rem')};
+    font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
     color: ${({ theme }) => theme.colors.foreground};
     margin: 0 0 0.1rem;
     overflow: hidden;
