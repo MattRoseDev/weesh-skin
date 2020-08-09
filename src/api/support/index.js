@@ -54,8 +54,8 @@ const getTickets = gql`
 `
 
 const getTicket = gql`
-    query getTicketUserByLinkForUser($link: String!, $limit: Int, $page: Int) {
-        getTicketUserByLinkForUser(link: $link, limit: $limit, page: $page) {
+    query getUserTicketByLinkForUser($link: String!, $limit: Int, $page: Int) {
+        getUserTicketByLinkForUser(link: $link, limit: $limit, page: $page) {
             id
             link
             subject

@@ -12,7 +12,7 @@ const StyledBadge = styled.span`
     ${C.styles.flex.justifyContentCenter};
     ${C.styles.flex.alignItemsCenter};
     top: -0.3rem;
-    right: -0.1rem;
+    right: -0.2rem;
     border-radius: 5rem;
     border: 3px solid ${({ theme }) => theme.colors.background};
     min-height: 0.5rem;
