@@ -73,6 +73,12 @@ export default props => {
     React.useEffect(() => {
         if (addMessageResponse.data) {
             props.setShowAddMessage(false)
+            props.setMessages(prevState => {
+                return [
+                    addMessageResponse.data.addUserTicketMessageForUser,
+                    ...prevState,
+                ]
+            })
             snackbarDispatch({
                 type: 'SET_DATA',
                 data: {

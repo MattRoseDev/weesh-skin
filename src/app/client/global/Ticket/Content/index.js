@@ -4,12 +4,12 @@ import C from 'Root/constants'
 import { useMutation, useQuery } from '@apollo/react-hooks'
 import useHistory from 'Root/hooks/useHistory'
 import api from 'Root/api'
-import { AuthContext } from 'Root/contexts/auth'
 import StyledComponent, { Components } from 'Root/StyledComponents'
 import { SnackBarContext } from 'Root/contexts/snackbar'
 import Message from './Message'
 import AddMessage from './AddMessage'
 import Meta from 'Root/meta'
+import { AuthContext } from 'Root/contexts/auth'
 
 const StyledContainer = styled.div``
 
@@ -91,12 +91,16 @@ export default props => {
             const response =
                 data.getUserTicketByLinkForUser.message.ticketMessages
             const ticketResponse = data.getUserTicketByLinkForUser
-            if (response && response[0].read == false) {
-                // readMessages({
-                //     variables: {
-                //         ticketId: `${ticketResponse.id}`,
-                //     },
-                // })
+            if (
+                response &&
+                response[0].recipient.id == auth.id &&
+                response[0].read == false
+            ) {
+                readMessages({
+                    variables: {
+                        ticketId: `${ticketResponse.id}`,
+                    },
+                })
             }
             setTicket(ticketResponse)
             setState(response)
@@ -149,6 +153,7 @@ export default props => {
                         {showAddMessage && (
                             <AddMessage
                                 setShowAddMessage={setShowAddMessage}
+                                setMessages={setState}
                                 {...ticket}
                             />
                         )}
