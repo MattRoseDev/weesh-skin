@@ -7,6 +7,7 @@ import editProfile from './editProfile'
 import cropImage from './cropImage'
 import weeshPage from './weeshPage'
 import credit from './credit'
+import tickets from './tickets'
 
 export default {
     g,
@@ -18,4 +19,5 @@ export default {
     cropImage,
     weeshPage,
     credit,
+    tickets,
 }

@@ -109,6 +109,13 @@ export default props => {
                             ))}
                         </Components.Global.InfiniteScroll>
                     )}
+                    {state && state.length < 1 && (
+                        <Components.Global.BannerMessage
+                            padding='3rem 0'
+                            icon='Edit'
+                            title={C.txts.en.tickets.noTickets}
+                        />
+                    )}
                 </>
             )}
         </StyledContainer>
