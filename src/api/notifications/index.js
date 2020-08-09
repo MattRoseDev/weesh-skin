@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 const add = gql`
-    subscription addNotificationForUser($userId: ID!) {
-        addNotificationForUser(userId: $userId) {
+    subscription addNotificationForUser($recipientId: ID!) {
+        addNotificationForUser(recipientId: $recipientId) {
             id
             sender {
                 id
