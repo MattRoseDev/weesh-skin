@@ -21,7 +21,7 @@ export default () => {
         {
             fetchPolicy: 'no-cache',
             variables: {
-                userId: `${auth.id}`,
+                recipientId: `${auth.id}`,
             },
         },
     )
