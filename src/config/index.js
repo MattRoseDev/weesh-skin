@@ -1,9 +1,9 @@
 import google from './google'
 const PORT = 5000
-const VERSION = '1.1.1'
+const VERSION = '1.2.4'
 let API_URL, WS_URL, DOMAIN_URL, PROTOCOL, UPLOAD_URL
 
-const SOURCE = 'localhost'
+const SOURCE = 'liara'
 const DEBUG = true
 
 switch (SOURCE) {

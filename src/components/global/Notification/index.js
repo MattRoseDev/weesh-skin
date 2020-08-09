@@ -79,8 +79,8 @@ export default props => {
     return (
         <StyledContainer>
             <StyledContentContainer>
-                <Link to={`/${props.recipient.username}`}>
-                    <Avatar size={2.5} user={props.recipient} />
+                <Link to={`/${props.sender.username}`}>
+                    <Avatar size={2.5} user={props.sender} />
                 </Link>
                 <Link to={props.url}>
                     <StyledMain>
@@ -151,7 +151,7 @@ const switchElements = ({ element, props }) => {
             case '$$username$$':
                 return (
                     <StyledUsername key={uuid()}>
-                        <FullName fontSize='0.85rem' user={props.recipient} />
+                        <FullName fontSize='0.85rem' user={props.sender} />
                     </StyledUsername>
                 )
             case '$$weesh$$':
