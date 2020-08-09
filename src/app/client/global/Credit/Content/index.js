@@ -12,7 +12,8 @@ import Button from 'Root/components/global/Button'
 import Meta from 'Root/meta'
 import Diamond from './Diamond'
 import InvitationLink from './InvitationLink'
-import Ledger from './Ledger'
+import Transactions from './Transactions'
+import StyledComponents, { Components } from 'Root/StyledComponents'
 
 const StyledContainer = styled.div`
     min-height: ${window.innerHeight - 55}px;
@@ -26,12 +27,19 @@ export default props => {
     )
     const history = useHistory()
 
-    return (
+    return auth.id ? (
         <StyledContainer>
             <Meta type='Credit' />
-            <Diamond />
+            <Diamond value={auth.credit} />
             <InvitationLink invitationCode={auth.invitationCode || undefined} />
-            {/* <Ledger /> */}
+            <Transactions />
         </StyledContainer>
+    ) : (
+        <Components.Global.Loading
+            padding='3rem 0 0'
+            size={28}
+            strokeWidth={1.25}
+            color='gray'
+        />
     )
 }

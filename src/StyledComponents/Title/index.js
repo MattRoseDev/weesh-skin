@@ -23,6 +23,11 @@ export default styled.span`
         css`
             font-weight: ${fontWeight};
         `};
+    ${({ textAlign }) =>
+        textAlign &&
+        css`
+            text-align: ${textAlign};
+        `};
     ${({ textTransform }) =>
         textTransform &&
         css`

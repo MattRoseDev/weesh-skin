@@ -9,7 +9,7 @@ const StyledContainer = styled.div`
     margin: 1rem 1rem 0;
 `
 
-export default () => {
+export default props => {
     return (
         <StyledContainer>
             <StyledComponents.Title fontSize='.75rem' color='gray'>
@@ -17,7 +17,7 @@ export default () => {
             </StyledComponents.Title>
             <Components.Global.Diamond
                 width={60}
-                value={10}
+                value={props.value}
                 sign={false}
                 fontSize='4rem'
                 paddingValue='1rem .25rem 0 0'
