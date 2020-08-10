@@ -62,6 +62,7 @@ export default props => {
                 disabled
                 ref={textarea}
                 defaultValue={`${window.location.origin}/?invitationCode=${props.invitationCode}`}
+                inputMode='none'
             />
             <StyledCodeTitle>{C.txts.en.credit.invitationCode}</StyledCodeTitle>
             <StyledCode onClick={handleCopyLink}>
