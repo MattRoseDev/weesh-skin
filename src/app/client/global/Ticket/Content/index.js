@@ -161,7 +161,8 @@ export default props => {
                             <Components.Global.InfiniteScroll
                                 onLoadMore={handlePaginate}
                                 hasNextPage={nextPage}
-                                padding='0 .6rem 3.125rem'>
+                                padding='0 0 3.125rem'
+                                alignItems='stretch'>
                                 {state.map(message => (
                                     <Message {...message} />
                                 ))}
