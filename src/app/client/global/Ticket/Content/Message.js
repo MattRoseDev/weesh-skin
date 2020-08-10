@@ -11,7 +11,6 @@ const StyledContainer = styled.div`
     ${C.styles.flex.justifyContentCenter};
     padding: 0.75rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.light};
-    width: 100%;
 `
 
 const StyledContent = styled.p`

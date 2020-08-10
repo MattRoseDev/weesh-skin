@@ -62,6 +62,32 @@ const getTickets = gql`
                 id
                 link
                 subject
+                sender {
+                    id
+                    username
+                    firstName
+                    lastName
+                    bio
+                    private
+                    avatarAddress
+                    unknown {
+                        avatar
+                        fullname
+                    }
+                }
+                recipient {
+                    id
+                    username
+                    firstName
+                    lastName
+                    bio
+                    private
+                    avatarAddress
+                    unknown {
+                        avatar
+                        fullname
+                    }
+                }
                 message {
                     ticketMessages {
                         id

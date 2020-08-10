@@ -11,7 +11,6 @@ const StyledContainer = styled(Components.Global.Link)`
     ${C.styles.flex.justifyContentCenter};
     padding: 0.75rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.light};
-    width: 100%;
 `
 
 const StyledContent = styled.p`
@@ -34,6 +33,7 @@ const StyledBadge = styled.span`
 
 export default props => {
     const { auth } = React.useContext(AuthContext)
+    const user = props.sender.id == auth.id ? props.recipient : props.sender
     return (
         <StyledContainer to={`/support/${props.link}`}>
             <StyledComponents.Title
@@ -54,6 +54,13 @@ export default props => {
                     {helpers.dateFormat(moment(props.createdAt).fromNow(true))}{' '}
                     · #{props.link}
                 </StyledComponents.Title>
+                <Components.Global.User
+                    fontSize='.75rem'
+                    fontWeight='bold'
+                    margin='0 0 0 .25rem'
+                    user={user}
+                    size={1}
+                />
             </StyledFooter>
         </StyledContainer>
     )

@@ -6,12 +6,27 @@ import C from 'Root/constants'
 
 const StyledContainer = styled(InfiniteScroll)`
     ${C.styles.flex.flexColumn};
-    ${C.styles.flex.alignItemsCenter};
     ${({ padding }) =>
         padding &&
         css`
             padding: ${padding};
         `};
+    ${({ alignItems }) => {
+        switch (alignItems) {
+            case 'center':
+                return css`
+                    ${C.styles.flex.alignItemsCenter};
+                `
+            case 'stretch':
+                return css`
+                    ${C.styles.flex.alignItemsStretch};
+                `
+            default:
+                return css`
+                    ${C.styles.flex.alignItemsCenter};
+                `
+        }
+    }};
 `
 
 const StyledLoader = styled.div`
@@ -24,6 +39,7 @@ export default props => {
     return (
         <StyledContainer
             padding={props.padding || undefined}
+            alignItems={props.alignItems || undefined}
             dataLength={props.children.length}
             next={props.onLoadMore}
             hasMore={props.hasNextPage}

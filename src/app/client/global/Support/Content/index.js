@@ -11,7 +11,9 @@ import Ticket from './Ticket'
 import AddTicket from './AddTicket'
 import Meta from 'Root/meta'
 
-const StyledContainer = styled.div``
+const StyledContainer = styled.div`
+    width: 100%;
+`
 
 const StyledHeader = styled.div`
     ${C.styles.flex.flexRow};
@@ -103,7 +105,8 @@ export default props => {
                         <Components.Global.InfiniteScroll
                             onLoadMore={handlePaginate}
                             hasNextPage={nextPage}
-                            padding='0 .6rem 3.125rem'>
+                            padding='0 0 3.125rem'
+                            alignItems='stretch'>
                             {state.map(ticket => (
                                 <Ticket {...ticket} />
                             ))}
