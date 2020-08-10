@@ -176,7 +176,8 @@ const switchElements = ({ element, props }) => {
                 return (
                     <StyledUsername key={uuid()}>
                         <StyledUsername>
-                            {props.user.firstName} {props.user.lastName}
+                            {props.recipient.firstName}{' '}
+                            {props.recipient.lastName}
                         </StyledUsername>
                     </StyledUsername>
                 )

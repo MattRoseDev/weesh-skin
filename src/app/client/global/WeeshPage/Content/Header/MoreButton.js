@@ -193,6 +193,7 @@ export default props => {
                 disabled
                 ref={textarea}
                 defaultValue={`${window.location.origin}/w/${props.link}`}
+                inputMode='none'
             />
             <DrawerDialog
                 width={window.innerWidth < 960 ? '100%' : '30%'}
