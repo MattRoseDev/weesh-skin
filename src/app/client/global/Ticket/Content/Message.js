@@ -23,7 +23,6 @@ const StyledContent = styled.p`
 const StyledFooter = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    ${C.styles.flex.justifyContentBetween};
     padding: 0 0.5rem;
 `
 
@@ -46,13 +45,30 @@ export default props => {
             />
             <StyledContent>{props.message.replace(/\n/g, ' ')}</StyledContent>
             <StyledFooter>
-                <StyledComponents.Title color='gray' fontSize='.75rem'>
+                <StyledComponents.Title
+                    color='gray'
+                    fontSize='.75rem'
+                    padding='0 .25rem 0 0'>
                     {helpers.dateFormat(
                         moment(props.createdAt).format(
                             'hh:mm  A · MMM DD, YYYY',
                         ),
                     )}
                 </StyledComponents.Title>
+                {props.sender.id == auth.id &&
+                    (props.read ? (
+                        <Components.Global.Icon
+                            icon='Eye'
+                            color='gray'
+                            size={14}
+                        />
+                    ) : (
+                        <Components.Global.Icon
+                            icon='Check'
+                            color='gray'
+                            size={16}
+                        />
+                    ))}
             </StyledFooter>
         </StyledContainer>
     )
