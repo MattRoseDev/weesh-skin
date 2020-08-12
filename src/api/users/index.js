@@ -167,25 +167,6 @@ const edit = gql`
     }
 `
 
-const editUsername = gql`
-    mutation editUsernameForUser($username: String!) {
-        editUsernameForUser(username: $username) {
-            user {
-                username
-                firstName
-                lastName
-                bio
-                private
-                unknown {
-                    avatar
-                    fullname
-                }
-            }
-            token
-        }
-    }
-`
-
 const changePassword = gql`
     mutation changePasswordForUser(
         $oldPassword: String
@@ -254,7 +235,6 @@ export default {
     checkUsername,
     changePassword,
     checkEmail,
-    editUsername,
     suggestion,
     edit,
 }
