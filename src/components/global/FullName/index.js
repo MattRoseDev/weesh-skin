@@ -2,9 +2,15 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { AuthContext } from 'Root/contexts/auth'
 import C from 'Root/constants'
+import Official from 'Root/public/icons/official.png'
 
-const StyledFullName = styled.h4`
-    ${C.styles.flex.inlineFlex};
+const StyledImg = styled.img`
+    padding: 0 0 0 0.15rem;
+`
+
+const StyledFullName = styled.strong`
+    ${C.styles.flex.inlineFlexRow};
+    ${C.styles.flex.alignItemsCenter};
     ${({ padding }) =>
         padding &&
         css`
@@ -42,6 +48,9 @@ export default props => {
                     margin={props.margin || undefined}
                     fontSize={props.fontSize || undefined}>
                     {props.user.firstName} {props.user.lastName}
+                    {props.user.label == 'official' && (
+                        <StyledImg src={Official} width='15' />
+                    )}
                 </StyledFullName>
             )}
         </>

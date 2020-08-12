@@ -60,6 +60,7 @@ const getHomeWeeshes = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -108,6 +109,7 @@ const getShowcase = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -156,6 +158,7 @@ const getWeeshes = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -203,6 +206,7 @@ const getWeeshByLink = gql`
                 firstName
                 lastName
                 avatarAddress
+                label
                 unknown {
                     fullname
                     avatar
@@ -236,6 +240,7 @@ const getWeeshByLink = gql`
                         firstName
                         lastName
                         avatarAddress
+                        label
                         unknown {
                             fullname
                             avatar
@@ -251,6 +256,7 @@ const getWeeshByLink = gql`
                                 firstName
                                 lastName
                                 avatarAddress
+                                label
                                 unknown {
                                     fullname
                                     avatar

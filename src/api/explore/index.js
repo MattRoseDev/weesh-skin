@@ -15,6 +15,7 @@ const exploreAll = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar

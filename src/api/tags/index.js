@@ -56,6 +56,7 @@ const getWeeshesByTag = gql`
                         firstName
                         lastName
                         avatarAddress
+                        label
                         unknown {
                             fullname
                             avatar

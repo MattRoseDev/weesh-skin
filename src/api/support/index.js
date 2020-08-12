@@ -6,6 +6,34 @@ const addTicket = gql`
             id
             link
             subject
+            sender {
+                id
+                username
+                firstName
+                lastName
+                bio
+                private
+                avatarAddress
+                label
+                unknown {
+                    avatar
+                    fullname
+                }
+            }
+            recipient {
+                id
+                username
+                firstName
+                lastName
+                bio
+                private
+                avatarAddress
+                label
+                unknown {
+                    avatar
+                    fullname
+                }
+            }
             message {
                 ticketMessages {
                     id
@@ -43,6 +71,7 @@ const addMessage = gql`
                 bio
                 private
                 avatarAddress
+                label
                 unknown {
                     avatar
                     fullname
@@ -70,6 +99,7 @@ const getTickets = gql`
                     bio
                     private
                     avatarAddress
+                    label
                     unknown {
                         avatar
                         fullname
@@ -83,6 +113,7 @@ const getTickets = gql`
                     bio
                     private
                     avatarAddress
+                    label
                     unknown {
                         avatar
                         fullname
@@ -135,6 +166,7 @@ const getTicket = gql`
                         bio
                         private
                         avatarAddress
+                        label
                         unknown {
                             avatar
                             fullname

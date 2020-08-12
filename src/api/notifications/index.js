@@ -10,6 +10,7 @@ const add = gql`
                 firstName
                 lastName
                 avatarAddress
+                label
                 unknown {
                     fullname
                     avatar
@@ -21,6 +22,7 @@ const add = gql`
                 firstName
                 lastName
                 avatarAddress
+                label
                 unknown {
                     fullname
                     avatar
@@ -42,6 +44,7 @@ const add = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -71,6 +74,7 @@ const getNotifications = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -82,6 +86,7 @@ const getNotifications = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -103,6 +108,7 @@ const getNotifications = gql`
                         firstName
                         lastName
                         avatarAddress
+                        label
                         unknown {
                             fullname
                             avatar
@@ -118,6 +124,7 @@ const getNotifications = gql`
                         firstName
                         lastName
                         avatarAddress
+                        label
                         unknown {
                             fullname
                             avatar
@@ -132,6 +139,7 @@ const getNotifications = gql`
                                 firstName
                                 lastName
                                 avatarAddress
+                                label
                                 unknown {
                                     fullname
                                     avatar

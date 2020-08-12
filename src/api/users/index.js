@@ -15,6 +15,7 @@ const suggestion = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -43,6 +44,7 @@ const getUserByUsernameForUser = gql`
             bio
             private
             credit
+            label
             unknown {
                 avatar
                 fullname
@@ -86,6 +88,7 @@ const getUserByUsernameForUser = gql`
                         firstName
                         lastName
                         avatarAddress
+                        label
                         unknown {
                             fullname
                             avatar
