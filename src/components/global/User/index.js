@@ -2,8 +2,9 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 import { Components } from 'Root/StyledComponents'
+import Link from 'Root/components/global/Link'
 
-const StyledContainer = styled.span`
+const StyledContainer = styled(Link)`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
     ${({ margin }) =>
@@ -30,7 +31,9 @@ const StyledUsername = styled.span`
 
 export default props => {
     return (
-        <StyledContainer margin={props.margin || undefined}>
+        <StyledContainer
+            to={`/${props.user.username}`}
+            margin={props.margin || undefined}>
             <Components.Global.Avatar
                 user={props.user || undefined}
                 size={props.size || 1}

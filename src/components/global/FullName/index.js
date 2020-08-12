@@ -49,7 +49,10 @@ export default props => {
                     fontSize={props.fontSize || undefined}>
                     {props.user.firstName} {props.user.lastName}
                     {props.user.label == 'official' && (
-                        <StyledImg src={Official} width='15' />
+                        <StyledImg
+                            src={Official}
+                            width={props.labelSize || 15}
+                        />
                     )}
                 </StyledFullName>
             )}
