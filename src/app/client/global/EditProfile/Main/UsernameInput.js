@@ -27,7 +27,7 @@ export default props => {
     )
 
     const handleChange = ({ key, e }) => {
-        if (e.target.value.length > 4) {
+        if (e.target.value.match(/^(?=.{5,25}$)[a-zA-Z0-9._]+$/gim)) {
             if (auth.username !== e.target.value) {
                 checkUsername({
                     variables: {
@@ -43,8 +43,7 @@ export default props => {
             }
         } else {
             setErrorMessage({
-                errorMessage:
-                    C.txts.en.editProfile.usernameMessages.lengthError,
+                errorMessage: C.txts.en.editProfile.usernameMessages.invalid,
                 errorMessageColor: 'red',
             })
             editProfileDispatch({ type: 'DISABLE_DONE_BUTTON' })
