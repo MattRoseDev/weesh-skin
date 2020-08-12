@@ -46,6 +46,7 @@ export default props => {
                                 <Components.Global.FullName
                                     {...props}
                                     fontSize={0.85}
+                                    labelSize='16'
                                 />
                             </Link>
                             <Link to={`/${props.user.username}`}>
