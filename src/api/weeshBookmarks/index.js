@@ -107,6 +107,7 @@ const getUserBookmarksWeeshes = gql`
                         firstName
                         lastName
                         avatarAddress
+                        label
                         unknown {
                             fullname
                             avatar

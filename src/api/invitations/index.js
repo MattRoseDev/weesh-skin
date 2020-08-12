@@ -14,6 +14,7 @@ const getUserByInvitationCodeForUser = gql`
             coverAddress
             bio
             private
+            label
             unknown {
                 avatar
                 fullname

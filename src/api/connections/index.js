@@ -66,6 +66,7 @@ const getFollowers = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         avatar
                         fullname
@@ -111,6 +112,7 @@ const getFollowing = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         avatar
                         fullname
@@ -156,6 +158,7 @@ const getRequests = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         avatar
                         fullname

@@ -12,6 +12,7 @@ const getTransactions = gql`
                     bio
                     private
                     avatarAddress
+                    label
                     unknown {
                         avatar
                         fullname
@@ -25,6 +26,7 @@ const getTransactions = gql`
                     bio
                     private
                     avatarAddress
+                    label
                     unknown {
                         avatar
                         fullname

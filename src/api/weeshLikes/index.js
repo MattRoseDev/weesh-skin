@@ -20,6 +20,7 @@ const like = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -71,6 +72,7 @@ const dislike = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -112,6 +114,7 @@ const getLikes = gql`
                     firstName
                     lastName
                     avatarAddress
+                    label
                     unknown {
                         fullname
                         avatar
@@ -124,6 +127,7 @@ const getLikes = gql`
                         firstName
                         lastName
                         avatarAddress
+                        label
                         unknown {
                             avatar
                             fullname
@@ -135,6 +139,7 @@ const getLikes = gql`
                         firstName
                         lastName
                         avatarAddress
+                        label
                         unknown {
                             avatar
                             fullname

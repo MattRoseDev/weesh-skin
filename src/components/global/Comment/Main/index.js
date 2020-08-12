@@ -12,6 +12,7 @@ import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import Link from 'Root/components/global/Link'
 import Icon from 'Root/components/global/Icon'
+import { Components } from 'Root/StyledComponents'
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -170,9 +171,11 @@ export default props => {
             </Dialog>
             <StyledMain>
                 <Link to={`/${props.user.username}`}>
-                    <StyledUsername {...props}>
-                        {props.user.username}
-                    </StyledUsername>
+                    <Components.Global.FullName
+                        user={props.user}
+                        fontSize='.85rem'
+                        padding='0 .25rem 0 0'
+                    />
                 </Link>
                 {props.content}
             </StyledMain>
