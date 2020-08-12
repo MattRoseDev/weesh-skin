@@ -22,6 +22,7 @@ export default {
     },
     usernameMessages: {
         lengthError: 'Username must be more than 4 characters.',
+        invalid: 'Username is not valid.',
         available: 'Username is available.',
         alreadyTaken: 'Username is already taken.',
         checking: 'Checking username...',
