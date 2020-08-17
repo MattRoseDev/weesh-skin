@@ -14,6 +14,8 @@ import User from './User'
 import InfiniteScroll from './InfiniteScroll'
 import Badge from './Badge'
 import BadgeForIcon from './BadgeForIcon'
+import Weesh from './Weesh'
+import WeeshChild from './WeeshChild'
 
 export default {
     Avatar,
@@ -32,4 +34,6 @@ export default {
     InfiniteScroll,
     Badge,
     BadgeForIcon,
+    Weesh,
+    WeeshChild,
 }

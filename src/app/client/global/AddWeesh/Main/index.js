@@ -4,9 +4,11 @@ import { WeeshContext } from 'Root/contexts/weesh'
 import C from 'Root/constants'
 import Editor from 'draft-js-plugins-editor'
 import { EditorState, ContentState, Modifier, SelectionState } from 'draft-js'
-import { useLazyQuery } from '@apollo/react-hooks'
+import { useLazyQuery, useQuery } from '@apollo/react-hooks'
 import api from 'Root/api'
 import createLinkifyPlugin from 'draft-js-linkify-plugin'
+import helpers from 'Root/helpers'
+import Child from './Child'
 
 const StyledContainer = styled.div`
     & * {
@@ -25,6 +27,7 @@ const StyledPrimary = styled.span`
 export default props => {
     const { weesh, dispatch } = React.useContext(WeeshContext)
     const [initComponent, setInitComponent] = React.useState(true)
+    const [reWeesh, setReWeesh] = React.useState(null)
 
     const MENTION_REGEX = /@[\w]+/g
     const HASHTAG_REGEX = /#[\w\u0590-\u05ff]+/g
@@ -81,6 +84,13 @@ export default props => {
         ),
     })
 
+    const getWeeshResponse = useQuery(api.weeshes.getWeeshByLink, {
+        fetchPolicy: 'no-cache',
+        variables: {
+            link: helpers.queryString.get({ props, key: 'childId' }),
+        },
+    })
+
     const [getTheBestTags, getTheBestTagsResponse] = useLazyQuery(
         api.tags.getTheBestTags,
         {
@@ -107,6 +117,19 @@ export default props => {
             getTheBestTags()
         }
     }, [weesh.defaultSuggestions])
+
+    React.useEffect(() => {
+        const { data } = getWeeshResponse
+        if (data) {
+            setReWeesh(data.getWeeshByLinkForUser)
+            dispatch({
+                type: 'ADD_WEESH',
+                data: {
+                    childId: data.getWeeshByLinkForUser.id,
+                },
+            })
+        }
+    }, [getWeeshResponse.data])
 
     React.useEffect(() => {
         const { data } = getTheBestTagsResponse
@@ -244,6 +267,7 @@ export default props => {
                 onChange={handleChange}
                 plugins={plugins}
             />
+            {reWeesh && <Child child={reWeesh} />}
         </StyledContainer>
     )
 }

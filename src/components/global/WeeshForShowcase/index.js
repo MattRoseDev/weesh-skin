@@ -5,6 +5,7 @@ import Header from 'Root/components/global/Weesh/Header'
 import Main from 'Root/components/global/Weesh/Main'
 import Footer from 'Root/components/global/Weesh/Footer'
 import C from 'Root/constants'
+import DrawerDialogProvider from 'Root/contexts/drawerDialog'
 
 const StyledWeesh = styled.div`
     position: relative;
@@ -40,7 +41,9 @@ export default props => {
             )}
             <Header {...props} />
             <Main {...props} />
-            <Footer {...props} />
+            <DrawerDialogProvider>
+                <Footer {...props} />
+            </DrawerDialogProvider>
         </StyledWeesh>
     )
 }

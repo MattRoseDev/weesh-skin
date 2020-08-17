@@ -26,6 +26,7 @@ const StyledFrame = styled.div`
 
 export default props => {
     const { auth } = React.useContext(AuthContext)
+
     return auth.id ? (
         <StyledContainer>
             <Meta type='AddWeesh' />
@@ -48,7 +49,7 @@ export default props => {
                         </StyledComponents.Weesh.Header.NameContainer>
                     )}
                 </StyledComponents.Weesh.Header.LeftSide>
-                <Main type='ADD' />
+                <Main type='ADD' {...props} />
                 <Footer type='ADD' />
             </StyledComponents.AddWeesh.Frame>
         </StyledContainer>

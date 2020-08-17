@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 const add = gql`
-    mutation addWeeshForUser($content: String!, $status: Int) {
-        addWeeshForUser(content: $content, status: $status) {
+    mutation addWeeshForUser($childId: ID, $content: String, $status: Int) {
+        addWeeshForUser(childId: $childId, content: $content, status: $status) {
             id
             user {
                 id
@@ -43,6 +43,14 @@ const editWeesh = gql`
 const deleteWeesh = gql`
     mutation deleteWeeshForUser($weeshId: ID!) {
         deleteWeeshForUser(weeshId: $weeshId) {
+            id
+        }
+    }
+`
+
+const undoReweesh = gql`
+    mutation undoReweeshForUser($weeshId: ID!) {
+        undoReweeshForUser(weeshId: $weeshId) {
             id
         }
     }
@@ -212,9 +220,32 @@ const getWeeshByLink = gql`
                     avatar
                 }
             }
+            child {
+                id
+                link
+                content
+                status
+                user {
+                    id
+                    username
+                    firstName
+                    lastName
+                    avatarAddress
+                    label
+                    unknown {
+                        fullname
+                        avatar
+                    }
+                }
+            }
             content
             status
             like {
+                paginate {
+                    totalDocs
+                }
+            }
+            reweesh {
                 paginate {
                     totalDocs
                 }
@@ -223,6 +254,19 @@ const getWeeshByLink = gql`
                 user {
                     id
                     username
+                }
+            }
+            isReweeshed {
+                id
+                link
+                user {
+                    id
+                    username
+                }
+                content
+                child {
+                    id
+                    content
                 }
             }
             isBookmarked {
@@ -288,6 +332,7 @@ export default {
     add,
     editWeesh,
     deleteWeesh,
+    undoReweesh,
     getWeeshes,
     getHomeWeeshes,
     getShowcase,
