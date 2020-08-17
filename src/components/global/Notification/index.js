@@ -38,6 +38,12 @@ const StyledTime = styled.small`
 
 const StyledUsername = styled.strong`
     color: ${({ theme }) => theme.colors.foreground};
+    display: block;
+    /* padding: 0 .25rem 0 0; */
+`
+
+const StyledYou = styled.strong`
+    color: ${({ theme }) => theme.colors.foreground};
     display: inline;
     /* padding: 0 .25rem 0 0; */
 `
@@ -142,6 +148,10 @@ const switchIcon = type => {
             return (
                 <Icon icon='AtSign' size={20} strokeWidth={1.5} color='dark' />
             )
+        case 'reweesh':
+            return (
+                <Icon icon='Repeat' size={20} strokeWidth={1.5} color='dark' />
+            )
     }
 }
 
@@ -174,12 +184,9 @@ const switchElements = ({ element, props }) => {
                 )
             case '$$you$$':
                 return (
-                    <StyledUsername key={uuid()}>
-                        <StyledUsername>
-                            {props.recipient.firstName}{' '}
-                            {props.recipient.lastName}
-                        </StyledUsername>
-                    </StyledUsername>
+                    <StyledYou key={uuid()}>
+                        {props.recipient.firstName} {props.recipient.lastName}
+                    </StyledYou>
                 )
             default:
                 return (
