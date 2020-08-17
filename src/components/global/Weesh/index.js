@@ -4,6 +4,7 @@ import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 import C from 'Root/constants'
+import DrawerDialogProvider from 'Root/contexts/drawerDialog'
 
 const StyledWeesh = styled.div`
     ${C.styles.flex.flexColumn};
@@ -19,7 +20,9 @@ export default props => {
         <StyledWeesh>
             <Header {...props} />
             <Main {...props} />
-            <Footer {...props} />
+            <DrawerDialogProvider>
+                <Footer {...props} />
+            </DrawerDialogProvider>
         </StyledWeesh>
     )
 }

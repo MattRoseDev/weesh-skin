@@ -5,6 +5,7 @@ export const WeeshContext = React.createContext()
 
 const initialWeesh = {
     id: null,
+    childId: null,
     store: {
         state: null,
         setState: null,

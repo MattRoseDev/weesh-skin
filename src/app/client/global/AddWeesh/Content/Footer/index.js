@@ -59,11 +59,15 @@ export default props => {
 
     const handleAddWeesh = status => {
         toggleDialog(false)
+        let variables = {
+            content: weesh.content,
+            status,
+        }
+        if (weesh.childId) {
+            variables.childId = weesh.childId
+        }
         addWeesh({
-            variables: {
-                content: weesh.content,
-                status,
-            },
+            variables,
         })
         handleAfterSubmit({
             icon: 'PenTool',

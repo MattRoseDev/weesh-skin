@@ -3,6 +3,18 @@ import C from 'Root/constants'
 
 const LeftSide = styled.div`
     ${C.styles.flex.flexRow};
+    ${C.styles.flex.alignItemsCenter};
+`
+
+const ReWeeshedUser = styled.div`
+    ${C.styles.flex.flexRow};
+    ${C.styles.flex.alignItemsCenter};
+    margin: 0 0 0 0.5rem;
+    ${({ padding }) =>
+        padding &&
+        css`
+            padding: ${padding};
+        `};
 `
 
 const NameContainer = styled.div`
@@ -20,4 +32,5 @@ export default {
     Username,
     LeftSide,
     NameContainer,
+    ReWeeshedUser,
 }

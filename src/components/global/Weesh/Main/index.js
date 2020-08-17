@@ -6,6 +6,7 @@ import C from 'Root/constants'
 import uuid from 'uuid'
 import useHistory from 'Root/hooks/useHistory'
 import Convertors from 'Root/components/global/Convertors'
+import Child from './Child'
 
 const StyledLink = styled.div`
     text-decoration: none;
@@ -15,8 +16,8 @@ const StyledLink = styled.div`
 
 const StyledMain = styled.p`
     font-size: 0.85rem;
-    line-height: 1.125rem;
     padding: 0.75rem 1.25rem 0.5rem;
+    line-height: 1.125rem;
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: pre-wrap;
@@ -34,11 +35,12 @@ export default props => {
     const history = useHistory()
     React.useEffect(() => {
         if (!content) {
-            setContent(
-                Convertors.Weesh({
-                    content: props.content,
-                }),
-            )
+            props.content &&
+                setContent(
+                    Convertors.Weesh({
+                        content: props.content,
+                    }),
+                )
         }
     })
 
@@ -47,8 +49,11 @@ export default props => {
     }
 
     return (
-        props.content && (
-            <StyledMain onClick={e => handleClick(e)}>{content}</StyledMain>
-        )
+        <>
+            {props.content && (
+                <StyledMain onClick={e => handleClick(e)}>{content}</StyledMain>
+            )}
+            <>{props.child && <Child {...props} />}</>
+        </>
     )
 }

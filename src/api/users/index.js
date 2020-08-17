@@ -82,6 +82,24 @@ const getUserByUsernameForUser = gql`
                 weeshes {
                     id
                     link
+                    child {
+                        id
+                        link
+                        content
+                        status
+                        user {
+                            id
+                            username
+                            firstName
+                            lastName
+                            avatarAddress
+                            label
+                            unknown {
+                                fullname
+                                avatar
+                            }
+                        }
+                    }
                     user {
                         id
                         username
@@ -101,10 +119,28 @@ const getUserByUsernameForUser = gql`
                             totalDocs
                         }
                     }
+                    reweesh {
+                        paginate {
+                            totalDocs
+                        }
+                    }
                     isLiked {
                         user {
                             id
                             username
+                        }
+                    }
+                    isReweeshed {
+                        id
+                        link
+                        user {
+                            id
+                            username
+                        }
+                        content
+                        child {
+                            id
+                            content
                         }
                     }
                     isBookmarked {

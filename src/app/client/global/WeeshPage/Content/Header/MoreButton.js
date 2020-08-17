@@ -13,6 +13,7 @@ import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import { AuthContext } from 'Root/contexts/auth'
 import { SnackBarContext } from 'Root/contexts/snackbar'
+import { DrawerDialogContext } from 'Root/contexts/drawerDialog'
 
 const StyledHeader = styled.div`
     padding: 0.75rem 0.75rem 0;
@@ -59,10 +60,6 @@ const StyledHeaderDialogMessage = styled.strong`
 
 const StyledRightSide = styled.div``
 
-const initialDrawerDialog = {
-    visible: false,
-}
-
 const initialDialog = {
     visible: false,
 }
@@ -72,7 +69,9 @@ export default props => {
     const { snackbar, dispatch: snackbarDispatch } = React.useContext(
         SnackBarContext,
     )
-    const [drawerDialog, setDrawerDialog] = React.useState(initialDrawerDialog)
+    const { drawerDialog, dispatch: drawerDialogDispatch } = React.useContext(
+        DrawerDialogContext,
+    )
     const [dialog, setDialog] = React.useState(initialDialog)
     const [deleteWeesh, { data, error, loading }] = useMutation(
         api.weeshes.deleteWeesh,
@@ -94,7 +93,7 @@ export default props => {
                 toggleDrawerDialog(false)
                 toggleDialog(true)
             },
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
         },
         {
             label: 'Edit',
@@ -103,7 +102,7 @@ export default props => {
             clickEvent: () => {
                 history.push(`/w/${props.link}/edit`)
             },
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             border: auth.id == props.user.id ? 'dashed' : false,
         },
         {
@@ -130,14 +129,14 @@ export default props => {
                     snackbarDispatch({ type: 'HIDE' })
                 }, 2 * 1000)
             },
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             border: auth.id == props.user.id ? 'dashed' : false,
         },
         {
             label: 'Cancel',
             color: 'foreground',
             clickEvent: () => toggleDrawerDialog(false),
-            fontWeight: 'bold',
+            // fontWeight: 'bold',
             border: 'dashed',
         },
     ]
@@ -154,10 +153,9 @@ export default props => {
     }
 
     const toggleDrawerDialog = visible => {
-        setDrawerDialog(prevState => ({
-            ...prevState,
-            visible,
-        }))
+        drawerDialogDispatch({
+            type: visible ? 'SHOW' : 'HIDE',
+        })
     }
     const toggleDialog = visible => {
         setDialog(prevState => ({
@@ -198,8 +196,6 @@ export default props => {
             <DrawerDialog
                 width={window.innerWidth < 960 ? '100%' : '30%'}
                 buttons={buttons}
-                {...drawerDialog}
-                toggleDialogFunction={visible => toggleDrawerDialog(visible)}
             />
             <Dialog
                 width={window.innerWidth < 960 ? '65%' : '18rem'}

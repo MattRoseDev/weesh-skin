@@ -4,6 +4,7 @@ import Icon from 'Root/components/global/Icon'
 import { Link } from 'react-router-dom'
 import C from 'Root/constants'
 import uuid from 'uuid'
+import { DrawerDialogContext } from 'Root/contexts/drawerDialog'
 
 const StyledContainer = styled.div`
     ${({ visible }) =>
@@ -79,15 +80,21 @@ const StyledButton = styled.button`
 `
 
 export default props => {
+    const { drawerDialog, dispatch: drawerDialogDispatch } = React.useContext(
+        DrawerDialogContext,
+    )
+
     return (
         <StyledContainer
-            {...props}
+            visible={drawerDialog.visible}
             onClick={e => {
                 if (e.target == e.currentTarget) {
-                    props.toggleDialogFunction(false)
+                    drawerDialogDispatch({
+                        type: 'HIDE',
+                    })
                 }
             }}>
-            <StyledContent {...props}>
+            <StyledContent width={props.width || undefined}>
                 {props.buttons &&
                     props.buttons.map(button => (
                         <Button key={uuid()} {...button} />

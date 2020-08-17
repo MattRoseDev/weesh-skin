@@ -14,6 +14,7 @@ import C from 'Root/constants'
 import api from 'Root/api'
 import { WeeshPageContext } from 'Root/contexts/weeshPage'
 import Meta from 'Root/meta'
+import DrawerDialogProvider from 'Root/contexts/drawerDialog'
 
 const StyledContainer = styled.div`
     /* padding: .5rem; */
@@ -60,7 +61,6 @@ export default props => {
 
         if (called && data) {
             const response = data.getWeeshByLinkForUser
-
             if (!auth.token && response.status < 3) {
                 history.push('/login')
             }
@@ -71,7 +71,7 @@ export default props => {
             setState(response)
         }
     }, [data, error])
-
+    window.scrollTo(0, 0)
     return (
         <StyledContainer>
             {weeshPage.user && (
@@ -85,9 +85,13 @@ export default props => {
                 called &&
                 state && (
                     <StyledWeesh>
-                        <Header {...state} />
+                        <DrawerDialogProvider>
+                            <Header {...state} />
+                        </DrawerDialogProvider>
                         <Main {...state} />
-                        <Footer {...state} />
+                        <DrawerDialogProvider>
+                            <Footer {...state} />
+                        </DrawerDialogProvider>
                         {auth.id != undefined && <AddComment {...state} />}
                         <Comments {...state} />
                     </StyledWeesh>

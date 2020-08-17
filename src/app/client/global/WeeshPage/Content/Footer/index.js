@@ -9,8 +9,10 @@ import useHistory from 'Root/hooks/useHistory'
 import { AuthContext } from 'Root/contexts/auth'
 import { WeeshPageContext } from 'Root/contexts/weeshPage'
 import { SnackBarContext } from 'Root/contexts/snackbar'
+import { DrawerDialogContext } from 'Root/contexts/drawerDialog'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
+import ReWeeshButton from 'Root/components/global/Weesh/Footer/ReWeeshButton'
 
 const StyledFooterContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -73,7 +75,11 @@ export default props => {
     const { weeshPage, dispatch: weeshPageDispatch } = React.useContext(
         WeeshPageContext,
     )
+    const { drawerDialog, dispatch: drawerDialogDispatch } = React.useContext(
+        DrawerDialogContext,
+    )
     const [isLiked, setIsLiked] = React.useState(props.isLiked)
+    const [isReweeshed, setIsReweeshed] = React.useState(props.isReweeshed)
     const [isBookmarked, setIsBookmarked] = React.useState(props.isBookmarked)
     const [numbers, setNumbers] = React.useState([
         {
@@ -84,6 +90,13 @@ export default props => {
         {
             number: props.comment && props.commentsCounter,
             icon: 'MessageCircle',
+            link: `/w/${props.link}`,
+        },
+        {
+            number: props.reweesh && props.reweesh.paginate.totalDocs,
+            icon: 'Repeat',
+            fill: 'none',
+            strokeWidth: 3,
             link: `/w/${props.link}`,
         },
     ])
@@ -159,6 +172,23 @@ export default props => {
             },
         },
         {
+            icon: 'Repeat',
+            fill: () => undefined,
+            color: () => {
+                return isReweeshed ? 'blue' : 'foreground'
+            },
+            size: 22,
+            strokeWidth: isReweeshed ? 3 : 1.6,
+            handleClick: () => {
+                if (!auth.token) {
+                    return history.push('/login')
+                }
+                drawerDialogDispatch({
+                    type: 'SHOW',
+                })
+            },
+        },
+        {
             icon: 'Heart',
             fill: () => (isLiked ? 'red' : undefined),
             color: () => (isLiked ? 'red' : 'foreground'),
@@ -192,6 +222,7 @@ export default props => {
 
     return (
         <StyledFooterContainer>
+            <ReWeeshButton {...props} setIsReweeshed={setIsReweeshed} />
             <StyledFooter>
                 <StyledButtons>
                     {buttons.map(item => (
@@ -201,8 +232,8 @@ export default props => {
                                 onClick={() => item.handleClick(props)}
                                 fill={item.fill()}
                                 color={item.color()}
-                                size={24}
-                                strokeWidth={1.5}
+                                size={item.size || 24}
+                                strokeWidth={item.strokeWidth || 1.5}
                             />
                         </StyledButtonContainer>
                     ))}
@@ -217,8 +248,9 @@ export default props => {
                                     to={item.link}>
                                     <Icon
                                         icon={item.icon}
-                                        size={12}
-                                        fill='dark'
+                                        size={item.size || 12}
+                                        fill={item.fill || 'dark'}
+                                        strokeWidth={item.strokeWidth || 2}
                                         color='dark'
                                     />
                                     <StyledNumber>{item.number}</StyledNumber>
