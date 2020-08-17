@@ -227,7 +227,7 @@ export default props => {
 
     return (
         <StyledFooterContainer>
-            <ReWeeshButton {...props} />
+            <ReWeeshButton {...props} setIsReweeshed={setIsReweeshed} />
             <StyledFooter onClick={e => handleClick(e)}>
                 <StyledButtons>
                     {buttons.map(item => (
