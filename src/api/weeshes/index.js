@@ -74,6 +74,42 @@ const getHomeWeeshes = gql`
                         avatar
                     }
                 }
+                child {
+                    id
+                    link
+                    content
+                    status
+                    user {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        label
+                        unknown {
+                            fullname
+                            avatar
+                        }
+                    }
+                }
+                reweesh {
+                    paginate {
+                        totalDocs
+                    }
+                }
+                isReweeshed {
+                    id
+                    link
+                    user {
+                        id
+                        username
+                    }
+                    content
+                    child {
+                        id
+                        content
+                    }
+                }
                 content
                 status
                 like {
@@ -123,6 +159,42 @@ const getShowcase = gql`
                         avatar
                     }
                 }
+                child {
+                    id
+                    link
+                    content
+                    status
+                    user {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        label
+                        unknown {
+                            fullname
+                            avatar
+                        }
+                    }
+                }
+                reweesh {
+                    paginate {
+                        totalDocs
+                    }
+                }
+                isReweeshed {
+                    id
+                    link
+                    user {
+                        id
+                        username
+                    }
+                    content
+                    child {
+                        id
+                        content
+                    }
+                }
                 content
                 status
                 like {
@@ -170,6 +242,42 @@ const getWeeshes = gql`
                     unknown {
                         fullname
                         avatar
+                    }
+                }
+                child {
+                    id
+                    link
+                    content
+                    status
+                    user {
+                        id
+                        username
+                        firstName
+                        lastName
+                        avatarAddress
+                        label
+                        unknown {
+                            fullname
+                            avatar
+                        }
+                    }
+                }
+                reweesh {
+                    paginate {
+                        totalDocs
+                    }
+                }
+                isReweeshed {
+                    id
+                    link
+                    user {
+                        id
+                        username
+                    }
+                    content
+                    child {
+                        id
+                        content
                     }
                 }
                 commentsCounter
@@ -245,15 +353,15 @@ const getWeeshByLink = gql`
                     totalDocs
                 }
             }
-            reweesh {
-                paginate {
-                    totalDocs
-                }
-            }
             isLiked {
                 user {
                     id
                     username
+                }
+            }
+            reweesh {
+                paginate {
+                    totalDocs
                 }
             }
             isReweeshed {

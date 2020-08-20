@@ -140,7 +140,7 @@ export default props => {
             type: 'SET_DATA',
             data: {
                 icon: 'Repeat',
-                message: 'This weesh has been reweeshed successfully.',
+                message: 'This weesh reweeshed successfully.',
                 background: 'foreground',
                 visible: true,
             },
