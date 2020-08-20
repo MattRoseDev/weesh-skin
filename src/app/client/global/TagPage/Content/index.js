@@ -22,15 +22,6 @@ const StyledContainer = styled.div`
     min-height: ${window.innerHeight - 55}px;
 `
 
-const StyledLoadingContainer = styled.div`
-    ${C.styles.flex.flexColumn};
-    ${C.styles.flex.justifyContentStart};
-    padding: 3rem;
-    background: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.foreground};
-    min-height: ${window.innerHeight - 55}px;
-`
-
 export default props => {
     const { match } = props
     const { auth, dispatch } = React.useContext(AuthContext)
@@ -77,7 +68,7 @@ export default props => {
                 called &&
                 tag && (
                     <>
-                        {/* <Header {...props} /> */}
+                        <Header {...props} tag={tag} />
                         <Main {...props} />
                     </>
                 )

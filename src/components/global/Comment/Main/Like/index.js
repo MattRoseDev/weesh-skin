@@ -36,33 +36,23 @@ export default props => {
         },
     )
 
-    React.useEffect(() => {
-        if (likeWeeshCommentResult.data) {
-            weeshPageDispatch({
-                type: 'LIKE_COMMENT',
-                data: {
-                    commentId: props.id,
-                },
-            })
-        }
-    }, [likeWeeshCommentResult.data])
-
-    React.useEffect(() => {
-        if (dislikeWeeshCommentResult.data) {
+    const handleClick = () => {
+        if (isLiked) {
+            dislikeWeeshComment()
             weeshPageDispatch({
                 type: 'DISLIKE_COMMENT',
                 data: {
                     commentId: props.id,
                 },
             })
-        }
-    }, [dislikeWeeshCommentResult.data])
-
-    const handleClick = () => {
-        if (isLiked) {
-            dislikeWeeshComment()
         } else {
             likeWeeshComment()
+            weeshPageDispatch({
+                type: 'LIKE_COMMENT',
+                data: {
+                    commentId: props.id,
+                },
+            })
         }
     }
 

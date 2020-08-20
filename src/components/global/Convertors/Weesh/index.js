@@ -4,7 +4,7 @@ import uuid from 'uuid'
 import StyledComponents from 'Root/StyledComponents'
 import anchorme from 'anchorme'
 
-export default ({ content }) => {
+export default ({ content, tag }) => {
     let store = {}
     let result = anchorme({
         input: content,
@@ -37,7 +37,10 @@ export default ({ content }) => {
                         key,
                         component: (
                             <StyledComponents.Link.Item
-                                to={`/t/${value.slice(1)}`}>
+                                to={`/t/${value.slice(1)}`}
+                                fontWeight={
+                                    tag == value.substr(1) ? 'bold' : undefined
+                                }>
                                 {value}
                             </StyledComponents.Link.Item>
                         ),

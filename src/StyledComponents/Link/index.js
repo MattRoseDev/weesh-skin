@@ -4,6 +4,11 @@ import Link from 'Root/components/global/Link'
 
 const Item = styled(Link)`
     color: ${({ theme }) => theme.colors.primary} !important;
+    ${({ fontWeight }) =>
+        fontWeight &&
+        css`
+            font-weight: ${fontWeight};
+        `};
     user-select: text !important;
 `
 
