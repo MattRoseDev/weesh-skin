@@ -1,6 +1,6 @@
 import google from './google'
 const PORT = 5000
-const VERSION = '1.2.4'
+const VERSION = '1.3.0'
 let API_URL, WS_URL, DOMAIN_URL, PROTOCOL, UPLOAD_URL
 
 const SOURCE = 'liara'
