@@ -25,7 +25,11 @@ export default props => {
             {tag &&
                 tag.weeshesTag &&
                 tag.weeshesTag.map(item => (
-                    <Weesh {...item.weesh} key={uuid()} />
+                    <Weesh
+                        {...item.weesh}
+                        key={uuid()}
+                        tagTitle={props.match.params.tagTitle}
+                    />
                 ))}
         </StyledMain>
     )

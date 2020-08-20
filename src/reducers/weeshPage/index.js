@@ -96,7 +96,6 @@ export const weeshPageReducer = (state, action) => {
 const modifyCommentById = ({ weeshComments, value, commentId }) => {
     return weeshComments.map(comment => {
         if (comment.id == commentId) {
-            console.log(comment.content)
             comment.like.paginate.totalDocs =
                 comment.like.paginate.totalDocs + value
             comment.isLiked = value == 1 ? true : false

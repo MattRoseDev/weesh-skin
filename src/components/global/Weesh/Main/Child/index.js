@@ -48,6 +48,7 @@ export default props => {
                 setContent(
                     Convertors.Weesh({
                         content: props.child.content,
+                        tag: props.tagTitle,
                     }),
                 )
         }

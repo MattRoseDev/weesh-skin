@@ -61,7 +61,6 @@ export default props => {
 
         if (called && data) {
             const response = data.getWeeshByLinkForUser
-            console.log(response)
             if (!auth.token && response.status < 3) {
                 history.push('/login')
             }

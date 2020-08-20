@@ -96,6 +96,12 @@ const StyledLike = styled.span`
     margin: 0 0 0 0.5rem;
 `
 
+const StyledLikeNumber = styled.span`
+    color: ${({ theme }) => theme.colors.gray};
+    font-size: 0.75rem;
+    margin: 0 0.1rem 0 0;
+`
+
 const StyledHeaderDialog = styled.div`
     color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
@@ -195,7 +201,9 @@ export default props => {
                 </StyledDate>
                 {props.like.paginate.totalDocs > 0 && (
                     <StyledLike>
-                        {props.like.paginate.totalDocs}
+                        <StyledLikeNumber>
+                            {props.like.paginate.totalDocs}
+                        </StyledLikeNumber>
                         <Icon
                             icon='Heart'
                             size={11}
