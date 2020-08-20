@@ -172,11 +172,22 @@ const switchElements = ({ element, props }) => {
                 return (
                     <StyledGray key={uuid()}>
                         {props.weesh &&
-                            `${props.weesh.content
-                                .replace(/\n/g, ' ')
-                                .substr(0, 50)}${
-                                props.weesh.content.length > 50 ? '... ' : ' '
-                            }`}
+                            (props.weesh.content
+                                ? `${props.weesh.content
+                                      .replace(/\n/g, ' ')
+                                      .substr(0, 50)}${
+                                      props.weesh.content.length > 50
+                                          ? '... '
+                                          : ' '
+                                  }`
+                                : props.weesh.child.content &&
+                                  `${props.weesh.child.content
+                                      .replace(/\n/g, ' ')
+                                      .substr(0, 50)}${
+                                      props.weesh.child.content.length > 50
+                                          ? '... '
+                                          : ' '
+                                  }`)}
                     </StyledGray>
                 )
             case '$$comment$$':

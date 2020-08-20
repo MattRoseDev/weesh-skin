@@ -114,6 +114,24 @@ const getNotifications = gql`
                             avatar
                         }
                     }
+                    child {
+                        id
+                        link
+                        content
+                        status
+                        user {
+                            id
+                            username
+                            firstName
+                            lastName
+                            avatarAddress
+                            label
+                            unknown {
+                                fullname
+                                avatar
+                            }
+                        }
+                    }
                     content
                     status
                 }
