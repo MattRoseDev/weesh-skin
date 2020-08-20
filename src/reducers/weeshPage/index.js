@@ -62,7 +62,60 @@ export const weeshPageReducer = (state, action) => {
                 ...state,
                 reply: null,
             }
+        case 'LIKE_COMMENT':
+            weeshComments = modifyCommentById({
+                weeshComments: state.comment.weeshComments,
+                value: 1,
+                commentId: action.data.commentId,
+            })
+            return {
+                ...state,
+                comment: {
+                    ...state.comment,
+                    weeshComments,
+                },
+            }
+        case 'DISLIKE_COMMENT':
+            weeshComments = modifyCommentById({
+                weeshComments: state.comment.weeshComments,
+                value: -1,
+                commentId: action.data.commentId,
+            })
+            return {
+                ...state,
+                comment: {
+                    ...state.comment,
+                    weeshComments,
+                },
+            }
         default:
             return state
     }
+}
+
+const modifyCommentById = ({ weeshComments, value, commentId }) => {
+    return weeshComments.map(comment => {
+        if (comment.id == commentId) {
+            console.log(comment.content)
+            comment.like.paginate.totalDocs =
+                comment.like.paginate.totalDocs + value
+            comment.isLiked = value == 1 ? true : false
+        }
+        let children
+        if (comment.children) {
+            children = modifyCommentById({
+                weeshComments: comment.children.weeshComments,
+                value,
+                commentId,
+            })
+        }
+        comment = {
+            ...comment,
+            children: {
+                ...comment.children,
+                ...children,
+            },
+        }
+        return comment
+    })
 }

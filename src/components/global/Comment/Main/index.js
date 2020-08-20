@@ -11,6 +11,7 @@ import C from 'Root/constants'
 import { useMutation } from '@apollo/react-hooks'
 import api from 'Root/api'
 import Link from 'Root/components/global/Link'
+import Like from './Like'
 import Icon from 'Root/components/global/Icon'
 import { Components } from 'Root/StyledComponents'
 
@@ -24,7 +25,12 @@ const StyledContainer = styled.div`
         `};
 `
 
-const StyledMain = styled.p`
+const StyledMain = styled.div`
+    ${C.styles.flex.flexRow};
+`
+
+const StyledContent = styled.p`
+    flex-grow: 1;
     color: ${({ theme }) => theme.colors.foreground};
     font-size: .85rem;
     /* ${({ isChild }) =>
@@ -38,12 +44,6 @@ const StyledMain = styled.p`
     line-height: 1.125rem;
     white-space: pre-wrap;
     word-break: break-word;
-`
-
-const StyledUsername = styled.strong`
-    font-size: 0.85rem;
-    padding: 0 0.25rem 0 0;
-    color: ${({ theme }) => theme.colors.foreground};
 `
 
 const StyledChild = styled.div``
@@ -87,6 +87,13 @@ const StyledButtonIcon = styled.span`
 const StyledDate = styled.span`
     color: ${({ theme }) => theme.colors.gray};
     font-size: 0.75rem;
+`
+
+const StyledLike = styled.span`
+    ${C.styles.flex.flexRowCenter};
+    color: ${({ theme }) => theme.colors.gray};
+    font-size: 0.75rem;
+    margin: 0 0 0 0.5rem;
 `
 
 const StyledHeaderDialog = styled.div`
@@ -170,19 +177,34 @@ export default props => {
                 </DialogButton>
             </Dialog>
             <StyledMain>
-                <Link to={`/${props.user.username}`}>
-                    <Components.Global.FullName
-                        user={props.user}
-                        fontSize='.85rem'
-                        padding='0 .25rem 0 0'
-                    />
-                </Link>
-                {props.content}
+                <StyledContent>
+                    <Link to={`/${props.user.username}`}>
+                        <Components.Global.FullName
+                            user={props.user}
+                            fontSize='.85rem'
+                            padding='0 .25rem 0 0'
+                        />
+                    </Link>
+                    {props.content}
+                </StyledContent>
+                <Like {...props} />
             </StyledMain>
             <StyledFooter>
                 <StyledDate>
                     {helpers.dateFormat(moment(props.createdAt).fromNow(true))}
                 </StyledDate>
+                {props.like.paginate.totalDocs > 0 && (
+                    <StyledLike>
+                        {props.like.paginate.totalDocs}
+                        <Icon
+                            icon='Heart'
+                            size={11}
+                            fill='gray'
+                            strokeWidth={2}
+                            color='gray'
+                        />
+                    </StyledLike>
+                )}
                 {auth.token ? (
                     !props.isChild && (
                         <StyledButton onClick={handleReply} color='gray'>
