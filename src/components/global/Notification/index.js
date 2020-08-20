@@ -116,6 +116,10 @@ const switchIcon = type => {
             return (
                 <Icon icon='Heart' size={20} strokeWidth={1.5} color='dark' />
             )
+        case 'like_weesh_comment':
+            return (
+                <Icon icon='Heart' size={20} strokeWidth={1.5} color='dark' />
+            )
         case 'comment_weesh':
             return (
                 <Icon

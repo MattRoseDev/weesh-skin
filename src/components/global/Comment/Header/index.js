@@ -14,29 +14,6 @@ const StyledHeader = styled.div`
     ${C.styles.flex.justifyContentBetween};
 `
 
-const StyledNameContainer = styled.div`
-    ${C.styles.flex.flexColumn};
-    margin: 0 0 0 0.5rem;
-`
-
-const StyledUsername = styled.small`
-    font-size: 0.75rem;
-    ${C.styles.flex.flexRow};
-    color: ${({ theme }) => theme.colors.dark};
-`
-
-const StyledTimestamp = styled.small`
-    font-size: 0.75rem;
-    color: ${({ theme }) => theme.colors.dark};
-    margin: 0 0.25rem 0 0;
-`
-
-const StyledLeftSide = styled.div`
-    ${C.styles.flex.flexRow};
-`
-
-const StyledRightSide = styled.div``
-
 export default props => {
     return (
         <StyledHeader {...props}>

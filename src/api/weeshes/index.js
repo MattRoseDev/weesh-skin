@@ -306,12 +306,50 @@ const getWeeshByLink = gql`
                                     avatar
                                 }
                             }
+                            like {
+                                weeshCommentLikes {
+                                    id
+                                    user {
+                                        id
+                                        username
+                                    }
+                                }
+                                paginate {
+                                    totalDocs
+                                }
+                            }
+                            isLiked {
+                                id
+                                user {
+                                    id
+                                    username
+                                }
+                            }
                             content
                             updatedAt
                             createdAt
                         }
                         paginate {
                             totalDocs
+                        }
+                    }
+                    like {
+                        weeshCommentLikes {
+                            id
+                            user {
+                                id
+                                username
+                            }
+                        }
+                        paginate {
+                            totalDocs
+                        }
+                    }
+                    isLiked {
+                        id
+                        user {
+                            id
+                            username
                         }
                     }
                     updatedAt

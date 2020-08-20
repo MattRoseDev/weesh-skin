@@ -61,6 +61,7 @@ export default props => {
 
         if (called && data) {
             const response = data.getWeeshByLinkForUser
+            console.log(response)
             if (!auth.token && response.status < 3) {
                 history.push('/login')
             }
@@ -69,9 +70,9 @@ export default props => {
                 data: response,
             })
             setState(response)
+            window.scrollTo(0, 0)
         }
     }, [data, error])
-    window.scrollTo(0, 0)
     return (
         <StyledContainer>
             {weeshPage.user && (

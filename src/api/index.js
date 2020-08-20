@@ -9,6 +9,7 @@ import weeshes from './weeshes'
 import notifications from './notifications'
 import uploadFile from './uploadFile'
 import weeshComments from './weeshComments'
+import weeshCommentsLikes from './weeshCommentsLikes'
 import weeshLikes from './weeshLikes'
 import weeshBookmarks from './weeshBookmarks'
 import credits from './credits'
@@ -25,6 +26,7 @@ export default {
     notifications,
     uploadFile,
     weeshComments,
+    weeshCommentsLikes,
     weeshLikes,
     weeshBookmarks,
     credits,
