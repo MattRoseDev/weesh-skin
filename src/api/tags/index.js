@@ -62,6 +62,42 @@ const getWeeshesByTag = gql`
                             avatar
                         }
                     }
+                    child {
+                        id
+                        link
+                        content
+                        status
+                        user {
+                            id
+                            username
+                            firstName
+                            lastName
+                            avatarAddress
+                            label
+                            unknown {
+                                fullname
+                                avatar
+                            }
+                        }
+                    }
+                    reweesh {
+                        paginate {
+                            totalDocs
+                        }
+                    }
+                    isReweeshed {
+                        id
+                        link
+                        user {
+                            id
+                            username
+                        }
+                        content
+                        child {
+                            id
+                            content
+                        }
+                    }
                     content
                     status
                     like {
