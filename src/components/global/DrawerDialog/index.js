@@ -7,6 +7,7 @@ import uuid from 'uuid'
 import { DrawerDialogContext } from 'Root/contexts/drawerDialog'
 
 const StyledContainer = styled.div`
+    ${C.styles.position.positionFixedZiro};
     ${({ visible }) =>
         !visible
             ? css`
@@ -16,9 +17,8 @@ const StyledContainer = styled.div`
                   ${C.styles.flex.flexRow};
                   ${C.styles.flex.justifyContentCenter};
               `};
-    ${C.styles.position.positionFixedZiro};
     background: rgba(0, 0, 0, 0.5);
-    z-index: 100;
+    z-index: 99999;
 `
 const StyledContent = styled.div`
     position: fixed;
@@ -35,6 +35,7 @@ const StyledContent = styled.div`
         css`
             width: ${width};
         `};
+    z-index: 99999;
 `
 const StyledHeader = styled.div`
     ${C.styles.flex.flexColumnCenter};

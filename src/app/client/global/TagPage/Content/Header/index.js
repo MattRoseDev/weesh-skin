@@ -16,7 +16,7 @@ const StyledHeader = styled.div`
 
 const StyledTag = styled.div`
     width: 100%;
-    font-size: ${window.innerWidth < 960 ? '2rem' : '3rem'};
+    font-size: ${window.innerWidth < 960 ? '9vw' : '3rem'};
     font-weight: bold;
     background: ${({ theme }) =>
         `linear-gradient(45deg, ${theme.colors.primary}, ${theme.colors.deepPrimary})`};
@@ -30,7 +30,7 @@ const StyledNumber = styled.div`
     ${C.styles.flex.alignItemsCenter};
     width: 100%;
     font-size: 1rem;
-    padding: 0.5rem 0 0;
+    padding: 0.25rem 0 0;
     color: ${({ theme }) => theme.colors.gray};
     /* word-break: break-word; */
 `

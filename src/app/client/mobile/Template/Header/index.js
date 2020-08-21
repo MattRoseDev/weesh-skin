@@ -22,7 +22,7 @@ const Header = styled.header`
     height: 44px;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 2;
 `
 
 export default props => {

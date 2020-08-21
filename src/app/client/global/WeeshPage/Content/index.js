@@ -18,7 +18,7 @@ import DrawerDialogProvider from 'Root/contexts/drawerDialog'
 
 const StyledContainer = styled.div`
     /* padding: .5rem; */
-    min-height: ${window.innerHeight - 55}px;
+    /* min-height: ${window.innerHeight - 55}px; */
     margin: 0 0 3.5rem;
 `
 
@@ -30,7 +30,7 @@ const StyledWeesh = styled.div`
 const StyledLoadingContainer = styled.div`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.justifyContentStart};
-    padding: 3rem;
+    padding: 3rem 0 -3.5rem;
     background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.foreground};
 `
@@ -79,7 +79,12 @@ export default props => {
             )}
             {loading ? (
                 <StyledLoadingContainer>
-                    <Loading size={28} strokeWidth={1.25} color='gray' />
+                    <Loading
+                        padding='3rem 0 0'
+                        size={28}
+                        strokeWidth={1.25}
+                        color='gray'
+                    />
                 </StyledLoadingContainer>
             ) : (
                 called &&

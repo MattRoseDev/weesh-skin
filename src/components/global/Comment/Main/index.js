@@ -99,7 +99,7 @@ const StyledLike = styled.span`
 const StyledLikeNumber = styled.span`
     color: ${({ theme }) => theme.colors.gray};
     font-size: 0.75rem;
-    margin: 0 0.1rem 0 0;
+    margin: 0 0 0 0.1rem;
 `
 
 const StyledHeaderDialog = styled.div`
@@ -201,9 +201,6 @@ export default props => {
                 </StyledDate>
                 {props.like.paginate.totalDocs > 0 && (
                     <StyledLike>
-                        <StyledLikeNumber>
-                            {props.like.paginate.totalDocs}
-                        </StyledLikeNumber>
                         <Icon
                             icon='Heart'
                             size={11}
@@ -211,6 +208,9 @@ export default props => {
                             strokeWidth={2}
                             color='gray'
                         />
+                        <StyledLikeNumber>
+                            {props.like.paginate.totalDocs}
+                        </StyledLikeNumber>
                     </StyledLike>
                 )}
                 {auth.token ? (

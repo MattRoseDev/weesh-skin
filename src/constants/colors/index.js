@@ -2,22 +2,22 @@ export default {
     bluePack: {
         primary: '#22a7f0',
         lightPrimary: '#22a7f033',
-        deepPrimary: '#125072',
+        deepPrimary: '#155a80',
     },
     purplePack: {
         primary: '#8281ef',
         lightPrimary: '#8281ef33',
-        deepPrimary: '#393869',
+        deepPrimary: '#414079',
     },
     redPack: {
         primary: '#e91f62',
         lightPrimary: '#e91f6233',
-        deepPrimary: '#6b0e2d',
+        deepPrimary: '#7c1034',
     },
     greenPack: {
         primary: '#20bf6b',
         lightPrimary: '#20bf6b33',
-        deepPrimary: '#0d4e2c',
+        deepPrimary: '#12693c',
     },
     blue: '#22a7f0',
     purple: '#706fd3',
