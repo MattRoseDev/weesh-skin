@@ -20,7 +20,7 @@ import helpers from 'Root/helpers'
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.foreground};
-    min-height: ${window.innerHeight - 55}px;
+    /* min-height: ${window.innerHeight - 55}px; */
 `
 
 export default props => {

@@ -63,7 +63,7 @@ const StyledNumber = styled.span`
     ${C.styles.flex.alignItemsCenter};
     color: ${({ theme }) => theme.colors.dark};
     font-size: 0.75rem;
-    margin: 0 0.1rem 0 0;
+    margin: 0 0 0 0.1rem;
 `
 
 const initialDialog = {
@@ -225,6 +225,10 @@ export default props => {
         },
     ]
 
+    if (props.status < 3) {
+        buttons.splice(2, 1)
+    }
+
     return (
         <StyledFooterContainer>
             <ReWeeshButton {...props} setIsReweeshed={setIsReweeshed} />
@@ -251,7 +255,6 @@ export default props => {
                                     key={uuid()}
                                     margin='0 0 0 .75rem'
                                     to={item.link}>
-                                    <StyledNumber>{item.number}</StyledNumber>
                                     <Icon
                                         icon={item.icon}
                                         size={item.size || 12}
@@ -259,6 +262,7 @@ export default props => {
                                         strokeWidth={item.strokeWidth || 2}
                                         color='dark'
                                     />
+                                    <StyledNumber>{item.number}</StyledNumber>
                                 </StyledNumberContainer>
                             ),
                     )}

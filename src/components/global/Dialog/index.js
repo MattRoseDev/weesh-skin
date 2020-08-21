@@ -26,7 +26,7 @@ const StyledContainer = styled.div`
     ${C.styles.position.positionFixedZiro};
     padding-top: 5rem;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 100;
+    z-index: 999;
 `
 const StyledContent = styled.div`
     overflow: hidden;

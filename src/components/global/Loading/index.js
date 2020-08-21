@@ -15,6 +15,11 @@ const StyledContaner = styled.div`
         css`
             padding: ${padding};
         `};
+    ${({ margin }) =>
+        margin &&
+        css`
+            margin: ${margin};
+        `};
 `
 
 export default props => {
