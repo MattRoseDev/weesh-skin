@@ -24,6 +24,25 @@ const add = gql`
                     avatar
                 }
             }
+            like {
+                weeshCommentLikes {
+                    id
+                    user {
+                        id
+                        username
+                    }
+                }
+                paginate {
+                    totalDocs
+                }
+            }
+            isLiked {
+                id
+                user {
+                    id
+                    username
+                }
+            }
             content
             children {
                 weeshComments {
@@ -37,6 +56,25 @@ const add = gql`
                         unknown {
                             fullname
                             avatar
+                        }
+                    }
+                    like {
+                        weeshCommentLikes {
+                            id
+                            user {
+                                id
+                                username
+                            }
+                        }
+                        paginate {
+                            totalDocs
+                        }
+                    }
+                    isLiked {
+                        id
+                        user {
+                            id
+                            username
                         }
                     }
                     content
