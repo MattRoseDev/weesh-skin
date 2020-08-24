@@ -13,16 +13,21 @@ export default ({ content, tag }) => {
             {
                 test: C.regexes.weesh.url,
                 transform: value => {
-                    let protocol = anchorme.list(value)[0].protocol
+                    let protocol =
+                        (anchorme.list(value).length &&
+                            anchorme.list(value)[0].protocol) ||
+                        null
                     let key = uuid()
                     store[`${key}`] = {
                         key,
-                        component: (
+                        component: anchorme.list(value).length ? (
                             <StyledComponents.Link.Anchor
                                 target='_blank'
                                 href={`${protocol ? '' : 'http://'}${value}`}>
                                 {value}
                             </StyledComponents.Link.Anchor>
+                        ) : (
+                            value
                         ),
                     }
                     return `$$$___${key}___$$$`
