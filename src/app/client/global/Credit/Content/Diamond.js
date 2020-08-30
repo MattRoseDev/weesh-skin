@@ -20,7 +20,7 @@ export default props => {
                 value={props.value}
                 sign={false}
                 fontSize='4rem'
-                paddingValue='1rem .25rem 0 0'
+                paddingValue='1.25rem .25rem 0 0'
                 margin='-.5rem 0 0'
             />
         </StyledContainer>

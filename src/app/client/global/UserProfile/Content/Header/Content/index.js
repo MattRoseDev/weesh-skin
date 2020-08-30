@@ -53,19 +53,19 @@ export default props => {
                 {props.match.params.username == auth.username ? (
                     <Components.Global.Button
                         color='primary'
-                        bordercolor='light'
+                        // bordercolor='light'
                         borderwidth='1px'
                         fontWeight='bold'
-                        padding='.45rem .85rem'
+                        padding='.1rem .25rem'
                         margin='0 .5rem 0 0'
                         radius='50rem'
                         to='/credit'>
                         <Components.Global.Diamond
-                            width={18}
+                            width={26}
                             value={auth.credit}
                             sign={false}
-                            fontSize='1rem'
-                            marginValue='0 0.25rem -0.3rem 0'
+                            fontSize='1.5rem'
+                            marginValue='0 0.25rem -0.4rem 0'
                         />
                     </Components.Global.Button>
                 ) : (

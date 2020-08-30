@@ -17,6 +17,11 @@ const StyledContainer = styled.span`
         css`
             filter: grayscale(1);
         `};
+    ${({ grayscale }) =>
+        grayscale &&
+        css`
+            filter: ${`grayscale(${grayscale})`};
+        `};
 `
 
 const StyledValue = styled.span`
@@ -50,6 +55,7 @@ export default props => {
     return (
         <StyledContainer
             margin={props.margin || undefined}
+            grayscale={props.grayscale || undefined}
             sign={sign || undefined}>
             {props.value !== undefined && (
                 <StyledValue

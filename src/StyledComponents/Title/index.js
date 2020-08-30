@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import C from 'Root/constants'
 
-export default styled.span`
+const Title = styled.span`
     color: ${({ color, theme }) => theme.colors[color || 'foreground']};
     ${({ padding }) =>
         padding &&
@@ -34,3 +34,5 @@ export default styled.span`
             text-transform: ${textTransform};
         `};
 `
+
+export default Title

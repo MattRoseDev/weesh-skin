@@ -2,34 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import C from 'Root/constants'
 import { SnackBarContext } from 'Root/contexts/snackbar'
+import StyledComponents, { Components } from 'Root/StyledComponents'
 
 const StyledContainer = styled.div`
-    ${C.styles.flex.flexColumn};
-    ${C.styles.flex.alignItemsCenter};
-    margin: 0 1rem 1rem;
-`
-
-const StyledCodeTitle = styled.label`
-    /* font-weight: bold; */
-    font-size: 0.75rem;
-    color: ${({ theme }) => theme.colors.gray};
-`
-
-const StyledCode = styled.span`
-    /* font-weight: bold; */
-    margin: 0.5rem 0 0;
-    font-size: 2.5rem;
-    letter-spacing: 0.25rem;
-    color: ${({ theme }) => theme.colors.foreground};
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid ${({ theme }) => theme.colors.light};
+    border-right: 1px solid ${({ theme }) => theme.colors.light};
+    font-size: 1.25rem;
+    padding: 0.5rem;
     cursor: pointer;
-`
-const StyledTextArea = styled.textarea`
-    height: 0;
-    width: 0;
-    resize: none;
-    border: none;
-    background: transparent;
-    color: ${({ theme }) => theme.colors.background};
 `
 
 export default props => {
@@ -57,17 +40,14 @@ export default props => {
     }
 
     return (
-        <StyledContainer>
-            <StyledTextArea
+        <StyledContainer onClick={handleCopyLink}>
+            {C.txts.en.credit.invitationCode}
+            <StyledComponents.Textarea.Clipboard
                 disabled
                 ref={textarea}
                 defaultValue={`${window.location.origin}/?invitationCode=${props.invitationCode}`}
                 inputMode='none'
             />
-            <StyledCodeTitle>{C.txts.en.credit.invitationCode}</StyledCodeTitle>
-            <StyledCode onClick={handleCopyLink}>
-                {props.invitationCode}
-            </StyledCode>
         </StyledContainer>
     )
 }

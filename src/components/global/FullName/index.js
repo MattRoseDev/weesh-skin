@@ -8,7 +8,7 @@ const StyledImg = styled.img`
     padding: 0 0 0 0.15rem;
 `
 
-const StyledFullName = styled.strong`
+const StyledContainer = styled.span`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
     ${({ padding }) =>
@@ -31,30 +31,62 @@ const StyledFullName = styled.strong`
     user-select: text;
 `
 
+const StyledFullName = styled.strong`
+    ${({ padding }) =>
+        padding &&
+        css`
+            padding: ${padding};
+        `};
+    ${({ margin }) =>
+        margin &&
+        css`
+            margin: ${margin};
+        `};
+    ${({ width }) =>
+        width &&
+        css`
+            max-width: ${width};
+        `};
+    font-weight: bold;
+    font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
+    color: ${({ theme }) => theme.colors.foreground};
+    margin: 0 0 0.1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: text;
+`
+
 export default props => {
     const { auth } = React.useContext(AuthContext)
     return (
         <>
             {props.user.unknown.fullname && auth.id != props.user.id ? (
-                <StyledFullName
+                <StyledContainer
                     padding={props.padding || undefined}
-                    margin={props.margin || undefined}
-                    fontSize={props.fontSize || undefined}>
-                    {C.txts.en.g.unknownPerson}
-                </StyledFullName>
+                    margin={props.margin || undefined}>
+                    <StyledFullName
+                        fontSize={props.fontSize || undefined}
+                        width={props.width || undefined}>
+                        {C.txts.en.g.unknownPerson}
+                    </StyledFullName>
+                </StyledContainer>
             ) : (
-                <StyledFullName
+                <StyledContainer
                     padding={props.padding || undefined}
-                    margin={props.margin || undefined}
-                    fontSize={props.fontSize || undefined}>
-                    {props.user.firstName} {props.user.lastName}
+                    margin={props.margin || undefined}>
+                    <StyledFullName
+                        fontSize={props.fontSize || undefined}
+                        width={props.width || undefined}>
+                        {props.user.firstName} {props.user.lastName}
+                    </StyledFullName>
                     {props.user.label == 'official' && (
                         <StyledImg
                             src={Official}
                             width={props.labelSize || 15}
                         />
                     )}
-                </StyledFullName>
+                </StyledContainer>
             )}
         </>
     )
