@@ -14,23 +14,11 @@ const StyledHeader = styled.div`
     ${C.styles.flex.justifyContentBetween};
 `
 
-const StyledNameContainer = styled.div`
-    ${C.styles.flex.flexColumn};
-    margin: 0 0 0 0.5rem;
-`
-
-const StyledUsername = styled.small`
-    ${C.styles.flex.flexRow};
-    font-size: 0.75rem;
-    color: ${({ theme }) => theme.colors.dark};
-`
-
-const StyledLeftSide = styled.div`
-    ${C.styles.flex.flexRow};
-`
-
 export default props => {
-    const { auth } = React.useContext(AuthContext)
+    const userWidth =
+        window.innerWidth < 960
+            ? `${Math.floor(window.innerWidth - 175) / 2}px`
+            : undefined
 
     return (
         <StyledHeader>
@@ -43,6 +31,7 @@ export default props => {
                             margin='0'
                             user={props.user}
                             size={1.75}
+                            width={userWidth}
                         />
                     )}
                     <StyledComponents.Weesh.Header.ReWeeshedUser>
@@ -57,6 +46,7 @@ export default props => {
                             margin='0 0 0 .5rem'
                             user={props.child.user}
                             size={1.75}
+                            width={userWidth}
                         />
                     </StyledComponents.Weesh.Header.ReWeeshedUser>
                 </StyledComponents.Weesh.Header.LeftSide>

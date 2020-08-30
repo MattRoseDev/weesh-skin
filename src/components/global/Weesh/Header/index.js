@@ -19,10 +19,6 @@ const StyledTimestamp = styled.small`
     margin: 0 0.25rem 0 0;
 `
 
-const StyledLeftSide = styled.div`
-    ${C.styles.flex.flexRow};
-`
-
 const StyledRightSide = styled.div``
 
 export default props => {
@@ -31,6 +27,11 @@ export default props => {
     const handleClick = e => {
         e.target == e.currentTarget && history.push(`/w/${props.link}`)
     }
+
+    const userWidth =
+        window.innerWidth < 960
+            ? `${Math.floor(window.innerWidth - 225) / 2}px`
+            : undefined
 
     return (
         <StyledHeader onClick={e => handleClick(e)}>
@@ -43,6 +44,7 @@ export default props => {
                             margin='0'
                             user={props.user}
                             size={1.5}
+                            width={userWidth}
                         />
                     )}
                     <StyledComponents.Weesh.Header.ReWeeshedUser>
@@ -57,6 +59,7 @@ export default props => {
                             margin='0 0 0 .5rem'
                             user={props.child.user}
                             size={1.5}
+                            width={userWidth}
                         />
                     </StyledComponents.Weesh.Header.ReWeeshedUser>
                 </StyledComponents.Weesh.Header.LeftSide>

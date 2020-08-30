@@ -42,6 +42,7 @@ export default props => {
                 fontSize={props.fontSize || undefined}
                 padding='0 0 0 .25rem'
                 user={props.user || undefined}
+                width={props.width || undefined}
             />
         </StyledContainer>
     )

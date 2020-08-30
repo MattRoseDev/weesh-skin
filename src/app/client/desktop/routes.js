@@ -4,6 +4,7 @@ import Join from './Auth/Join'
 import Logout from 'Root/components/global/Logout'
 import Explore from './Explore'
 import Credit from './Credit'
+import CreditHelp from './CreditHelp'
 import Notifications from './Notifications'
 import UserProfile from './UserProfile'
 import TagPage from './TagPage'
@@ -42,6 +43,11 @@ const routes = [
         private: true,
         path: '/explore',
         component: Explore,
+    },
+    {
+        private: true,
+        path: '/credit/help',
+        component: CreditHelp,
     },
     {
         private: true,

@@ -4,6 +4,7 @@ import C from 'Root/constants'
 const LeftSide = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
+    flex-grow: 1;
 `
 
 const ReWeeshedUser = styled.div`
