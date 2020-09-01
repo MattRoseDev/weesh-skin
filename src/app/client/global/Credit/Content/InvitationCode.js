@@ -13,6 +13,7 @@ const StyledContainer = styled.div`
     font-size: 1.25rem;
     padding: 0.5rem;
     cursor: pointer;
+    color: ${({ theme }) => theme.colors.foreground};
 `
 
 export default props => {
