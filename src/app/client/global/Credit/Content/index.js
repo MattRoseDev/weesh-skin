@@ -35,7 +35,7 @@ export default props => {
             <Meta type='Credit' />
             <Diamond value={auth.credit} />
             <StyledComponents.Flex.Row>
-                <InvitationCode />
+                <InvitationCode {...auth} />
                 <StyledButton to='/credit/help'>
                     {C.txts.en.credit.gainMore}
                 </StyledButton>
