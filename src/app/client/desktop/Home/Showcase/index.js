@@ -13,6 +13,7 @@ import api from 'Root/api'
 import helpers from 'Root/helpers'
 import C from 'Root/constants'
 import Meta from 'Root/meta'
+import Header from './Header'
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
@@ -48,16 +49,6 @@ const StyledThemeButton = styled.header`
     padding: 1rem 2rem;
 `
 
-const StyledIconContainer = styled.button`
-    ${C.styles.flex.flexRowCenter};
-    background: ${({ theme }) => theme.colors.foreground};
-    border: 1px solid ${({ theme }) => theme.colors.foreground};
-    padding: 0 0.5rem;
-    border-radius: 50rem;
-    height: 2rem;
-    cursor: pointer;
-`
-
 const StyledIconTitle = styled.span`
     color: ${({ theme }) => theme.colors.background};
     padding: 0.25rem;
@@ -78,8 +69,6 @@ export default props => {
         param: 'invitationCode',
     })
 
-    const handleTheme = () => dispatch({ type: 'TOGGLE_THEME' })
-
     React.useEffect(() => {
         if (error) {
             console.log(error)
@@ -94,23 +83,9 @@ export default props => {
     return (
         <StyledContainer>
             <Meta type='Showcase' />
-            <StyledThemeButton>
-                <StyledIconContainer onClick={handleTheme}>
-                    <Icon
-                        size={20}
-                        color='background'
-                        icon={`${auth.theme == 'light' ? 'Moon' : 'Sun'}`}
-                    />
-                    <StyledIconTitle>
-                        {auth.theme == 'light' ? 'Night' : 'Day'}
-                    </StyledIconTitle>
-                </StyledIconContainer>
-            </StyledThemeButton>
-            <StyledHeader>
-                <Logo fontSize={5} />
-                <StyledQuote>{C.txts.en.g.quote}</StyledQuote>
-                <Auth />
-            </StyledHeader>
+            <Header />
+            <StyledThemeButton></StyledThemeButton>
+
             <Catalog />
             <StyledShowcase>
                 {loading ? (
