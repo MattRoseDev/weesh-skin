@@ -1,3 +1,4 @@
+import About from './About'
 import Avatar from './Avatar'
 import FullName from './FullName'
 import SuggestionAddWeesh from './SuggestionAddWeesh'
@@ -17,6 +18,7 @@ import BadgeForIcon from './BadgeForIcon'
 import Weesh from './Weesh'
 
 export default {
+    About,
     Avatar,
     FullName,
     SuggestionAddWeesh,
