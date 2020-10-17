@@ -65,7 +65,7 @@ module.exports = {
         open: true,
         inline: true,
         compress: true,
-        port: 3002,
+        port: 3000,
     },
     plugins: [
         new HtmlWebPackPlugin({
