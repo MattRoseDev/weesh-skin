@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import Icon from 'Root/components/global/Icon'
-import Cover from 'Root/components/global/Cover'
-import Avatar from 'Root/components/global/Avatar'
-import { TagContext } from 'Root/contexts/tag'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import Icon from "Root/components/global/Icon"
+import Cover from "Root/components/global/Cover"
+import Avatar from "Root/components/global/Avatar"
+import { TagContext } from "Root/contexts/tag"
+import C from "Root/constants"
 
 const StyledHeader = styled.div`
     position: relative;

@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import { useMutation, useQuery } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import StyledComponent, { Components } from 'Root/StyledComponents'
-import Ticket from './Ticket'
-import AddTicket from './AddTicket'
-import Meta from 'Root/meta'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import { useMutation, useQuery } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import { AuthContext } from "Root/contexts/auth"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import StyledComponent, { Components } from "Root/StyledComponents"
+import Ticket from "./Ticket"
+import AddTicket from "./AddTicket"
+import Meta from "Root/meta"
 
 const StyledContainer = styled.div`
     width: 100%;
@@ -40,7 +40,7 @@ export default props => {
     const { data, error, loading, called, fetchMore } = useQuery(
         api.support.getTickets,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
             variables: {
                 limit: 8,
             },
@@ -75,21 +75,21 @@ export default props => {
 
     return (
         <StyledContainer>
-            <Meta type='Support' />
+            <Meta type="Support" />
             {loading ? (
                 <Components.Global.Loading
-                    padding='3rem 0 0'
+                    padding="3rem 0 0"
                     size={28}
                     strokeWidth={1.25}
-                    color='gray'
+                    color="gray"
                 />
             ) : (
                 <>
-                    {auth.username !== 'team' && (
+                    {auth.username !== "team" && (
                         <StyledHeader
                             onClick={() => setShowAddTicket(!showAddTicket)}>
                             <Components.Global.Icon
-                                icon='PlusSquare'
+                                icon="PlusSquare"
                                 color={auth.color}
                             />
                             <StyledTitle>New ticket</StyledTitle>
@@ -105,8 +105,8 @@ export default props => {
                         <Components.Global.InfiniteScroll
                             onLoadMore={handlePaginate}
                             hasNextPage={nextPage}
-                            padding='0 0 3.125rem'
-                            alignItems='stretch'>
+                            padding="0 0 3.125rem"
+                            alignItems="stretch">
                             {state.map(ticket => (
                                 <Ticket {...ticket} />
                             ))}
@@ -114,8 +114,8 @@ export default props => {
                     )}
                     {state && state.length < 1 && (
                         <Components.Global.BannerMessage
-                            padding='3rem 0'
-                            icon='Edit'
+                            padding="3rem 0"
+                            icon="Edit"
                             title={C.txts.en.tickets.noTickets}
                         />
                     )}

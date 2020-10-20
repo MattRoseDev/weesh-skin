@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
 
 const getTransactions = gql`
     query getCreditsTransactionsForUser($limit: Int, $page: Int) {

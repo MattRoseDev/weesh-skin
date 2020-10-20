@@ -1,5 +1,5 @@
-import React from 'react'
-import { userReducer } from 'Root/reducers/user'
+import React from "react"
+import { userReducer } from "Root/reducers/user"
 
 export const UserContext = React.createContext()
 

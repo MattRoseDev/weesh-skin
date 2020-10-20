@@ -1,14 +1,14 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import { useMutation } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import { AuthContext } from 'Root/contexts/auth'
-import Meta from 'Root/meta'
-import Diamond from './Diamond'
-import Transactions from './Transactions'
-import InvitationCode from './InvitationCode'
-import StyledComponents, { Components } from 'Root/StyledComponents'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import { useMutation } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import { AuthContext } from "Root/contexts/auth"
+import Meta from "Root/meta"
+import Diamond from "./Diamond"
+import Transactions from "./Transactions"
+import InvitationCode from "./InvitationCode"
+import StyledComponents, { Components } from "Root/StyledComponents"
 
 const StyledContainer = styled.div`
     min-height: ${window.innerHeight - 55}px;
@@ -32,11 +32,11 @@ export default props => {
 
     return auth.id ? (
         <StyledContainer>
-            <Meta type='Credit' />
+            <Meta type="Credit" />
             <Diamond value={auth.credit} />
             <StyledComponents.Flex.Row>
                 <InvitationCode {...auth} />
-                <StyledButton to='/credit/help'>
+                <StyledButton to="/credit/help">
                     {C.txts.en.credit.gainMore}
                 </StyledButton>
             </StyledComponents.Flex.Row>
@@ -44,10 +44,10 @@ export default props => {
         </StyledContainer>
     ) : (
         <Components.Global.Loading
-            padding='3rem 0 0'
+            padding="3rem 0 0"
             size={28}
             strokeWidth={1.25}
-            color='gray'
+            color="gray"
         />
     )
 }

@@ -1,10 +1,10 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import C from 'Root/constants'
-import helpers from 'Root/helpers'
-import moment from 'moment'
-import { AuthContext } from 'Root/contexts/auth'
+import React from "react"
+import styled, { css } from "styled-components"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import C from "Root/constants"
+import helpers from "Root/helpers"
+import moment from "moment"
+import { AuthContext } from "Root/contexts/auth"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -38,34 +38,34 @@ export default props => {
     return (
         <StyledContainer>
             <Components.Global.User
-                fontSize='.85rem'
-                fontWeight='bold'
+                fontSize=".85rem"
+                fontWeight="bold"
                 user={props.sender}
                 size={1.5}
             />
-            <StyledContent>{props.message.replace(/\n/g, ' ')}</StyledContent>
+            <StyledContent>{props.message.replace(/\n/g, " ")}</StyledContent>
             <StyledFooter>
                 <StyledComponents.Title
-                    color='gray'
-                    fontSize='.75rem'
-                    padding='0 .25rem 0 0'>
+                    color="gray"
+                    fontSize=".75rem"
+                    padding="0 .25rem 0 0">
                     {helpers.dateFormat(
                         moment(props.createdAt).format(
-                            'hh:mm  A · MMM DD, YYYY',
+                            "hh:mm  A · MMM DD, YYYY",
                         ),
                     )}
                 </StyledComponents.Title>
                 {props.sender.id == auth.id &&
                     (props.read ? (
                         <Components.Global.Icon
-                            icon='Eye'
-                            color='gray'
+                            icon="Eye"
+                            color="gray"
                             size={14}
                         />
                     ) : (
                         <Components.Global.Icon
-                            icon='Check'
-                            color='gray'
+                            icon="Check"
+                            color="gray"
                             size={16}
                         />
                     ))}

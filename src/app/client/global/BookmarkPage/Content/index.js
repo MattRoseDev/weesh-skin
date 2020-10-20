@@ -1,20 +1,20 @@
-import React from 'react'
-import Header from './Header'
-import UserNotFound from 'Root/components/global/NotFound/User'
-import Loading from 'Root/components/global/Loading'
-import Container from 'Root/components/desktop/Container'
-import Main from './Main'
-import C from 'Root/constants'
-import BannerMessage from 'Root/components/global/BannerMessage'
-import { useQuery, useLazyQuery } from '@apollo/react-hooks'
-import { AuthContext } from 'Root/contexts/auth'
-import { BookmarkContext } from 'Root/contexts/bookmark'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import styled from 'styled-components'
-import authError from 'Root/errors/auth'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import Header from "./Header"
+import UserNotFound from "Root/components/global/NotFound/User"
+import Loading from "Root/components/global/Loading"
+import Container from "Root/components/desktop/Container"
+import Main from "./Main"
+import C from "Root/constants"
+import BannerMessage from "Root/components/global/BannerMessage"
+import { useQuery, useLazyQuery } from "@apollo/react-hooks"
+import { AuthContext } from "Root/contexts/auth"
+import { BookmarkContext } from "Root/contexts/bookmark"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import styled from "styled-components"
+import authError from "Root/errors/auth"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
@@ -40,26 +40,26 @@ export default props => {
     const history = useHistory()
 
     if (auth.username != undefined) {
-        auth.username != match.params.username && history.push('/')
+        auth.username != match.params.username && history.push("/")
     }
 
     const { data, called, error, loading } = useQuery(
         api.weeshBookmarks.getUserBookmarksWeeshes,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
     React.useEffect(() => {
         if (error) {
-            authError({ error }) && dispatch({ type: 'LOGOUT' })
+            authError({ error }) && dispatch({ type: "LOGOUT" })
             console.log(error)
         }
 
         if (called && data) {
             const result = data.getUserBookmarksWeeshesForUser
             bookmarkDispatch({
-                type: 'ADD_BOOKMARK_DATA',
+                type: "ADD_BOOKMARK_DATA",
                 data: result,
             })
         }
@@ -67,10 +67,10 @@ export default props => {
 
     return auth.username ? (
         <StyledContainer>
-            <Meta type='Bookmarks' />
+            <Meta type="Bookmarks" />
             {loading ? (
                 <StyledLoadingContainer>
-                    <Loading size={28} strokeWidth={1.25} color='gray' />
+                    <Loading size={28} strokeWidth={1.25} color="gray" />
                 </StyledLoadingContainer>
             ) : (
                 called &&
@@ -83,13 +83,13 @@ export default props => {
             )}
             {!loading && bookmark && !bookmark.weeshesBookmark && (
                 <BannerMessage
-                    padding='3rem 0'
-                    icon='Hash'
+                    padding="3rem 0"
+                    icon="Hash"
                     title={C.txts.en.g.noWeeshesYet}
                 />
             )}
         </StyledContainer>
     ) : (
-        ''
+        ""
     )
 }

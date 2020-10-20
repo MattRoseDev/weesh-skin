@@ -1,20 +1,20 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useQuery } from '@apollo/react-hooks'
-import { AuthContext } from 'Root/contexts/auth'
-import useHistory from 'Root/hooks/useHistory'
-import Header from './Header'
-import Main from './Main'
-import Footer from './Footer'
-import Comments from './Comments'
-import AddComment from 'Root/components/global/AddComment'
-import Loading from 'Root/components/global/Loading'
-import BannerMessage from 'Root/components/global/BannerMessage'
-import C from 'Root/constants'
-import api from 'Root/api'
-import { WeeshPageContext } from 'Root/contexts/weeshPage'
-import Meta from 'Root/meta'
-import DrawerDialogProvider from 'Root/contexts/drawerDialog'
+import React from "react"
+import styled from "styled-components"
+import { useQuery } from "@apollo/react-hooks"
+import { AuthContext } from "Root/contexts/auth"
+import useHistory from "Root/hooks/useHistory"
+import Header from "./Header"
+import Main from "./Main"
+import Footer from "./Footer"
+import Comments from "./Comments"
+import AddComment from "Root/components/global/AddComment"
+import Loading from "Root/components/global/Loading"
+import BannerMessage from "Root/components/global/BannerMessage"
+import C from "Root/constants"
+import api from "Root/api"
+import { WeeshPageContext } from "Root/contexts/weeshPage"
+import Meta from "Root/meta"
+import DrawerDialogProvider from "Root/contexts/drawerDialog"
 
 const StyledContainer = styled.div`
     /* padding: .5rem; */
@@ -50,7 +50,7 @@ export default props => {
             variables: {
                 link: `${match.params.link}`,
             },
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
@@ -62,10 +62,10 @@ export default props => {
         if (called && data) {
             const response = data.getWeeshByLinkForUser
             if (!auth.token && response.status < 3) {
-                history.push('/login')
+                history.push("/login")
             }
             weeshPageDispatch({
-                type: 'SET_WEESH',
+                type: "SET_WEESH",
                 data: response,
             })
             setState(response)
@@ -75,15 +75,15 @@ export default props => {
     return (
         <StyledContainer>
             {weeshPage.user && (
-                <Meta type='WeeshPage' data={{ weesh: weeshPage }} />
+                <Meta type="WeeshPage" data={{ weesh: weeshPage }} />
             )}
             {loading ? (
                 <StyledLoadingContainer>
                     <Loading
-                        padding='3rem 0 0'
+                        padding="3rem 0 0"
                         size={28}
                         strokeWidth={1.25}
-                        color='gray'
+                        color="gray"
                     />
                 </StyledLoadingContainer>
             ) : (
@@ -104,8 +104,8 @@ export default props => {
             )}
             {!loading && error && !state && (
                 <BannerMessage
-                    padding='3rem 0 0'
-                    icon='Frown'
+                    padding="3rem 0 0"
+                    icon="Frown"
                     title={C.txts.en.g.weeshNotFound}
                 />
             )}

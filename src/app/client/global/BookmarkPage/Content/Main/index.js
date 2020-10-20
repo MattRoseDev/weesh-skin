@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import uuid from 'uuid'
-import Weesh from 'Root/components/global/Weesh'
-import helpers from 'Root/helpers'
-import { useQuery } from '@apollo/react-hooks'
-import { AuthContext } from 'Root/contexts/auth'
-import { BookmarkContext } from 'Root/contexts/bookmark'
-import api from 'Root/api'
-import Loader from 'Root/components/global/Loader'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import uuid from "uuid"
+import Weesh from "Root/components/global/Weesh"
+import helpers from "Root/helpers"
+import { useQuery } from "@apollo/react-hooks"
+import { AuthContext } from "Root/contexts/auth"
+import { BookmarkContext } from "Root/contexts/bookmark"
+import api from "Root/api"
+import Loader from "Root/components/global/Loader"
+import C from "Root/constants"
 
 const StyledMain = styled.div`
     padding: 0.5rem 0.5rem 3.125rem;

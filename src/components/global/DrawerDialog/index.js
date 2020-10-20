@@ -1,10 +1,10 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import Icon from 'Root/components/global/Icon'
-import { Link } from 'react-router-dom'
-import C from 'Root/constants'
-import uuid from 'uuid'
-import { DrawerDialogContext } from 'Root/contexts/drawerDialog'
+import React from "react"
+import styled, { css } from "styled-components"
+import Icon from "Root/components/global/Icon"
+import { Link } from "react-router-dom"
+import C from "Root/constants"
+import uuid from "uuid"
+import { DrawerDialogContext } from "Root/contexts/drawerDialog"
 
 const StyledContainer = styled.div`
     ${C.styles.position.positionFixedZiro};
@@ -64,7 +64,7 @@ const StyledButton = styled.button`
     font-size: 1rem;
     vertical-align: middle;
     border: none;
-    color: ${({ color, theme }) => theme.colors[color || 'foreground']};
+    color: ${({ color, theme }) => theme.colors[color || "foreground"]};
     padding: 1rem;
     ${({ border }) =>
         border &&
@@ -91,7 +91,7 @@ export default props => {
             onClick={e => {
                 if (e.target == e.currentTarget) {
                     drawerDialogDispatch({
-                        type: 'HIDE',
+                        type: "HIDE",
                     })
                 }
             }}>

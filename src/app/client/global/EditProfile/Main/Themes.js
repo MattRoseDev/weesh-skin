@@ -1,11 +1,11 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import Icon from 'Root/components/global/Icon'
-import C from 'Root/constants'
-import Link from 'Root/components/global/Link'
-import uuid from 'uuid'
-import { AuthContext } from 'Root/contexts/auth'
-import { EditProfileContext } from 'Root/contexts/editProfile'
+import React from "react"
+import styled, { css } from "styled-components"
+import Icon from "Root/components/global/Icon"
+import C from "Root/constants"
+import Link from "Root/components/global/Link"
+import uuid from "uuid"
+import { AuthContext } from "Root/contexts/auth"
+import { EditProfileContext } from "Root/contexts/editProfile"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -131,49 +131,49 @@ export default () => {
 
     const colors = [
         {
-            title: 'blue',
-            color: C.themes[auth.theme || 'light'].colors.bluePack.primary,
+            title: "blue",
+            color: C.themes[auth.theme || "light"].colors.bluePack.primary,
         },
         {
-            title: 'red',
-            color: C.themes[auth.theme || 'light'].colors.redPack.primary,
+            title: "red",
+            color: C.themes[auth.theme || "light"].colors.redPack.primary,
         },
         {
-            title: 'purple',
-            color: C.themes[auth.theme || 'light'].colors.purplePack.primary,
+            title: "purple",
+            color: C.themes[auth.theme || "light"].colors.purplePack.primary,
         },
         {
-            title: 'green',
-            color: C.themes[auth.theme || 'light'].colors.greenPack.primary,
+            title: "green",
+            color: C.themes[auth.theme || "light"].colors.greenPack.primary,
         },
     ]
 
     const backgrounds = [
         {
-            title: 'Light',
+            title: "Light",
             color: C.themes.light.colors.background,
-            titleColor: '#262626',
+            titleColor: "#262626",
         },
         {
-            title: 'Night',
+            title: "Night",
             color: C.themes.night.colors.background,
-            titleColor: '#fff',
+            titleColor: "#fff",
         },
         {
-            title: 'Dark',
+            title: "Dark",
             color: C.themes.dark.colors.background,
-            titleColor: '#fff',
+            titleColor: "#fff",
         },
     ]
 
     const handleEditColor = color => {
-        authDispatch({ type: 'EDIT_COLOR', data: color })
-        editProfileDispatch({ type: 'ENABLE_DONE_BUTTON' })
+        authDispatch({ type: "EDIT_COLOR", data: color })
+        editProfileDispatch({ type: "ENABLE_DONE_BUTTON" })
     }
 
     const handleEditBackground = color => {
-        authDispatch({ type: 'EDIT_THEME', data: color })
-        editProfileDispatch({ type: 'ENABLE_DONE_BUTTON' })
+        authDispatch({ type: "EDIT_THEME", data: color })
+        editProfileDispatch({ type: "ENABLE_DONE_BUTTON" })
     }
 
     return (
@@ -190,9 +190,9 @@ export default () => {
                             key={uuid()}>
                             {auth.color == item.title && (
                                 <Icon
-                                    icon='Check'
+                                    icon="Check"
                                     strokeWidth={3}
-                                    color='white'
+                                    color="white"
                                 />
                             )}
                         </StyledColor>
@@ -220,8 +220,8 @@ export default () => {
                             key={uuid()}>
                             <StyledIcon>
                                 <Icon
-                                    icon='Circle'
-                                    size='15'
+                                    icon="Circle"
+                                    size="15"
                                     fill={
                                         auth.theme ==
                                         item.title.toLocaleLowerCase()
@@ -232,10 +232,10 @@ export default () => {
                                         auth.theme ==
                                         item.title.toLocaleLowerCase()
                                             ? auth.color
-                                            : 'gray'
+                                            : "gray"
                                     }
                                 />
-                            </StyledIcon>{' '}
+                            </StyledIcon>{" "}
                             {item.title}
                         </StyledBackground>
                     ))}

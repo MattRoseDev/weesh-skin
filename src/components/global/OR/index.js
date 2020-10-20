@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
 
 const StyledOR = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    width: ${({ width }) => (width ? `${width}%` : 'unset')};
-    margin: ${({ margin }) => (margin ? `${margin}rem` : 'auto')} 0;
+    width: ${({ width }) => (width ? `${width}%` : "unset")};
+    margin: ${({ margin }) => (margin ? `${margin}rem` : "auto")} 0;
 `
 
 const StyledLine = styled.div`

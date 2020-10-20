@@ -1,10 +1,10 @@
-import React from 'react'
-import { exploreReducer } from 'Root/reducers/explore'
+import React from "react"
+import { exploreReducer } from "Root/reducers/explore"
 
 export const ExploreContext = React.createContext()
 
 const initialExplore = {
-    expression: '',
+    expression: "",
     status: null,
     results: null,
     loading: false,

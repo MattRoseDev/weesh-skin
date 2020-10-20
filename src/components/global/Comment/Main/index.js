@@ -1,19 +1,19 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import Comment from 'Root/components/global/Comment'
-import Dialog, { DialogButton } from 'Root/components/global/Dialog'
-import uuid from 'uuid'
-import { WeeshPageContext } from 'Root/contexts/weeshPage'
-import { AuthContext } from 'Root/contexts/auth'
-import moment from 'moment'
-import helpers from 'Root/helpers'
-import C from 'Root/constants'
-import { useMutation } from '@apollo/react-hooks'
-import api from 'Root/api'
-import Link from 'Root/components/global/Link'
-import Like from './Like'
-import Icon from 'Root/components/global/Icon'
-import { Components } from 'Root/StyledComponents'
+import React from "react"
+import styled, { css } from "styled-components"
+import Comment from "Root/components/global/Comment"
+import Dialog, { DialogButton } from "Root/components/global/Dialog"
+import uuid from "uuid"
+import { WeeshPageContext } from "Root/contexts/weeshPage"
+import { AuthContext } from "Root/contexts/auth"
+import moment from "moment"
+import helpers from "Root/helpers"
+import C from "Root/constants"
+import { useMutation } from "@apollo/react-hooks"
+import api from "Root/api"
+import Link from "Root/components/global/Link"
+import Like from "./Like"
+import Icon from "Root/components/global/Icon"
+import { Components } from "Root/StyledComponents"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -133,7 +133,7 @@ export default props => {
 
     const handleReply = () => {
         weeshPageDispatch({
-            type: 'SET_REPLY',
+            type: "SET_REPLY",
             data: props,
         })
         weeshPage.textarea.current._reactInternalFiber.child.stateNode.focus()
@@ -159,7 +159,7 @@ export default props => {
     return (
         <StyledContainer {...props}>
             <Dialog
-                width='18rem'
+                width="18rem"
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledHeaderDialog>
@@ -172,12 +172,12 @@ export default props => {
                         removeWeeshComment()
                         toggleDialog(false)
                     }}
-                    fontWeight='bold'
-                    color='red'>
+                    fontWeight="bold"
+                    color="red">
                     Delete
                 </DialogButton>
                 <DialogButton
-                    fontWeight='bold'
+                    fontWeight="bold"
                     onClick={() => toggleDialog(false)}>
                     Cancel
                 </DialogButton>
@@ -187,8 +187,8 @@ export default props => {
                     <Link to={`/${props.user.username}`}>
                         <Components.Global.FullName
                             user={props.user}
-                            fontSize='.85rem'
-                            padding='0 .25rem 0 0'
+                            fontSize=".85rem"
+                            padding="0 .25rem 0 0"
                         />
                     </Link>
                     {props.content}
@@ -202,11 +202,11 @@ export default props => {
                 {props.like.paginate.totalDocs > 0 && (
                     <StyledLike>
                         <Icon
-                            icon='Heart'
+                            icon="Heart"
                             size={11}
-                            fill='gray'
+                            fill="gray"
                             strokeWidth={2}
-                            color='gray'
+                            color="gray"
                         />
                         <StyledLikeNumber>
                             {props.like.paginate.totalDocs}
@@ -215,29 +215,29 @@ export default props => {
                 )}
                 {auth.token ? (
                     !props.isChild && (
-                        <StyledButton onClick={handleReply} color='gray'>
+                        <StyledButton onClick={handleReply} color="gray">
                             <StyledButtonIcon>
                                 <Icon
-                                    icon='CornerUpRight'
+                                    icon="CornerUpRight"
                                     size={14}
-                                    color='gray'
+                                    color="gray"
                                 />
                             </StyledButtonIcon>
                             {C.txts.en.weeshPage.comment.reply}
                         </StyledButton>
                     )
                 ) : (
-                    <StyledLink to='/login' color='gray'>
+                    <StyledLink to="/login" color="gray">
                         <StyledButtonIcon>
-                            <Icon icon='CornerUpRight' size={14} color='gray' />
+                            <Icon icon="CornerUpRight" size={14} color="gray" />
                         </StyledButtonIcon>
                         {C.txts.en.weeshPage.comment.reply}
                     </StyledLink>
                 )}
                 {props.user.id == auth.id && (
-                    <StyledButton onClick={handleRemove} color='red'>
+                    <StyledButton onClick={handleRemove} color="red">
                         <StyledButtonIcon>
-                            <Icon icon='Trash2' size={14} color='red' />
+                            <Icon icon="Trash2" size={14} color="red" />
                         </StyledButtonIcon>
                         {C.txts.en.weeshPage.comment.remove}
                     </StyledButton>

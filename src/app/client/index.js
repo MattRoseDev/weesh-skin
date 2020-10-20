@@ -1,23 +1,23 @@
-import React from 'react'
-import Mobile from './mobile'
-import Desktop from './desktop'
-import { useSubscription, useLazyQuery, useQuery } from '@apollo/react-hooks'
-import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import { NotificationsContext } from 'Root/contexts/notifications'
-import { ThemeProvider } from 'styled-components'
-import api from 'Root/api'
-import C from 'Root/constants'
-import GlobalStyles from 'Root/constants/globalStyles'
-import Initialize from 'Root/components/global/Initialize'
-import useHistory from 'Root/hooks/useHistory'
+import React from "react"
+import Mobile from "./mobile"
+import Desktop from "./desktop"
+import { useSubscription, useLazyQuery, useQuery } from "@apollo/react-hooks"
+import { AuthContext } from "Root/contexts/auth"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import { NotificationsContext } from "Root/contexts/notifications"
+import { ThemeProvider } from "styled-components"
+import api from "Root/api"
+import C from "Root/constants"
+import GlobalStyles from "Root/constants/globalStyles"
+import Initialize from "Root/components/global/Initialize"
+import useHistory from "Root/hooks/useHistory"
 
 const Client = props => {
     const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
     const history = useHistory()
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
         setWindowWidth(window.innerWidth)
     })
 
@@ -36,10 +36,10 @@ const Client = props => {
                 !getProfileUserResponse.loading &&
                 auth.token
             ) {
-                history.push('/logout')
+                history.push("/logout")
             }
             authDispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 data: getProfileUserResponse.data.getUserProfileForUser,
             })
         }
@@ -49,8 +49,8 @@ const Client = props => {
         <ThemeProvider
             theme={{
                 colors: {
-                    ...C.themes[auth.theme || 'light'].colors,
-                    ...C.themes[auth.theme || 'light'].colors[
+                    ...C.themes[auth.theme || "light"].colors,
+                    ...C.themes[auth.theme || "light"].colors[
                         `${auth.color}Pack`
                     ],
                 },

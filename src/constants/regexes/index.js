@@ -1,4 +1,4 @@
-import weesh from './weesh'
+import weesh from "./weesh"
 
 export default {
     weesh,

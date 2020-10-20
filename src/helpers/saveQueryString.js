@@ -1,5 +1,5 @@
-import queryString from 'query-string'
-import storage from './storage'
+import queryString from "query-string"
+import storage from "./storage"
 
 export default ({ location, param }) => {
     if (location.search.length > 0) {

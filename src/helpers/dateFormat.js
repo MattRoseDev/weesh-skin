@@ -2,39 +2,39 @@ export default date => {
     let types = [
         {
             type: /a few seconds/,
-            label: 'now',
+            label: "now",
         },
         {
             type: /an |a /,
-            label: '1',
+            label: "1",
         },
         {
             type: /minutes|minute/,
-            label: 'm',
+            label: "m",
         },
         {
             type: /month/,
-            label: 'mo',
+            label: "mo",
         },
         {
             type: /months/,
-            label: 'mos',
+            label: "mos",
         },
         {
             type: /hours|hour/,
-            label: 'h',
+            label: "h",
         },
         {
             type: /days|day/,
-            label: 'd',
+            label: "d",
         },
         {
             type: /years|year/,
-            label: 'y',
+            label: "y",
         },
         {
             type: / /,
-            label: '',
+            label: "",
         },
     ]
 

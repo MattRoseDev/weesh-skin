@@ -1,13 +1,13 @@
-import React from 'react'
-import Together from 'Root/public/img/showcase/together.svg'
-import ChatBubbles from 'Root/public/img/showcase/chat-bubbles.svg'
-import CloudStorage from 'Root/public/img/showcase/cloud-storage.svg'
-import Smoke from 'Root/public/img/showcase/smoke.svg'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import { ReactSVG } from 'react-svg'
-import { AuthContext } from 'Root/contexts/auth'
-import uuid from 'uuid'
+import React from "react"
+import Together from "Root/public/img/showcase/together.svg"
+import ChatBubbles from "Root/public/img/showcase/chat-bubbles.svg"
+import CloudStorage from "Root/public/img/showcase/cloud-storage.svg"
+import Smoke from "Root/public/img/showcase/smoke.svg"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import { ReactSVG } from "react-svg"
+import { AuthContext } from "Root/contexts/auth"
+import uuid from "uuid"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -44,29 +44,29 @@ export default () => {
     const details = [
         {
             icon: Smoke,
-            title: 'Wishes are written',
-            description: 'Post whatever you want.',
+            title: "Wishes are written",
+            description: "Post whatever you want.",
             width: 75,
             height: 75,
         },
         {
             icon: Together,
-            title: 'Others exprience',
-            description: 'Use the help of others.',
+            title: "Others exprience",
+            description: "Use the help of others.",
             width: 75,
             height: 75,
         },
         {
             icon: CloudStorage,
-            title: 'Safe and Secret',
-            description: 'We protect your weeshes.',
+            title: "Safe and Secret",
+            description: "We protect your weeshes.",
             width: 75,
             height: 75,
         },
         {
             icon: ChatBubbles,
-            title: 'Give advice',
-            description: 'Comment on weeshes.',
+            title: "Give advice",
+            description: "Comment on weeshes.",
             width: 75,
             height: 75,
         },
@@ -92,7 +92,7 @@ const Item = props => {
                 src={props.icon}
                 beforeInjection={svg => {
                     svg.setAttribute(
-                        'style',
+                        "style",
                         `width: ${props.width}px;height: ${props.height}px;fill:${props.color}`,
                     )
                 }}

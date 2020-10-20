@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import { AuthContext } from 'Root/contexts/auth'
-import Auth from 'Root/components/mobile/Auth'
-import Link from 'Root/components/global/Link'
-import routes from './routes'
-import guestRoute from './guestRoute'
-import NavItem from './NavItem'
-import NavItems from './NavItems'
-import uuid from 'uuid'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import { AuthContext } from "Root/contexts/auth"
+import Auth from "Root/components/mobile/Auth"
+import Link from "Root/components/global/Link"
+import routes from "./routes"
+import guestRoute from "./guestRoute"
+import NavItem from "./NavItem"
+import NavItems from "./NavItems"
+import uuid from "uuid"
+import C from "Root/constants"
 
 const NavStyled = styled.nav`
     ${C.styles.flex.flexColumn};

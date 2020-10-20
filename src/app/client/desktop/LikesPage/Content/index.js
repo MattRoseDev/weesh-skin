@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import uuid from 'uuid'
-import List from 'Root/components/desktop/List'
-import Loading from 'Root/components/global/Loading'
-import C from 'Root/constants'
-import { useQuery } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
+import uuid from "uuid"
+import List from "Root/components/desktop/List"
+import Loading from "Root/components/global/Loading"
+import C from "Root/constants"
+import { useQuery } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledContainer = styled.div`
     padding: 0.25rem 0;
@@ -23,7 +23,7 @@ const StyledLoaderContainer = styled.div`
 `
 
 export default props => {
-    let url = props.match.url.split('/')
+    let url = props.match.url.split("/")
     const [state, setState] = React.useState(null)
     const history = useHistory()
     const [status, setStatus] = React.useState(url[url.length - 1])
@@ -31,7 +31,7 @@ export default props => {
         variables: {
             link: `${props.match.params.link}`,
         },
-        fetchPolicy: 'no-cache',
+        fetchPolicy: "no-cache",
     })
 
     React.useEffect(() => {
@@ -52,13 +52,13 @@ export default props => {
             <Meta />
             {loading ? (
                 <Loading
-                    padding='3rem 0 0'
+                    padding="3rem 0 0"
                     size={28}
                     strokeWidth={1.25}
-                    color='gray'
+                    color="gray"
                 />
             ) : (
-                state && <List index='user' users={state} />
+                state && <List index="user" users={state} />
             )}
         </StyledContainer>
     )

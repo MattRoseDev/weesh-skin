@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import Icon from 'Root/components/global/Icon'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import Icon from "Root/components/global/Icon"
 
 const StyledIcon = styled.div`
     ${C.styles.spin};
@@ -14,7 +14,7 @@ const StyledIcon = styled.div`
 export default props => {
     return (
         <StyledIcon>
-            <Icon icon='Loader' {...props} />
+            <Icon icon="Loader" {...props} />
         </StyledIcon>
     )
 }

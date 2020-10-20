@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
 
 const StyledContainer = styled.label`
     position: relative;
@@ -25,7 +25,7 @@ const StyledSwitch = styled.span`
         left: 0.25rem;
         bottom: 0.25rem;
         border-radius: 50%;
-        content: '';
+        content: "";
         width: 1.125rem;
         height: 1.125rem;
         background-color: ${({ theme }) => theme.colors.background};
@@ -51,7 +51,7 @@ export default props => {
     return (
         <StyledContainer>
             <StyledInput
-                type='checkbox'
+                type="checkbox"
                 defaultChecked={props.checked || undefined}
                 onChange={props.onChange}
                 onInput={props.onInput}

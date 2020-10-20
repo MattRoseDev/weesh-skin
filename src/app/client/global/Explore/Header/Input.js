@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ExploreContext } from 'Root/contexts/explore'
-import C from 'Root/constants'
-import IconButton from 'Root/components/global/IconButton'
-import { useQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
-import queryString from 'query-string'
+import React from "react"
+import styled from "styled-components"
+import { ExploreContext } from "Root/contexts/explore"
+import C from "Root/constants"
+import IconButton from "Root/components/global/IconButton"
+import { useQuery } from "@apollo/react-hooks"
+import api from "Root/api"
+import queryString from "query-string"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -33,7 +33,7 @@ export default props => {
         expression:
             props.location.search.length > 0
                 ? queryString.parse(props.location.search).q
-                : '',
+                : "",
     }
     const { explore, dispatch } = React.useContext(ExploreContext)
     const [variables, setVariables] = React.useState(initVariables)
@@ -50,7 +50,7 @@ export default props => {
         if (called && data && !loading) {
             const result = data.exploreAllForUser
             dispatch({
-                type: 'EXPLORE',
+                type: "EXPLORE",
                 data: {
                     results: result
                         ? [...result.user.users, ...result.tag.tags]
@@ -68,7 +68,7 @@ export default props => {
 
     const handleSearch = expression => {
         dispatch({
-            type: 'EXPLORE',
+            type: "EXPLORE",
             data: {
                 expression,
                 loading,
@@ -93,7 +93,7 @@ export default props => {
 
     return (
         <StyledContainer>
-            <IconButton icon='Search' onClick={handleSearch} color='gray' />
+            <IconButton icon="Search" onClick={handleSearch} color="gray" />
             <StyledInput
                 defaultValue={variables.expression}
                 placeholder={C.txts.en.explore.input}

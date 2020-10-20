@@ -1,8 +1,8 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import Header from './Header'
-import Main from './Main'
-import C from 'Root/constants'
+import React from "react"
+import styled, { css } from "styled-components"
+import Header from "./Header"
+import Main from "./Main"
+import C from "Root/constants"
 
 const StyledComment = styled.div`
     ${C.styles.flex.flexRow};

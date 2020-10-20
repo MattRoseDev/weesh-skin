@@ -1,20 +1,20 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Components } from 'Root/StyledComponents'
-import Logo from 'Root/components/global/Logo'
-import GoogleAuth from 'Root/components/global/GoogleAuth'
-import Input from 'Root/components/global/Input'
-import Button from 'Root/components/global/Button'
-import OR from 'Root/components/global/OR'
-import C from 'Root/constants'
-import { AuthContext } from 'Root/contexts/auth'
-import { Link } from 'react-router-dom'
-import useHistory from 'Root/hooks/useHistory'
-import { useMutation } from '@apollo/react-hooks'
-import api from 'Root/api'
-import WelcomePicture from 'Root/public/img/login/welcome.png'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import styled from "styled-components"
+import { Components } from "Root/StyledComponents"
+import Logo from "Root/components/global/Logo"
+import GoogleAuth from "Root/components/global/GoogleAuth"
+import Input from "Root/components/global/Input"
+import Button from "Root/components/global/Button"
+import OR from "Root/components/global/OR"
+import C from "Root/constants"
+import { AuthContext } from "Root/contexts/auth"
+import { Link } from "react-router-dom"
+import useHistory from "Root/hooks/useHistory"
+import { useMutation } from "@apollo/react-hooks"
+import api from "Root/api"
+import WelcomePicture from "Root/public/img/login/welcome.png"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumnCenter};
@@ -51,9 +51,9 @@ const StyledLoginLink = styled(Link)`
 `
 
 const initVariables = {
-    email: '',
-    firstName: '',
-    password: '',
+    email: "",
+    firstName: "",
+    password: "",
 }
 
 export default props => {
@@ -68,20 +68,20 @@ export default props => {
 
     helpers.saveQueryString({
         location: props.location,
-        param: 'invitationCode',
+        param: "invitationCode",
     })
 
     React.useEffect(() => {
         if (data) {
             const { token, user } = data.join
             dispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 data: {
                     token,
                     ...user,
                 },
             })
-            setTimeout(() => history.push('/explore'), 500)
+            setTimeout(() => history.push("/explore"), 500)
         }
     }, [data, error])
 
@@ -93,13 +93,13 @@ export default props => {
         if (oAuthGoogleResponse.data) {
             const { token, user } = oAuthGoogleResponse.data.oAuthGoogle
             dispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 data: {
                     token,
                     ...user,
                 },
             })
-            setTimeout(() => history.push('/explore'), 500)
+            setTimeout(() => history.push("/explore"), 500)
         }
     }, [oAuthGoogleResponse.data, oAuthGoogleResponse.error])
 
@@ -112,7 +112,7 @@ export default props => {
             variables: {
                 ...variables,
                 invitationCode:
-                    helpers.storage.get({ key: 'invitationCode' }) || '',
+                    helpers.storage.get({ key: "invitationCode" }) || "",
             },
         })
 
@@ -121,24 +121,24 @@ export default props => {
         handleJoin()
     }
 
-    auth.token && history.push('/')
+    auth.token && history.push("/")
     return (
         <StyledContainer>
-            <Meta type='Join' />
+            <Meta type="Join" />
             <StyledBox>
-                <StyledImg height='400' src={WelcomePicture} />
+                <StyledImg height="400" src={WelcomePicture} />
                 <StyledJoin onSubmit={e => handleSubmit(e)}>
-                    <Logo fontSize={5} margin='1.5rem' />
+                    <Logo fontSize={5} margin="1.5rem" />
                     <Components.Global.InvitedBy />
                     {error && (
                         <Components.Global.ErrorMessage
-                            width='75%'
+                            width="75%"
                             message={error.graphQLErrors[0].message}
-                            margin='.5rem 0 0'
+                            margin=".5rem 0 0"
                         />
                     )}
                     <Input
-                        margin='.5rem 0 0'
+                        margin=".5rem 0 0"
                         onChange={e => {
                             let firstName = e.target.value
                             setVariables(prevState => ({
@@ -147,11 +147,11 @@ export default props => {
                             }))
                         }}
                         width={75}
-                        icon='User'
-                        placeholder='Name'
+                        icon="User"
+                        placeholder="Name"
                     />
                     <Input
-                        margin='.5rem 0 0'
+                        margin=".5rem 0 0"
                         onChange={e => {
                             let email = e.target.value
                             setVariables(prevState => ({
@@ -160,11 +160,11 @@ export default props => {
                             }))
                         }}
                         width={75}
-                        icon='Mail'
-                        placeholder='Email'
+                        icon="Mail"
+                        placeholder="Email"
                     />
                     <Input
-                        margin='.5rem 0 0'
+                        margin=".5rem 0 0"
                         onChange={e => {
                             let password = e.target.value
                             setVariables(prevState => ({
@@ -173,35 +173,35 @@ export default props => {
                             }))
                         }}
                         width={75}
-                        icon='Lock'
-                        placeholder='Password'
-                        type='password'
+                        icon="Lock"
+                        placeholder="Password"
+                        type="password"
                     />
                     <Button
-                        color='background'
-                        radius='.5rem'
-                        background='primary'
+                        color="background"
+                        radius=".5rem"
+                        background="primary"
                         isLoading={isLoading || undefined}
-                        fontWeight='bold'
-                        width='75%'
-                        margin='1.5rem 0 0'
-                        radius='.75rem'
-                        padding='.85rem'
-                        fontSize='.85rem'>
+                        fontWeight="bold"
+                        width="75%"
+                        margin="1.5rem 0 0"
+                        radius=".75rem"
+                        padding=".85rem"
+                        fontSize=".85rem">
                         {C.txts.en.auth.joinButton}
                     </Button>
                     <GoogleAuth
-                        buttonText='Join with Google'
+                        buttonText="Join with Google"
                         handleRequest={oAuthGoogleRequest}
                         data={{
                             invitationCode:
                                 helpers.storage.get({
-                                    key: 'invitationCode',
-                                }) || '',
+                                    key: "invitationCode",
+                                }) || "",
                         }}
                     />
                     <OR width={75} margin={1.5} />
-                    <StyledLoginLink to='login'>
+                    <StyledLoginLink to="login">
                         {C.txts.en.auth.loginLink}
                     </StyledLoginLink>
                 </StyledJoin>

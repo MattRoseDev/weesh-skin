@@ -1,8 +1,8 @@
-import React from 'react'
-import { AlertContext } from 'Root/contexts/alert'
-import Icon from 'Root/components/global/Icon'
-import styled from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import { AlertContext } from "Root/contexts/alert"
+import Icon from "Root/components/global/Icon"
+import styled from "styled-components"
+import C from "Root/constants"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -21,8 +21,8 @@ const StyledContent = styled.div`
     width: 100%;
     padding: 1.25rem;
     background: ${({ theme, alert }) =>
-        theme.colors[alert.background] || 'unset'};
-    color: ${({ theme, alert }) => theme.colors[alert.color] || 'unset'};
+        theme.colors[alert.background] || "unset"};
+    color: ${({ theme, alert }) => theme.colors[alert.color] || "unset"};
 `
 
 const StyledMessage = styled.div`
@@ -49,6 +49,6 @@ export default props => {
             </StyledContent>
         </StyledContainer>
     ) : (
-        ''
+        ""
     )
 }

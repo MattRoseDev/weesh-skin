@@ -1,5 +1,5 @@
-import React from 'react'
-import { bookmarkReducer } from 'Root/reducers/bookmark'
+import React from "react"
+import { bookmarkReducer } from "Root/reducers/bookmark"
 
 export const BookmarkContext = React.createContext()
 

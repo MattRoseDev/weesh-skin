@@ -1,13 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
-import BackButton from 'Root/components/global/BackButton'
-import Avatar from 'Root/components/global/Avatar'
-import Icon from 'Root/components/global/Icon'
-import Navbar from 'Root/components/mobile/Navbar'
-import { AuthContext } from 'Root/contexts/auth'
-import { UserContext } from 'Root/contexts/user'
-import avatar from 'Root/public/img/avatar.jpg'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import BackButton from "Root/components/global/BackButton"
+import Avatar from "Root/components/global/Avatar"
+import Icon from "Root/components/global/Icon"
+import Navbar from "Root/components/mobile/Navbar"
+import { AuthContext } from "Root/contexts/auth"
+import { UserContext } from "Root/contexts/user"
+import avatar from "Root/public/img/avatar.jpg"
+import C from "Root/constants"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -31,16 +31,16 @@ const StyledTitle = styled.strong`
 
 export default props => {
     const { auth, dispatch } = React.useContext(AuthContext)
-    let url = props.match.url.split('/')
+    let url = props.match.url.split("/")
     const status = url[url.length - 1]
 
     return (
         <>
             {auth.token ? (
                 <StyledContainer>
-                    <BackButton icon='ArrowLeft' />
+                    <BackButton icon="ArrowLeft" />
                     <StyledTitle>Add Weesh</StyledTitle>
-                    <Icon color='background' />
+                    <Icon color="background" />
                 </StyledContainer>
             ) : (
                 <></>

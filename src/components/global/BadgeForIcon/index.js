@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import { NotificationsContext } from 'Root/contexts/notifications'
-import { AuthContext } from 'Root/contexts/auth'
-import { useSubscription, useLazyQuery, useQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import { NotificationsContext } from "Root/contexts/notifications"
+import { AuthContext } from "Root/contexts/auth"
+import { useSubscription, useLazyQuery, useQuery } from "@apollo/react-hooks"
+import api from "Root/api"
 
 const StyledBadge = styled.span`
     position: absolute;
@@ -23,5 +23,5 @@ const StyledBadge = styled.span`
 `
 
 export default props => {
-    return props.value ? <StyledBadge /> : ''
+    return props.value ? <StyledBadge /> : ""
 }

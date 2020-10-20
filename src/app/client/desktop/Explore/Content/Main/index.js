@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ExploreContext } from 'Root/contexts/explore'
-import uuid from 'uuid'
-import List from 'Root/components/mobile/List'
-import Icon from 'Root/components/global/Icon'
-import SuggestionWeeshes from 'Root/components/global/SuggestionWeeshes'
-import Loading from 'Root/components/global/Loading'
-import BannerMessage from 'Root/components/global/BannerMessage'
-import helpers from 'Root/helpers'
-import C from 'Root/constants'
-import Meta from 'Root/meta'
+import React from "react"
+import styled from "styled-components"
+import { ExploreContext } from "Root/contexts/explore"
+import uuid from "uuid"
+import List from "Root/components/mobile/List"
+import Icon from "Root/components/global/Icon"
+import SuggestionWeeshes from "Root/components/global/SuggestionWeeshes"
+import Loading from "Root/components/global/Loading"
+import BannerMessage from "Root/components/global/BannerMessage"
+import helpers from "Root/helpers"
+import C from "Root/constants"
+import Meta from "Root/meta"
 
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
@@ -48,7 +48,7 @@ export default () => {
             <Meta />
             {explore.loading && (
                 <StyledLoading>
-                    <Loading size={20} strokeWidth={1.25} color='gray' />
+                    <Loading size={20} strokeWidth={1.25} color="gray" />
                 </StyledLoading>
             )}
             {!explore.loading &&
@@ -60,7 +60,7 @@ export default () => {
                 explore.results &&
                 explore.results.length < 1 && (
                     <StyledNotFound>
-                        <Icon icon='Info' />
+                        <Icon icon="Info" />
                         <StyledNotFoundMessage>
                             {C.txts.en.g.noResultsFound}
                         </StyledNotFoundMessage>

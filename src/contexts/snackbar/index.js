@@ -1,13 +1,13 @@
-import React from 'react'
-import { snackbarReducer } from 'Root/reducers/snackbar'
+import React from "react"
+import { snackbarReducer } from "Root/reducers/snackbar"
 
 export const SnackBarContext = React.createContext()
 
 const initialSnackBar = {
-    message: '',
-    icon: '',
-    background: 'foreground',
-    color: 'background',
+    message: "",
+    icon: "",
+    background: "foreground",
+    color: "background",
     visible: false,
 }
 

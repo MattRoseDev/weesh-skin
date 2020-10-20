@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import moment from 'moment'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import Link from 'Root/components/global/Link'
-import helpers from 'Root/helpers'
-import useHistory from 'Root/hooks/useHistory'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import moment from "moment"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import Link from "Root/components/global/Link"
+import helpers from "Root/helpers"
+import useHistory from "Root/hooks/useHistory"
 
 const StyledHeader = styled.div`
     padding: 0.75rem 0.75rem 0;
@@ -39,9 +39,9 @@ export default props => {
                 <StyledComponents.Weesh.Header.LeftSide>
                     {props.user && (
                         <Components.Global.User
-                            fontSize='.85rem'
-                            fontWeight='bold'
-                            margin='0'
+                            fontSize=".85rem"
+                            fontWeight="bold"
+                            margin="0"
                             user={props.user}
                             size={1.5}
                             width={userWidth}
@@ -49,14 +49,14 @@ export default props => {
                     )}
                     <StyledComponents.Weesh.Header.ReWeeshedUser>
                         <Components.Global.Icon
-                            icon='Repeat'
-                            color='foreground'
+                            icon="Repeat"
+                            color="foreground"
                             size={16}
                         />
                         <Components.Global.User
-                            fontSize='.85rem'
-                            fontWeight='bold'
-                            margin='0 0 0 .5rem'
+                            fontSize=".85rem"
+                            fontWeight="bold"
+                            margin="0 0 0 .5rem"
                             user={props.child.user}
                             size={1.5}
                             width={userWidth}
@@ -76,7 +76,7 @@ export default props => {
                                     <Components.Global.FullName
                                         {...props}
                                         fontSize={0.85}
-                                        labelSize='16'
+                                        labelSize="16"
                                     />
                                 </Link>
                                 <Link to={`/${props.user.username}`}>
@@ -97,8 +97,8 @@ export default props => {
                         )}
                         {`${
                             props.updatedAt == props.createdAt
-                                ? ''
-                                : ' · edited'
+                                ? ""
+                                : " · edited"
                         }`}
                     </StyledTimestamp>
                 </StyledRightSide>

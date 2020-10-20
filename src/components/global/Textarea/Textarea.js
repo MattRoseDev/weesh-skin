@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
 
 const StyledTextarea = styled.textarea`
     outline: none;
@@ -26,7 +26,7 @@ export default props => {
             type={props.type}
             onKeyUp={props.onChange}
             onInput={props.onInput}
-            defaultValue={props.value || ''}
+            defaultValue={props.value || ""}
             rows={props.rows || undefined}
         />
     )

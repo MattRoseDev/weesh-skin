@@ -1,16 +1,16 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import Button from 'Root/components/global/Button'
-import Icon from 'Root/components/global/Icon'
-import { WeeshContext } from 'Root/contexts/weesh'
-import { AuthContext } from 'Root/contexts/auth'
-import C from 'Root/constants'
-import Dialog, { DialogButton } from 'Root/components/global/Dialog'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import { useMutation } from '@apollo/react-hooks'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import api from 'Root/api'
-import useHistory from 'Root/hooks/useHistory'
+import React from "react"
+import styled, { css } from "styled-components"
+import Button from "Root/components/global/Button"
+import Icon from "Root/components/global/Icon"
+import { WeeshContext } from "Root/contexts/weesh"
+import { AuthContext } from "Root/contexts/auth"
+import C from "Root/constants"
+import Dialog, { DialogButton } from "Root/components/global/Dialog"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import { useMutation } from "@apollo/react-hooks"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import api from "Root/api"
+import useHistory from "Root/hooks/useHistory"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -70,8 +70,8 @@ export default props => {
             variables,
         })
         handleAfterSubmit({
-            icon: 'PenTool',
-            message: 'Your weesh added successfully.',
+            icon: "PenTool",
+            message: "Your weesh added successfully.",
         })
     }
 
@@ -85,24 +85,24 @@ export default props => {
             },
         })
         handleAfterSubmit({
-            icon: 'Edit',
-            message: 'Your weesh edited successfully.',
+            icon: "Edit",
+            message: "Your weesh edited successfully.",
         })
     }
 
     const handleAfterSubmit = ({ icon, message }) => {
         history.push(`/${auth.username}`)
         snackbarDispatch({
-            type: 'SET_DATA',
+            type: "SET_DATA",
             data: {
                 icon,
                 message,
-                background: 'foreground',
+                background: "foreground",
                 visible: true,
             },
         })
         setTimeout(() => {
-            snackbarDispatch({ type: 'HIDE' })
+            snackbarDispatch({ type: "HIDE" })
         }, 2 * 1000)
     }
 
@@ -116,17 +116,17 @@ export default props => {
     const shareOptions = [
         {
             title: C.txts.en.addWeesh.public,
-            icon: 'Globe',
+            icon: "Globe",
             status: 3,
         },
         {
             title: C.txts.en.addWeesh.private,
-            icon: 'Users',
+            icon: "Users",
             status: 2,
         },
         {
             title: C.txts.en.addWeesh.secret,
-            icon: 'User',
+            icon: "User",
             status: 1,
         },
     ]
@@ -138,21 +138,21 @@ export default props => {
             ? true
             : false
 
-    const isAddType = props.type == 'ADD' ? true : false
+    const isAddType = props.type == "ADD" ? true : false
     const CONST = C.txts.en.addWeesh
 
     return (
         <StyledContainer>
             <Dialog
-                width='19rem'
-                padding='.5rem'
-                contentPosition='top'
+                width="19rem"
+                padding=".5rem"
+                contentPosition="top"
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledComponents.Dialog.Header.Container>
                     <StyledComponents.Dialog.Header.Message
-                        padding='1rem'
-                        fontWeight='bold'>
+                        padding="1rem"
+                        fontWeight="bold">
                         {C.txts.en.addWeesh.shareQuestion}
                     </StyledComponents.Dialog.Header.Message>
                 </StyledComponents.Dialog.Header.Container>
@@ -181,10 +181,10 @@ export default props => {
                 <StyledNumber>{weesh.totalCount}</StyledNumber>
             </StyledNumbers>
             <Button
-                color={charLength ? 'background' : 'gray'}
-                cursor={charLength ? 'pointer' : 'not-allowed'}
-                background={charLength ? 'primary' : 'lightGray'}
-                boxShadow='light'
+                color={charLength ? "background" : "gray"}
+                cursor={charLength ? "pointer" : "not-allowed"}
+                background={charLength ? "primary" : "lightGray"}
+                boxShadow="light"
                 disabled={charLength ? false : true}
                 clickEvent={() => toggleDialog(true)}
                 isLoading={
@@ -192,14 +192,14 @@ export default props => {
                         ? addWeeshResponse.loading
                         : editWeeshResponse.loading) || undefined
                 }
-                padding='.5rem 1rem'
-                radius='50rem'>
+                padding=".5rem 1rem"
+                radius="50rem">
                 <StyledButtonTitle>
                     {isAddType ? CONST.addButton : CONST.editButton}
                 </StyledButtonTitle>
                 <Icon
-                    icon={isAddType ? 'PenTool' : 'Edit'}
-                    color='background'
+                    icon={isAddType ? "PenTool" : "Edit"}
+                    color="background"
                 />
             </Button>
         </StyledContainer>

@@ -1,17 +1,17 @@
 export const weeshPageReducer = (state, action) => {
     let weeshComments
     switch (action.type) {
-        case 'SET_WEESH':
+        case "SET_WEESH":
             return {
                 ...state,
                 ...action.data,
             }
-        case 'SET_TEXTAREA':
+        case "SET_TEXTAREA":
             return {
                 ...state,
                 ...action.data,
             }
-        case 'ADD_COMMENT':
+        case "ADD_COMMENT":
             if (state.reply) {
                 weeshComments = state.comment.weeshComments
                 weeshComments = weeshComments.map(weeshComment => {
@@ -33,7 +33,7 @@ export const weeshPageReducer = (state, action) => {
                 },
                 reply: null,
             }
-        case 'REMOVE_COMMENT':
+        case "REMOVE_COMMENT":
             weeshComments = state.comment.weeshComments
             weeshComments = weeshComments.filter(weeshComment => {
                 if (weeshComment.id != action.data.id) {
@@ -47,7 +47,7 @@ export const weeshPageReducer = (state, action) => {
                     weeshComments,
                 },
             }
-        case 'SET_REPLY':
+        case "SET_REPLY":
             let reply = {
                 parentId: action.data.id,
                 id: action.data.user.id,
@@ -57,12 +57,12 @@ export const weeshPageReducer = (state, action) => {
                 ...state,
                 reply,
             }
-        case 'UNSET_REPLY':
+        case "UNSET_REPLY":
             return {
                 ...state,
                 reply: null,
             }
-        case 'LIKE_COMMENT':
+        case "LIKE_COMMENT":
             weeshComments = modifyCommentById({
                 weeshComments: state.comment.weeshComments,
                 value: 1,
@@ -75,7 +75,7 @@ export const weeshPageReducer = (state, action) => {
                     weeshComments,
                 },
             }
-        case 'DISLIKE_COMMENT':
+        case "DISLIKE_COMMENT":
             weeshComments = modifyCommentById({
                 weeshComments: state.comment.weeshComments,
                 value: -1,

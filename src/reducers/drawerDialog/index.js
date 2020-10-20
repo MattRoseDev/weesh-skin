@@ -1,16 +1,16 @@
 export const drawerDialogReducer = (state, action) => {
     switch (action.type) {
-        case 'ADD_USER_DATA':
+        case "ADD_USER_DATA":
             return {
                 ...state,
                 ...action.data,
             }
-        case 'SHOW':
+        case "SHOW":
             return {
                 ...state,
                 visible: true,
             }
-        case 'HIDE':
+        case "HIDE":
             return {
                 ...state,
                 visible: false,

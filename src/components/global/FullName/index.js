@@ -1,8 +1,8 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { AuthContext } from 'Root/contexts/auth'
-import C from 'Root/constants'
-import Official from 'Root/public/icons/official.png'
+import React from "react"
+import styled, { css } from "styled-components"
+import { AuthContext } from "Root/contexts/auth"
+import C from "Root/constants"
+import Official from "Root/public/icons/official.png"
 
 const StyledImg = styled.img`
     padding: 0 0 0 0.15rem;
@@ -22,7 +22,7 @@ const StyledContainer = styled.span`
             margin: ${margin};
         `};
     font-weight: bold;
-    font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
+    font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
     color: ${({ theme }) => theme.colors.foreground};
     margin: 0 0 0.1rem;
     overflow: hidden;
@@ -48,7 +48,7 @@ const StyledFullName = styled.strong`
             max-width: ${width};
         `};
     font-weight: bold;
-    font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
+    font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
     color: ${({ theme }) => theme.colors.foreground};
     margin: 0 0 0.1rem;
     overflow: hidden;
@@ -80,7 +80,7 @@ export default props => {
                         width={props.width || undefined}>
                         {props.user.firstName} {props.user.lastName}
                     </StyledFullName>
-                    {props.user.label == 'official' && (
+                    {props.user.label == "official" && (
                         <StyledImg
                             src={Official}
                             width={props.labelSize || 15}

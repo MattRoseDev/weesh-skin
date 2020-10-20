@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import Auth from 'Root/components/mobile/Auth'
-import Header from 'Root/components/global/Weesh/Header'
-import Main from 'Root/components/global/Weesh/Main'
-import Footer from 'Root/components/global/Weesh/Footer'
-import C from 'Root/constants'
-import DrawerDialogProvider from 'Root/contexts/drawerDialog'
+import React from "react"
+import styled from "styled-components"
+import Auth from "Root/components/mobile/Auth"
+import Header from "Root/components/global/Weesh/Header"
+import Main from "Root/components/global/Weesh/Main"
+import Footer from "Root/components/global/Weesh/Footer"
+import C from "Root/constants"
+import DrawerDialogProvider from "Root/contexts/drawerDialog"
 
 const StyledWeesh = styled.div`
     position: relative;

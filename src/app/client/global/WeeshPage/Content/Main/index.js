@@ -1,13 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
-import Tag from 'Root/components/global/Tag'
-import uuid from 'uuid'
-import C from 'Root/constants'
-import moment from 'moment'
-import helpers from 'Root/helpers'
-import { Link } from 'react-router-dom'
-import Convertors from 'Root/components/global/Convertors'
-import Child from './Child'
+import React from "react"
+import styled from "styled-components"
+import Tag from "Root/components/global/Tag"
+import uuid from "uuid"
+import C from "Root/constants"
+import moment from "moment"
+import helpers from "Root/helpers"
+import { Link } from "react-router-dom"
+import Convertors from "Root/components/global/Convertors"
+import Child from "./Child"
 
 const StyledMain = styled.div`
     margin: 0 1rem;
@@ -55,10 +55,10 @@ export default props => {
                 <StyledDateContainer>
                     {helpers.dateFormat(
                         moment(props.createdAt).format(
-                            'hh:mm  A · MMM DD, YYYY',
+                            "hh:mm  A · MMM DD, YYYY",
                         ),
                     )}
-                    {`${props.updatedAt == props.createdAt ? '' : ' · edited'}`}
+                    {`${props.updatedAt == props.createdAt ? "" : " · edited"}`}
                 </StyledDateContainer>
             )}
         </StyledMain>

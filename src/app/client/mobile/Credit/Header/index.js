@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import Logo from 'Root/components/global/Logo'
-import BackButton from 'Root/components/global/BackButton'
-import Icon from 'Root/components/global/Icon'
-import C from 'Root/constants'
-import Header from 'Root/app/client/mobile/Template/Header'
-import { AuthContext } from 'Root/contexts/auth'
+import React from "react"
+import styled from "styled-components"
+import Logo from "Root/components/global/Logo"
+import BackButton from "Root/components/global/BackButton"
+import Icon from "Root/components/global/Icon"
+import C from "Root/constants"
+import Header from "Root/app/client/mobile/Template/Header"
+import { AuthContext } from "Root/contexts/auth"
 
 const StyledTitle = styled.strong`
     color: ${({ theme }) => theme.colors.foreground};
@@ -21,7 +21,7 @@ export default props => {
             {auth.password != undefined && (
                 <StyledTitle>{C.txts.en.credit.credit}</StyledTitle>
             )}
-            <Icon size={24} color='background' icon='ChevronLeft' />
+            <Icon size={24} color="background" icon="ChevronLeft" />
         </Header>
     )
 }

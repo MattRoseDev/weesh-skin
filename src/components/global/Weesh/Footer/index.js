@@ -1,17 +1,17 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import IconButton from 'Root/components/global/IconButton'
-import Link from 'Root/components/global/Link'
-import Icon from 'Root/components/global/Icon'
-import C from 'Root/constants'
-import uuid from 'uuid'
-import useHistory from 'Root/hooks/useHistory'
-import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import { DrawerDialogContext } from 'Root/contexts/drawerDialog'
-import { useMutation } from '@apollo/react-hooks'
-import api from 'Root/api'
-import ReWeeshButton from './ReWeeshButton'
+import React from "react"
+import styled, { css } from "styled-components"
+import IconButton from "Root/components/global/IconButton"
+import Link from "Root/components/global/Link"
+import Icon from "Root/components/global/Icon"
+import C from "Root/constants"
+import uuid from "uuid"
+import useHistory from "Root/hooks/useHistory"
+import { AuthContext } from "Root/contexts/auth"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import { DrawerDialogContext } from "Root/contexts/drawerDialog"
+import { useMutation } from "@apollo/react-hooks"
+import api from "Root/api"
+import ReWeeshButton from "./ReWeeshButton"
 
 const StyledFooterContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -85,18 +85,18 @@ export default props => {
     const [numbers, setNumbers] = React.useState([
         {
             number: props.like && props.like.paginate.totalDocs,
-            icon: 'Heart',
+            icon: "Heart",
             link: `/w/${props.link}/likes`,
         },
         {
             number: props.commentsCounter,
-            icon: 'MessageCircle',
+            icon: "MessageCircle",
             link: `/w/${props.link}`,
         },
         {
             number: props.reweesh && props.reweesh.paginate.totalDocs,
-            icon: 'Repeat',
-            fill: 'none',
+            icon: "Repeat",
+            fill: "none",
             strokeWidth: 3,
             link: `/w/${props.link}`,
         },
@@ -141,65 +141,65 @@ export default props => {
 
     const buttons = [
         {
-            icon: 'Bookmark',
-            fill: () => (isBookmarked ? 'foreground' : undefined),
-            color: () => (isBookmarked ? 'foreground' : 'foreground'),
+            icon: "Bookmark",
+            fill: () => (isBookmarked ? "foreground" : undefined),
+            color: () => (isBookmarked ? "foreground" : "foreground"),
             handleClick: props => {
                 if (!auth.token) {
-                    return history.push('/login')
+                    return history.push("/login")
                 }
                 if (isBookmarked) {
                     removeFromBookmark()
                 } else {
                     addToBookmark()
                     snackbarDispatch({
-                        type: 'SET_DATA',
+                        type: "SET_DATA",
                         data: {
-                            icon: 'Bookmark',
-                            message: 'Added to your Bookmarks.',
-                            background: 'foreground',
+                            icon: "Bookmark",
+                            message: "Added to your Bookmarks.",
+                            background: "foreground",
                             visible: true,
                         },
                     })
                     setTimeout(() => {
-                        snackbarDispatch({ type: 'HIDE' })
+                        snackbarDispatch({ type: "HIDE" })
                     }, 2 * 1000)
                 }
                 setIsBookmarked(isBookmarked ? false : true)
             },
         },
         {
-            icon: 'MessageCircle',
+            icon: "MessageCircle",
             fill: () => undefined,
-            color: () => 'foreground',
+            color: () => "foreground",
             handleClick: () => {
                 history.push(`/w/${props.link}`)
             },
         },
         {
-            icon: 'Repeat',
+            icon: "Repeat",
             fill: () => undefined,
             color: () => {
-                return isReweeshed ? 'blue' : 'foreground'
+                return isReweeshed ? "blue" : "foreground"
             },
             size: 22,
             strokeWidth: isReweeshed ? 3 : 1.6,
             handleClick: () => {
                 if (!auth.token) {
-                    return history.push('/login')
+                    return history.push("/login")
                 }
                 drawerDialogDispatch({
-                    type: 'SHOW',
+                    type: "SHOW",
                 })
             },
         },
         {
-            icon: 'Heart',
-            fill: () => (isLiked ? 'red' : undefined),
-            color: () => (isLiked ? 'red' : 'foreground'),
+            icon: "Heart",
+            fill: () => (isLiked ? "red" : undefined),
+            color: () => (isLiked ? "red" : "foreground"),
             handleClick: props => {
                 if (!auth.token) {
-                    return history.push('/login')
+                    return history.push("/login")
                 }
                 if (isLiked) {
                     dislikeWeesh()
@@ -253,14 +253,14 @@ export default props => {
                             item.number > 0 && (
                                 <StyledNumberContainer
                                     key={uuid()}
-                                    margin='0 0 0 .75rem'
+                                    margin="0 0 0 .75rem"
                                     to={item.link}>
                                     <Icon
                                         icon={item.icon}
                                         size={item.size || 12}
-                                        fill={item.fill || 'dark'}
+                                        fill={item.fill || "dark"}
                                         strokeWidth={item.strokeWidth || 2}
-                                        color='dark'
+                                        color="dark"
                                     />
                                     <StyledNumber>{item.number}</StyledNumber>
                                 </StyledNumberContainer>

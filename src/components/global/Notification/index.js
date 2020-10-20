@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import Avatar from 'Root/components/global/Avatar'
-import FullName from 'Root/components/global/FullName'
-import Icon from 'Root/components/global/Icon'
-import Convertors from 'Root/components/global/Convertors'
-import C from 'Root/constants'
-import helpers from 'Root/helpers'
-import moment from 'moment'
-import parse from 'html-react-parser'
-import uuid from 'uuid'
-import Link from 'Root/components/global/Link'
+import React from "react"
+import styled from "styled-components"
+import Avatar from "Root/components/global/Avatar"
+import FullName from "Root/components/global/FullName"
+import Icon from "Root/components/global/Icon"
+import Convertors from "Root/components/global/Convertors"
+import C from "Root/constants"
+import helpers from "Root/helpers"
+import moment from "moment"
+import parse from "html-react-parser"
+import uuid from "uuid"
+import Link from "Root/components/global/Link"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -112,49 +112,49 @@ export default props => {
 
 const switchIcon = type => {
     switch (type) {
-        case 'like_weesh':
+        case "like_weesh":
             return (
-                <Icon icon='Heart' size={20} strokeWidth={1.5} color='dark' />
+                <Icon icon="Heart" size={20} strokeWidth={1.5} color="dark" />
             )
-        case 'like_weesh_comment':
+        case "like_weesh_comment":
             return (
-                <Icon icon='Heart' size={20} strokeWidth={1.5} color='dark' />
+                <Icon icon="Heart" size={20} strokeWidth={1.5} color="dark" />
             )
-        case 'comment_weesh':
+        case "comment_weesh":
             return (
                 <Icon
-                    icon='MessageCircle'
+                    icon="MessageCircle"
                     size={20}
                     strokeWidth={1.5}
-                    color='dark'
+                    color="dark"
                 />
             )
-        case 'reply_comment':
+        case "reply_comment":
             return (
                 <Icon
-                    icon='CornerUpRight'
+                    icon="CornerUpRight"
                     size={20}
                     strokeWidth={1.5}
-                    color='dark'
+                    color="dark"
                 />
             )
-        case 'accept_follow_request':
+        case "accept_follow_request":
             return (
-                <Icon icon='Check' size={20} strokeWidth={1.5} color='dark' />
+                <Icon icon="Check" size={20} strokeWidth={1.5} color="dark" />
             )
-        case 'start_following':
-            return <Icon icon='Plus' size={20} strokeWidth={1.5} color='dark' />
-        case 'welcome_message':
+        case "start_following":
+            return <Icon icon="Plus" size={20} strokeWidth={1.5} color="dark" />
+        case "welcome_message":
             return (
-                <Icon icon='Inbox' size={20} strokeWidth={1.5} color='dark' />
+                <Icon icon="Inbox" size={20} strokeWidth={1.5} color="dark" />
             )
-        case 'mention_in_weesh':
+        case "mention_in_weesh":
             return (
-                <Icon icon='AtSign' size={20} strokeWidth={1.5} color='dark' />
+                <Icon icon="AtSign" size={20} strokeWidth={1.5} color="dark" />
             )
-        case 'reweesh':
+        case "reweesh":
             return (
-                <Icon icon='Repeat' size={20} strokeWidth={1.5} color='dark' />
+                <Icon icon="Repeat" size={20} strokeWidth={1.5} color="dark" />
             )
     }
 }
@@ -162,42 +162,42 @@ const switchIcon = type => {
 const switchElements = ({ element, props }) => {
     if (element.length > 0) {
         switch (element) {
-            case '$$username$$':
+            case "$$username$$":
                 return (
                     <StyledUsername key={uuid()}>
-                        <FullName fontSize='0.85rem' user={props.sender} />
+                        <FullName fontSize="0.85rem" user={props.sender} />
                     </StyledUsername>
                 )
-            case '$$weesh$$':
+            case "$$weesh$$":
                 return (
                     <StyledGray key={uuid()}>
                         {props.weesh &&
                             (props.weesh.content
                                 ? `${props.weesh.content
-                                      .replace(/\n/g, ' ')
+                                      .replace(/\n/g, " ")
                                       .substr(0, 50)}${
                                       props.weesh.content.length > 50
-                                          ? '... '
-                                          : ' '
+                                          ? "... "
+                                          : " "
                                   }`
                                 : props.weesh.child.content &&
                                   `${props.weesh.child.content
-                                      .replace(/\n/g, ' ')
+                                      .replace(/\n/g, " ")
                                       .substr(0, 50)}${
                                       props.weesh.child.content.length > 50
-                                          ? '... '
-                                          : ' '
+                                          ? "... "
+                                          : " "
                                   }`)}
                     </StyledGray>
                 )
-            case '$$comment$$':
+            case "$$comment$$":
                 return (
                     <StyledContent key={uuid()}>
                         {props.comment &&
-                            `${props.comment.content.replace(/\n/g, ' ')} `}
+                            `${props.comment.content.replace(/\n/g, " ")} `}
                     </StyledContent>
                 )
-            case '$$you$$':
+            case "$$you$$":
                 return (
                     <StyledYou key={uuid()}>
                         {props.recipient.firstName} {props.recipient.lastName}
@@ -206,7 +206,7 @@ const switchElements = ({ element, props }) => {
             default:
                 return (
                     <StyledContent key={uuid()}>
-                        {element.replace(/\n/g, ' ')}
+                        {element.replace(/\n/g, " ")}
                     </StyledContent>
                 )
         }

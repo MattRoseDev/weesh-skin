@@ -1,8 +1,8 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import { Components } from 'Root/StyledComponents'
-import Link from 'Root/components/global/Link'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import { Components } from "Root/StyledComponents"
+import Link from "Root/components/global/Link"
 
 const StyledContainer = styled(Link)`
     ${C.styles.flex.flexRow};
@@ -40,7 +40,7 @@ export default props => {
             />
             <Components.Global.FullName
                 fontSize={props.fontSize || undefined}
-                padding='0 0 0 .25rem'
+                padding="0 0 0 .25rem"
                 user={props.user || undefined}
                 width={props.width || undefined}
             />

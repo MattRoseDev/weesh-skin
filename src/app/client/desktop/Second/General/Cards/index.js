@@ -1,11 +1,11 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import ListsCard from 'Root/components/desktop/ListsCard'
-import C from 'Root/constants'
-import { useQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
-import uuid from 'uuid'
-import Link from 'Root/components/global/Link'
+import React from "react"
+import styled, { css } from "styled-components"
+import ListsCard from "Root/components/desktop/ListsCard"
+import C from "Root/constants"
+import { useQuery } from "@apollo/react-hooks"
+import api from "Root/api"
+import uuid from "uuid"
+import Link from "Root/components/global/Link"
 
 const StyledContainer = styled.div`
     padding: 1rem 0.5rem 0.5rem;
@@ -31,7 +31,7 @@ export default props => {
     const [state, setState] = React.useState(null)
 
     const { error, data, loading, called } = useQuery(api.tags.getTheBestTags, {
-        fetchPolicy: 'no-cache',
+        fetchPolicy: "no-cache",
         variables: {
             limit: 8,
         },
@@ -54,7 +54,7 @@ export default props => {
 
     return (
         <StyledContainer {...props}>
-            <ListsCard title='TRENDING' items={state} />
+            <ListsCard title="TRENDING" items={state} />
         </StyledContainer>
     )
 }

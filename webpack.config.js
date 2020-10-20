@@ -1,17 +1,17 @@
-const webpack = require('webpack')
-const TerserPlugin = require('terser-webpack-plugin')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const CompressionPlugin = require('compression-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
-const path = require('path')
-const babelConfig = require('./babel.config.json')
+const webpack = require("webpack")
+const TerserPlugin = require("terser-webpack-plugin")
+const HtmlWebPackPlugin = require("html-webpack-plugin")
+const CompressionPlugin = require("compression-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
+const path = require("path")
+const babelConfig = require("./babel.config.json")
 
 module.exports = {
-    entry: './src/index.js',
+    entry: "./src/index.js",
     output: {
-        path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js',
-        publicPath: '/',
+        path: path.join(__dirname, "/dist"),
+        filename: "bundle.js",
+        publicPath: "/",
     },
     module: {
         rules: [
@@ -19,7 +19,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: "babel-loader",
                     query: {
                         cacheDirectory: true,
                         presets: babelConfig.presets,
@@ -31,13 +31,13 @@ module.exports = {
                 test: /\.html$/,
                 use: [
                     {
-                        loader: 'html-loader',
+                        loader: "html-loader",
                     },
                 ],
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: ["style-loader", "css-loader"],
             },
             // {
             //     test: /\.(png|jpg|jpeg|gif|woff|woff2|ttf|eot|svg)$/,
@@ -47,15 +47,15 @@ module.exports = {
             // },
             {
                 test: /\.(png|jpg|jpeg|gif|woff|woff2|ttf|eot|svg)$/,
-                use: ['file-loader'],
+                use: ["file-loader"],
             },
         ],
     },
     resolve: {
         alias: {
-            Root: path.resolve(__dirname, '.', 'src'),
+            Root: path.resolve(__dirname, ".", "src"),
         },
-        extensions: ['.js', '.jsx'],
+        extensions: [".js", ".jsx"],
     },
     devServer: {
         // contentBase: '.',
@@ -69,13 +69,13 @@ module.exports = {
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: path.join(__dirname, './src', 'index.html'),
-            filename: 'index.html',
+            template: path.join(__dirname, "./src", "index.html"),
+            filename: "index.html",
             hash: true,
         }),
         new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('production'),
+            "process.env": {
+                NODE_ENV: JSON.stringify("production"),
             },
         }),
         new webpack.optimize.AggressiveMergingPlugin(),
@@ -86,19 +86,19 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.join(__dirname, './src/static'),
-                    to: 'static',
+                    from: path.join(__dirname, "./src/static"),
+                    to: "static",
                 },
                 {
-                    from: path.join(__dirname, './seo'),
-                    to: '.',
+                    from: path.join(__dirname, "./seo"),
+                    to: ".",
                 },
             ],
         }),
     ],
     optimization: {
         splitChunks: {
-            chunks: 'all',
+            chunks: "all",
         },
         minimize: true,
         minimizer: [new TerserPlugin()],

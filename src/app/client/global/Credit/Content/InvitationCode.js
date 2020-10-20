@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import StyledComponents, { Components } from 'Root/StyledComponents'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import StyledComponents, { Components } from "Root/StyledComponents"
 
 const StyledContainer = styled.div`
     display: block;
@@ -23,20 +23,20 @@ export default props => {
     const handleCopyLink = () => {
         textarea.current.disabled = false
         textarea.current.select()
-        document.execCommand('copy')
+        document.execCommand("copy")
         textarea.current.disabled = true
         window.getSelection().removeAllRanges()
         snackbarDispatch({
-            type: 'SET_DATA',
+            type: "SET_DATA",
             data: {
-                icon: 'Copy',
-                message: 'Invitation Link copied to clipboard.',
-                background: 'foreground',
+                icon: "Copy",
+                message: "Invitation Link copied to clipboard.",
+                background: "foreground",
                 visible: true,
             },
         })
         setTimeout(() => {
-            snackbarDispatch({ type: 'HIDE' })
+            snackbarDispatch({ type: "HIDE" })
         }, 2 * 1000)
     }
 
@@ -47,7 +47,7 @@ export default props => {
                 disabled
                 ref={textarea}
                 defaultValue={`${window.location.origin}/?invitationCode=${props.invitationCode}`}
-                inputMode='none'
+                inputMode="none"
             />
         </StyledContainer>
     )

@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import uuid from 'uuid'
-import List from 'Root/components/desktop/List'
-import Loader from 'Root/components/global/Loader'
-import C from 'Root/constants'
-import { useQuery } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import { AuthContext } from 'Root/contexts/auth'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
+import uuid from "uuid"
+import List from "Root/components/desktop/List"
+import Loader from "Root/components/global/Loader"
+import C from "Root/constants"
+import { useQuery } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import { AuthContext } from "Root/contexts/auth"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledContainer = styled.div`
     min-height: ${window.innerHeight - 55}px;
@@ -24,17 +24,17 @@ const StyledLoaderContainer = styled.div`
 
 const switchStatus = status => {
     switch (status) {
-        case 'requests':
+        case "requests":
             return {
-                index: 'follower',
-                api: 'getRequests',
-                data: 'getRequestsUsersConnectionByIdForUser',
+                index: "follower",
+                api: "getRequests",
+                data: "getRequestsUsersConnectionByIdForUser",
             }
     }
 }
 
 export default props => {
-    let url = props.match.url.split('/')
+    let url = props.match.url.split("/")
     const { auth } = React.useContext(AuthContext)
     const [state, setState] = React.useState(null)
     const history = useHistory()
@@ -42,7 +42,7 @@ export default props => {
     const { data, called, error, loading } = useQuery(
         api.connections[switchStatus(status).api],
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
@@ -66,7 +66,7 @@ export default props => {
             <Meta />
             {loading ? (
                 <StyledLoaderContainer>
-                    <Loader size={25} strokeWidth={1.25} color='gray' />
+                    <Loader size={25} strokeWidth={1.25} color="gray" />
                 </StyledLoaderContainer>
             ) : (
                 state && (

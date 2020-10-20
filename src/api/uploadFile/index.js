@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
 
 const single = gql`
     mutation singleUpload($file: Upload!, $type: String!) {

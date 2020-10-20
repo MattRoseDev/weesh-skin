@@ -1,28 +1,28 @@
 export const authReducer = (state, action) => {
     switch (action.type) {
-        case 'LOGIN':
+        case "LOGIN":
             return {
                 ...state,
                 ...action.data,
             }
-        case 'LOGOUT':
+        case "LOGOUT":
             return {
-                theme: 'light',
-                color: 'blue',
+                theme: "light",
+                color: "blue",
                 token: false,
             }
-        case 'TOGGLE_THEME':
-            let theme = state.theme == 'light' ? 'night' : 'light'
+        case "TOGGLE_THEME":
+            let theme = state.theme == "light" ? "night" : "light"
             return {
                 ...state,
                 theme,
             }
-        case 'EDIT_THEME':
+        case "EDIT_THEME":
             return {
                 ...state,
                 theme: action.data,
             }
-        case 'EDIT_COLOR':
+        case "EDIT_COLOR":
             return {
                 ...state,
                 color: action.data,

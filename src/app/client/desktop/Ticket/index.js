@@ -1,11 +1,11 @@
-import React from 'react'
-import Container from 'Root/components/desktop/Container'
-import Border from 'Root/components/global/Border'
-import C from 'Root/constants'
-import styled from 'styled-components'
-import Header from './Header'
-import Content from 'Root/app/client/global/Ticket/Content'
-import Second from 'Root/app/client/desktop/Second/General'
+import React from "react"
+import Container from "Root/components/desktop/Container"
+import Border from "Root/components/global/Border"
+import C from "Root/constants"
+import styled from "styled-components"
+import Header from "./Header"
+import Content from "Root/app/client/global/Ticket/Content"
+import Second from "Root/app/client/desktop/Second/General"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -20,15 +20,15 @@ const StyledSection = styled.div`
 export default props => {
     return (
         <StyledContainer>
-            <Border leftColor='light' rightColor='light'>
-                <Container width='38rem'>
+            <Border leftColor="light" rightColor="light">
+                <Container width="38rem">
                     <StyledSection>
                         <Header {...props} />
                         <Content {...props} />
                     </StyledSection>
                 </Container>
             </Border>
-            <Container width='24rem'>
+            <Container width="24rem">
                 <Second {...props} />
             </Container>
         </StyledContainer>

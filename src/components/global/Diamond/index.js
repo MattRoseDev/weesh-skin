@@ -1,7 +1,7 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import diamond from 'Root/public/icons/diamond.svg'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import diamond from "Root/public/icons/diamond.svg"
 
 const StyledContainer = styled.span`
     ${C.styles.flex.inlineFlexRow};
@@ -62,7 +62,7 @@ export default props => {
                     fontSize={props.fontSize || undefined}
                     paddingValue={props.paddingValue || undefined}
                     marginValue={props.marginValue || undefined}>
-                    {sign == 1 ? '+' : ''}
+                    {sign == 1 ? "+" : ""}
                     {props.value}
                 </StyledValue>
             )}

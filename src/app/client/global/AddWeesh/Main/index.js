@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import { WeeshContext } from 'Root/contexts/weesh'
-import C from 'Root/constants'
-import Editor from 'draft-js-plugins-editor'
-import { EditorState, ContentState, Modifier, SelectionState } from 'draft-js'
-import { useLazyQuery, useQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
-import createLinkifyPlugin from 'draft-js-linkify-plugin'
-import helpers from 'Root/helpers'
-import Child from './Child'
+import React from "react"
+import styled from "styled-components"
+import { WeeshContext } from "Root/contexts/weesh"
+import C from "Root/constants"
+import Editor from "draft-js-plugins-editor"
+import { EditorState, ContentState, Modifier, SelectionState } from "draft-js"
+import { useLazyQuery, useQuery } from "@apollo/react-hooks"
+import api from "Root/api"
+import createLinkifyPlugin from "draft-js-linkify-plugin"
+import helpers from "Root/helpers"
+import Child from "./Child"
 
 const StyledContainer = styled.div`
     & * {
@@ -76,7 +76,7 @@ export default props => {
         },
     ]
 
-    const initText = '' + weesh.content
+    const initText = "" + weesh.content
 
     const [state, setState] = React.useState({
         editorState: EditorState.createWithContent(
@@ -85,30 +85,30 @@ export default props => {
     })
 
     const getWeeshResponse = useQuery(api.weeshes.getWeeshByLink, {
-        fetchPolicy: 'no-cache',
+        fetchPolicy: "no-cache",
         variables: {
-            link: helpers.queryString.get({ props, key: 'childId' }),
+            link: helpers.queryString.get({ props, key: "childId" }),
         },
     })
 
     const [getTheBestTags, getTheBestTagsResponse] = useLazyQuery(
         api.tags.getTheBestTags,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
     const [getTagSuggestion, getTagSuggestionResponse] = useLazyQuery(
         api.tags.suggestion,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
     const [getUserSuggestion, getUserSuggestionResponse] = useLazyQuery(
         api.users.suggestion,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
@@ -123,7 +123,7 @@ export default props => {
         if (data) {
             setReWeesh(data.getWeeshByLinkForUser)
             dispatch({
-                type: 'ADD_WEESH',
+                type: "ADD_WEESH",
                 data: {
                     childId: data.getWeeshByLinkForUser.id,
                 },
@@ -135,7 +135,7 @@ export default props => {
         const { data } = getTheBestTagsResponse
         if (data && weesh.allowShowSuggestions) {
             dispatch({
-                type: 'ADD_WEESH',
+                type: "ADD_WEESH",
                 data: {
                     defaultSuggestions: data.getTheBestTagsForUser
                         ? data.getTheBestTagsForUser.tags
@@ -153,7 +153,7 @@ export default props => {
         const { data } = getTagSuggestionResponse
         if (data && weesh.allowShowSuggestions) {
             dispatch({
-                type: 'ADD_WEESH',
+                type: "ADD_WEESH",
                 data: {
                     suggestions: data.exploreAllForUser
                         ? data.exploreAllForUser.tag.tags
@@ -171,7 +171,7 @@ export default props => {
         const { data } = getUserSuggestionResponse
         if (data && weesh.allowShowSuggestions) {
             dispatch({
-                type: 'ADD_WEESH',
+                type: "ADD_WEESH",
                 data: {
                     suggestions: data.exploreAllForUser
                         ? data.exploreAllForUser.user.users
@@ -211,9 +211,9 @@ export default props => {
 
         handleCursorPosition(editorState)
         dispatch({
-            type: 'ADD_CONTENT',
+            type: "ADD_CONTENT",
             data: {
-                content: editorState.getCurrentContent().getPlainText(''),
+                content: editorState.getCurrentContent().getPlainText(""),
             },
         })
     }
@@ -224,7 +224,7 @@ export default props => {
         let currentContent = editorState.getCurrentContent()
         let currentContentBlock = currentContent.getBlockForKey(anchorKey)
         let start = selectionState.getStartOffset()
-        let text = currentContentBlock.getText().slice(0, start).split(' ')
+        let text = currentContentBlock.getText().slice(0, start).split(" ")
         let expression = text[text.length - 1]
         if (expression.match(C.regexes.weesh.hashtag)) {
             getTagSuggestion({
@@ -233,10 +233,10 @@ export default props => {
                 },
             })
             dispatch({
-                type: 'ADD_SUGGESTION',
+                type: "ADD_SUGGESTION",
                 data: {
                     allowShowSuggestions: true,
-                    suggestionType: 'TAG',
+                    suggestionType: "TAG",
                 },
             })
         } else if (expression.match(C.regexes.weesh.mention)) {
@@ -246,15 +246,15 @@ export default props => {
                 },
             })
             dispatch({
-                type: 'ADD_SUGGESTION',
+                type: "ADD_SUGGESTION",
                 data: {
                     allowShowSuggestions: true,
-                    suggestionType: 'USER',
+                    suggestionType: "USER",
                 },
             })
         } else {
             dispatch({
-                type: 'EMPTY_SUGGESTION',
+                type: "EMPTY_SUGGESTION",
             })
         }
     }

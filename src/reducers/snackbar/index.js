@@ -1,16 +1,16 @@
 export const snackbarReducer = (state, action) => {
     switch (action.type) {
-        case 'SET_DATA':
+        case "SET_DATA":
             return {
                 ...state,
                 ...action.data,
             }
-        case 'SHOW':
+        case "SHOW":
             return {
                 ...state,
                 visible: true,
             }
-        case 'HIDE':
+        case "HIDE":
             return {
                 ...state,
                 visible: false,

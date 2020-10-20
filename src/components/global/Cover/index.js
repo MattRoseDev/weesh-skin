@@ -1,10 +1,10 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import cover from 'Root/public/img/cover.png'
-import config from 'Root/config'
+import React from "react"
+import styled, { css } from "styled-components"
+import cover from "Root/public/img/cover.png"
+import config from "Root/config"
 
 const StyledContainerCover = styled.div`
-    height: ${({ height }) => (height ? `${height}` : '10rem')};
+    height: ${({ height }) => (height ? `${height}` : "10rem")};
 `
 
 const StyledCover = styled.div`

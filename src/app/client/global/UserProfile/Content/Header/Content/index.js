@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import Connection from 'Root/app/client/global/UserProfile/Content/Header/Content/Connection/index'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import Main from './Main'
-import C from 'Root/constants'
-import { UserContext } from 'Root/contexts/user'
-import { AuthContext } from 'Root/contexts/auth'
-import { useSubscription } from '@apollo/react-hooks'
-import api from 'Root/api'
-import diamond from 'Root/public/icons/diamond.svg'
+import React from "react"
+import styled from "styled-components"
+import Connection from "Root/app/client/global/UserProfile/Content/Header/Content/Connection/index"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import Main from "./Main"
+import C from "Root/constants"
+import { UserContext } from "Root/contexts/user"
+import { AuthContext } from "Root/contexts/auth"
+import { useSubscription } from "@apollo/react-hooks"
+import api from "Root/api"
+import diamond from "Root/public/icons/diamond.svg"
 
 const StyledContent = styled.div`
     ${C.styles.flex.flexColumn};
@@ -21,7 +21,7 @@ const StyledContent = styled.div`
 const StyledButtonContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsCenter};
-    padding: ${window.innerWidth < 960 ? '0.75rem' : '0.75rem 0.75rem 1.5rem'};
+    padding: ${window.innerWidth < 960 ? "0.75rem" : "0.75rem 0.75rem 1.5rem"};
 `
 const StyledCredit = styled(Components.Global.Link)`
     ${C.styles.flex.flexRow};
@@ -52,55 +52,55 @@ export default props => {
             <StyledButtonContainer>
                 {props.match.params.username == auth.username ? (
                     <Components.Global.Button
-                        color='primary'
+                        color="primary"
                         // bordercolor='light'
-                        borderwidth='1px'
-                        fontWeight='bold'
-                        padding='.1rem .25rem'
-                        margin='0 .5rem 0 0'
-                        radius='50rem'
-                        to='/credit'>
+                        borderwidth="1px"
+                        fontWeight="bold"
+                        padding=".1rem .25rem"
+                        margin="0 .5rem 0 0"
+                        radius="50rem"
+                        to="/credit">
                         <Components.Global.Diamond
                             width={26}
                             value={auth.credit}
                             sign={false}
-                            fontSize='1.5rem'
-                            marginValue='0 0.25rem -0.4rem 0'
+                            fontSize="1.5rem"
+                            marginValue="0 0.25rem -0.4rem 0"
                         />
                     </Components.Global.Button>
                 ) : (
                     <Components.Global.Button
-                        color='primary'
+                        color="primary"
                         // bordercolor='light'
-                        borderwidth='1px'
-                        fontWeight='bold'
-                        padding='.1rem .25rem'
-                        margin='0 .5rem 0 0'
-                        cursor='default'
-                        radius='50rem'>
+                        borderwidth="1px"
+                        fontWeight="bold"
+                        padding=".1rem .25rem"
+                        margin="0 .5rem 0 0"
+                        cursor="default"
+                        radius="50rem">
                         <Components.Global.Diamond
                             width={26}
                             value={user.credit}
                             sign={false}
-                            fontSize='1.5rem'
-                            marginValue='0 0.25rem -0.4rem 0'
+                            fontSize="1.5rem"
+                            marginValue="0 0.25rem -0.4rem 0"
                         />
                     </Components.Global.Button>
                 )}
 
                 {auth.id == user.id && (
                     <Components.Global.Button
-                        color='primary'
-                        hoverbackground='lightPrimary'
-                        bordercolor='primary'
-                        borderwidth='1px'
-                        fontWeight='bold'
-                        padding='.4rem'
-                        margin='0 .5rem 0 0'
-                        radius='50%'
+                        color="primary"
+                        hoverbackground="lightPrimary"
+                        bordercolor="primary"
+                        borderwidth="1px"
+                        fontWeight="bold"
+                        padding=".4rem"
+                        margin="0 .5rem 0 0"
+                        radius="50%"
                         to={`/${auth.username}/bookmarks`}>
                         <Components.Global.Icon
-                            icon='Bookmark'
+                            icon="Bookmark"
                             color={`${auth.color}`}
                         />
                     </Components.Global.Button>

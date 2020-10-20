@@ -1,5 +1,5 @@
-import React from 'react'
-import { notificationsReducer } from 'Root/reducers/notifications'
+import React from "react"
+import { notificationsReducer } from "Root/reducers/notifications"
 
 export const NotificationsContext = React.createContext()
 

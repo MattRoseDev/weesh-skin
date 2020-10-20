@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
 
 const follow = gql`
     mutation followUserConnectionForUser($userId: ID!) {

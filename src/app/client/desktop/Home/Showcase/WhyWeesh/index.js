@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import C from "Root/constants"
 import Section from "Root/components/global/Section"
-import Card from "Root/app/client/global/Home/Showcase/Card"
+import Card from "Root/app/client/desktop/Home/Showcase/Card"
 import Star from "Root/public/img/showcase/magic-star.svg"
 import Diamond from "Root/public/img/showcase/diamond.svg"
 import Lock from "Root/public/img/showcase/lock.svg"
@@ -19,7 +19,7 @@ export default props => {
         {
             title: "secert weesh",
             description:
-                "Need more sucurity? Turn your wish to secert weesh so no one can read it.",
+                "Need more security? Turn your wish to secert weesh so no one can read it.",
             icon: Lock,
         },
         {

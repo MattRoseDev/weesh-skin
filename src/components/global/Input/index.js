@@ -1,9 +1,9 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import Input from './Input'
-import Icon from 'Root/components/global/Icon'
-import uuid from 'uuid'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import Input from "./Input"
+import Icon from "Root/components/global/Icon"
+import uuid from "uuid"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -26,7 +26,7 @@ const StyledFrame = styled.div`
     /* ${C.styles.flex.alignItemsCenter}; */
     width: 100%;
     border-radius: .75rem;
-    padding: ${({ padding }) => (padding ? padding : '.75rem')};
+    padding: ${({ padding }) => (padding ? padding : ".75rem")};
 `
 
 const StyledContent = styled.div`
@@ -54,7 +54,7 @@ export default props => {
                 )}
                 <StyledContent>
                     {props.icon && (
-                        <Icon icon={props.icon} color='gray' size={16} />
+                        <Icon icon={props.icon} color="gray" size={16} />
                     )}
                     <Input {...props} id={id} />
                 </StyledContent>

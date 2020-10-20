@@ -1,16 +1,16 @@
-import React from 'react'
-import { EditorState, ContentState, Modifier, SelectionState } from 'draft-js'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import { WeeshContext } from 'Root/contexts/weesh'
-import uuid from 'uuid'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import helpers from 'Root/helpers'
+import React from "react"
+import { EditorState, ContentState, Modifier, SelectionState } from "draft-js"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import { WeeshContext } from "Root/contexts/weesh"
+import uuid from "uuid"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import helpers from "Root/helpers"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.scrollbar.hide};
-    width: ${({ width }) => width || 'unset'};
+    width: ${({ width }) => width || "unset"};
     padding: 0.5rem;
     background: ${({ theme }) => theme.colors.background};
     overflow-x: scroll;
@@ -26,7 +26,7 @@ const StyledBlock = styled.div`
 const StyledItem = styled.span`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
-    width: ${({ width }) => width || 'unset'};
+    width: ${({ width }) => width || "unset"};
     background: ${({ theme }) => theme.colors.background};
     overflow-x: scroll;
     border: 1px solid ${({ theme }) => theme.colors.light};
@@ -130,7 +130,7 @@ export default props => {
         const newEditorState = EditorState.push(
             state.editorState,
             mentionReplacedContent,
-            'insert-mention',
+            "insert-mention",
         )
         const forceSelection = selection.merge({
             anchorOffset: begin + value.length,
@@ -145,7 +145,7 @@ export default props => {
         })
 
         dispatch({
-            type: 'ADD_CONTENT',
+            type: "ADD_CONTENT",
             data: {
                 content: newEditorState.getCurrentContent().getPlainText(),
             },
@@ -156,11 +156,11 @@ export default props => {
         <StyledContainer width={props.width || undefined}>
             {weesh.suggestions.length > 0 && (
                 <>
-                    {weesh.suggestionType == 'USER' &&
+                    {weesh.suggestionType == "USER" &&
                         weesh.suggestions.map(user => (
                             <UserItem {...user} handleClick={handleClick} />
                         ))}
-                    {weesh.suggestionType == 'TAG' &&
+                    {weesh.suggestionType == "TAG" &&
                         weesh.suggestions.map(tag => (
                             <TagItem {...tag} handleClick={handleClick} />
                         ))}
@@ -169,11 +169,11 @@ export default props => {
             {weesh.suggestions.length < 1 &&
                 weesh.defaultSuggestions.length > 0 &&
                 weesh.defaultSuggestions.map(tag => (
-                    <div style={{ padding: '1.25rem' }}></div> // <TagItem {...tag} handleClick={handleClick} />
+                    <div style={{ padding: "1.25rem" }}></div> // <TagItem {...tag} handleClick={handleClick} />
                 ))}
             {weesh.suggestions.length < 1 &&
                 weesh.defaultSuggestions.length < 1 && (
-                    <Components.Global.Loading padding='.65rem' />
+                    <Components.Global.Loading padding=".65rem" />
                 )}
         </StyledContainer>
     )
@@ -182,13 +182,13 @@ export default props => {
 const TagItem = props => {
     return (
         <StyledBlock onClick={() => props.handleClick(`#${props.title}`)}>
-            <StyledItem padding='.3rem'>
+            <StyledItem padding=".3rem">
                 <StyledContent>
                     <StyledTag>#{props.title}</StyledTag>
                     <StyledNumber>
                         {helpers.labelFormat({
-                            single: 'weesh',
-                            plural: 'weeshes',
+                            single: "weesh",
+                            plural: "weeshes",
                             number: props.weeshCounter || props.counter,
                         })}
                     </StyledNumber>
@@ -201,7 +201,7 @@ const TagItem = props => {
 const UserItem = props => {
     return (
         <StyledBlock onClick={() => props.handleClick(`@${props.username}`)}>
-            <StyledItem padding='.25rem .5rem'>
+            <StyledItem padding=".25rem .5rem">
                 <Components.Global.Avatar user={props} size={1.5} />
                 <StyledContent>
                     <Components.Global.FullName user={props} fontSize={0.85} />

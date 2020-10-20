@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
+import styled, { css } from "styled-components"
+import C from "Root/constants"
 
 const Frame = styled.div`
     ${C.styles.flex.flexColumn};

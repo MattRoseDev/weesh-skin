@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
 
 const StyledInput = styled.input`
     outline: none;
@@ -23,8 +23,8 @@ export default props => {
             type={props.type}
             onChange={props.onChange}
             onInput={props.onInput}
-            defaultValue={props.value || ''}
-            autoCorrect='off'
+            defaultValue={props.value || ""}
+            autoCorrect="off"
         />
     )
 }

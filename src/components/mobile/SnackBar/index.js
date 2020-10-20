@@ -1,8 +1,8 @@
-import React from 'react'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import Icon from 'Root/components/global/Icon'
-import styled from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import Icon from "Root/components/global/Icon"
+import styled from "styled-components"
+import C from "Root/constants"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -23,8 +23,8 @@ const StyledContent = styled.div`
     border-radius: 0.5rem;
     padding: 1rem;
     background: ${({ theme, snackbar }) =>
-        theme.colors[snackbar.background] || 'unset'};
-    color: ${({ theme, snackbar }) => theme.colors[snackbar.color] || 'unset'};
+        theme.colors[snackbar.background] || "unset"};
+    color: ${({ theme, snackbar }) => theme.colors[snackbar.color] || "unset"};
 `
 
 const StyledMessage = styled.div`
@@ -51,6 +51,6 @@ export default props => {
             </StyledContent>
         </StyledContainer>
     ) : (
-        ''
+        ""
     )
 }

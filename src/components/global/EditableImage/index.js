@@ -1,7 +1,7 @@
-import React from 'react'
-import Icon from 'Root/components/global/Icon'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import Icon from "Root/components/global/Icon"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
 
 const StyledContainer = styled.div`
     position: relative;
@@ -29,7 +29,7 @@ export default props => {
     return (
         <StyledContainer {...props}>
             <StyledIcon>
-                <Icon icon={props.icon || 'Camera'} color='white' size={26} />
+                <Icon icon={props.icon || "Camera"} color="white" size={26} />
             </StyledIcon>
             {props.children}
         </StyledContainer>
