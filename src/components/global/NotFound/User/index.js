@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import Icon from 'Root/components/global/Icon'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import Icon from "Root/components/global/Icon"
 
 const StyledContaner = styled.div`
     height: 100%;
@@ -16,7 +16,7 @@ const StyledMessage = styled.div`
 export default props => {
     return (
         <StyledContaner {...props}>
-            <Icon icon='User' size={60} strokeWidth={1.5} color='dark' />
+            <Icon icon="User" size={60} strokeWidth={1.5} color="dark" />
             <StyledMessage>User Not Found</StyledMessage>
         </StyledContaner>
     )

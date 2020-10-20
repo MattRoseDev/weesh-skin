@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { AuthContext } from 'Root/contexts/auth'
-import C from 'Root/constants'
-import uuid from 'uuid'
-import useHistory from 'Root/hooks/useHistory'
-import Convertors from 'Root/components/global/Convertors'
-import Child from './Child'
+import React from "react"
+import styled from "styled-components"
+import { Link } from "react-router-dom"
+import { AuthContext } from "Root/contexts/auth"
+import C from "Root/constants"
+import uuid from "uuid"
+import useHistory from "Root/hooks/useHistory"
+import Convertors from "Root/components/global/Convertors"
+import Child from "./Child"
 
 const StyledLink = styled.div`
     text-decoration: none;

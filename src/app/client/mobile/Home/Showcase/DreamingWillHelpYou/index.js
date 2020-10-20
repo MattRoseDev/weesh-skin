@@ -44,6 +44,16 @@ export default props => {
     return (
         <StyledContainer>
             <Section>
+                <Card
+                    icon={bigCard.icon}
+                    title={bigCard.title}
+                    description={bigCard.description}
+                    width={150}
+                    flexDirection="column"
+                    color={C.themes[`${props.auth.theme}`].colors.foreground}
+                />
+            </Section>
+            <Section>
                 {cards.map(card => (
                     <Card
                         icon={card.icon}
@@ -56,16 +66,6 @@ export default props => {
                         }
                     />
                 ))}
-            </Section>
-            <Section>
-                <Card
-                    icon={bigCard.icon}
-                    title={bigCard.title}
-                    description={bigCard.description}
-                    width={150}
-                    flexDirection="column"
-                    color={C.themes[`${props.auth.theme}`].colors.foreground}
-                />
             </Section>
         </StyledContainer>
     )

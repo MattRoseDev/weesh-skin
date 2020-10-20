@@ -1,20 +1,20 @@
-import React from 'react'
-import TextareaAutosize from 'react-textarea-autosize'
-import styled, { css } from 'styled-components'
-import Avatar from 'Root/components/global/Avatar'
-import Icon from 'Root/components/global/Icon'
-import { AuthContext } from 'Root/contexts/auth'
-import { WeeshPageContext } from 'Root/contexts/weeshPage'
-import C from 'Root/constants'
-import { useMutation } from '@apollo/react-hooks'
-import api from 'Root/api'
+import React from "react"
+import TextareaAutosize from "react-textarea-autosize"
+import styled, { css } from "styled-components"
+import Avatar from "Root/components/global/Avatar"
+import Icon from "Root/components/global/Icon"
+import { AuthContext } from "Root/contexts/auth"
+import { WeeshPageContext } from "Root/contexts/weeshPage"
+import C from "Root/constants"
+import { useMutation } from "@apollo/react-hooks"
+import api from "Root/api"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.alignItemsStart};
     padding: 0.5rem;
     position: sticky;
-    top: ${window.innerWidth > 960 ? '54px' : '44px'};
+    top: ${window.innerWidth > 960 ? "54px" : "44px"};
     border-bottom: 1px dashed ${({ theme }) => theme.colors.light};
     background: ${({ theme }) => theme.colors.background};
 `
@@ -95,7 +95,7 @@ export default props => {
     const { weeshPage, dispatch: weeshPageDispatch } = React.useContext(
         WeeshPageContext,
     )
-    const [state, setState] = React.useState('')
+    const [state, setState] = React.useState("")
     const [addWeeshComment, { data, error, loading, called }] = useMutation(
         api.weeshComments.add,
     )
@@ -117,13 +117,13 @@ export default props => {
 
     const handleDiscardReply = () =>
         weeshPageDispatch({
-            type: 'UNSET_REPLY',
+            type: "UNSET_REPLY",
         })
 
     React.useEffect(() => {
         if (!weeshPage.textarea) {
             weeshPageDispatch({
-                type: 'SET_TEXTAREA',
+                type: "SET_TEXTAREA",
                 data: {
                     textarea,
                 },
@@ -135,10 +135,10 @@ export default props => {
         }
 
         if (data && called && state.length > 0) {
-            setState('')
+            setState("")
             const res = data.addWeeshCommentForUser
             weeshPageDispatch({
-                type: 'ADD_COMMENT',
+                type: "ADD_COMMENT",
                 data: res,
             })
         }
@@ -155,14 +155,14 @@ export default props => {
                     {weeshPage.reply && (
                         <StyledReplyContainer>
                             <StyledReplyLabel>
-                                Reply to{' '}
+                                Reply to{" "}
                                 <StyledReplyUsername>
                                     @{weeshPage.reply.username}
                                 </StyledReplyUsername>
                             </StyledReplyLabel>
                             <StyledReplyDiscardIcon
                                 onClick={handleDiscardReply}>
-                                <Icon icon='X' size='18' color='gray' />
+                                <Icon icon="X" size="18" color="gray" />
                             </StyledReplyDiscardIcon>
                         </StyledReplyContainer>
                     )}
@@ -171,8 +171,8 @@ export default props => {
                             maxRows={5}
                             ref={textarea}
                             value={state}
-                            autoCorrect='off'
-                            autoComplete='off'
+                            autoCorrect="off"
+                            autoComplete="off"
                             onChange={e => handleChange(e)}
                         />
                         <StyledButton

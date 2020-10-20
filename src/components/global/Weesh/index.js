@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import Header from './Header'
-import Main from './Main'
-import Footer from './Footer'
-import C from 'Root/constants'
-import DrawerDialogProvider from 'Root/contexts/drawerDialog'
+import React from "react"
+import styled from "styled-components"
+import Header from "./Header"
+import Main from "./Main"
+import Footer from "./Footer"
+import C from "Root/constants"
+import DrawerDialogProvider from "Root/contexts/drawerDialog"
 
 const StyledWeesh = styled.div`
     ${C.styles.flex.flexColumn};

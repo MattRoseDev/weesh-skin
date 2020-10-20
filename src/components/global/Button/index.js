@@ -1,43 +1,43 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import Icon from 'Root/components/global/Icon'
-import Loader from 'Root/components/global/Loader'
-import { Link } from 'react-router-dom'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import Icon from "Root/components/global/Icon"
+import Loader from "Root/components/global/Loader"
+import { Link } from "react-router-dom"
 
 const StyledLink = styled(Link)`
     ${C.styles.flex.flexRow};
     text-decoration: none;
-    cursor: ${({ cursor }) => cursor || 'pointer'};
-    margin: ${({ margin }) => margin || 'unset'};
+    cursor: ${({ cursor }) => cursor || "pointer"};
+    margin: ${({ margin }) => margin || "unset"};
 `
 
 const StyledContainer = styled.div`
-    margin: ${({ margin }) => margin || 'unset'};
+    margin: ${({ margin }) => margin || "unset"};
     padding: 0;
-    width: ${({ width }) => (width ? `${width}` : 'unset')};
+    width: ${({ width }) => (width ? `${width}` : "unset")};
     ${C.styles.flex.flexRow};
     position: relative;
-    cursor: ${({ cursor }) => cursor || 'pointer'};
+    cursor: ${({ cursor }) => cursor || "pointer"};
 `
 
 const StyledButton = styled.button`
     margin: 0;
-    cursor: ${({ cursor }) => cursor || 'pointer'};
+    cursor: ${({ cursor }) => cursor || "pointer"};
     ${({ boxShadow }) =>
         boxShadow &&
         css`
             p: 1px 1px 3px 1px ${({ theme }) => theme.colors.light};
         `};
     border: none;
-    border-width: ${({ borderwidth }) => borderwidth || '0px'};
+    border-width: ${({ borderwidth }) => borderwidth || "0px"};
     border-color: ${({ theme, bordercolor }) =>
-        theme.colors[bordercolor] || 'transparent'};
-    border-style: ${({ borderStyle }) => borderStyle || 'solid'};
+        theme.colors[bordercolor] || "transparent"};
+    border-style: ${({ borderStyle }) => borderStyle || "solid"};
     ${C.styles.flex.flexRowCenter};
-    font-weight: ${({ fontWeight }) => fontWeight || 'normal'};
-    border-radius: ${({ radius }) => radius || '.75rem'};
-    font-size: ${({ fontSize }) => fontSize || '.85rem'};
+    font-weight: ${({ fontWeight }) => fontWeight || "normal"};
+    border-radius: ${({ radius }) => radius || ".75rem"};
+    font-size: ${({ fontSize }) => fontSize || ".85rem"};
     width: 100%;
     ${({ padding }) =>
         padding &&
@@ -50,7 +50,7 @@ const StyledButton = styled.button`
             color: ${theme.colors[color]};
         `};
     background: ${({ background, theme }) =>
-        background ? theme.colors[background] : 'transparent'};
+        background ? theme.colors[background] : "transparent"};
     ${({ hoverbackground, theme }) =>
         hoverbackground &&
         css`
@@ -81,7 +81,7 @@ const StyledLoader = styled.div`
         `};
     background: ${({ theme, background }) =>
         background ? theme.colors[background] : theme.colors.background};
-    border-radius: ${({ radius }) => radius || '.75rem'};
+    border-radius: ${({ radius }) => radius || ".75rem"};
 `
 
 export default props => {

@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import Cover from 'Root/components/global/Cover'
-import Avatar from 'Root/components/global/Avatar'
-import EditableImage from 'Root/components/global/EditableImage'
-import Icon from 'Root/components/global/Icon'
-import CropImage from 'Root/components/global/CropImage'
-import { UserContext } from 'Root/contexts/user'
-import { EditProfileContext } from 'Root/contexts/editProfile'
+import React from "react"
+import styled from "styled-components"
+import Cover from "Root/components/global/Cover"
+import Avatar from "Root/components/global/Avatar"
+import EditableImage from "Root/components/global/EditableImage"
+import Icon from "Root/components/global/Icon"
+import CropImage from "Root/components/global/CropImage"
+import { UserContext } from "Root/contexts/user"
+import { EditProfileContext } from "Root/contexts/editProfile"
 
 const StyledHeader = styled.div``
 
@@ -38,7 +38,7 @@ export default props => {
                             setCropImage(prevState => ({
                                 ...prevState,
                                 visible: true,
-                                type: 'coverAddress',
+                                type: "coverAddress",
                                 width: 1040,
                                 height: 346,
                             }))
@@ -50,12 +50,12 @@ export default props => {
                     </EditableImage>
                     <StyledAvatarFrame>
                         <EditableImage
-                            radius='50%'
+                            radius="50%"
                             onClick={() =>
                                 setCropImage(prevState => ({
                                     ...prevState,
                                     visible: true,
-                                    type: 'avatarAddress',
+                                    type: "avatarAddress",
                                     width: 640,
                                     height: 640,
                                 }))
@@ -63,7 +63,7 @@ export default props => {
                             <Avatar
                                 user={editProfile}
                                 size={4}
-                                bordercolor='background'
+                                bordercolor="background"
                                 borderwidth={4}
                             />
                         </EditableImage>

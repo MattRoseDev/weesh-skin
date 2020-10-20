@@ -1,5 +1,5 @@
-import { css } from 'styled-components'
-import themes from 'Root/constants/themes'
+import { css } from "styled-components"
+import themes from "Root/constants/themes"
 
 const primary = {
     bold: css`

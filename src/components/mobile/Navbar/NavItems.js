@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
 
 const NavItems = styled.div`
     ${C.styles.flex.flexRow};

@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
 
 const suggestion = gql`
     query exploreAllForUser($expression: String!, $limit: Int, $page: Int) {

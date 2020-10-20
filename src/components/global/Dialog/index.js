@@ -1,7 +1,7 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
-import C from 'Root/constants'
+import React from "react"
+import styled, { css } from "styled-components"
+import { Link } from "react-router-dom"
+import C from "Root/constants"
 
 const StyledContainer = styled.div`
     ${({ visible, contentPosition }) => {
@@ -10,11 +10,11 @@ const StyledContainer = styled.div`
                 display: none;
             `
         } else {
-            if (!contentPosition || contentPosition == 'center') {
+            if (!contentPosition || contentPosition == "center") {
                 return css`
                     ${C.styles.flex.flexColumnCenter};
                 `
-            } else if (contentPosition == 'top') {
+            } else if (contentPosition == "top") {
                 return css`
                     ${C.styles.flex.flexColumn};
                     ${C.styles.flex.justifyContentStart};
@@ -55,7 +55,7 @@ const StyledButton = styled.button`
     vertical-align: middle;
     border: none;
     border-top: 1px dashed ${({ theme }) => theme.colors.lightGray};
-    color: ${({ color, theme }) => theme.colors[color || 'foreground']};
+    color: ${({ color, theme }) => theme.colors[color || "foreground"]};
     padding: 0.85rem;
     ${({ fontWeight }) =>
         fontWeight &&

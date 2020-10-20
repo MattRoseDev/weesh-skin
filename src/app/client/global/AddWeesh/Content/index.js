@@ -1,15 +1,15 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { WeeshContext } from 'Root/contexts/weesh'
-import { AuthContext } from 'Root/contexts/auth'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import Main from 'Root/app/client/global/AddWeesh/Main'
-import Footer from './Footer'
-import Loading from 'Root/components/global/Loading'
-import uuid from 'uuid'
-import C from 'Root/constants'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import styled, { css } from "styled-components"
+import { WeeshContext } from "Root/contexts/weesh"
+import { AuthContext } from "Root/contexts/auth"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import Main from "Root/app/client/global/AddWeesh/Main"
+import Footer from "./Footer"
+import Loading from "Root/components/global/Loading"
+import uuid from "uuid"
+import C from "Root/constants"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -29,7 +29,7 @@ export default props => {
 
     return auth.id ? (
         <StyledContainer>
-            <Meta type='AddWeesh' />
+            <Meta type="AddWeesh" />
             <Components.Global.SuggestionAddWeesh />
             <StyledComponents.AddWeesh.Frame>
                 <StyledComponents.Weesh.Header.LeftSide>
@@ -49,11 +49,11 @@ export default props => {
                         </StyledComponents.Weesh.Header.NameContainer>
                     )}
                 </StyledComponents.Weesh.Header.LeftSide>
-                <Main type='ADD' {...props} />
-                <Footer type='ADD' />
+                <Main type="ADD" {...props} />
+                <Footer type="ADD" />
             </StyledComponents.AddWeesh.Frame>
         </StyledContainer>
     ) : (
-        <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' />
+        <Loading padding="3rem 0 0" size={28} strokeWidth={1.25} color="gray" />
     )
 }

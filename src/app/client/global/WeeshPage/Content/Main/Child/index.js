@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import useHistory from 'Root/hooks/useHistory'
-import C from 'Root/constants'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import Convertors from 'Root/components/global/Convertors'
-import Link from 'Root/components/global/Link'
+import React from "react"
+import styled from "styled-components"
+import useHistory from "Root/hooks/useHistory"
+import C from "Root/constants"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import Convertors from "Root/components/global/Convertors"
+import Link from "Root/components/global/Link"
 
 const StyledContainer = styled(Link)``
 
@@ -59,9 +59,9 @@ export default props => {
                 {props.content ? (
                     <StyledChildContainer to={`/w/${props.child.link}`}>
                         <Components.Global.User
-                            fontSize='.85rem'
-                            fontWeight='bold'
-                            margin='.75rem 0 0 .75rem'
+                            fontSize=".85rem"
+                            fontWeight="bold"
+                            margin=".75rem 0 0 .75rem"
                             user={props.child.user}
                             size={1.25}
                         />

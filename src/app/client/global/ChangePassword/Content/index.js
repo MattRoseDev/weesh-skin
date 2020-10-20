@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import Input from 'Root/components/global/Input'
-import ErrorMessage from 'Root/components/global/ErrorMessage'
-import { useMutation } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import Button from 'Root/components/global/Button'
-import Meta from 'Root/meta'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import Input from "Root/components/global/Input"
+import ErrorMessage from "Root/components/global/ErrorMessage"
+import { useMutation } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import { AuthContext } from "Root/contexts/auth"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import Button from "Root/components/global/Button"
+import Meta from "Root/meta"
 
 const StyledContainer = styled.div`
     min-height: ${window.innerHeight - 55}px;
@@ -24,9 +24,9 @@ const StyledButtonContainer = styled.div`
 `
 
 const initialVariables = {
-    oldPassword: '',
-    newPassword: '',
-    confirmPassword: '',
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: "",
 }
 
 export default props => {
@@ -68,23 +68,23 @@ export default props => {
     React.useEffect(() => {
         if (changePasswordResponse.data) {
             dispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 data: {
                     password: true,
                 },
             })
             history.goBack()
             snackbarDispatch({
-                type: 'SET_DATA',
+                type: "SET_DATA",
                 data: {
-                    icon: 'CheckCircle',
-                    message: 'Your password changed successfully.',
-                    background: 'foreground',
+                    icon: "CheckCircle",
+                    message: "Your password changed successfully.",
+                    background: "foreground",
                     visible: true,
                 },
             })
             setTimeout(() => {
-                snackbarDispatch({ type: 'HIDE' })
+                snackbarDispatch({ type: "HIDE" })
             }, 2 * 1000)
         }
     }, [changePasswordResponse])
@@ -93,17 +93,17 @@ export default props => {
         {
             label: C.txts.en.editProfile.changePassword.oldPassword,
             value: state.oldPassword,
-            onChange: e => handleChange({ key: 'oldPassword', e }),
+            onChange: e => handleChange({ key: "oldPassword", e }),
         },
         {
             label: C.txts.en.editProfile.changePassword.newPassword,
             value: state.newPassword,
-            onChange: e => handleChange({ key: 'newPassword', e }),
+            onChange: e => handleChange({ key: "newPassword", e }),
         },
         {
             label: C.txts.en.editProfile.changePassword.confirmPassword,
             value: state.confirmPassword,
-            onChange: e => handleChange({ key: 'confirmPassword', e }),
+            onChange: e => handleChange({ key: "confirmPassword", e }),
         },
     ]
 
@@ -111,11 +111,11 @@ export default props => {
 
     return (
         <StyledContainer>
-            <Meta type='EditProfile' />
+            <Meta type="EditProfile" />
             {changePasswordResponse && changePasswordResponse.error && (
                 <ErrorMessage
-                    margin='.75rem 0 0'
-                    width='100%'
+                    margin=".75rem 0 0"
+                    width="100%"
                     message={
                         changePasswordResponse.error.graphQLErrors[0].message
                     }
@@ -125,24 +125,24 @@ export default props => {
                 {inputs.map(item => (
                     <Input
                         label={item.label}
-                        type='password'
-                        padding='.65rem'
+                        type="password"
+                        padding=".65rem"
                         value={item.value}
                         onChange={item.onChange}
                         width={100}
-                        margin='1rem 0 0'
+                        margin="1rem 0 0"
                     />
                 ))}
                 <StyledButtonContainer>
                     {state.newPassword.length > 0 &&
                     state.newPassword == state.confirmPassword ? (
                         <Button
-                            padding='.65rem 1.5rem'
-                            background='primary'
-                            color='background'
-                            radius='5rem'
-                            margin='.75rem 0 0'
-                            fontWeight='bold'
+                            padding=".65rem 1.5rem"
+                            background="primary"
+                            color="background"
+                            radius="5rem"
+                            margin=".75rem 0 0"
+                            fontWeight="bold"
                             isLoading={
                                 changePasswordResponse.loading || undefined
                             }>
@@ -150,13 +150,13 @@ export default props => {
                         </Button>
                     ) : (
                         <Button
-                            cursor='not-allowed'
-                            padding='.65rem 1.5rem'
-                            background='lightGray'
-                            color='gray'
-                            radius='5rem'
-                            margin='.75rem 0 0'
-                            fontWeight='bold'>
+                            cursor="not-allowed"
+                            padding=".65rem 1.5rem"
+                            background="lightGray"
+                            color="gray"
+                            radius="5rem"
+                            margin=".75rem 0 0"
+                            fontWeight="bold">
                             {C.txts.en.editProfile.changePassword.submit}
                         </Button>
                     )}

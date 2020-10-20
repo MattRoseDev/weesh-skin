@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ExploreContext } from 'Root/contexts/explore'
-import C from 'Root/constants'
-import IconButton from 'Root/components/global/IconButton'
-import { useLazyQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
+import React from "react"
+import styled from "styled-components"
+import { ExploreContext } from "Root/contexts/explore"
+import C from "Root/constants"
+import IconButton from "Root/components/global/IconButton"
+import { useLazyQuery } from "@apollo/react-hooks"
+import api from "Root/api"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -28,7 +28,7 @@ const StyledInput = styled.input`
 `
 
 const initVariables = {
-    expression: '',
+    expression: "",
 }
 
 export default () => {
@@ -50,7 +50,7 @@ export default () => {
         if (called && data) {
             const result = data.exploreAllForUser
             dispatch({
-                type: 'EXPLORE',
+                type: "EXPLORE",
                 data: {
                     results: result
                         ? [...result.user.users, ...result.tag.tags]
@@ -68,7 +68,7 @@ export default () => {
 
     const handleSearch = expression => {
         dispatch({
-            type: 'EXPLORE',
+            type: "EXPLORE",
             data: {
                 expression,
                 loading,
@@ -85,7 +85,7 @@ export default () => {
 
     return (
         <StyledContainer>
-            <IconButton icon='Search' onClick={handleSearch} color='gray' />
+            <IconButton icon="Search" onClick={handleSearch} color="gray" />
             <StyledInput
                 placeholder={C.txts.en.explore.input}
                 onKeyUp={e => handleKeyUp(e)}

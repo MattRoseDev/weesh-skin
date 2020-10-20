@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import Transaction from './Transaction'
-import { useQuery } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import { AuthContext } from 'Root/contexts/auth'
-import StyledComponents, { Components } from 'Root/StyledComponents'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import Transaction from "./Transaction"
+import { useQuery } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import { AuthContext } from "Root/contexts/auth"
+import StyledComponents, { Components } from "Root/StyledComponents"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -22,7 +22,7 @@ export default () => {
     const { data, error, loading, called, fetchMore } = useQuery(
         api.credits.getTransactions,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
     const history = useHistory()
@@ -60,7 +60,7 @@ export default () => {
                 <Components.Global.InfiniteScroll
                     onLoadMore={handlePaginate}
                     hasNextPage={nextPage}
-                    padding='0 .6rem 3.125rem'>
+                    padding="0 .6rem 3.125rem">
                     {state.map(transaction => (
                         <Transaction {...transaction} />
                     ))}
@@ -68,18 +68,18 @@ export default () => {
             )}
             {loading ? (
                 <Components.Global.Loading
-                    padding='3rem 0 0'
+                    padding="3rem 0 0"
                     size={28}
                     strokeWidth={1.25}
-                    color='gray'
+                    color="gray"
                 />
             ) : (
                 state &&
                 state.length == 0 && (
                     <StyledComponents.Title
-                        textAlign='center'
-                        padding='2rem 0'
-                        color='gray'>
+                        textAlign="center"
+                        padding="2rem 0"
+                        color="gray">
                         {C.txts.en.credit.noTransactionsFound}
                     </StyledComponents.Title>
                 )

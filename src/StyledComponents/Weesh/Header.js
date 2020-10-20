@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
+import styled, { css } from "styled-components"
+import C from "Root/constants"
 
 const LeftSide = styled.div`
     ${C.styles.flex.flexRow};

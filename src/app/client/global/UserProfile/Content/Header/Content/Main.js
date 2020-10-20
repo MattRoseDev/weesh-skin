@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import { UserContext } from 'Root/contexts/user'
-import { AuthContext } from 'Root/contexts/auth'
-import FullName from 'Root/components/global/FullName'
-import Icon from 'Root/components/global/Icon'
-import CounterForProfile from 'Root/components/global/CounterForProfile'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import { UserContext } from "Root/contexts/user"
+import { AuthContext } from "Root/contexts/auth"
+import FullName from "Root/components/global/FullName"
+import Icon from "Root/components/global/Icon"
+import CounterForProfile from "Root/components/global/CounterForProfile"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -61,7 +61,7 @@ export default props => {
 
     return (
         <StyledContainer>
-            <FullName user={user} fontSize='1.25rem' labelSize='20' />
+            <FullName user={user} fontSize="1.25rem" labelSize="20" />
             <StyledUsername>
                 {user.username && `@${user.username}`}
             </StyledUsername>
@@ -69,7 +69,7 @@ export default props => {
             <StyledButtonContainer>
                 <CounterForProfile
                     title={`${
-                        numbers.followers == '1' ? 'Follower' : 'Followers'
+                        numbers.followers == "1" ? "Follower" : "Followers"
                     }`}
                     to={
                         (auth.username == user.username ||
@@ -82,7 +82,7 @@ export default props => {
                     number={numbers.followers}
                 />
                 <CounterForProfile
-                    title='Following'
+                    title="Following"
                     to={
                         (auth.username == user.username ||
                             !user.private ||
@@ -94,7 +94,7 @@ export default props => {
                     number={numbers.following}
                 />
                 <CounterForProfile
-                    title={`${numbers.weeshes == '1' ? 'Weesh' : 'Weeshes'}`}
+                    title={`${numbers.weeshes == "1" ? "Weesh" : "Weeshes"}`}
                     number={numbers.weeshes}
                 />
             </StyledButtonContainer>

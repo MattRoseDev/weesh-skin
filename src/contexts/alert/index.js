@@ -1,13 +1,13 @@
-import React from 'react'
-import { alertReducer } from 'Root/reducers/alert'
+import React from "react"
+import { alertReducer } from "Root/reducers/alert"
 
 export const AlertContext = React.createContext()
 
 const initialAlert = {
-    message: '',
-    icon: '',
-    background: 'foreground',
-    color: 'background',
+    message: "",
+    icon: "",
+    background: "foreground",
+    color: "background",
     visible: false,
 }
 

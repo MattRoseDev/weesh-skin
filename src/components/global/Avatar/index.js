@@ -1,10 +1,10 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
-import avatar from 'Root/public/img/avatar.jpg'
-import unknownAvatar from 'Root/public/img/unknownAvatar.png'
-import C from 'Root/constants'
-import config from 'Root/config'
+import React from "react"
+import styled, { css } from "styled-components"
+import { Link } from "react-router-dom"
+import avatar from "Root/public/img/avatar.jpg"
+import unknownAvatar from "Root/public/img/unknownAvatar.png"
+import C from "Root/constants"
+import config from "Root/config"
 
 const StyledLink = styled(Link)`
     color: unset;

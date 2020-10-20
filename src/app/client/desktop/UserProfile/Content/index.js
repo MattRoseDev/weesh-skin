@@ -1,21 +1,21 @@
-import React from 'react'
-import Header from './Header'
-import UserNotFound from 'Root/components/global/NotFound/User'
-import Loading from 'Root/components/global/Loading'
-import Container from 'Root/components/desktop/Container'
-import Main from 'Root/app/client/global/UserProfile/Content/Main'
-import C from 'Root/constants'
-import BannerMessage from 'Root/components/global/BannerMessage'
-import { useQuery, useLazyQuery } from '@apollo/react-hooks'
-import { AuthContext } from 'Root/contexts/auth'
-import { UserContext } from 'Root/contexts/user'
-import { EditProfileContext } from 'Root/contexts/editProfile'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import styled from 'styled-components'
-import authError from 'Root/errors/auth'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import Header from "./Header"
+import UserNotFound from "Root/components/global/NotFound/User"
+import Loading from "Root/components/global/Loading"
+import Container from "Root/components/desktop/Container"
+import Main from "Root/app/client/global/UserProfile/Content/Main"
+import C from "Root/constants"
+import BannerMessage from "Root/components/global/BannerMessage"
+import { useQuery, useLazyQuery } from "@apollo/react-hooks"
+import { AuthContext } from "Root/contexts/auth"
+import { UserContext } from "Root/contexts/user"
+import { EditProfileContext } from "Root/contexts/editProfile"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import styled from "styled-components"
+import authError from "Root/errors/auth"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};
@@ -39,14 +39,14 @@ export default props => {
             variables: {
                 username: `${match.params.username}`,
             },
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
     const [getWeeshes, getWeeshesResponse] = useLazyQuery(
         api.weeshes.getWeeshes,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
@@ -62,7 +62,7 @@ export default props => {
         if (getWeeshesResponse.data) {
             const response = getWeeshesResponse.data.getWeeshesForUser.weeshes
             userDispatch({
-                type: 'ADD_WEESHES',
+                type: "ADD_WEESHES",
                 data: response,
             })
             getWeeshesResponse.data.getWeeshesForUser.paginate &&
@@ -74,7 +74,7 @@ export default props => {
 
     React.useEffect(() => {
         if (error) {
-            authError({ error }) && dispatch({ type: 'LOGOUT' })
+            authError({ error }) && dispatch({ type: "LOGOUT" })
         }
     }, [error])
 
@@ -82,11 +82,11 @@ export default props => {
         if (called && data) {
             const response = data.getUserByUsernameForUser
             userDispatch({
-                type: 'ADD_USER_DATA',
+                type: "ADD_USER_DATA",
                 data: response,
             })
             editProfileDispatch({
-                type: 'EDIT_PROFILE',
+                type: "EDIT_PROFILE",
                 data: {
                     ...response,
                     doneButton: true,
@@ -101,13 +101,13 @@ export default props => {
 
     return (
         <StyledContainer>
-            {user && <Meta type='UserProfile' data={{ user }} />}
+            {user && <Meta type="UserProfile" data={{ user }} />}
             {loading ? (
                 <Loading
-                    padding='3rem 0 0'
+                    padding="3rem 0 0"
                     size={28}
                     strokeWidth={1.25}
-                    color='gray'
+                    color="gray"
                 />
             ) : (
                 called &&
@@ -118,8 +118,8 @@ export default props => {
                         user.connection.status < 2 &&
                         auth.id !== user.id ? (
                             <BannerMessage
-                                icon='Lock'
-                                padding='3rem 0 5rem'
+                                icon="Lock"
+                                padding="3rem 0 5rem"
                                 title={C.txts.en.g.privateAccount}
                                 height={50}
                             />
@@ -131,8 +131,8 @@ export default props => {
                             />
                         ) : (
                             <BannerMessage
-                                icon='PenTool'
-                                padding='3rem 0 5rem'
+                                icon="PenTool"
+                                padding="3rem 0 5rem"
                                 title={C.txts.en.g.noWeeshesYet}
                                 height={50}
                             />
@@ -142,8 +142,8 @@ export default props => {
             )}
             {!loading && error && !user && (
                 <BannerMessage
-                    padding='3rem 0 5rem'
-                    icon='User'
+                    padding="3rem 0 5rem"
+                    icon="User"
                     title={C.txts.en.g.userNotFound}
                 />
             )}

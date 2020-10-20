@@ -1,10 +1,10 @@
-import React from 'react'
-import Container from 'Root/components/desktop/Container'
-import C from 'Root/constants'
-import styled from 'styled-components'
-import { AuthContext } from 'Root/contexts/auth'
-import Explore from './Explore'
-import Cards from './Cards'
+import React from "react"
+import Container from "Root/components/desktop/Container"
+import C from "Root/constants"
+import styled from "styled-components"
+import { AuthContext } from "Root/contexts/auth"
+import Explore from "./Explore"
+import Cards from "./Cards"
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};

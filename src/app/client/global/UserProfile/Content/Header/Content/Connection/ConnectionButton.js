@@ -1,15 +1,15 @@
-import React from 'react'
-import { AuthContext } from 'Root/contexts/auth'
-import { UserContext } from 'Root/contexts/user'
-import useHistory from 'Root/hooks/useHistory'
-import { useMutation } from '@apollo/react-hooks'
-import Button from 'Root/components/global/Button'
-import Dialog, { DialogButton } from 'Root/components/global/Dialog'
-import Avatar from 'Root/components/global/Avatar'
-import api from 'Root/api'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import uuid from 'uuid'
+import React from "react"
+import { AuthContext } from "Root/contexts/auth"
+import { UserContext } from "Root/contexts/user"
+import useHistory from "Root/hooks/useHistory"
+import { useMutation } from "@apollo/react-hooks"
+import Button from "Root/components/global/Button"
+import Dialog, { DialogButton } from "Root/components/global/Dialog"
+import Avatar from "Root/components/global/Avatar"
+import api from "Root/api"
+import styled from "styled-components"
+import C from "Root/constants"
+import uuid from "uuid"
 
 const StyledHeaderDialog = styled.div`
     ${C.styles.flex.flexColumnCenter};
@@ -56,7 +56,7 @@ export default props => {
         if (data) {
             const result = data[dataType]
             userDispatch({
-                type: 'ADD_USER_DATA',
+                type: "ADD_USER_DATA",
                 data: {
                     ...user,
                     connection: {
@@ -82,7 +82,7 @@ export default props => {
     if (messageType) {
         dialogMessage = messageType.split(/(\$.*.\$)/gi)
         dialogMessage = dialogMessage.map(item => {
-            if (item == '$$username$$') {
+            if (item == "$$username$$") {
                 item = (
                     <StyledUsername
                         key={uuid()}>{`${user.username}`}</StyledUsername>
@@ -102,7 +102,7 @@ export default props => {
     return (
         <>
             <Dialog
-                width='18rem'
+                width="18rem"
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledHeaderDialog>
@@ -116,30 +116,30 @@ export default props => {
                         handleConnection()
                         toggleDialog(false)
                     }}
-                    fontWeight='bold'
-                    color='red'>
+                    fontWeight="bold"
+                    color="red">
                     {acceptButtonType}
                 </DialogButton>
                 <DialogButton
-                    fontWeight='bold'
+                    fontWeight="bold"
                     onClick={() => toggleDialog(false)}>
                     {cancelButtonType}
                 </DialogButton>
             </Dialog>
             <Button
                 color={auth.color}
-                hoverbackground='lightPrimary'
-                bordercolor='primary'
-                borderwidth='1px'
-                fontWeight='bold'
+                hoverbackground="lightPrimary"
+                bordercolor="primary"
+                borderwidth="1px"
+                fontWeight="bold"
                 isLoading={loading || undefined}
                 onClick={() => {
-                    if (props.type == 'FOLLOWING') toggleDialog(true)
+                    if (props.type == "FOLLOWING") toggleDialog(true)
                     else handleConnection()
                 }}
-                padding='.5rem .75rem'
-                radius='50rem'
-                width='6rem'>
+                padding=".5rem .75rem"
+                radius="50rem"
+                width="6rem">
                 {props.children}
             </Button>
         </>
@@ -148,34 +148,34 @@ export default props => {
 
 const handleNumber = (type, number, result) => {
     switch (type) {
-        case 'FOLLOW':
+        case "FOLLOW":
             return result.status == 2 ? number + 1 : number
-        case 'FOLLOWING':
+        case "FOLLOWING":
             return number > 0 ? number - 1 : 0
-        case 'REQUEST':
+        case "REQUEST":
             return number
     }
 }
 
 const switchAPI = type => {
     switch (type) {
-        case 'FOLLOW':
+        case "FOLLOW":
             return {
-                apiType: 'follow',
-                dataType: 'followUserConnectionForUser',
+                apiType: "follow",
+                dataType: "followUserConnectionForUser",
             }
-        case 'FOLLOWING':
+        case "FOLLOWING":
             return {
-                apiType: 'unfollow',
-                dataType: 'unfollowUserConnectionForUser',
-                messageType: 'Unfollow $$username$$?',
-                acceptButtonType: 'Unfollow',
-                cancelButtonType: 'Not Now',
+                apiType: "unfollow",
+                dataType: "unfollowUserConnectionForUser",
+                messageType: "Unfollow $$username$$?",
+                acceptButtonType: "Unfollow",
+                cancelButtonType: "Not Now",
             }
-        case 'REQUEST':
+        case "REQUEST":
             return {
-                apiType: 'unfollow',
-                dataType: 'unfollowUserConnectionForUser',
+                apiType: "unfollow",
+                dataType: "unfollowUserConnectionForUser",
             }
     }
 }

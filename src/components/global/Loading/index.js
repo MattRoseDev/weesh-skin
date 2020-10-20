@@ -1,7 +1,7 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import Loader from 'Root/components/global/Loader'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import Loader from "Root/components/global/Loader"
 
 const StyledContaner = styled.div`
     height: 100%;

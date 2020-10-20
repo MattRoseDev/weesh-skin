@@ -1,22 +1,22 @@
-import React from 'react'
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
-import C from 'Root/constants'
-import { AuthContext } from 'Root/contexts/auth'
-import useHistory from 'Root/hooks/useHistory'
-import Icon from 'Root/components/global/Icon'
-import Avatar from 'Root/components/global/Avatar'
-import NotificationBadge from 'Root/components/global/NotificationBadge'
-import { Components } from 'Root/StyledComponents'
+import React from "react"
+import styled from "styled-components"
+import { NavLink } from "react-router-dom"
+import C from "Root/constants"
+import { AuthContext } from "Root/contexts/auth"
+import useHistory from "Root/hooks/useHistory"
+import Icon from "Root/components/global/Icon"
+import Avatar from "Root/components/global/Avatar"
+import NotificationBadge from "Root/components/global/NotificationBadge"
+import { Components } from "Root/StyledComponents"
 
 const NavItemContent = styled.div`
     ${C.styles.flex.inlineFlexRow};
     ${C.styles.flex.alignItemsCenter};
-    color: ${({ theme, color }) => theme.colors[color || 'foreground']};
+    color: ${({ theme, color }) => theme.colors[color || "foreground"]};
     list-style: none;
     transition: all .2s ease;
     /* background: ${({ theme, background }) =>
-        background ? theme.colors.lightPrimary : 'transparent'}; */
+        background ? theme.colors.lightPrimary : "transparent"}; */
     border-radius: .75rem;
     /* width: 100%; */
     padding: .75rem 1rem .75rem .75rem;
@@ -57,21 +57,21 @@ export default props => {
 
     const history = useHistory()
 
-    const path = props.path == '/profile' ? `/${auth.username}` : props.path
+    const path = props.path == "/profile" ? `/${auth.username}` : props.path
     return auth.id ? (
         <>
             {props.path == history.location.pathname ||
             (history.location.pathname == `/${auth.username}` &&
-                props.path == '/profile') ? (
-                <NavItem color='primary' exact={props.exact || false} to={path}>
-                    <NavItemContent background='foreground' color='primary'>
+                props.path == "/profile") ? (
+                <NavItem color="primary" exact={props.exact || false} to={path}>
+                    <NavItemContent background="foreground" color="primary">
                         <StyledIcon>
-                            {props.path == '/profile' && (
+                            {props.path == "/profile" && (
                                 <Components.Global.BadgeForIcon
                                     value={auth.isNewTicketMessage}
                                 />
                             )}
-                            {props.path == '/profile' ? (
+                            {props.path == "/profile" ? (
                                 <Avatar user={auth} size={1.5} />
                             ) : (
                                 <Icon
@@ -87,24 +87,24 @@ export default props => {
                 </NavItem>
             ) : (
                 <NavItem
-                    color='foreground'
+                    color="foreground"
                     exact={props.exact || false}
                     to={path}>
-                    <NavItemContent color='foreground'>
+                    <NavItemContent color="foreground">
                         <StyledIcon>
-                            {props.path == '/notifications' && (
+                            {props.path == "/notifications" && (
                                 <NotificationBadge />
                             )}
-                            {props.path == '/profile' && (
+                            {props.path == "/profile" && (
                                 <Components.Global.BadgeForIcon
                                     value={auth.isNewTicketMessage}
                                 />
                             )}
-                            {props.path == '/profile' ? (
+                            {props.path == "/profile" ? (
                                 <Avatar user={auth} size={1.5} />
                             ) : (
                                 <Icon
-                                    color='foreground'
+                                    color="foreground"
                                     strokeWidth={props.strokeWidth || 2}
                                     icon={props.content}
                                     size={props.fillSize || 26}
@@ -117,6 +117,6 @@ export default props => {
             )}
         </>
     ) : (
-        ''
+        ""
     )
 }

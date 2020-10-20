@@ -1,12 +1,12 @@
-import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
-import Weesh from 'Root/components/global/Weesh'
-import Loading from 'Root/components/global/Loading'
-import InfiniteScroll from 'Root/components/global/InfiniteScroll'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import uuid from 'uuid'
+import React from "react"
+import { useQuery } from "@apollo/react-hooks"
+import api from "Root/api"
+import Weesh from "Root/components/global/Weesh"
+import Loading from "Root/components/global/Loading"
+import InfiniteScroll from "Root/components/global/InfiniteScroll"
+import styled from "styled-components"
+import C from "Root/constants"
+import uuid from "uuid"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -20,7 +20,7 @@ export default () => {
     const { data, called, error, loading, fetchMore } = useQuery(
         api.weeshes.getShowcase,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
             variables: {
                 limit: 5,
             },
@@ -56,10 +56,10 @@ export default () => {
         <StyledContainer>
             {loading ? (
                 <Loading
-                    padding='3rem 0 0'
+                    padding="3rem 0 0"
                     size={28}
                     strokeWidth={1.25}
-                    color='gray'
+                    color="gray"
                 />
             ) : (
                 state &&
@@ -67,7 +67,7 @@ export default () => {
                     <InfiniteScroll
                         onLoadMore={handlePaginate}
                         hasNextPage={nextPage}
-                        padding='0 .6rem 3.125rem'>
+                        padding="0 .6rem 3.125rem">
                         {state.map(weesh => (
                             <Weesh {...weesh} key={uuid()} />
                         ))}

@@ -1,7 +1,7 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import uuid from 'uuid'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import uuid from "uuid"
 
 const StyledContainer = styled.div`
     ${C.styles.boxShadow.primary.normal};

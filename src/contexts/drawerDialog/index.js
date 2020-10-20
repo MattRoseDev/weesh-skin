@@ -1,5 +1,5 @@
-import React from 'react'
-import { drawerDialogReducer } from 'Root/reducers/drawerDialog'
+import React from "react"
+import { drawerDialogReducer } from "Root/reducers/drawerDialog"
 
 export const DrawerDialogContext = React.createContext()
 

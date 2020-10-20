@@ -4,10 +4,10 @@
     "endOfLine": "lf",
     "htmlWhitespaceSensitivity": "css",
     "jsxBracketSameLine": true,
-    "jsxSingleQuote": true,
+    "jsxSingleQuote": false,
     "printWidth": 80,
     "semi": false,
-    "singleQuote": true,
+    "singleQuote": false,
     "tabWidth": 4,
     "trailingComma": "all",
     "useTabs": false

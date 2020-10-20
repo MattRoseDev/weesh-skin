@@ -1,19 +1,19 @@
-import React from 'react'
-import styled from 'styled-components'
-import Logo from 'Root/components/global/Logo'
-import GoogleAuth from 'Root/components/global/GoogleAuth'
-import Input from 'Root/components/global/Input'
-import Button from 'Root/components/global/Button'
-import ErrorMessage from 'Root/components/global/ErrorMessage'
-import OR from 'Root/components/global/OR'
-import C from 'Root/constants'
-import { AuthContext } from 'Root/contexts/auth'
-import useHistory from 'Root/hooks/useHistory'
-import { Link } from 'react-router-dom'
-import { useLazyQuery, useMutation } from '@apollo/react-hooks'
-import api from 'Root/api'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import styled from "styled-components"
+import Logo from "Root/components/global/Logo"
+import GoogleAuth from "Root/components/global/GoogleAuth"
+import Input from "Root/components/global/Input"
+import Button from "Root/components/global/Button"
+import ErrorMessage from "Root/components/global/ErrorMessage"
+import OR from "Root/components/global/OR"
+import C from "Root/constants"
+import { AuthContext } from "Root/contexts/auth"
+import useHistory from "Root/hooks/useHistory"
+import { Link } from "react-router-dom"
+import { useLazyQuery, useMutation } from "@apollo/react-hooks"
+import api from "Root/api"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledLogin = styled.form`
     ${C.styles.flex.flexColumnCenter};
@@ -43,8 +43,8 @@ const StyledJoinLink = styled(Link)`
 `
 
 const initVariables = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
 }
 
 export default () => {
@@ -62,13 +62,13 @@ export default () => {
         if (called && data) {
             const { token, user } = data.login
             dispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 data: {
                     token,
                     ...user,
                 },
             })
-            setTimeout(() => history.push('/explore'), 500)
+            setTimeout(() => history.push("/explore"), 500)
         }
     }, [data, error])
 
@@ -80,13 +80,13 @@ export default () => {
         if (oAuthGoogleResponse.data) {
             const { token, user } = oAuthGoogleResponse.data.oAuthGoogle
             dispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 data: {
                     token,
                     ...user,
                 },
             })
-            setTimeout(() => history.push('/explore'), 500)
+            setTimeout(() => history.push("/explore"), 500)
         }
     }, [oAuthGoogleResponse.data, oAuthGoogleResponse.error])
 
@@ -100,19 +100,19 @@ export default () => {
             variables,
         })
     }
-    auth.token && history.push('/')
+    auth.token && history.push("/")
     return (
         <StyledLogin onSubmit={e => handleSubmit(e)}>
-            <Meta type='Login' />
-            <Logo fontSize={4} margin='1.5rem' />
+            <Meta type="Login" />
+            <Logo fontSize={4} margin="1.5rem" />
             {error && (
                 <ErrorMessage
-                    width='75%'
+                    width="75%"
                     message={error.graphQLErrors[0].message}
                 />
             )}
             <Input
-                margin='.5rem 0 0'
+                margin=".5rem 0 0"
                 onChange={e => {
                     let username = e.target.value
                     setVariables(prevState => ({
@@ -121,11 +121,11 @@ export default () => {
                     }))
                 }}
                 width={75}
-                icon='AtSign'
-                placeholder='Username or Email'
+                icon="AtSign"
+                placeholder="Username or Email"
             />
             <Input
-                margin='.5rem 0 0'
+                margin=".5rem 0 0"
                 onChange={e => {
                     let password = e.target.value
                     setVariables(prevState => ({
@@ -134,30 +134,30 @@ export default () => {
                     }))
                 }}
                 width={75}
-                icon='Lock'
-                placeholder='Password'
-                type='password'
+                icon="Lock"
+                placeholder="Password"
+                type="password"
             />
             {/* <StyledForgotPasswordLink to='forgotpassword'>
             {C.txts.en.auth.forgotPasswordLink}
         </StyledForgotPasswordLink> */}
             <Button
-                color='background'
-                background='primary'
-                fontWeight='bold'
+                color="background"
+                background="primary"
+                fontWeight="bold"
                 isLoading={isLoading || undefined}
-                margin='.75rem 0 0'
-                padding='.85rem'
-                fontSize='.85rem'
-                width='75%'>
+                margin=".75rem 0 0"
+                padding=".85rem"
+                fontSize=".85rem"
+                width="75%">
                 {C.txts.en.auth.loginButton}
             </Button>
             <GoogleAuth
-                buttonText='Login with Google'
+                buttonText="Login with Google"
                 handleRequest={oAuthGoogleRequest}
             />
             <OR width={75} margin={1.5} />
-            <StyledJoinLink to='join'>{C.txts.en.auth.joinLink}</StyledJoinLink>
+            <StyledJoinLink to="join">{C.txts.en.auth.joinLink}</StyledJoinLink>
         </StyledLogin>
     )
 }

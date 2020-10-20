@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
-import routes from './routes'
-import NavItem from './NavItem'
-import NavItems from './NavItems'
-import uuid from 'uuid'
+import routes from "./routes"
+import NavItem from "./NavItem"
+import NavItems from "./NavItems"
+import uuid from "uuid"
 
 const NavStyled = styled.nav`
     /* border-top: 1px solid lightgray; */

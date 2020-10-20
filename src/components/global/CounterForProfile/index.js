@@ -1,7 +1,7 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import { Link } from 'react-router-dom'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import { Link } from "react-router-dom"
 
 const StyledLink = styled(Link)`
     color: unset;

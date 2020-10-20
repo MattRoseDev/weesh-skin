@@ -1,15 +1,15 @@
-import React from 'react'
-import { AuthContext } from 'Root/contexts/auth'
-import { UserContext } from 'Root/contexts/user'
-import useHistory from 'Root/hooks/useHistory'
-import { useMutation } from '@apollo/react-hooks'
-import Button from 'Root/components/global/Button'
-import Dialog, { DialogButton } from 'Root/components/global/Dialog'
-import Avatar from 'Root/components/global/Avatar'
-import api from 'Root/api'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import uuid from 'uuid'
+import React from "react"
+import { AuthContext } from "Root/contexts/auth"
+import { UserContext } from "Root/contexts/user"
+import useHistory from "Root/hooks/useHistory"
+import { useMutation } from "@apollo/react-hooks"
+import Button from "Root/components/global/Button"
+import Dialog, { DialogButton } from "Root/components/global/Dialog"
+import Avatar from "Root/components/global/Avatar"
+import api from "Root/api"
+import styled from "styled-components"
+import C from "Root/constants"
+import uuid from "uuid"
 
 const StyledHeaderDialog = styled.div`
     color: ${({ theme }) => theme.colors.foreground};
@@ -63,11 +63,11 @@ export default props => {
             const result = data[dataType]
             switch (result.status) {
                 case 0:
-                    return setType('FOLLOW')
+                    return setType("FOLLOW")
                 case 1:
-                    return setType('REQUEST')
+                    return setType("REQUEST")
                 case 2:
-                    return setType('FOLLOWING')
+                    return setType("FOLLOWING")
             }
         }
     }, [data])
@@ -78,7 +78,7 @@ export default props => {
     if (messageType) {
         dialogMessage = messageType.split(/(\$.*.\$)/gi)
         dialogMessage = dialogMessage.map(item => {
-            if (item == '$$username$$') {
+            if (item == "$$username$$") {
                 item = (
                     <StyledUsername
                         key={uuid()}>{`${user.username}`}</StyledUsername>
@@ -98,7 +98,7 @@ export default props => {
     return (
         <>
             <Dialog
-                width='18rem'
+                width="18rem"
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledHeaderDialog>
@@ -112,52 +112,52 @@ export default props => {
                         handleConnection()
                         toggleDialog(false)
                     }}
-                    fontWeight='bold'
-                    color='red'>
+                    fontWeight="bold"
+                    color="red">
                     {acceptButtonType}
                 </DialogButton>
                 <DialogButton
-                    fontWeight='bold'
+                    fontWeight="bold"
                     onClick={() => toggleDialog(false)}>
                     {cancelButtonType}
                 </DialogButton>
             </Dialog>
             {user.id != auth.id &&
-                (type == 'FOLLOWING' ? (
+                (type == "FOLLOWING" ? (
                     <Button
-                        background='background'
-                        color='gray'
+                        background="background"
+                        color="gray"
                         isLoading={loading || undefined}
                         onClick={() => {
-                            if (type == 'FOLLOWING') toggleDialog(true)
+                            if (type == "FOLLOWING") toggleDialog(true)
                             else handleConnection()
                         }}
-                        padding='.4rem .75rem'
-                        radius='50rem'
-                        width='6rem'
-                        bordercolor='light'
-                        borderwidth='1px'
+                        padding=".4rem .75rem"
+                        radius="50rem"
+                        width="6rem"
+                        bordercolor="light"
+                        borderwidth="1px"
                         loaderSize={16}
-                        margin='0 .5rem 0 0'>
+                        margin="0 .5rem 0 0">
                         {C.txts.en.connections.buttonStatus[type]}
                     </Button>
                 ) : (
                     <Button
                         color={auth.color}
-                        hoverbackground='lightPrimary'
-                        bordercolor='primary'
-                        borderwidth='1px'
-                        fontWeight='bold'
+                        hoverbackground="lightPrimary"
+                        bordercolor="primary"
+                        borderwidth="1px"
+                        fontWeight="bold"
                         isLoading={loading || undefined}
                         onClick={() => {
-                            if (type == 'FOLLOWING') toggleDialog(true)
+                            if (type == "FOLLOWING") toggleDialog(true)
                             else handleConnection()
                         }}
-                        padding='.4rem .75rem'
-                        radius='50rem'
-                        width='6rem'
+                        padding=".4rem .75rem"
+                        radius="50rem"
+                        width="6rem"
                         loaderSize={16}
-                        margin='0 .5rem 0 0'>
+                        margin="0 .5rem 0 0">
                         {C.txts.en.connections.buttonStatus[type]}
                     </Button>
                 ))}
@@ -167,23 +167,23 @@ export default props => {
 
 const switchAPI = type => {
     switch (type) {
-        case 'FOLLOW':
+        case "FOLLOW":
             return {
-                apiType: 'follow',
-                dataType: 'followUserConnectionForUser',
+                apiType: "follow",
+                dataType: "followUserConnectionForUser",
             }
-        case 'FOLLOWING':
+        case "FOLLOWING":
             return {
-                apiType: 'unfollow',
-                dataType: 'unfollowUserConnectionForUser',
-                messageType: 'Unfollow $$username$$?',
-                acceptButtonType: 'Unfollow',
-                cancelButtonType: 'Not Now',
+                apiType: "unfollow",
+                dataType: "unfollowUserConnectionForUser",
+                messageType: "Unfollow $$username$$?",
+                acceptButtonType: "Unfollow",
+                cancelButtonType: "Not Now",
             }
-        case 'REQUEST':
+        case "REQUEST":
             return {
-                apiType: 'unfollow',
-                dataType: 'unfollowUserConnectionForUser',
+                apiType: "unfollow",
+                dataType: "unfollowUserConnectionForUser",
             }
     }
 }

@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import Navbar from 'Root/components/desktop/Navbar'
-import Logo from 'Root/components/global/Logo'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import Navbar from "Root/components/desktop/Navbar"
+import Logo from "Root/components/global/Logo"
+import C from "Root/constants"
 
 const StyledSidebar = styled.header`
     ${C.styles.flex.flexColumn};
@@ -17,7 +17,7 @@ const StyledSidebar = styled.header`
 export default () => {
     return (
         <StyledSidebar>
-            <Logo fontSize={3} padding='2.5rem 0 0' />
+            <Logo fontSize={3} padding="2.5rem 0 0" />
             <Navbar />
         </StyledSidebar>
     )

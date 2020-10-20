@@ -1,11 +1,11 @@
-import config from 'Root/config'
-import weesh from 'Root/public/weesh.png'
+import config from "Root/config"
+import weesh from "Root/public/weesh.png"
 
 export default ({ data, type } = { data: null }) => {
     switch (type) {
-        case 'UserProfile':
+        case "UserProfile":
             return `${config.UPLOAD_URL}${data.user.avatarAddress}`
-        case 'WeeshPage':
+        case "WeeshPage":
             return `${config.UPLOAD_URL}${data.weesh.user.avatarAddress}`
         default:
             return `${weesh}`

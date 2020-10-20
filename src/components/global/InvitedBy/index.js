@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import { Components } from 'Root/StyledComponents'
-import { useQuery } from 'react-apollo'
-import helpers from 'Root/helpers'
-import api from 'Root/api'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import { Components } from "Root/StyledComponents"
+import { useQuery } from "react-apollo"
+import helpers from "Root/helpers"
+import api from "Root/api"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};
@@ -31,13 +31,13 @@ const StyledContent = styled.span`
 `
 
 export default () => {
-    const invitationCode = helpers.storage.get({ key: 'invitationCode' })
+    const invitationCode = helpers.storage.get({ key: "invitationCode" })
     const [state, setState] = React.useState(null)
     const { data, error, loading } = useQuery(
         api.invitations.getUserByInvitationCodeForUser,
         {
             variables: {
-                invitationCode: invitationCode || '',
+                invitationCode: invitationCode || "",
             },
         },
     )

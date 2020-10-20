@@ -1,12 +1,12 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
-import Avatar from 'Root/components/global/Avatar'
-import Link from 'Root/components/global/Link'
-import IconButton from 'Root/components/global/IconButton'
-import { WeeshPageContext } from 'Root/contexts/weeshPage'
-import { useMutation } from '@apollo/react-hooks'
-import api from 'Root/api'
+import React from "react"
+import styled, { css } from "styled-components"
+import C from "Root/constants"
+import Avatar from "Root/components/global/Avatar"
+import Link from "Root/components/global/Link"
+import IconButton from "Root/components/global/IconButton"
+import { WeeshPageContext } from "Root/contexts/weeshPage"
+import { useMutation } from "@apollo/react-hooks"
+import api from "Root/api"
 
 const StyledContainer = styled.div`
     padding: 0.5rem 1rem 0 0.5rem;
@@ -40,7 +40,7 @@ export default props => {
         if (isLiked) {
             dislikeWeeshComment()
             weeshPageDispatch({
-                type: 'DISLIKE_COMMENT',
+                type: "DISLIKE_COMMENT",
                 data: {
                     commentId: props.id,
                 },
@@ -48,7 +48,7 @@ export default props => {
         } else {
             likeWeeshComment()
             weeshPageDispatch({
-                type: 'LIKE_COMMENT',
+                type: "LIKE_COMMENT",
                 data: {
                     commentId: props.id,
                 },
@@ -59,10 +59,10 @@ export default props => {
     return (
         <StyledContainer>
             <IconButton
-                icon='Heart'
+                icon="Heart"
                 onClick={handleClick}
-                fill={isLiked ? 'red' : undefined}
-                color={isLiked ? 'red' : 'foreground'}
+                fill={isLiked ? "red" : undefined}
+                color={isLiked ? "red" : "foreground"}
                 size={14}
             />
         </StyledContainer>

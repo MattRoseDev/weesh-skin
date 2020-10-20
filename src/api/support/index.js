@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag"
 
 const addTicket = gql`
     mutation addUserTicketForUser($subject: String!, $message: String!) {

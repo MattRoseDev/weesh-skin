@@ -1,5 +1,5 @@
-import React from 'react'
-import { editProfileReducer } from 'Root/reducers/editProfile'
+import React from "react"
+import { editProfileReducer } from "Root/reducers/editProfile"
 
 export const EditProfileContext = React.createContext()
 

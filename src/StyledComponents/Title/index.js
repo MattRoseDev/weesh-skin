@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
+import styled, { css } from "styled-components"
+import C from "Root/constants"
 
 const Title = styled.span`
-    color: ${({ color, theme }) => theme.colors[color || 'foreground']};
+    color: ${({ color, theme }) => theme.colors[color || "foreground"]};
     ${({ padding }) =>
         padding &&
         css`

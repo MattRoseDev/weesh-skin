@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components'
-import C from 'Root/constants'
+import styled, { css } from "styled-components"
+import C from "Root/constants"
 
 const Description = styled.p`
     color: ${({ theme, color }) =>
-        theme.colors[color || 'foreground']} !important;
+        theme.colors[color || "foreground"]} !important;
     ${({ fontWeight }) =>
         fontWeight &&
         css`

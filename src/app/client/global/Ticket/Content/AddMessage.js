@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import Input from 'Root/components/global/Input'
-import Textarea from 'Root/components/global/Textarea'
-import ErrorMessage from 'Root/components/global/ErrorMessage'
-import { useMutation, useQuery } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import Button from 'Root/components/global/Button'
-import Meta from 'Root/meta'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import Input from "Root/components/global/Input"
+import Textarea from "Root/components/global/Textarea"
+import ErrorMessage from "Root/components/global/ErrorMessage"
+import { useMutation, useQuery } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import { AuthContext } from "Root/contexts/auth"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import Button from "Root/components/global/Button"
+import Meta from "Root/meta"
 
 const StyledContainer = styled.div`
     padding: 0 0.75rem 0.75rem;
@@ -31,8 +31,8 @@ const StyledLoaderContainer = styled.div`
 `
 
 const initialVariables = {
-    subject: '',
-    message: '',
+    subject: "",
+    message: "",
 }
 
 export default props => {
@@ -80,54 +80,54 @@ export default props => {
                 ]
             })
             snackbarDispatch({
-                type: 'SET_DATA',
+                type: "SET_DATA",
                 data: {
-                    icon: 'CheckCircle',
-                    message: 'Your message added successfully.',
-                    background: 'foreground',
+                    icon: "CheckCircle",
+                    message: "Your message added successfully.",
+                    background: "foreground",
                     visible: true,
                 },
             })
             setTimeout(() => {
-                snackbarDispatch({ type: 'HIDE' })
+                snackbarDispatch({ type: "HIDE" })
             }, 2 * 1000)
         }
     }, [addMessageResponse])
 
     return (
         <StyledContainer>
-            <Meta type='Support' />
+            <Meta type="Support" />
             <StyledForm onSubmit={e => handleSubmit(e)}>
                 <Textarea
-                    label='Message'
-                    padding='.65rem'
+                    label="Message"
+                    padding=".65rem"
                     value={state.message}
-                    onChange={e => handleChange({ key: 'message', e })}
+                    onChange={e => handleChange({ key: "message", e })}
                     width={100}
-                    rows='10'
-                    margin='1rem 0 0'
+                    rows="10"
+                    margin="1rem 0 0"
                 />
                 <StyledButtonContainer>
                     {state.message.length > 0 ? (
                         <Button
-                            padding='.65rem 1.5rem'
-                            background='primary'
-                            color='background'
-                            radius='5rem'
-                            margin='.75rem 0 0'
-                            fontWeight='bold'
+                            padding=".65rem 1.5rem"
+                            background="primary"
+                            color="background"
+                            radius="5rem"
+                            margin=".75rem 0 0"
+                            fontWeight="bold"
                             isLoading={addMessageResponse.loading || undefined}>
                             Submit
                         </Button>
                     ) : (
                         <Button
-                            cursor='not-allowed'
-                            padding='.65rem 1.5rem'
-                            background='lightGray'
-                            color='gray'
-                            radius='5rem'
-                            margin='.75rem 0 0'
-                            fontWeight='bold'>
+                            cursor="not-allowed"
+                            padding=".65rem 1.5rem"
+                            background="lightGray"
+                            color="gray"
+                            radius="5rem"
+                            margin=".75rem 0 0"
+                            fontWeight="bold">
                             Submit
                         </Button>
                     )}

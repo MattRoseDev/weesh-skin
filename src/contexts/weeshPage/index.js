@@ -1,5 +1,5 @@
-import React from 'react'
-import { weeshPageReducer } from 'Root/reducers/weeshPage'
+import React from "react"
+import { weeshPageReducer } from "Root/reducers/weeshPage"
 
 export const WeeshPageContext = React.createContext()
 

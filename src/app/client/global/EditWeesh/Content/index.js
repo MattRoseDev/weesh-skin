@@ -1,18 +1,18 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { WeeshContext } from 'Root/contexts/weesh'
-import { AuthContext } from 'Root/contexts/auth'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import Main from 'Root/app/client/global/AddWeesh/Main'
-import Footer from 'Root/app/client/global/AddWeesh/Content/Footer'
-import Loading from 'Root/components/global/Loading'
-import uuid from 'uuid'
-import C from 'Root/constants'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
-import useHistory from 'Root/hooks/useHistory'
-import { useQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
+import React from "react"
+import styled, { css } from "styled-components"
+import { WeeshContext } from "Root/contexts/weesh"
+import { AuthContext } from "Root/contexts/auth"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import Main from "Root/app/client/global/AddWeesh/Main"
+import Footer from "Root/app/client/global/AddWeesh/Content/Footer"
+import Loading from "Root/components/global/Loading"
+import uuid from "uuid"
+import C from "Root/constants"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
+import useHistory from "Root/hooks/useHistory"
+import { useQuery } from "@apollo/react-hooks"
+import api from "Root/api"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexColumn};
@@ -39,7 +39,7 @@ export default props => {
             variables: {
                 link: `${match.params.link}`,
             },
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
@@ -55,7 +55,7 @@ export default props => {
                 return history.push(`/w/${match.params.link}`)
             }
             dispatch({
-                type: 'ADD_WEESH',
+                type: "ADD_WEESH",
                 data: {
                     content: data.getWeeshByLinkForUser.content,
                     id: data.getWeeshByLinkForUser.id,
@@ -66,7 +66,7 @@ export default props => {
 
     return auth.id && weesh.id ? (
         <StyledContainer>
-            <Meta type='EditWeesh' />
+            <Meta type="EditWeesh" />
             <Components.Global.SuggestionAddWeesh />
             <StyledComponents.AddWeesh.Frame>
                 <StyledComponents.Weesh.Header.LeftSide>
@@ -86,11 +86,11 @@ export default props => {
                         </StyledComponents.Weesh.Header.NameContainer>
                     )}
                 </StyledComponents.Weesh.Header.LeftSide>
-                <Main type='EDIT' weesh={weesh} />
-                <Footer type='EDIT' />
+                <Main type="EDIT" weesh={weesh} />
+                <Footer type="EDIT" />
             </StyledComponents.AddWeesh.Frame>
         </StyledContainer>
     ) : (
-        <Loading padding='3rem 0 0' size={28} strokeWidth={1.25} color='gray' />
+        <Loading padding="3rem 0 0" size={28} strokeWidth={1.25} color="gray" />
     )
 }

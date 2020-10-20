@@ -1,5 +1,5 @@
-import React from 'react'
-import { weeshReducer } from 'Root/reducers/weesh'
+import React from "react"
+import { weeshReducer } from "Root/reducers/weesh"
 
 export const WeeshContext = React.createContext()
 
@@ -10,7 +10,7 @@ const initialWeesh = {
         state: null,
         setState: null,
     },
-    content: '',
+    content: "",
     status: null,
     characterCount: 0,
     totalCount: 340,

@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import Cover from 'Root/components/global/Cover'
-import Avatar from 'Root/components/global/Avatar'
-import Content from 'Root/app/client/global/UserProfile/Content/Header/Content'
-import { UserContext } from 'Root/contexts/user'
+import React from "react"
+import styled from "styled-components"
+import Cover from "Root/components/global/Cover"
+import Avatar from "Root/components/global/Avatar"
+import Content from "Root/app/client/global/UserProfile/Content/Header/Content"
+import { UserContext } from "Root/contexts/user"
 
 const StyledHeader = styled.div`
     position: relative;
@@ -32,7 +32,7 @@ export default props => {
                     <Avatar
                         user={user}
                         size={4}
-                        bordercolor='background'
+                        bordercolor="background"
                         borderwidth={2}
                     />
                 </StyledAvatarFrame>

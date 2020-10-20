@@ -1,20 +1,20 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import Avatar from 'Root/components/global/Avatar'
-import Icon from 'Root/components/global/Icon'
-import DrawerDialog from 'Root/components/global/DrawerDialog'
-import Dialog, { DialogButton } from 'Root/components/global/Dialog'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import moment from 'moment'
-import FullName from 'Root/components/global/FullName'
-import helpers from 'Root/helpers'
-import useHistory from 'Root/hooks/useHistory'
-import { useMutation } from '@apollo/react-hooks'
-import api from 'Root/api'
-import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import { DrawerDialogContext } from 'Root/contexts/drawerDialog'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import Avatar from "Root/components/global/Avatar"
+import Icon from "Root/components/global/Icon"
+import DrawerDialog from "Root/components/global/DrawerDialog"
+import Dialog, { DialogButton } from "Root/components/global/Dialog"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import moment from "moment"
+import FullName from "Root/components/global/FullName"
+import helpers from "Root/helpers"
+import useHistory from "Root/hooks/useHistory"
+import { useMutation } from "@apollo/react-hooks"
+import api from "Root/api"
+import { AuthContext } from "Root/contexts/auth"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import { DrawerDialogContext } from "Root/contexts/drawerDialog"
 
 const StyledHeader = styled.div`
     padding: 0.75rem 0.75rem 0;
@@ -82,12 +82,12 @@ export default props => {
     const history = useHistory()
     let buttons = [
         {
-            label: props.isReweeshed ? 'Undo Reweesh' : 'ReWeesh',
-            icon: 'Repeat',
-            color: 'foreground',
+            label: props.isReweeshed ? "Undo Reweesh" : "ReWeesh",
+            icon: "Repeat",
+            color: "foreground",
             clickEvent: () => {
                 drawerDialogDispatch({
-                    type: 'HIDE',
+                    type: "HIDE",
                 })
                 if (props.isReweeshed) {
                     props.setIsReweeshed(false)
@@ -105,9 +105,9 @@ export default props => {
             // fontWeight: 'bold',
         },
         {
-            label: 'ReWeesh with comment',
-            icon: 'Edit',
-            color: 'foreground',
+            label: "ReWeesh with comment",
+            icon: "Edit",
+            color: "foreground",
             clickEvent: () => {
                 if (props.content) {
                     history.push(`/compose/weesh?childId=${props.link}`)
@@ -116,14 +116,14 @@ export default props => {
                 }
             },
             // fontWeight: 'bold',
-            border: 'dashed',
+            border: "dashed",
         },
         {
-            label: 'Cancel',
-            color: 'foreground',
+            label: "Cancel",
+            color: "foreground",
             clickEvent: () => toggleDrawerDialog(false),
             // fontWeight: 'bold',
-            border: 'dashed',
+            border: "dashed",
         },
     ]
 
@@ -137,39 +137,39 @@ export default props => {
         })
         history.push(`/${auth.username}`)
         snackbarDispatch({
-            type: 'SET_DATA',
+            type: "SET_DATA",
             data: {
-                icon: 'Repeat',
-                message: 'This weesh reweeshed successfully.',
-                background: 'foreground',
+                icon: "Repeat",
+                message: "This weesh reweeshed successfully.",
+                background: "foreground",
                 visible: true,
             },
         })
         setTimeout(() => {
-            snackbarDispatch({ type: 'HIDE' })
+            snackbarDispatch({ type: "HIDE" })
         }, 2 * 1000)
     }
 
     const toggleDrawerDialog = visible => {
         drawerDialogDispatch({
-            type: visible ? 'SHOW' : 'HIDE',
+            type: visible ? "SHOW" : "HIDE",
         })
     }
 
     const shareOptions = [
         {
             title: C.txts.en.addWeesh.public,
-            icon: 'Globe',
+            icon: "Globe",
             status: 3,
         },
         {
             title: C.txts.en.addWeesh.private,
-            icon: 'Users',
+            icon: "Users",
             status: 2,
         },
         {
             title: C.txts.en.addWeesh.secret,
-            icon: 'User',
+            icon: "User",
             status: 1,
         },
     ]
@@ -185,16 +185,16 @@ export default props => {
         if (undoReweeshResponse.data) {
             history.push(`/${auth.username}`)
             snackbarDispatch({
-                type: 'SET_DATA',
+                type: "SET_DATA",
                 data: {
-                    icon: 'Trash2',
-                    message: 'Reweeshed removed successfully.',
-                    background: 'foreground',
+                    icon: "Trash2",
+                    message: "Reweeshed removed successfully.",
+                    background: "foreground",
                     visible: true,
                 },
             })
             setTimeout(() => {
-                snackbarDispatch({ type: 'HIDE' })
+                snackbarDispatch({ type: "HIDE" })
             }, 2 * 1000)
         }
     }, [undoReweeshResponse.data])
@@ -208,15 +208,15 @@ export default props => {
     return (
         <>
             <Dialog
-                width='19rem'
-                padding='.5rem'
-                contentPosition='top'
+                width="19rem"
+                padding=".5rem"
+                contentPosition="top"
                 {...dialog}
                 toggleDialogFunction={visible => toggleDialog(visible)}>
                 <StyledComponents.Dialog.Header.Container>
                     <StyledComponents.Dialog.Header.Message
-                        padding='1rem'
-                        fontWeight='bold'>
+                        padding="1rem"
+                        fontWeight="bold">
                         {C.txts.en.addWeesh.shareQuestion}
                     </StyledComponents.Dialog.Header.Message>
                 </StyledComponents.Dialog.Header.Container>
@@ -237,7 +237,7 @@ export default props => {
                 </StyledComponents.Share.Container>
             </Dialog>
             <DrawerDialog
-                width={window.innerWidth < 960 ? '100%' : '30%'}
+                width={window.innerWidth < 960 ? "100%" : "30%"}
                 buttons={buttons}
                 toggleDialogFunction={visible => toggleDrawerDialog(visible)}
             />

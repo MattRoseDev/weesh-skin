@@ -1,11 +1,11 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import Logo from 'Root/components/global/Logo'
-import Avatar from 'Root/components/global/Avatar'
-import Navbar from 'Root/components/mobile/Navbar'
-import { AuthContext } from 'Root/contexts/auth'
-import avatar from 'Root/public/img/avatar.jpg'
-import C from 'Root/constants'
+import React from "react"
+import styled, { css } from "styled-components"
+import Logo from "Root/components/global/Logo"
+import Avatar from "Root/components/global/Avatar"
+import Navbar from "Root/components/mobile/Navbar"
+import { AuthContext } from "Root/contexts/auth"
+import avatar from "Root/public/img/avatar.jpg"
+import C from "Root/constants"
 
 const Header = styled.header`
     ${C.styles.flex.flexRow};
@@ -18,7 +18,7 @@ const Header = styled.header`
         css`
             border-bottom: 1px solid ${({ theme }) => theme.colors.light};
         `};
-    padding: ${({ padding }) => padding || '0 .75rem'};
+    padding: ${({ padding }) => padding || "0 .75rem"};
     height: 44px;
     position: sticky;
     top: 0;

@@ -1,28 +1,28 @@
-import React from 'react'
-import styled from 'styled-components'
-import uuid from 'uuid'
-import { useQuery, useLazyQuery } from '@apollo/react-hooks'
-import { AuthContext } from 'Root/contexts/auth'
-import { UserContext } from 'Root/contexts/user'
-import { EditProfileContext } from 'Root/contexts/editProfile'
-import api from 'Root/api'
-import Input from 'Root/components/global/Input'
-import { Components } from 'Root/StyledComponents'
-import Dialog from 'Root/components/global/Dialog'
-import Icon from 'Root/components/global/Icon'
-import Link from 'Root/components/global/Link'
-import Toggle from 'Root/components/global/Toggle'
-import Textarea from 'Root/components/global/Textarea'
-import Button from 'Root/components/global/Button'
-import About from 'Root/components/global/About'
-import C from 'Root/constants'
-import { useMutation } from '@apollo/react-hooks'
-import UsernameInput from './UsernameInput'
-import EmailInput from './EmailInput'
-import PasswordInput from './PasswordInput'
-import Themes from './Themes'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import styled from "styled-components"
+import uuid from "uuid"
+import { useQuery, useLazyQuery } from "@apollo/react-hooks"
+import { AuthContext } from "Root/contexts/auth"
+import { UserContext } from "Root/contexts/user"
+import { EditProfileContext } from "Root/contexts/editProfile"
+import api from "Root/api"
+import Input from "Root/components/global/Input"
+import { Components } from "Root/StyledComponents"
+import Dialog from "Root/components/global/Dialog"
+import Icon from "Root/components/global/Icon"
+import Link from "Root/components/global/Link"
+import Toggle from "Root/components/global/Toggle"
+import Textarea from "Root/components/global/Textarea"
+import Button from "Root/components/global/Button"
+import About from "Root/components/global/About"
+import C from "Root/constants"
+import { useMutation } from "@apollo/react-hooks"
+import UsernameInput from "./UsernameInput"
+import EmailInput from "./EmailInput"
+import PasswordInput from "./PasswordInput"
+import Themes from "./Themes"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
@@ -99,13 +99,13 @@ export default props => {
     const handleChange = ({ key, e }) => {
         let variables
         switch (key) {
-            case 'private':
+            case "private":
                 variables = {
                     [key]: e.target.checked,
                 }
 
                 break
-            case 'unknown':
+            case "unknown":
                 variables = {
                     [key]: {
                         fullname: e.target.checked,
@@ -122,7 +122,7 @@ export default props => {
         }
 
         editProfileDispatch({
-            type: 'EDIT_PROFILE',
+            type: "EDIT_PROFILE",
             data: variables,
         })
     }
@@ -130,15 +130,15 @@ export default props => {
     const toggles = [
         {
             title: C.txts.en.editProfile.togglesLabel.unknownPerson,
-            icon: 'EyeOff',
+            icon: "EyeOff",
             checked: editProfile.unknown.fullname,
-            onInput: e => handleChange({ key: 'unknown', e }),
+            onInput: e => handleChange({ key: "unknown", e }),
         },
         {
             title: C.txts.en.editProfile.togglesLabel.privateAccount,
-            icon: 'Lock',
+            icon: "Lock",
             checked: editProfile.private,
-            onInput: e => handleChange({ key: 'private', e }),
+            onInput: e => handleChange({ key: "private", e }),
         },
     ]
 
@@ -150,43 +150,43 @@ export default props => {
         // },
         {
             title: C.txts.en.editProfile.linksLabel.support,
-            icon: 'Headphones',
-            link: '/support',
+            icon: "Headphones",
+            link: "/support",
             badge: auth && auth.isNewTicketMessage,
         },
     ]
 
     return editProfile ? (
         <StyledMain>
-            <Meta type='EditProfile' />
+            <Meta type="EditProfile" />
             <StyledLogoutContainer>
                 <Button
-                    padding='.5rem .75rem'
-                    radius='50rem'
-                    fontWeight='bold'
-                    color='primary'
-                    hoverbackground='lightPrimary'
-                    bordercolor='primary'
-                    borderwidth='1px'
-                    to='/logout'>
+                    padding=".5rem .75rem"
+                    radius="50rem"
+                    fontWeight="bold"
+                    color="primary"
+                    hoverbackground="lightPrimary"
+                    bordercolor="primary"
+                    borderwidth="1px"
+                    to="/logout">
                     {C.txts.en.editProfile.header.logout}
                 </Button>
             </StyledLogoutContainer>
             <StyledInputGroup>
                 <Input
                     label={C.txts.en.editProfile.inputsLabel.firstName}
-                    padding='.65rem'
+                    padding=".65rem"
                     value={editProfile.firstName}
-                    onInput={e => handleChange({ key: 'firstName', e })}
-                    margin='0 .5rem 0 0'
+                    onInput={e => handleChange({ key: "firstName", e })}
+                    margin="0 .5rem 0 0"
                     width={100}
                     placeholder={C.txts.en.editProfile.inputsLabel.firstName}
                 />
                 <Input
                     label={C.txts.en.editProfile.inputsLabel.lastName}
-                    padding='.65rem'
+                    padding=".65rem"
                     value={editProfile.lastName}
-                    onInput={e => handleChange({ key: 'lastName', e })}
+                    onInput={e => handleChange({ key: "lastName", e })}
                     width={100}
                     placeholder={C.txts.en.editProfile.inputsLabel.lastName}
                 />
@@ -196,9 +196,9 @@ export default props => {
             <Textarea
                 value={editProfile.bio}
                 label={C.txts.en.editProfile.inputsLabel.bio}
-                padding='.65rem'
-                onInput={e => handleChange({ key: 'bio', e })}
-                margin='.5rem 0 0'
+                padding=".65rem"
+                onInput={e => handleChange({ key: "bio", e })}
+                margin=".5rem 0 0"
                 width={100}
                 placeholder={C.txts.en.editProfile.inputsLabel.bio}
                 rows={5}
@@ -207,7 +207,7 @@ export default props => {
                 {toggles.map(toggle => (
                     <StyledToggleContainer key={uuid()}>
                         <StyledToggleTitleContainer>
-                            <Icon icon={toggle.icon} color='foreground' />
+                            <Icon icon={toggle.icon} color="foreground" />
                             <StyledToggleTitle>
                                 {toggle.title}
                             </StyledToggleTitle>
@@ -225,11 +225,11 @@ export default props => {
                 {links.map(item => (
                     <StyledLinkContainer to={`${item.link}`} key={uuid()}>
                         <StyledToggleTitleContainer>
-                            <Icon icon={item.icon} color='foreground' />
+                            <Icon icon={item.icon} color="foreground" />
                             <StyledToggleTitle>{item.title}</StyledToggleTitle>
                         </StyledToggleTitleContainer>
                         {item.badge && (
-                            <Components.Global.Badge width='.75rem' />
+                            <Components.Global.Badge width=".75rem" />
                         )}
                     </StyledLinkContainer>
                 ))}

@@ -1,9 +1,9 @@
-import React from 'react'
-import Header from './Header'
-import Content from 'Root/app/client/global/EditWeesh/Content'
-import helpers from 'Root/helpers'
-import styled from 'styled-components'
-import { AuthContext } from 'Root/contexts/auth'
+import React from "react"
+import Header from "./Header"
+import Content from "Root/app/client/global/EditWeesh/Content"
+import helpers from "Root/helpers"
+import styled from "styled-components"
+import { AuthContext } from "Root/contexts/auth"
 
 const StyledContainer = styled.div`
     background: ${({ theme }) => theme.colors.background};

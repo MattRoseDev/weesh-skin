@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import Link from 'Root/components/global/Link'
-import Icon from 'Root/components/global/Icon'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import Link from "Root/components/global/Link"
+import Icon from "Root/components/global/Icon"
 
 const StyledTagContainer = styled.div`
     ${C.styles.flex.flexRow};
     ${C.styles.flex.justifyContentBetween};
     ${C.styles.flex.alignItemsStretch};
     padding: 0.75rem 0.5rem;
-    border-bottom: ${({ borderBottom }) => borderBottom || '0px'} dashed
+    border-bottom: ${({ borderBottom }) => borderBottom || "0px"} dashed
         ${({ theme }) => theme.colors.light};
 `
 
@@ -62,10 +62,10 @@ export default props => {
 
     return (
         <StyledTagContainer>
-            <Link width='100%' to={`/t/${tag.title}`}>
+            <Link width="100%" to={`/t/${tag.title}`}>
                 <StyledTagContent>
                     <StyledIcon>
-                        <Icon icon='Hash' color='foreground' />
+                        <Icon icon="Hash" color="foreground" />
                     </StyledIcon>
                     <StyledMain>
                         <StyledTitle>#{tag.title}</StyledTitle>

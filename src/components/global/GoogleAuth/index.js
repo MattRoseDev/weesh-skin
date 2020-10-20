@@ -1,8 +1,8 @@
-import React from 'react'
-import { GoogleLogin } from 'react-google-login'
-import styled from 'styled-components'
-import config from 'Root/config'
-import helpers from 'Root/helpers'
+import React from "react"
+import { GoogleLogin } from "react-google-login"
+import styled from "styled-components"
+import config from "Root/config"
+import helpers from "Root/helpers"
 
 const StyeldButton = styled(GoogleLogin)`
     width: 75%;
@@ -41,7 +41,7 @@ export default props => {
             buttonText={props.buttonText}
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
+            cookiePolicy={"single_host_origin"}
         />
     )
 }

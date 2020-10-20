@@ -1,6 +1,6 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { AuthContext } from 'Root/contexts/auth'
+import React from "react"
+import styled, { css } from "styled-components"
+import { AuthContext } from "Root/contexts/auth"
 
 const StyledMain = styled.main`
     background: ${({ theme }) => theme.colors.background};

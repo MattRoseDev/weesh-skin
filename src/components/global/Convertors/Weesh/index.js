@@ -1,8 +1,8 @@
-import React from 'react'
-import C from 'Root/constants'
-import uuid from 'uuid'
-import StyledComponents from 'Root/StyledComponents'
-import anchorme from 'anchorme'
+import React from "react"
+import C from "Root/constants"
+import uuid from "uuid"
+import StyledComponents from "Root/StyledComponents"
+import anchorme from "anchorme"
 
 export default ({ content, tag }) => {
     let store = {}
@@ -22,8 +22,8 @@ export default ({ content, tag }) => {
                         key,
                         component: anchorme.list(value).length ? (
                             <StyledComponents.Link.Anchor
-                                target='_blank'
-                                href={`${protocol ? '' : 'http://'}${value}`}>
+                                target="_blank"
+                                href={`${protocol ? "" : "http://"}${value}`}>
                                 {value}
                             </StyledComponents.Link.Anchor>
                         ) : (
@@ -44,7 +44,7 @@ export default ({ content, tag }) => {
                             <StyledComponents.Link.Item
                                 to={`/t/${value.slice(1)}`}
                                 fontWeight={
-                                    tag == value.substr(1) ? 'bold' : undefined
+                                    tag == value.substr(1) ? "bold" : undefined
                                 }>
                                 {value}
                             </StyledComponents.Link.Item>
@@ -76,8 +76,8 @@ export default ({ content, tag }) => {
 
     result = result.map(item => {
         if (item.match(C.regexes.weesh.key)) {
-            let key = item.replace(C.regexes.weesh.leftTrimKey, '')
-            key = key.replace(C.regexes.weesh.rightTrimKey, '')
+            let key = item.replace(C.regexes.weesh.leftTrimKey, "")
+            key = key.replace(C.regexes.weesh.rightTrimKey, "")
             return store[`${key}`].component
         } else {
             return item

@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import uuid from 'uuid'
-import C from 'Root/constants'
-import config from 'Root/config'
+import React from "react"
+import styled from "styled-components"
+import uuid from "uuid"
+import C from "Root/constants"
+import config from "Root/config"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRow};

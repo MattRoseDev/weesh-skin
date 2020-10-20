@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import uuid from 'uuid'
-import List from 'Root/components/desktop/List'
-import Loading from 'Root/components/global/Loading'
-import C from 'Root/constants'
-import { useQuery } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import Meta from 'Root/meta'
-import helpers from 'Root/helpers'
+import React from "react"
+import styled from "styled-components"
+import uuid from "uuid"
+import List from "Root/components/desktop/List"
+import Loading from "Root/components/global/Loading"
+import C from "Root/constants"
+import { useQuery } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import Meta from "Root/meta"
+import helpers from "Root/helpers"
 
 const StyledContainer = styled.div`
     padding: 0.25rem 0;
@@ -17,23 +17,23 @@ const StyledContainer = styled.div`
 
 const switchStatus = status => {
     switch (status) {
-        case 'followers':
+        case "followers":
             return {
-                index: 'follower',
-                api: 'getFollowers',
-                data: 'getFollowersUserConnectionByUsernameForUser',
+                index: "follower",
+                api: "getFollowers",
+                data: "getFollowersUserConnectionByUsernameForUser",
             }
-        case 'following':
+        case "following":
             return {
-                index: 'following',
-                api: 'getFollowing',
-                data: 'getFollowingUserConnectionByUsernameForUser',
+                index: "following",
+                api: "getFollowing",
+                data: "getFollowingUserConnectionByUsernameForUser",
             }
     }
 }
 
 export default props => {
-    let url = props.match.url.split('/')
+    let url = props.match.url.split("/")
     const [state, setState] = React.useState(null)
     const history = useHistory()
     const [status, setStatus] = React.useState(url[url.length - 1])
@@ -43,7 +43,7 @@ export default props => {
             variables: {
                 username: `${props.match.params.username}`,
             },
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
@@ -63,13 +63,13 @@ export default props => {
             id: uuid(),
             title: C.txts.en.connections.following,
             value: true,
-            status: 'following',
+            status: "following",
         },
         {
             id: uuid(),
             title: C.txts.en.connections.followers,
             value: false,
-            status: 'followers',
+            status: "followers",
         },
     ]
 
@@ -78,10 +78,10 @@ export default props => {
             <Meta />
             {loading ? (
                 <Loading
-                    padding='3rem 0 0'
+                    padding="3rem 0 0"
                     size={28}
                     strokeWidth={1.25}
-                    color='gray'
+                    color="gray"
                 />
             ) : (
                 state && (

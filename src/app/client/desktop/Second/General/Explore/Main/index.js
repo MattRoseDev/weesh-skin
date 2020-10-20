@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ExploreContext } from 'Root/contexts/explore'
-import Container from 'Root/components/desktop/Container'
-import uuid from 'uuid'
-import List from 'Root/components/desktop/List'
-import Icon from 'Root/components/global/Icon'
-import Loading from 'Root/components/global/Loading'
-import BannerMessage from 'Root/components/global/BannerMessage'
-import helpers from 'Root/helpers'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import { ExploreContext } from "Root/contexts/explore"
+import Container from "Root/components/desktop/Container"
+import uuid from "uuid"
+import List from "Root/components/desktop/List"
+import Icon from "Root/components/global/Icon"
+import Loading from "Root/components/global/Loading"
+import BannerMessage from "Root/components/global/BannerMessage"
+import helpers from "Root/helpers"
+import C from "Root/constants"
 
 const StyledMain = styled.div`
     ${C.styles.flex.flexColumn};
@@ -44,7 +44,7 @@ export default () => {
         <StyledMain>
             {explore.loading ? (
                 <StyledLoading>
-                    <Loading size={20} strokeWidth={1.25} color='gray' />
+                    <Loading size={20} strokeWidth={1.25} color="gray" />
                 </StyledLoading>
             ) : (
                 explore.results &&
@@ -52,7 +52,7 @@ export default () => {
                     <List users={explore.results} />
                 ) : (
                     <StyledNotFound>
-                        <Icon icon='Info' />
+                        <Icon icon="Info" />
                         <StyledNotFoundMessage>
                             {C.txts.en.g.noResultsFound}
                         </StyledNotFoundMessage>

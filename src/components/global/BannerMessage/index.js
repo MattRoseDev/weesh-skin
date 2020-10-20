@@ -1,12 +1,12 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import Icon from 'Root/components/global/Icon'
-import C from 'Root/constants'
+import React from "react"
+import styled, { css } from "styled-components"
+import Icon from "Root/components/global/Icon"
+import C from "Root/constants"
 
 const StyledContainer = styled.div`
     color: ${({ theme }) => theme.colors.foreground};
     ${C.styles.flex.flexColumnCenter};
-    height: ${({ height }) => height || '100'}%;
+    height: ${({ height }) => height || "100"}%;
     ${({ padding }) =>
         padding &&
         css`
@@ -39,7 +39,7 @@ export default props => {
             <StyledIcon>
                 <Icon
                     icon={props.icon}
-                    color='foreground'
+                    color="foreground"
                     strokeWidth={1}
                     size={60}
                 />

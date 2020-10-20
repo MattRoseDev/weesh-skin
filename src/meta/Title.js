@@ -1,32 +1,32 @@
 export default ({ data, type } = { data: null }) => {
     switch (type) {
-        case 'UserProfile':
-            return `${data.user.firstName || ''} ${
-                data.user.lastName || ''
+        case "UserProfile":
+            return `${data.user.firstName || ""} ${
+                data.user.lastName || ""
             } (@${data.user.username}) | Weesh`
-        case 'WeeshPage':
-            return `${data.weesh.user.firstName || ''} ${
-                data.weesh.user.lastName || ''
+        case "WeeshPage":
+            return `${data.weesh.user.firstName || ""} ${
+                data.weesh.user.lastName || ""
             } (@${data.weesh.user.username}) | Weesh`
-        case 'Tags':
+        case "Tags":
             return `#${data.tag} | Weesh`
-        case 'EditProfile':
+        case "EditProfile":
             return `Edit Profile | Weesh`
-        case 'AddWeesh':
+        case "AddWeesh":
             return `Add | Weesh`
-        case 'EditWeesh':
+        case "EditWeesh":
             return `Edit | Weesh`
-        case 'Support':
+        case "Support":
             return `Support | Weesh`
-        case 'Bookmarks':
+        case "Bookmarks":
             return `Bookmarks | Weesh`
-        case 'Showcase':
+        case "Showcase":
             return `Weesh | Change Your Destiny`
-        case 'Login':
+        case "Login":
             return `Weesh | Login`
-        case 'Join':
+        case "Join":
             return `Weesh | Join`
         default:
-            return 'Weesh | Change Your Destiny'
+            return "Weesh | Change Your Destiny"
     }
 }

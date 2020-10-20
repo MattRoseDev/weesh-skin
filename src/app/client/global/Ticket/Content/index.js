@@ -1,15 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
-import { useMutation, useQuery } from '@apollo/react-hooks'
-import useHistory from 'Root/hooks/useHistory'
-import api from 'Root/api'
-import StyledComponent, { Components } from 'Root/StyledComponents'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import Message from './Message'
-import AddMessage from './AddMessage'
-import Meta from 'Root/meta'
-import { AuthContext } from 'Root/contexts/auth'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
+import { useMutation, useQuery } from "@apollo/react-hooks"
+import useHistory from "Root/hooks/useHistory"
+import api from "Root/api"
+import StyledComponent, { Components } from "Root/StyledComponents"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import Message from "./Message"
+import AddMessage from "./AddMessage"
+import Meta from "Root/meta"
+import { AuthContext } from "Root/contexts/auth"
 
 const StyledContainer = styled.div``
 
@@ -58,7 +58,7 @@ export default props => {
     const { data, error, loading, called, fetchMore } = useQuery(
         api.support.getTicket,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
             variables: {
                 link: `${match.params.link}`,
             },
@@ -113,7 +113,7 @@ export default props => {
     React.useEffect(() => {
         if (readMessageResponse.data) {
             authDispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 data: {
                     isNewTicketMessage:
                         readMessageResponse.data.readUserTicketMessageForUser,
@@ -124,13 +124,13 @@ export default props => {
 
     return (
         <StyledContainer>
-            <Meta type='Support' />
+            <Meta type="Support" />
             {loading ? (
                 <Components.Global.Loading
-                    padding='3rem 0 0'
+                    padding="3rem 0 0"
                     size={28}
                     strokeWidth={1.25}
-                    color='gray'
+                    color="gray"
                 />
             ) : (
                 state && (
@@ -144,7 +144,7 @@ export default props => {
                                     setShowAddMessage(!showAddMessage)
                                 }>
                                 <Components.Global.Icon
-                                    icon='Edit'
+                                    icon="Edit"
                                     color={auth.color}
                                 />
                                 <StyledAddTitle>Message</StyledAddTitle>
@@ -161,8 +161,8 @@ export default props => {
                             <Components.Global.InfiniteScroll
                                 onLoadMore={handlePaginate}
                                 hasNextPage={nextPage}
-                                padding='0 0 3.125rem'
-                                alignItems='stretch'>
+                                padding="0 0 3.125rem"
+                                alignItems="stretch">
                                 {state.map(message => (
                                     <Message {...message} />
                                 ))}

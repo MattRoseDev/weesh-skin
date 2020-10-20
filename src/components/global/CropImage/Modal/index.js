@@ -1,16 +1,16 @@
-import React from 'react'
-import AvatarEditor from 'react-avatar-editor'
-import styled from 'styled-components'
-import Buttons from './Buttons'
-import Button from 'Root/components/global/Button'
-import Loader from 'Root/components/global/Loader'
-import StyledComponents from 'Root/StyledComponents'
-import { EditProfileContext } from 'Root/contexts/editProfile'
-import { AuthContext } from 'Root/contexts/auth'
-import { SnackBarContext } from 'Root/contexts/snackbar'
-import { useMutation } from '@apollo/react-hooks'
-import api from 'Root/api'
-import C from 'Root/constants'
+import React from "react"
+import AvatarEditor from "react-avatar-editor"
+import styled from "styled-components"
+import Buttons from "./Buttons"
+import Button from "Root/components/global/Button"
+import Loader from "Root/components/global/Loader"
+import StyledComponents from "Root/StyledComponents"
+import { EditProfileContext } from "Root/contexts/editProfile"
+import { AuthContext } from "Root/contexts/auth"
+import { SnackBarContext } from "Root/contexts/snackbar"
+import { useMutation } from "@apollo/react-hooks"
+import api from "Root/api"
+import C from "Root/constants"
 
 const StyledContainer = styled.div`
     width: 100%;
@@ -34,8 +34,8 @@ const StyledLoadingTitle = styled.div`
 `
 
 const StyledAvatarEditor = styled(AvatarEditor)`
-    width: ${({ width }) => `${width}px` || 'unset'} !important;
-    height: ${({ height }) => `${height}px` || 'unset'} !important;
+    width: ${({ width }) => `${width}px` || "unset"} !important;
+    height: ${({ height }) => `${height}px` || "unset"} !important;
     background: ${({ theme }) => theme.colors.black};
 `
 
@@ -119,34 +119,34 @@ export default props => {
                 visible: false,
             }))
             dispatch({
-                type: 'EDIT_PROFILE',
+                type: "EDIT_PROFILE",
                 data: {
                     [props.type]: data.singleUpload.filePath,
                 },
             })
             authDispatch({
-                type: 'LOGIN',
+                type: "LOGIN",
                 data: {
                     [props.type]: data.singleUpload.filePath,
                 },
             })
             snackbarDispatch({
-                type: 'SET_DATA',
+                type: "SET_DATA",
                 data: {
-                    icon: 'Image',
-                    message: 'Your image uploaded successfully.',
-                    background: 'foreground',
+                    icon: "Image",
+                    message: "Your image uploaded successfully.",
+                    background: "foreground",
                     visible: true,
                 },
             })
             setTimeout(() => {
-                snackbarDispatch({ type: 'HIDE' })
+                snackbarDispatch({ type: "HIDE" })
             }, 3 * 1000)
         }
     }, [state.image, data])
 
     const base64toFile = (base64String, filename) => {
-        let arr = base64String.split(','),
+        let arr = base64String.split(","),
             mime = arr[0].match(/:(.*?);/)[1],
             bstr = atob(arr[1]),
             n = bstr.length,
@@ -163,14 +163,14 @@ export default props => {
         <StyledContainer>
             <input
                 hidden
-                type='file'
+                type="file"
                 ref={file}
                 onChange={e => handleLoadImage(e)}
             />
             <StyledFrame>
                 {isUploading && (
-                    <StyledLoadingContainer background='rgba(0,0,0,0.5)'>
-                        <Loader size={40} strokeWidth={1.5} color='white' />
+                    <StyledLoadingContainer background="rgba(0,0,0,0.5)">
+                        <Loader size={40} strokeWidth={1.5} color="white" />
                         <StyledLoadingTitle>Uploading</StyledLoadingTitle>
                     </StyledLoadingContainer>
                 )}
@@ -180,7 +180,7 @@ export default props => {
                     scale={state.scale}
                     width={props.width / 2}
                     height={props.height / 2}
-                    borderRadius={props.type == 'avatarAddress' ? 500 : 0}
+                    borderRadius={props.type == "avatarAddress" ? 500 : 0}
                     onPositionChange={e => handlePositionChange(e)}
                     onWheel={e => handleOnWheel(e)}
                     disableBoundaryChecks={false}
@@ -189,11 +189,11 @@ export default props => {
             </StyledFrame>
             <Button
                 clickEvent={() => file.current.click()}
-                background='white'
-                color='black'
-                radius='50rem'
-                padding='.5rem 1rem'
-                margin='1rem 0 0'>
+                background="white"
+                color="black"
+                radius="50rem"
+                padding=".5rem 1rem"
+                margin="1rem 0 0">
                 {C.txts.en.cropImage.chooseFile}
             </Button>
             <Buttons {...props} uploadFunc={handleUploadImage} />

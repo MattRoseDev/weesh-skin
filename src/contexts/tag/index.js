@@ -1,5 +1,5 @@
-import React from 'react'
-import { tagReducer } from 'Root/reducers/tag'
+import React from "react"
+import { tagReducer } from "Root/reducers/tag"
 
 export const TagContext = React.createContext()
 

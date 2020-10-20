@@ -1,14 +1,14 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
-import C from 'Root/constants'
+import React from "react"
+import styled, { css } from "styled-components"
+import { Link } from "react-router-dom"
+import C from "Root/constants"
 
 const Logo = styled(Link)`
     color: ${({ theme }) => theme.colors.primary};
     text-decoration: none;
     ${C.styles.flex.inlineFlexRow};
     font-family: Autumn_in_November;
-    margin: ${({ margin }) => margin || 'unset'};
+    margin: ${({ margin }) => margin || "unset"};
     font-size: ${({ fontSize }) => fontSize || 1.5}rem;
     ${({ padding }) =>
         padding
@@ -41,7 +41,7 @@ const Logo = styled(Link)`
 
 export default props => {
     return (
-        <Logo to='/' {...props}>
+        <Logo to="/" {...props}>
             {C.txts.en.g.logo}
         </Logo>
     )

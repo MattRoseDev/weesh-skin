@@ -1,10 +1,10 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import StyledComponents, { Components } from 'Root/StyledComponents'
-import C from 'Root/constants'
-import helpers from 'Root/helpers'
-import moment from 'moment'
-import { AuthContext } from 'Root/contexts/auth'
+import React from "react"
+import styled, { css } from "styled-components"
+import StyledComponents, { Components } from "Root/StyledComponents"
+import C from "Root/constants"
+import helpers from "Root/helpers"
+import moment from "moment"
+import { AuthContext } from "Root/contexts/auth"
 
 const StyledContainer = styled(Components.Global.Link)`
     ${C.styles.flex.flexColumn};
@@ -37,27 +37,27 @@ export default props => {
     return (
         <StyledContainer to={`/support/${props.link}`}>
             <StyledComponents.Title
-                fontWeight='bold'
-                fontSize='1.125rem'
-                margin='0 0 .25rem'>
+                fontWeight="bold"
+                fontSize="1.125rem"
+                margin="0 0 .25rem">
                 {props.subject}
             </StyledComponents.Title>
             <StyledContent>
-                {props.message.ticketMessages[0].message.replace(/\n/g, ' ')}
+                {props.message.ticketMessages[0].message.replace(/\n/g, " ")}
             </StyledContent>
             <StyledFooter>
                 {!props.message.ticketMessages[0].read &&
                     props.message.ticketMessages[0].recipient.id == auth.id && (
                         <StyledBadge />
                     )}
-                <StyledComponents.Title color='gray' fontSize='.75rem'>
-                    {helpers.dateFormat(moment(props.createdAt).fromNow(true))}{' '}
+                <StyledComponents.Title color="gray" fontSize=".75rem">
+                    {helpers.dateFormat(moment(props.createdAt).fromNow(true))}{" "}
                     · #{props.link}
                 </StyledComponents.Title>
                 <Components.Global.User
-                    fontSize='.75rem'
-                    fontWeight='bold'
-                    margin='0 0 0 .25rem'
+                    fontSize=".75rem"
+                    fontWeight="bold"
+                    margin="0 0 0 .25rem"
                     user={user}
                     size={1}
                 />

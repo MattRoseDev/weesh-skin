@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { AuthContext } from 'Root/contexts/auth'
-import { EditProfileContext } from 'Root/contexts/editProfile'
-import { UserContext } from 'Root/contexts/user'
-import api from 'Root/api'
-import Input from 'Root/components/global/Input'
-import C from 'Root/constants'
-import { useMutation, useLazyQuery } from '@apollo/react-hooks'
+import React from "react"
+import styled from "styled-components"
+import { AuthContext } from "Root/contexts/auth"
+import { EditProfileContext } from "Root/contexts/editProfile"
+import { UserContext } from "Root/contexts/user"
+import api from "Root/api"
+import Input from "Root/components/global/Input"
+import C from "Root/constants"
+import { useMutation, useLazyQuery } from "@apollo/react-hooks"
 
 export default props => {
     const { auth, dispatch: authDispatch } = React.useContext(AuthContext)
@@ -22,7 +22,7 @@ export default props => {
     const [checkUsername, { data, error, called, loading }] = useLazyQuery(
         api.users.checkUsername,
         {
-            fetchPolicy: 'no-cache',
+            fetchPolicy: "no-cache",
         },
     )
 
@@ -39,14 +39,14 @@ export default props => {
                     errorMessage: null,
                     errorMessageColor: null,
                 })
-                editProfileDispatch({ type: 'ENABLE_DONE_BUTTON' })
+                editProfileDispatch({ type: "ENABLE_DONE_BUTTON" })
             }
         } else {
             setErrorMessage({
                 errorMessage: C.txts.en.editProfile.usernameMessages.invalid,
-                errorMessageColor: 'red',
+                errorMessageColor: "red",
             })
-            editProfileDispatch({ type: 'DISABLE_DONE_BUTTON' })
+            editProfileDispatch({ type: "DISABLE_DONE_BUTTON" })
         }
 
         let username = e.target.value
@@ -56,7 +56,7 @@ export default props => {
         }))
 
         editProfileDispatch({
-            type: 'EDIT_PROFILE',
+            type: "EDIT_PROFILE",
             data: {
                 username: e.target.value,
             },
@@ -74,16 +74,16 @@ export default props => {
                 setErrorMessage({
                     errorMessage:
                         C.txts.en.editProfile.usernameMessages.available,
-                    errorMessageColor: 'green',
+                    errorMessageColor: "green",
                 })
-                editProfileDispatch({ type: 'ENABLE_DONE_BUTTON' })
+                editProfileDispatch({ type: "ENABLE_DONE_BUTTON" })
             } else {
                 setErrorMessage({
                     errorMessage:
                         C.txts.en.editProfile.usernameMessages.alreadyTaken,
-                    errorMessageColor: 'red',
+                    errorMessageColor: "red",
                 })
-                editProfileDispatch({ type: 'DISABLE_DONE_BUTTON' })
+                editProfileDispatch({ type: "DISABLE_DONE_BUTTON" })
             }
         }
 
@@ -104,14 +104,14 @@ export default props => {
 
     return (
         <Input
-            label={state.errorMessage || 'Username'}
+            label={state.errorMessage || "Username"}
             labelColor={state.errorMessageColor}
-            padding='.65rem'
+            padding=".65rem"
             value={editProfile.username}
-            onChange={e => handleChange({ key: 'username', e })}
+            onChange={e => handleChange({ key: "username", e })}
             width={100}
-            margin='.5rem 0 0'
-            placeholder='Username'
+            margin=".5rem 0 0"
+            placeholder="Username"
         />
     )
 }

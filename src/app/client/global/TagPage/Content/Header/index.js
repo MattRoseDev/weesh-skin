@@ -1,11 +1,11 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import Icon from 'Root/components/global/Icon'
-import Cover from 'Root/components/global/Cover'
-import Avatar from 'Root/components/global/Avatar'
-import { TagContext } from 'Root/contexts/tag'
-import C from 'Root/constants'
-import helpers from 'Root/helpers'
+import React from "react"
+import styled, { css } from "styled-components"
+import Icon from "Root/components/global/Icon"
+import Cover from "Root/components/global/Cover"
+import Avatar from "Root/components/global/Avatar"
+import { TagContext } from "Root/contexts/tag"
+import C from "Root/constants"
+import helpers from "Root/helpers"
 
 const StyledHeader = styled.div`
     position: relative;
@@ -16,7 +16,7 @@ const StyledHeader = styled.div`
 
 const StyledTag = styled.div`
     width: 100%;
-    font-size: ${window.innerWidth < 960 ? '9vw' : '3rem'};
+    font-size: ${window.innerWidth < 960 ? "9vw" : "3rem"};
     font-weight: bold;
     background: ${({ theme }) =>
         `linear-gradient(45deg, ${theme.colors.primary}, ${theme.colors.deepPrimary})`};
@@ -44,8 +44,8 @@ export default props => {
             </StyledTag>
             <StyledNumber>
                 {helpers.labelFormat({
-                    single: 'weesh',
-                    plural: 'weeshes',
+                    single: "weesh",
+                    plural: "weeshes",
                     number: props.tag.paginate.totalDocs,
                 })}
             </StyledNumber>
