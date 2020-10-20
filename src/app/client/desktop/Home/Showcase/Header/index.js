@@ -1,10 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import Logo from 'Root/components/global/Logo'
-import Icon from 'Root/components/global/Icon'
-import C from 'Root/constants'
-import { Components } from 'Root/StyledComponents'
-import { AuthContext } from 'Root/contexts/auth'
+import React from "react"
+import styled from "styled-components"
+import Logo from "Root/components/global/Logo"
+import Icon from "Root/components/global/Icon"
+import C from "Root/constants"
+import { Components } from "Root/StyledComponents"
 
 const StyledHeader = styled.header`
     ${C.styles.flex.flexRow};
@@ -41,47 +40,45 @@ const StyledIconContainer = styled.button`
     cursor: pointer;
 `
 
-export default () => {
-    const { auth, dispatch } = React.useContext(AuthContext)
-
-    const handleTheme = () => dispatch({ type: 'TOGGLE_THEME' })
+export default props => {
+    const handleTheme = () => props.dispatch({ type: "TOGGLE_THEME" })
 
     return (
         <StyledHeader>
             <StyledLogo>
-                <Logo fontSize={2} margin='.75rem 0 0' />
+                <Logo fontSize={2} margin=".75rem 0 0" />
                 <StyledLogoDescription>
                     Dreams Social Network
                 </StyledLogoDescription>
             </StyledLogo>
             <StyledAuth>
                 <Components.Global.Button
-                    color='primary'
-                    background='background'
-                    borderwidth='1px'
-                    fontWeight='bold'
-                    padding='.5rem 1rem'
-                    margin='0 .5rem 0 0'
-                    to='/login'>
+                    color="primary"
+                    background="background"
+                    borderwidth="1px"
+                    fontWeight="bold"
+                    padding=".5rem 1rem"
+                    margin="0 .5rem 0 0"
+                    to="/login">
                     Login
                 </Components.Global.Button>
                 <Components.Global.Button
-                    color='background'
-                    bordercolor='primary'
-                    background='primary'
-                    borderwidth='1px'
-                    fontWeight='bold'
-                    padding='.5rem 1.3rem'
-                    radius='.6rem'
-                    margin='0 .5rem 0 0'
-                    to='/login'>
+                    color="background"
+                    bordercolor="primary"
+                    background="primary"
+                    borderwidth="1px"
+                    fontWeight="bold"
+                    padding=".5rem 1.3rem"
+                    radius=".6rem"
+                    margin="0 .5rem 0 0"
+                    to="/login">
                     Join
                 </Components.Global.Button>
                 <StyledIconContainer onClick={handleTheme}>
                     <Icon
                         size={22}
-                        color={`${auth.color}`}
-                        icon={`${auth.theme == 'light' ? 'Sun' : 'Moon'}`}
+                        color={`${props.auth.color}`}
+                        icon={`${props.auth.theme == "light" ? "Sun" : "Moon"}`}
                     />
                 </StyledIconContainer>
             </StyledAuth>

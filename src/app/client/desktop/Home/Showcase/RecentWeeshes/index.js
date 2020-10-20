@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
-import C from 'Root/constants'
-import Loading from 'Root/components/global/Loading'
-import uuid from 'uuid'
-import WeeshForShowcase from 'Root/components/global/WeeshForShowcase'
+import React from "react"
+import styled from "styled-components"
+import { useQuery } from "@apollo/react-hooks"
+import api from "Root/api"
+import C from "Root/constants"
+import Loading from "Root/components/global/Loading"
+import uuid from "uuid"
+import WeeshForShowcase from "Root/components/global/WeeshForShowcase"
 
 const StyledWeeshes = styled.div`
     ${C.styles.flex.flexColumn};
@@ -16,8 +16,8 @@ export default () => {
     const [state, setState] = React.useState(null)
     const { data, called, error, loading } = useQuery(api.weeshes.getShowcase, {
         variables: {
-            type: 'SHOWCASE',
-            limit: 1,
+            type: "SHOWCASE",
+            limit: 2,
         },
     })
     React.useEffect(() => {
@@ -33,7 +33,7 @@ export default () => {
     return (
         <StyledWeeshes>
             {loading ? (
-                <Loading size={28} strokeWidth={1.25} color='gray' />
+                <Loading size={28} strokeWidth={1.25} color="gray" />
             ) : (
                 state &&
                 state.weeshes &&

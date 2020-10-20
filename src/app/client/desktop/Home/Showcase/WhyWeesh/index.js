@@ -3,10 +3,10 @@ import styled from "styled-components"
 import C from "Root/constants"
 import Section from "Root/components/global/Section"
 import Card from "Root/app/client/global/Home/Showcase/Card"
-import Smoke from "Root/public/img/showcase/smoke.svg"
-import Comment from "Root/public/img/showcase/comment.svg"
-import Eye from "Root/public/img/showcase/eye.svg"
-import Plan from "Root/public/img/showcase/plan.svg"
+import Star from "Root/public/img/showcase/magic-star.svg"
+import Diamond from "Root/public/img/showcase/diamond.svg"
+import Lock from "Root/public/img/showcase/lock.svg"
+import Medal from "Root/public/img/showcase/medal.svg"
 
 const StyledContainer = styled.div`
     ${C.styles.flex.flexRowCenter};
@@ -17,30 +17,30 @@ const StyledContainer = styled.div`
 export default props => {
     const cards = [
         {
-            title: "others answers",
+            title: "secert weesh",
             description:
-                "Never underestimate internet's power at finding friends, help and etc.",
-            icon: Comment,
+                "Need more sucurity? Turn your wish to secert weesh so no one can read it.",
+            icon: Lock,
         },
         {
-            title: "watch others life",
+            title: "gain credit",
             description:
-                "Lots of dreams are thrown to your mind with the purpose of happiness.",
-            icon: Eye,
+                "Every actoion that help others will be appreciated with weesh digital credit.",
+            icon: Diamond,
         },
         {
-            title: "plan if you havent",
+            title: "join challenges",
             description:
-                "Life is best used with plans.Wishing is the easiest way to set your ideal.",
-            icon: Plan,
+                "No idea what to weesh?Attend challenges that @weesh suggests.",
+            icon: Medal,
         },
     ]
 
     const bigCard = {
-        title: "you are what you wish for",
+        title: "built specially for dreaming",
         description:
-            "Dreaming trains your mind to find what plans and appropriate chanes in life.",
-        icon: Smoke,
+            "Weesh is all dedicated to dreams.Every features either exits in app or can be told to us.",
+        icon: Star,
     }
     return (
         <StyledContainer>

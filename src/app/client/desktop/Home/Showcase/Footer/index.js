@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Components } from 'Root/StyledComponents'
-import Icon from 'Root/components/global/Icon'
-import C from 'Root/constants'
-import { AuthContext } from 'Root/contexts/auth'
+import React from "react"
+import styled from "styled-components"
+import { Components } from "Root/StyledComponents"
+import Icon from "Root/components/global/Icon"
+import C from "Root/constants"
+import { AuthContext } from "Root/contexts/auth"
 
 const StyledFooter = styled.footer`
     ${C.styles.flex.flexRowCenter};
@@ -41,7 +41,7 @@ const StyledIconContainer = styled.button`
 export default () => {
     const { auth, dispatch } = React.useContext(AuthContext)
 
-    const handleTheme = () => dispatch({ type: 'TOGGLE_THEME' })
+    const handleTheme = () => dispatch({ type: "TOGGLE_THEME" })
 
     return (
         <StyledFooter>
