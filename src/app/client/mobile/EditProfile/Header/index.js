@@ -59,7 +59,7 @@ export default props => {
               }>
               <Avatar
                 user={editProfile}
-                size={4}
+                size={5}
                 bordercolor="background"
                 borderwidth={4}
               />
