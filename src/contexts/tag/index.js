@@ -1,18 +1,18 @@
-import React from "react"
-import { tagReducer } from "Root/reducers/tag"
+import React from "react";
+import { tagReducer } from "Root/reducers/tag";
 
-export const TagContext = React.createContext()
+export const TagContext = React.createContext();
 
-const initialTag = null
+const initialTag = null;
 
 const TagProvider = props => {
-    const [tag, dispatch] = React.useReducer(tagReducer, initialTag)
+  const [tag, dispatch] = React.useReducer(tagReducer, initialTag);
 
-    return (
-        <TagContext.Provider value={{ tag, dispatch }}>
-            {props.children}
-        </TagContext.Provider>
-    )
-}
+  return (
+    <TagContext.Provider value={{ tag, dispatch }}>
+      {props.children}
+    </TagContext.Provider>
+  );
+};
 
-export default TagProvider
+export default TagProvider;

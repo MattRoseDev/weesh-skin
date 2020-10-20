@@ -1,6 +1,6 @@
 export default {
-    comment: {
-        reply: "Reply",
-        remove: "Delete",
-    },
-}
+  comment: {
+    reply: "Reply",
+    remove: "Delete",
+  },
+};

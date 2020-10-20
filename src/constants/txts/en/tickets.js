@@ -1,3 +1,3 @@
 export default {
-    noTickets: "No tickets found.",
-}
+  noTickets: "No tickets found.",
+};

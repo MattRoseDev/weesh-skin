@@ -1,6 +1,6 @@
-import React from "react"
-import EditProfileContainer from "./EditProfileContainer"
+import React from "react";
+import EditProfileContainer from "./EditProfileContainer";
 
 export default props => {
-    return <EditProfileContainer {...props} />
-}
+  return <EditProfileContainer {...props} />;
+};

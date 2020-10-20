@@ -1,5 +1,5 @@
-import Global from "./global"
+import Global from "./global";
 
 export default {
-    Global,
-}
+  Global,
+};

@@ -1,9 +1,9 @@
-import { css } from "styled-components"
+import { css } from "styled-components";
 
 export default {
-    hide: css`
-        ::-webkit-scrollbar {
-            display: none;
-        }
-    `,
-}
+  hide: css`
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  `,
+};
