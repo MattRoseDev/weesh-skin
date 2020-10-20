@@ -1,15 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
-import Loading from 'Root/components/global/Loading'
-import C from 'Root/constants'
-import { useQuery } from '@apollo/react-hooks'
-import api from 'Root/api'
-import uuid from 'uuid'
-import Link from 'Root/components/global/Link'
+import React from "react"
+import styled from "styled-components"
+import Loading from "Root/components/global/Loading"
+import C from "Root/constants"
+import { useQuery } from "@apollo/react-hooks"
+import api from "Root/api"
+import uuid from "uuid"
+import Link from "Root/components/global/Link"
 
 const StyledTags = styled.div`
     ${C.styles.flex.flexRowCenter};
-    width: 40rem;
     flex-wrap: wrap;
     padding: 0 0.5rem 0.5rem;
 `
@@ -31,9 +30,8 @@ export default props => {
     const [state, setState] = React.useState(null)
 
     const { error, data, loading, called } = useQuery(api.tags.getTheBestTags, {
-        fetchPolicy: 'no-cache',
         variables: {
-            limit: 8,
+            limit: 20,
         },
     })
 
@@ -51,7 +49,7 @@ export default props => {
     return (
         <StyledTags>
             {loading ? (
-                <Loading size={28} strokeWidth={1.25} color='gray' />
+                <Loading size={28} strokeWidth={1.25} color="gray" />
             ) : (
                 state && state.map(tag => <Item {...tag} key={uuid()} />)
             )}

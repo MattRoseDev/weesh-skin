@@ -1,10 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import C from 'Root/constants'
+import React from "react"
+import styled from "styled-components"
+import C from "Root/constants"
 
 const StyledContainer = styled.section`
     ${C.styles.flex.flexColumn};
     ${C.styles.flex.alignItemsCenter};
+    width: ${({ width }) => width || "100%"};
+    margin: 2rem 0 0;
 `
 
 const StyledTitle = styled.span`
@@ -16,11 +18,11 @@ const StyledTitle = styled.span`
     font-weight: bold;
 `
 
-export default props => {
+export default ({ children, title, width }) => {
     return (
-        <StyledContainer>
-            <StyledTitle>{props.title}</StyledTitle>
-            {props.children}
+        <StyledContainer width={width || undefined}>
+            <StyledTitle>{title}</StyledTitle>
+            {children}
         </StyledContainer>
     )
 }
