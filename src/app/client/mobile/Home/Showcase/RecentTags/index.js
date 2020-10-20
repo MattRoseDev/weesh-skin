@@ -23,7 +23,7 @@ const StyledItemTitle = styled.div`
   }
   color: ${({ theme }) => theme.colors.primary};
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 `;
 
 export default props => {

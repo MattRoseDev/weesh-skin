@@ -48,7 +48,7 @@ export default props => {
           icon={bigCard.icon}
           title={bigCard.title}
           description={bigCard.description}
-          width={150}
+          width={110}
           flexDirection="column"
           color={C.themes[`${props.auth.theme}`].colors.foreground}
         />
@@ -59,7 +59,7 @@ export default props => {
             icon={card.icon}
             title={card.title}
             description={card.description}
-            width={80}
+            width={60}
             flexDirection="column"
             color={C.themes[`${props.auth.theme}`].colors.foreground}
           />

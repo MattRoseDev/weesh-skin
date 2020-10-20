@@ -16,6 +16,7 @@ const StyledTitle = styled.span`
   padding: 0.5rem 1rem;
   margin: 2rem;
   font-weight: bold;
+  font-weight: 0.9rem;
 `;
 
 export default ({ children, title, width }) => {

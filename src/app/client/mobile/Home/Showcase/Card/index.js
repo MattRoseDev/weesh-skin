@@ -16,16 +16,16 @@ const StyledCard = styled.div`
     }
   }};
   ${C.styles.flex.alignItemsCenter};
-  margin: 2rem 0.25rem;
+  margin: 2rem;
 `;
 const StyledContent = styled.div`
-  margin: 0;
+  margin: 2;
 `;
 const StyledTitle = styled.h3`
   text-align: center;
   color: ${({ theme }) => theme.colors.foreground};
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1rem;
 
   ${({ flexDirection }) => {
     if (flexDirection && flexDirection == "column") {
@@ -41,8 +41,8 @@ const StyledTitle = styled.h3`
 `;
 const StyledDescription = styled.p`
   color: ${({ theme }) => theme.colors.foreground};
-  font-size: 1.25rem;
-  line-height: 2rem;
+  font-size: 0.85rem;
+  line-height: 1.5rem;
   text-align: center;
 `;
 
