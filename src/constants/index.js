@@ -1,11 +1,11 @@
-import txts from "./txts"
-import themes from "./themes"
-import styles from "./styles"
-import regexes from "./regexes"
+import txts from "./txts";
+import themes from "./themes";
+import styles from "./styles";
+import regexes from "./regexes";
 
 export default {
-    txts,
-    themes,
-    styles,
-    regexes,
-}
+  txts,
+  themes,
+  styles,
+  regexes,
+};

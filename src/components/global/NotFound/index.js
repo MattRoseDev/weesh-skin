@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 const Element = () => {
-    return <>Not Found</>
-}
+  return <>Not Found</>;
+};
 
-export default Element
+export default Element;

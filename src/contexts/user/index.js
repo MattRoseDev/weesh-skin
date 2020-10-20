@@ -1,18 +1,18 @@
-import React from "react"
-import { userReducer } from "Root/reducers/user"
+import React from "react";
+import { userReducer } from "Root/reducers/user";
 
-export const UserContext = React.createContext()
+export const UserContext = React.createContext();
 
-const initialUser = null
+const initialUser = null;
 
 const UserProvider = props => {
-    const [user, dispatch] = React.useReducer(userReducer, initialUser)
+  const [user, dispatch] = React.useReducer(userReducer, initialUser);
 
-    return (
-        <UserContext.Provider value={{ user, dispatch }}>
-            {props.children}
-        </UserContext.Provider>
-    )
-}
+  return (
+    <UserContext.Provider value={{ user, dispatch }}>
+      {props.children}
+    </UserContext.Provider>
+  );
+};
 
-export default UserProvider
+export default UserProvider;

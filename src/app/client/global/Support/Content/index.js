@@ -1,126 +1,122 @@
-import React from "react"
-import styled from "styled-components"
-import C from "Root/constants"
-import { useMutation, useQuery } from "@apollo/react-hooks"
-import useHistory from "Root/hooks/useHistory"
-import api from "Root/api"
-import { AuthContext } from "Root/contexts/auth"
-import { SnackBarContext } from "Root/contexts/snackbar"
-import StyledComponent, { Components } from "Root/StyledComponents"
-import Ticket from "./Ticket"
-import AddTicket from "./AddTicket"
-import Meta from "Root/meta"
+import React from "react";
+import styled from "styled-components";
+import C from "Root/constants";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import useHistory from "Root/hooks/useHistory";
+import api from "Root/api";
+import { AuthContext } from "Root/contexts/auth";
+import { SnackBarContext } from "Root/contexts/snackbar";
+import StyledComponent, { Components } from "Root/StyledComponents";
+import Ticket from "./Ticket";
+import AddTicket from "./AddTicket";
+import Meta from "Root/meta";
 
 const StyledContainer = styled.div`
-    width: 100%;
-`
+  width: 100%;
+`;
 
 const StyledHeader = styled.div`
-    ${C.styles.flex.flexRow};
-    ${C.styles.flex.alignItemsCenter};
-    padding: 1rem;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.light};
-    cursor: pointer;
-`
+  ${C.styles.flex.flexRow};
+  ${C.styles.flex.alignItemsCenter};
+  padding: 1rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.light};
+  cursor: pointer;
+`;
 
 const StyledTitle = styled.div`
-    color: ${({ theme }) => theme.colors.primary};
-    ${C.styles.flex.flexRow};
-    ${C.styles.flex.alignItemsCenter};
-    padding: 0 0 0 0.25rem;
-`
+  color: ${({ theme }) => theme.colors.primary};
+  ${C.styles.flex.flexRow};
+  ${C.styles.flex.alignItemsCenter};
+  padding: 0 0 0 0.25rem;
+`;
 
-const StyledAdd = styled(Components.Global.Link)``
+const StyledAdd = styled(Components.Global.Link)``;
 
 export default props => {
-    const { auth } = React.useContext(AuthContext)
-    const [state, setState] = React.useState(null)
-    const [nextPage, setNextPage] = React.useState(1)
-    const [showAddTicket, setShowAddTicket] = React.useState(false)
-    const { data, error, loading, called, fetchMore } = useQuery(
-        api.support.getTickets,
-        {
-            fetchPolicy: "no-cache",
-            variables: {
-                limit: 8,
-            },
-        },
-    )
-    const history = useHistory()
+  const { auth } = React.useContext(AuthContext);
+  const [state, setState] = React.useState(null);
+  const [nextPage, setNextPage] = React.useState(1);
+  const [showAddTicket, setShowAddTicket] = React.useState(false);
+  const { data, error, loading, called, fetchMore } = useQuery(
+    api.support.getTickets,
+    {
+      fetchPolicy: "no-cache",
+      variables: {
+        limit: 8,
+      },
+    },
+  );
+  const history = useHistory();
 
-    const fetchMoreWeeshes = async ({ page }) =>
-        await fetchMore({
-            variables: {
-                page,
-            },
-            updateQuery: (prev, { fetchMoreResult, ...rest }) => {
-                return fetchMoreResult
-            },
-        })
+  const fetchMoreWeeshes = async ({ page }) =>
+    await fetchMore({
+      variables: {
+        page,
+      },
+      updateQuery: (prev, { fetchMoreResult, ...rest }) => {
+        return fetchMoreResult;
+      },
+    });
 
-    const handlePaginate = () =>
-        fetchMoreWeeshes({ page: nextPage }).then(res => {
-            const result = res.data.getUserTicketsForUser.tickets
-            setState(prevState => [...prevState, ...result])
-            setNextPage(res.data.getUserTicketsForUser.paginate.nextPage)
-        })
+  const handlePaginate = () =>
+    fetchMoreWeeshes({ page: nextPage }).then(res => {
+      const result = res.data.getUserTicketsForUser.tickets;
+      setState(prevState => [...prevState, ...result]);
+      setNextPage(res.data.getUserTicketsForUser.paginate.nextPage);
+    });
 
-    React.useEffect(() => {
-        if (called && data) {
-            const result = data.getUserTicketsForUser.tickets
-            setState(result)
-            setNextPage(data.getUserTicketsForUser.paginate.nextPage)
-        }
-    }, [data])
+  React.useEffect(() => {
+    if (called && data) {
+      const result = data.getUserTicketsForUser.tickets;
+      setState(result);
+      setNextPage(data.getUserTicketsForUser.paginate.nextPage);
+    }
+  }, [data]);
 
-    return (
-        <StyledContainer>
-            <Meta type="Support" />
-            {loading ? (
-                <Components.Global.Loading
-                    padding="3rem 0 0"
-                    size={28}
-                    strokeWidth={1.25}
-                    color="gray"
-                />
-            ) : (
-                <>
-                    {auth.username !== "team" && (
-                        <StyledHeader
-                            onClick={() => setShowAddTicket(!showAddTicket)}>
-                            <Components.Global.Icon
-                                icon="PlusSquare"
-                                color={auth.color}
-                            />
-                            <StyledTitle>New ticket</StyledTitle>
-                        </StyledHeader>
-                    )}
-                    {showAddTicket && (
-                        <AddTicket
-                            setShowAddTicket={setShowAddTicket}
-                            setTickets={setState}
-                        />
-                    )}
-                    {state && state.length > 0 && (
-                        <Components.Global.InfiniteScroll
-                            onLoadMore={handlePaginate}
-                            hasNextPage={nextPage}
-                            padding="0 0 3.125rem"
-                            alignItems="stretch">
-                            {state.map(ticket => (
-                                <Ticket {...ticket} />
-                            ))}
-                        </Components.Global.InfiniteScroll>
-                    )}
-                    {state && state.length < 1 && (
-                        <Components.Global.BannerMessage
-                            padding="3rem 0"
-                            icon="Edit"
-                            title={C.txts.en.tickets.noTickets}
-                        />
-                    )}
-                </>
-            )}
-        </StyledContainer>
-    )
-}
+  return (
+    <StyledContainer>
+      <Meta type="Support" />
+      {loading ? (
+        <Components.Global.Loading
+          padding="3rem 0 0"
+          size={28}
+          strokeWidth={1.25}
+          color="gray"
+        />
+      ) : (
+        <>
+          {auth.username !== "team" && (
+            <StyledHeader onClick={() => setShowAddTicket(!showAddTicket)}>
+              <Components.Global.Icon icon="PlusSquare" color={auth.color} />
+              <StyledTitle>New ticket</StyledTitle>
+            </StyledHeader>
+          )}
+          {showAddTicket && (
+            <AddTicket
+              setShowAddTicket={setShowAddTicket}
+              setTickets={setState}
+            />
+          )}
+          {state && state.length > 0 && (
+            <Components.Global.InfiniteScroll
+              onLoadMore={handlePaginate}
+              hasNextPage={nextPage}
+              padding="0 0 3.125rem"
+              alignItems="stretch">
+              {state.map(ticket => (
+                <Ticket {...ticket} />
+              ))}
+            </Components.Global.InfiniteScroll>
+          )}
+          {state && state.length < 1 && (
+            <Components.Global.BannerMessage
+              padding="3rem 0"
+              icon="Edit"
+              title={C.txts.en.tickets.noTickets}
+            />
+          )}
+        </>
+      )}
+    </StyledContainer>
+  );
+};
