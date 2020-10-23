@@ -69,7 +69,7 @@ export default props => {
           padding=".5rem 1.3rem"
           radius=".6rem"
           margin="0 .5rem 0 0"
-          to="/login">
+          to="/join">
           Join
         </Components.Global.Button>
         <StyledIconContainer onClick={handleTheme}>
