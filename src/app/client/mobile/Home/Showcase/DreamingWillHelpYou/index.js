@@ -38,7 +38,7 @@ export default props => {
   const bigCard = {
     title: "you are what you wish for",
     description:
-      "Dreaming trains your mind to find what plans and appropriate chanes in life.",
+      "Dreaming trains your mind to find what plans and appropriate chances in life.",
     icon: Smoke,
   };
   return (

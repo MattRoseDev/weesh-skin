@@ -24,7 +24,7 @@ export default props => {
     {
       title: "gain credit",
       description:
-        "Every actoion that help others will be appreciated with weesh digital credit.",
+        "Every action that help others will be appreciated with weesh digital credit.",
       icon: Diamond,
     },
     {
