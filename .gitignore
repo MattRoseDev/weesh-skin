@@ -2,3 +2,4 @@
 # /src/public
 /dist
 .vscode
+.env

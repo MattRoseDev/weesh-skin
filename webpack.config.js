@@ -5,6 +5,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const babelConfig = require("./babel.config.json");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.js",
@@ -73,10 +74,8 @@ module.exports = {
       filename: "index.html",
       hash: true,
     }),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("production"),
-      },
+    new Dotenv({
+      systemvars: true,
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.MinChunkSizePlugin({
@@ -88,6 +87,10 @@ module.exports = {
         {
           from: path.join(__dirname, "./src/static"),
           to: "static",
+        },
+        {
+          from: path.join(__dirname, "./src/public/_redirects"),
+          to: ".",
         },
         {
           from: path.join(__dirname, "./seo"),
