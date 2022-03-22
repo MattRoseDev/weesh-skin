@@ -37,7 +37,7 @@ export default props => {
   };
   return (
     <StyeldButton
-      clientId={config.google.CLIENT_ID}
+      clientId={config.google}
       buttonText={props.buttonText}
       onSuccess={responseGoogle}
       onFailure={responseGoogle}
