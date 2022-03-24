@@ -11,7 +11,7 @@ const StyledCover = styled.div`
   ${({ user }) => {
     if (user && user.coverAddress) {
       return css`
-        background-image: url(${`${config.UPLOAD_URL}${user.coverAddress}`});
+        background-image: url(${`${config.UPLOAD_URL}/${user.coverAddress}`});
       `;
     } else {
       return css`

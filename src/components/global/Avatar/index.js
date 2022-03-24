@@ -27,7 +27,7 @@ const StyledAvatar = styled.span`
       } else {
         if (user.avatarAddress) {
           return css`
-            background-image: url(${`${config.UPLOAD_URL}${user.avatarAddress}`});
+            background-image: url(${`${config.UPLOAD_URL}/${user.avatarAddress}`});
           `;
         } else {
           return css`
