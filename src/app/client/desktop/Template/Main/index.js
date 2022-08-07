@@ -4,6 +4,7 @@ import { AuthContext } from "Root/contexts/auth";
 
 const StyledMain = styled.main`
   position: relative;
+  min-height: 100%;
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.foreground};
 `;
